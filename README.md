@@ -4,7 +4,7 @@ Waifu Bot is the bot that is serving _our_ server
 
 Current Waifu we SIMP: 式守さん (Shikimori San) In version 3.2-Present
 
-<img src="https://c.tenor.com/KI8wOfAPyagAAAAC/shikimori-anime-girl.gif" height=300 />
+<img src="https://c.tenor.com/KI8wOfAPyagAAAAd/shikimori-anime-girl.gif" height=300 />
 
 ## ✨ Features
 
