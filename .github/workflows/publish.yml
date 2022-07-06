@@ -1,0 +1,23 @@
+name: Publish Release
+
+on:
+  push:
+    tags:
+      - "*.*"
+
+jobs:
+  main:
+    name: Publish Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Publish Release
+        uses: Leomotors/auto-publish-release@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TITLE: "Shikimori Bot {VERSION}"
+          VERSION_MUST_INCREASE: true
+          TAG: ${{ github.ref }}
