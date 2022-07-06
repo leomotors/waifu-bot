@@ -16,7 +16,7 @@ import { createWriteStream } from "node:fs";
 import { exec } from "../bot.service";
 
 import { formatTime, Helix } from "./main.service";
-import { style } from "./styles";
+import { style, Waifu } from "./styles";
 
 export class Main extends CogSlashClass {
     timePinged = 0;
@@ -210,20 +210,20 @@ export class Main extends CogSlashClass {
         });
     }
 
-    @SlashCommand("Asking Haruno if she is fine")
+    @SlashCommand("Asking the bot if they are fine")
     async status(
         ctx: SlashCommand.Context,
         @Param.Ephemeral ephemeral: Param.Ephemeral.Type
     ) {
         const emb = style
             .use(ctx)
-            .setTitle("Harunon's Status")
+            .setTitle(`${Waifu.name}'s Status`)
             .setDescription(
-                `Harunon Bot Version: ${process.env.npm_package_version}\nCocoa Utils Version: ${CocoaVersion}\n@leomotors/music-bot Version: ${MusicVersion}`
+                `Waifu Bot Version: ${process.env.npm_package_version}\nCocoa Utils Version: ${CocoaVersion}\n@leomotors/music-bot Version: ${MusicVersion}`
             )
             .addFields(await getStatusFields(ctx))
             .setFooter({
-                text: "Bot made by CarelessDev/oneesan-lover ❤️❤️❤️",
+                text: "Bot made by Leomotors with ❤️❤️❤️",
             });
 
         await ctx.reply({ embeds: [emb], ephemeral });

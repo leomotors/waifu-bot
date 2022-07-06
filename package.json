@@ -1,6 +1,6 @@
 {
   "name": "waifu-bot",
-  "version": "3.2.400",
+  "version": "3.2.401",
   "description": "Waifu Bot (Currently Shikimori) is multipurpose Discord Bot with Music that serves our server",
   "main": "index.js",
   "author": "Leomotors",
