@@ -14,7 +14,7 @@ let qualityLinks: { [key: string]: string };
 // * underlying mechanics
 export class Music extends MusicBase {
     constructor(client: Client) {
-        super(client, style, "DJ Harunon 参上!");
+        super(client, style, "Related to playing music");
     }
 
     @SlashCommand("Play quality preseted musics")

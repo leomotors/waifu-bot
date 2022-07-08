@@ -8,7 +8,7 @@ import { Voice } from "./tts.service";
 
 export class TTS extends CogSlashClass {
     constructor() {
-        super("TTS", "Harunon can speak!");
+        super("TTS", "The bot can speak! (Warning: Unstable)");
     }
 
     @SlashCommand("Speak!")
