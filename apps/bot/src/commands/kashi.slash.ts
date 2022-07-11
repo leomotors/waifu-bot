@@ -25,6 +25,9 @@ export class Kashi extends CogSlashClass {
         const emb = style.use(ctx).setTitle(title).setDescription(content);
         if (img) emb.setThumbnail(img);
 
-        await ctx.reply({ embeds: [emb.toJSON()], ephemeral });
+        await ctx.reply({
+            embeds: [emb.toJSON()],
+            ephemeral: ephemeral ?? false,
+        });
     }
 }

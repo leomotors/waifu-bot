@@ -54,7 +54,6 @@ scenter.on("interaction", (name, ctx) => {
 
 const activityLoader = new ActivityGroupLoader("data/activities.json");
 const activityManager = new ActivityManager(
-    // @ts-expect-error type incompat, Fix this in next cocoa-discord-utils
     activityLoader,
     client,
     5 * 60 * 1000
@@ -75,3 +74,8 @@ client.on("ready", (cli) => {
 new ConsoleManager().useLogout(client).useReload(activityLoader);
 
 checkLogin(client, process.env.DISCORD_TOKEN);
+
+process.on("SIGINT", () => {
+    console.log(chalk.yellow("Terminating Waifu Bot..."));
+    client.destroy();
+});

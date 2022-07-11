@@ -1,0 +1,24 @@
+module.exports = {
+    root: true,
+    extends: ["plugin:@typescript-eslint/recommended"],
+    parser: "@typescript-eslint/parser",
+    plugins: ["@typescript-eslint", "prettier"],
+    rules: {
+        indent: ["warn", 4],
+        quotes: ["off", "double"],
+        semi: ["warn", "always"],
+        "eol-last": "warn",
+        "@typescript-eslint/no-unused-vars": [
+            "warn",
+            {
+                argsIgnorePattern: "^_",
+                varsIgnorePattern: "^_",
+                caughtErrorsIgnorePattern: "^_",
+            },
+        ],
+        "prefer-const": "warn",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-namespace": "off",
+    },
+};

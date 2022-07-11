@@ -2,8 +2,10 @@
 
 Waifu Bot is the bot that is serving _our_ server
 
+*This branch is for experimental 4.0 preview and is in progress. Visit branch v3.2 for stable version*
+
 **Current Waifu we SIMP**: 式守さん (Shikimori San)  
-**Current Version**: 3.2  
+**Current Version**: 4.0 (IN PROGRESS)  
 **Been SIMPing since**: 3.2
 
 <img src="https://c.tenor.com/KI8wOfAPyagAAAAd/shikimori-anime-girl.gif" height=300 />
@@ -12,22 +14,44 @@ Waifu Bot is the bot that is serving _our_ server
 
 - Mainly: Music from YouTube with power of [@leomotors/music-bot](https://github.com/Leomotors/music-bot#%EF%B8%8F-highlight) << some gallery there
 
+- Personal Playlist for each user with website for them to edit
+
 - Miscellanous ~~useless~~ features
 
 - [Golden Frame](https://github.com/Leomotors/golden-frame)!
 
 - Using Cocoa Discord Utils and 💛JavaScript💛
 
+## 📚 How to use
+
+### Prerequisites
+
+- Your Discord Bot (of course)
+
+- nodejs (16 Recommended)
+
+- yarn
+
+- PostgreSQL Database (v12 Recommended) and Public Server for Website
+
+- Tenor API Key (not required, it works even with invalid key lol)
 
 ## Waifu Bot Archive
 
-This Repository was built on top of CarelessDev/harunon.js
+The Discord Bot was built on top of CarelessDev/harunon.js
 
 **Version 3.0 - 3.1** 雪ノ下陽乃 (Yukinoshita Haruno) [Repository](https://github.com/CarelessDev/harunon.js) <Mar 2022 - July 2022>
 
 **Version 2.0** 雪ノ下陽乃 (Yukinoshita Haruno) But it was in Python [Repository](https://github.com/CarelessDev/Harunon) <November 2021 - Mar 2022>
 
 **Version 1.0** Skittle Chan [Repository](https://github.com/CarelessDev/SIMP-Bot) <Sep 2021 - November 2021>
+
+## Technical Version History
+
+Version 1 - Python Skittle-chan Era  
+Version 2 - Python Harunon Era  
+Version 3 - JavaScript  
+Version 4 - T U R B O R E P O
 
 ## Utility Library behind this Bot!
 

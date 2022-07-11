@@ -1,39 +1,31 @@
 {
   "name": "waifu-bot",
-  "version": "3.2.401",
   "description": "Waifu Bot (Currently Shikimori) is multipurpose Discord Bot with Music that serves our server",
-  "main": "index.js",
-  "author": "Leomotors",
-  "license": "MIT",
-  "type": "module",
   "repository": "https://github.com/Leomotors/waifu-bot",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "build": "tsc",
-    "clean": "rimraf dist/*",
-    "cb": "yarn clean && yarn build",
-    "start": "node --es-module-specifier-resolution=node dist/bot.js",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint src && prettier --check \"src/**/*.ts\""
+    "build": "FORCE_COLOR=2 turbo run build --parallel",
+    "dev": "FORCE_COLOR=2 turbo run dev --parallel",
+    "lint": "FORCE_COLOR=2 turbo run lint --parallel",
+    "format": "FORCE_COLOR=2 turbo run format --parallel",
+    "start": "FORCE_COLOR=2 turbo run start",
+    "test": "FORCE_COLOR=2 turbo run test --parallel",
+    "deps": "ncu -u && FORCE_COLOR=2 turbo run deps --parallel"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
-    "@types/node": "^18.0.3",
-    "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
-    "eslint": "^8.19.0",
-    "prettier": "^2.7.1",
+    "npm-check-updates": "^15.2.6",
+    "prettier": "latest",
+    "turbo": "latest",
     "typescript": "^4.7.4"
   },
-  "dependencies": {
-    "@discordjs/opus": "^0.8.0",
-    "@leomotors/music-bot": "^0.14.0",
-    "@yimura/scraper": "^1.2.3",
-    "chalk": "^5.0.1",
-    "dotenv": "^16.0.1",
-    "google-tts-api": "^2.0.2",
-    "libsodium-wrappers": "^0.7.10",
-    "node-fetch": "^3.2.6",
-    "uuid": "^8.3.2"
-  }
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.9.0"
+  },
+  "packageManager": "yarn@3.2.1"
 }

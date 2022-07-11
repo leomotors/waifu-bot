@@ -5,7 +5,7 @@ on:
 
 jobs:
   main:
-    name: ESLint & Prettier
+    name: TURBO
     runs-on: ubuntu-latest
 
     steps:

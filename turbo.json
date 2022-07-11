@@ -1,0 +1,31 @@
+{
+  "pipeline": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        ".svelte-kit/**"
+      ]
+    },
+    "lint": {},
+    "format": {},
+    "start": {
+      "dependsOn": [
+        "build",
+        "lint"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "deps": {},
+    "dev": {
+      "cache": false
+    }
+  }
+}

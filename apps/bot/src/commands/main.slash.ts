@@ -1,4 +1,5 @@
 import { Version as MusicVersion } from "@leomotors/music-bot";
+import { AppVersion } from "@waifu-bot/constants";
 
 import { CocoaVersion } from "cocoa-discord-utils/meta";
 import {
@@ -165,7 +166,7 @@ export class Main extends CogSlashClass {
             })
             .setDescription(`Ping = ${ctx.client.ws.ping} ms`);
 
-        await ctx.reply({ embeds: [emb], ephemeral });
+        await ctx.reply({ embeds: [emb], ephemeral: ephemeral ?? false });
     }
 
     @SlashCommand("Clear Messages to delete what you have done")
@@ -219,14 +220,14 @@ export class Main extends CogSlashClass {
             .use(ctx)
             .setTitle(`${Waifu.name}'s Status`)
             .setDescription(
-                `Waifu Bot Version: ${process.env.npm_package_version}\nCocoa Utils Version: ${CocoaVersion}\n@leomotors/music-bot Version: ${MusicVersion}`
+                `Waifu Bot Version: ${AppVersion}\nCocoa Utils Version: ${CocoaVersion}\n@leomotors/music-bot Version: ${MusicVersion}`
             )
             .addFields(await getStatusFields(ctx))
             .setFooter({
                 text: "Bot made by Leomotors with ❤️❤️❤️",
             });
 
-        await ctx.reply({ embeds: [emb], ephemeral });
+        await ctx.reply({ embeds: [emb], ephemeral: ephemeral ?? false });
     }
 
     readonly fbiStyle = style.extends({ author: "bot" });

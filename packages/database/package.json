@@ -1,0 +1,23 @@
+{
+  "name": "@waifu-bot/database",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src && prettier --check src",
+    "format": "prettier --write src",
+    "deps": "ncu -u"
+  },
+  "devDependencies": {
+    "@waifu-bot/config": "*",
+    "eslint": "^8.19.0",
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.0.0",
+    "prisma": "^4.0.0"
+  }
+}

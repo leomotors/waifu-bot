@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  id          String       @id
+  profile     Profile?
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  playlist    Playlist[]
+  accessToken AccessToken?
+}
+
+// For DB Inspect
+model Profile {
+  user                  User   @relation(fields: [userId], references: [id])
+  userId                String @unique @map("user_id")
+  username              String
+  lastInteractGuildName String @map("last_interact_guild_name")
+}
+
+model AccessToken {
+  token   String   @unique
+  expire  DateTime
+  owner   User     @relation(fields: [ownerId], references: [id])
+  ownerId String   @unique @map("owner_id")
+}
+
+model Playlist {
+  id      Int     @id @default(autoincrement())
+  owner   User    @relation(fields: [ownerId], references: [id])
+  ownerId String  @map("owner_id")
+  music   Music[] @relation("Playlist")
+}
+
+model Music {
+  videoId          String     @id @map("video_id")
+  title            String
+  shortDescription String     @map("short_description")
+  lengthSeconds    String     @map("length_seconds")
+  viewCount        String     @map("view_count")
+  authorName       String     @map("author_name")
+  authorChannelUrl String     @map("author_channel_url")
+  likes            Int
+  playlist         Playlist[] @relation("Playlist")
+}
