@@ -16,6 +16,6 @@ jobs:
       - name: Install Dependencies (Yarn)
         run: yarn install
       - name: Build Test
-        run: yarn build
+        run: yarn build:sync
       - name: ESLint & Prettier Check
         run: yarn lint

@@ -9,11 +9,11 @@ import { PrismaService } from "../prisma.service";
 export class PlaylistService {
     constructor(private readonly prisma: PrismaService) {}
 
-    async findMany(input: FindManyPlaylistArgs) {
+    findMany(input: FindManyPlaylistArgs) {
         return this.prisma.playlist.findMany(input);
     }
 
-    async create(input: CreateOnePlaylistArgs) {
+    create(input: CreateOnePlaylistArgs) {
         return this.prisma.playlist.create(input);
     }
 }

@@ -1356,11 +1356,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:1.0.0-next.370":
-  version: 1.0.0-next.370
-  resolution: "@sveltejs/kit@npm:1.0.0-next.370"
+"@sveltejs/kit@npm:1.0.0-next.371":
+  version: 1.0.0-next.371
+  resolution: "@sveltejs/kit@npm:1.0.0-next.371"
   dependencies:
-    "@sveltejs/vite-plugin-svelte": ^1.0.0-next.48
+    "@sveltejs/vite-plugin-svelte": 1.0.0-next.49
     chokidar: ^3.5.3
     sade: ^1.8.1
   peerDependencies:
@@ -1368,28 +1368,28 @@ __metadata:
     vite: ^2.9.10
   bin:
     svelte-kit: svelte-kit.js
-  checksum: f713ddbe1c9831929242eaeaef53b6b6fb00b984f3f9645613432a95b261c56da0517679f17e3238542829aec2db0c0f007382a07f7f899b7ede2420c27f799e
+  checksum: ffda37c033a870a1b6688bcad6bfe482746d0d0c6e6febd98f27747f0b3d0adb6e1474d6f1f85a245ca7e6b1baf4f1341e033e8a2c0ad47d495a175fbd46c2ec
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^1.0.0-next.48":
-  version: 1.0.1
-  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.1"
+"@sveltejs/vite-plugin-svelte@npm:1.0.0-next.49":
+  version: 1.0.0-next.49
+  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.49"
   dependencies:
     "@rollup/pluginutils": ^4.2.1
     debug: ^4.3.4
     deepmerge: ^4.2.2
-    kleur: ^4.1.5
+    kleur: ^4.1.4
     magic-string: ^0.26.2
     svelte-hmr: ^0.14.12
   peerDependencies:
     diff-match-patch: ^1.0.5
     svelte: ^3.44.0
-    vite: ^3.0.0
+    vite: ^2.9.0
   peerDependenciesMeta:
     diff-match-patch:
       optional: true
-  checksum: e74559268fb2e425cc7d4cfc8514da6a75b5e032a81a1e9592cda03adde9ab2ec1e0e3cb72bf5e95f71c7967d7c8a4ff9f6cdb784b2db27ce0aba9be4ffb225e
+  checksum: d87d5a3762eb6bd3970b17d9405537b080a46a2301c487faf6efb776f6102fd1a030fd67d06e88a2cbabadc9162410467cc2dc52624a6edc9ed8cdefe60e635d
   languageName: node
   linkType: hard
 
@@ -1983,7 +1983,7 @@ __metadata:
   resolution: "@waifu-bot/web@workspace:apps/web"
   dependencies:
     "@sveltejs/adapter-node": ^1.0.0-next.79
-    "@sveltejs/kit": 1.0.0-next.370
+    "@sveltejs/kit": 1.0.0-next.371
     "@types/tailwindcss": ^3.0.11
     "@typescript-eslint/eslint-plugin": ^5.30.6
     "@typescript-eslint/parser": ^5.30.6
@@ -5646,7 +5646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kleur@npm:^4.0.1, kleur@npm:^4.1.5":
+"kleur@npm:^4.0.1, kleur@npm:^4.1.4":
   version: 4.1.5
   resolution: "kleur@npm:4.1.5"
   checksum: 1dc476e32741acf0b1b5b0627ffd0d722e342c1b0da14de3e8ae97821327ca08f9fb944542fb3c126d90ac5f27f9d804edbe7c585bf7d12ef495d115e0f22c12

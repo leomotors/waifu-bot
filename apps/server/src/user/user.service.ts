@@ -10,19 +10,19 @@ import { PrismaService } from "../prisma.service";
 export class UserService {
     constructor(private readonly prisma: PrismaService) {}
 
-    async findMany() {
+    findMany() {
         return this.prisma.user.findMany();
     }
 
-    async findUnique(input: FindUniqueUserArgs) {
+    findUnique(input: FindUniqueUserArgs) {
         return this.prisma.user.findUnique(input);
     }
 
-    async create(input: CreateOneUserArgs) {
+    create(input: CreateOneUserArgs) {
         return this.prisma.user.create(input);
     }
 
-    async update(input: UpdateOneUserArgs) {
+    update(input: UpdateOneUserArgs) {
         return this.prisma.user.update(input);
     }
 }

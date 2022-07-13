@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "^1.0.0-next.79",
-    "@sveltejs/kit": "1.0.0-next.370",
+    "@sveltejs/kit": "1.0.0-next.371",
     "@types/tailwindcss": "^3.0.11",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
