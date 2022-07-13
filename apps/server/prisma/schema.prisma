@@ -9,6 +9,11 @@ generator dbml {
   provider = "prisma-dbml-generator"
 }
 
+generator nestgraphql {
+  provider = "prisma-nestjs-graphql"
+  output   = "../src/generated"
+}
+
 datasource db {
   provider          = "postgresql"
   url               = env("DATABASE_URL")

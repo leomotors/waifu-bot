@@ -1,7 +1,0 @@
-{
-  "extends": "@waifu-bot/config/tsconfig-app.json",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "declaration": true
-  }
-}
