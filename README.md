@@ -36,6 +36,8 @@ Waifu Bot is the bot that is serving _our_ server
 
 - Tenor API Key (not required, it works even with invalid key lol)
 
+- [golden-frame](https://github.com/Leomotors/golden-frame) (Installed via pip)
+
 ## Waifu Bot Archive
 
 The Discord Bot was built on top of CarelessDev/harunon.js

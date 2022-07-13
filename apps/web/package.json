@@ -10,7 +10,6 @@
     "preview": "vite preview",
     "prepare": "svelte-kit sync",
     "start": "node build/index.js",
-    "test": "playwright test",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check \"*.config.{cjs,js,ts}\" && prettier --check \"{src,tests}/**/*.{ts,svelte,html,scss}\" && eslint src && eslint *.{cjs,js}",
@@ -18,7 +17,6 @@
     "deps": "ncu -u"
   },
   "devDependencies": {
-    "@playwright/test": "^1.23.2",
     "@sveltejs/adapter-node": "^1.0.0-next.79",
     "@sveltejs/kit": "1.0.0-next.367",
     "@types/tailwindcss": "^3.0.11",

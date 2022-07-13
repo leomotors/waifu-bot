@@ -18,6 +18,7 @@
     "deps": "ncu -u && FORCE_COLOR=2 turbo run deps --parallel"
   },
   "devDependencies": {
+    "@nestjs/cli": "^9.0.0",
     "npm-check-updates": "^15.2.6",
     "prettier": "latest",
     "turbo": "latest",

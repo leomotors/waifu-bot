@@ -14,10 +14,11 @@
   "devDependencies": {
     "@waifu-bot/config": "*",
     "eslint": "^8.19.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "prisma": "^4.0.0",
+    "prisma-dbml-generator": "^0.9.1"
   },
   "dependencies": {
-    "@prisma/client": "^4.0.0",
-    "prisma": "^4.0.0"
+    "@prisma/client": "^4.0.0"
   }
 }
