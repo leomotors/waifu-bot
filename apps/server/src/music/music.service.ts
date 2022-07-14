@@ -21,17 +21,15 @@ export class MusicService {
 
     async playlistOfMusic(music: Music) {
         return (
-            (
-                await this.prisma.music.findUnique({
-                    where: {
-                        videoId: music.videoId,
-                    },
-                    select: {
-                        playlist: true,
-                    },
-                })
-            )?.playlist ?? []
-        );
+            await this.prisma.music.findUniqueOrThrow({
+                where: {
+                    videoId: music.videoId,
+                },
+                select: {
+                    playlist: true,
+                },
+            })
+        ).playlist;
     }
 
     create(input: CreateOneMusicArgs) {

@@ -16,17 +16,15 @@ export class PlaylistService {
 
     async musicOfPlaylist(playlist: Playlist) {
         return (
-            (
-                await this.prisma.playlist.findUnique({
-                    where: {
-                        id: playlist.id,
-                    },
-                    select: {
-                        music: true,
-                    },
-                })
-            )?.music ?? []
-        );
+            await this.prisma.playlist.findUniqueOrThrow({
+                where: {
+                    id: playlist.id,
+                },
+                select: {
+                    music: true,
+                },
+            })
+        ).music;
     }
 
     create(input: CreateOnePlaylistArgs) {

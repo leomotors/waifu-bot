@@ -17,6 +17,7 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "importHelpers": true,
     "paths": {
       "@generated/*" :["src/generated/*"]
     }

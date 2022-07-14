@@ -1912,6 +1912,7 @@ __metadata:
     libsodium-wrappers: ^0.7.10
     node-fetch: ^3.2.8
     prettier: ^2.7.1
+    tslib: ^2.4.0
     typescript: ^4.7.4
     uuid: ^8.3.2
   languageName: unknown
@@ -1976,6 +1977,7 @@ __metadata:
     ts-loader: ^9.3.1
     ts-node: ^10.8.2
     tsconfig-paths: 4.0.0
+    tslib: ^2.4.0
     typescript: ^4.7.4
   languageName: unknown
   linkType: soft

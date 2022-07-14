@@ -29,14 +29,9 @@ export class UserService {
     }
 
     async countPlaylists(input: FindUniqueUserArgs) {
-        return (
-            (
-                await this.prisma.user.findUnique({
-                    ...input,
-                    select: { playlist: { select: { id: true } } },
-                })
-            )?.playlist.length ?? 0
-        );
+        return this.prisma.playlist.count({
+            where: { ownerId: input.where.id },
+        });
     }
 
     create(input: CreateOneUserArgs) {

@@ -5,6 +5,8 @@ module.exports = {
         "^@nestjs",
         "^@",
         "^[a-zA-Z]",
+        "^./prisma",
+        "^./app",
         "^[.][.]",
         "^[.]",
     ],
