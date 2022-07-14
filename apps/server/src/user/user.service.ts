@@ -28,6 +28,14 @@ export class UserService {
         });
     }
 
+    profileOfUser(user: User) {
+        return this.prisma.profile.findUnique({
+            where: {
+                userId: user.id,
+            },
+        });
+    }
+
     async countPlaylists(input: FindUniqueUserArgs) {
         return this.prisma.playlist.count({
             where: { ownerId: input.where.id },

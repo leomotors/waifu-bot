@@ -39,4 +39,4 @@ lerna-debug.log*
 
 # Generated
 dbml
-generated
+@generated

@@ -9,6 +9,7 @@ import {
 } from "@nestjs/graphql";
 
 import { Playlist } from "@generated/playlist/playlist.model";
+import { Profile } from "@generated/profile/profile.model";
 import { CreateOneUserArgs } from "@generated/user/create-one-user.args";
 import { FindManyUserArgs } from "@generated/user/find-many-user.args";
 import { FindUniqueUserArgs } from "@generated/user/find-unique-user.args";
@@ -36,7 +37,10 @@ export class UserResolver {
         return this.service.playlistOfUser(user);
     }
 
-    // TODO Resolve Profile
+    @ResolveField(() => Profile)
+    profile(@Parent() user: User) {
+        return this.service.profileOfUser(user);
+    }
 
     @Query(() => Int)
     countPlaylists(@Args() input: FindUniqueUserArgs) {

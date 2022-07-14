@@ -5,5 +5,5 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: "module",
     },
-    ignorePatterns: [".eslintrc.js", "*/generated/**/*"],
+    ignorePatterns: [".eslintrc.js", "*/@generated/**/*"],
 };

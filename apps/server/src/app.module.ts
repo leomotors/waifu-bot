@@ -9,6 +9,7 @@ import { PrismaService } from "./prisma.service";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
+import { AccessTokenModule } from "./access-token/access-token.module";
 import { MusicModule } from "./music/music.module";
 import { PlaylistModule } from "./playlist/playlist.module";
 import { ProfileModule } from "./profile/profile.module";
@@ -23,8 +24,9 @@ import { UserModule } from "./user/user.module";
             plugins: [
                 ApolloServerPluginLandingPageLocalDefault({ embed: true }),
             ],
-            autoSchemaFile: "./src/generated/schema.graphql",
+            autoSchemaFile: "./src/@generated/schema.graphql",
         }),
+        AccessTokenModule,
         MusicModule,
         PlaylistModule,
         ProfileModule,

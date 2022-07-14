@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "importHelpers": true,
     "paths": {
-      "@generated/*" :["src/generated/*"]
+      "@generated/*" :["src/@generated/*"]
     }
   }
 }

@@ -11,7 +11,7 @@ generator dbml {
 
 generator nestgraphql {
   provider = "prisma-nestjs-graphql"
-  output   = "../src/generated"
+  output   = "../src/@generated"
 }
 
 datasource db {
