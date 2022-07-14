@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "declaration": true,
-    "incremental": false
+    "incremental": false,
+    "module": "commonjs"
   }
 }

@@ -1,5 +1,6 @@
-import { Version as MusicVersion } from "@leomotors/music-bot";
 import { AppVersion } from "@waifu-bot/constants";
+
+import { Version as MusicVersion } from "@leomotors/music-bot";
 
 import { CocoaVersion } from "cocoa-discord-utils/meta";
 import {
@@ -134,10 +135,11 @@ export class Main extends CogSlashClass {
         await ctx.followUp({ files: ["output.png"] });
     }
 
-    @SlashCommand("Use Harunon to speak anything")
+    @SlashCommand("Use this bot to speak anything")
     async imposter(
         ctx: SlashCommand.Context,
-        @Param.String("Message for Harunon to Speak") message: Param.String.Type
+        @Param.String("Message for this bot to Speak")
+        message: Param.String.Type
     ) {
         if (ctx.channel) {
             await ctx.reply({ content: "サプライズ成功!", ephemeral: true });
