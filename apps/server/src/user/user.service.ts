@@ -1,8 +1,10 @@
 import { Injectable } from "@nestjs/common";
 
 import { CreateOneUserArgs } from "@generated/user/create-one-user.args";
+import { FindManyUserArgs } from "@generated/user/find-many-user.args";
 import { FindUniqueUserArgs } from "@generated/user/find-unique-user.args";
 import { UpdateOneUserArgs } from "@generated/user/update-one-user.args";
+import { User } from "@generated/user/user.model";
 
 import { PrismaService } from "../prisma.service";
 
@@ -10,12 +12,31 @@ import { PrismaService } from "../prisma.service";
 export class UserService {
     constructor(private readonly prisma: PrismaService) {}
 
-    findMany() {
-        return this.prisma.user.findMany();
+    findMany(input?: FindManyUserArgs) {
+        return this.prisma.user.findMany(input);
     }
 
     findUnique(input: FindUniqueUserArgs) {
         return this.prisma.user.findUnique(input);
+    }
+
+    playlistOfUser(user: User) {
+        return this.prisma.playlist.findMany({
+            where: {
+                ownerId: user.id,
+            },
+        });
+    }
+
+    async countPlaylists(input: FindUniqueUserArgs) {
+        return (
+            (
+                await this.prisma.user.findUnique({
+                    ...input,
+                    select: { playlist: { select: { id: true } } },
+                })
+            )?.playlist.length ?? 0
+        );
     }
 
     create(input: CreateOneUserArgs) {

@@ -1957,6 +1957,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.30.6
     "@waifu-bot/config": "*"
     "@waifu-bot/constants": "*"
+    apollo-server-core: ^3.10.0
     apollo-server-express: ^3.10.0
     class-transformer: ^0.5.1
     eslint: ^8.19.0
