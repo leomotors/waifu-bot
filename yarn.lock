@@ -1356,9 +1356,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:1.0.0-next.371":
-  version: 1.0.0-next.371
-  resolution: "@sveltejs/kit@npm:1.0.0-next.371"
+"@sveltejs/kit@npm:1.0.0-next.372":
+  version: 1.0.0-next.372
+  resolution: "@sveltejs/kit@npm:1.0.0-next.372"
   dependencies:
     "@sveltejs/vite-plugin-svelte": 1.0.0-next.49
     chokidar: ^3.5.3
@@ -1368,7 +1368,7 @@ __metadata:
     vite: ^2.9.10
   bin:
     svelte-kit: svelte-kit.js
-  checksum: ffda37c033a870a1b6688bcad6bfe482746d0d0c6e6febd98f27747f0b3d0adb6e1474d6f1f85a245ca7e6b1baf4f1341e033e8a2c0ad47d495a175fbd46c2ec
+  checksum: 5f0eb2790ef37ec074c2c6ce4b46eda3d89f19a0546da6e873bb1aad09d7e23f48525563cb11fa87a44c68f180ba4aa36c68584c161967f2baaef6fa2e231305
   languageName: node
   linkType: hard
 
@@ -1667,7 +1667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^18.0.3":
+"@types/node@npm:*":
   version: 18.0.3
   resolution: "@types/node@npm:18.0.3"
   checksum: 5dec59fbbc1186c808b53df1ca717dad034dbd6a901c75f5b052c845618b531b05f27217122c6254db99529a68618e4cfc534ae3dbf4e88754e9e572df80defa
@@ -1678,6 +1678,13 @@ __metadata:
   version: 10.17.60
   resolution: "@types/node@npm:10.17.60"
   checksum: 2cdb3a77d071ba8513e5e8306fa64bf50e3c3302390feeaeff1fd325dd25c8441369715dfc8e3701011a72fed5958c7dfa94eb9239a81b3c286caa4d97db6eef
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^18.0.4":
+  version: 18.0.4
+  resolution: "@types/node@npm:18.0.4"
+  checksum: 981284fd57941f233f0e77038087c122f56e3c2b4fc4e090dfc7f0a93abfc526d5ccdd59eb3ef551d713245cf3943e37c7b957f12ba699209341a447c39fab59
   languageName: node
   linkType: hard
 
@@ -1898,7 +1905,7 @@ __metadata:
     "@discordjs/opus": ^0.8.0
     "@leomotors/music-bot": ^0.14.0
     "@trivago/prettier-plugin-sort-imports": ^3.2.0
-    "@types/node": ^18.0.3
+    "@types/node": ^18.0.4
     "@types/uuid": ^8.3.4
     "@typescript-eslint/eslint-plugin": ^5.30.6
     "@typescript-eslint/parser": ^5.30.6
@@ -1936,6 +1943,7 @@ __metadata:
     "@waifu-bot/config": "*"
     eslint: latest
     prettier: latest
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1953,7 +1961,7 @@ __metadata:
     "@nestjs/schematics": ^9.0.1
     "@prisma/client": ^4.0.0
     "@types/express": ^4.17.13
-    "@types/node": ^18.0.3
+    "@types/node": ^18.0.4
     "@typescript-eslint/eslint-plugin": ^5.30.6
     "@typescript-eslint/parser": ^5.30.6
     "@waifu-bot/config": "*"
@@ -1975,7 +1983,7 @@ __metadata:
     rxjs: ^7.5.6
     source-map-support: ^0.5.21
     ts-loader: ^9.3.1
-    ts-node: ^10.8.2
+    ts-node: ^10.9.1
     tsconfig-paths: 4.0.0
     tslib: ^2.4.0
     typescript: ^4.7.4
@@ -1987,7 +1995,7 @@ __metadata:
   resolution: "@waifu-bot/web@workspace:apps/web"
   dependencies:
     "@sveltejs/adapter-node": ^1.0.0-next.79
-    "@sveltejs/kit": 1.0.0-next.371
+    "@sveltejs/kit": 1.0.0-next.372
     "@types/tailwindcss": ^3.0.11
     "@typescript-eslint/eslint-plugin": ^5.30.6
     "@typescript-eslint/parser": ^5.30.6
@@ -6423,11 +6431,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-check-updates@npm:^15.2.6":
-  version: 15.2.6
-  resolution: "npm-check-updates@npm:15.2.6"
+"npm-check-updates@npm:^15.3.3":
+  version: 15.3.3
+  resolution: "npm-check-updates@npm:15.3.3"
   dependencies:
-    chalk: ^4.1.2
+    chalk: ^5.0.1
     cli-table: ^0.3.11
     commander: ^9.3.0
     fast-memoize: ^2.5.2
@@ -6457,7 +6465,7 @@ __metadata:
   bin:
     ncu: build/src/bin/cli.js
     npm-check-updates: build/src/bin/cli.js
-  checksum: d62685909f5dbe99997db4c3eefbc0267e7e435358a202d4f1ddb0097287857eb39d37b0b0acc77eb920d60b13815b13f9d15a429dcf82fbee7a5883650b7663
+  checksum: 3ee33fe369961d9548cdfde50085540e432a45a1166df4c1e6bacd5c25d36761efd156f6f358d1a51dd10db09d030106f87edec4d4a16637e35c09549a919cd5
   languageName: node
   linkType: hard
 
@@ -8615,9 +8623,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.8.2":
-  version: 10.8.2
-  resolution: "ts-node@npm:10.8.2"
+"ts-node@npm:^10.9.1":
+  version: 10.9.1
+  resolution: "ts-node@npm:10.9.1"
   dependencies:
     "@cspotcode/source-map-support": ^0.8.0
     "@tsconfig/node10": ^1.0.7
@@ -8649,7 +8657,7 @@ __metadata:
     ts-node-script: dist/bin-script.js
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
-  checksum: 1eede939beed9f4db35bcc88d78ef803815b99dcdbed1ecac728d861d74dc694918a7f0f437aa08d026193743a31e7e00e2ee34f875f909b5879981c1808e2a7
+  checksum: 090adff1302ab20bd3486e6b4799e90f97726ed39e02b39e566f8ab674fd5bd5f727f43615debbfc580d33c6d9d1c6b1b3ce7d8e3cca3e20530a145ffa232c35
   languageName: node
   linkType: hard
 
@@ -9192,7 +9200,7 @@ turbo@latest:
   resolution: "waifu-bot@workspace:."
   dependencies:
     "@nestjs/cli": ^9.0.0
-    npm-check-updates: ^15.2.6
+    npm-check-updates: ^15.3.3
     prettier: latest
     turbo: latest
     typescript: ^4.7.4
