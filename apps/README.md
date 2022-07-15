@@ -1,4 +1,5 @@
 # apps
 
 - bot -> Discord Bot
-- web -> Website for Users to edit their playlist
+- client -> Website Frontend for Users to edit their playlist
+- server -> Backend Server with Database

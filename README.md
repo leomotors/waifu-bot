@@ -58,10 +58,10 @@ The Discord Bot (apps/bot) was built on top of [CarelessDev/harunon.js](https://
 
 ## Technical Version History
 
-Version 1 $\rarr$ Python Skittle-chan Era  
-Version 2 $\rarr$ Python Harunon Era  
-Version 3 $\rarr$ JavaScript  
-Version 4 $\rarr$ T U R B O R E P O
+Version 1 -> Python Skittle-chan Era  
+Version 2 -> Python Harunon Era  
+Version 3 -> JavaScript  
+Version 4 -> T U R B O R E P O
 
 ## Utility Library behind this Bot!
 
