@@ -22,23 +22,25 @@ export class UserService {
 
     playlistOfUser(user: User) {
         return this.prisma.playlist.findMany({
-            where: {
-                ownerId: user.id,
-            },
+            where: { ownerId: user.id },
         });
     }
 
     profileOfUser(user: User) {
         return this.prisma.profile.findUnique({
-            where: {
-                userId: user.id,
-            },
+            where: { userId: user.id },
         });
     }
 
-    async countPlaylists(input: FindUniqueUserArgs) {
+    accessTokenOfUser(user: User) {
+        return this.prisma.accessToken.findUnique({
+            where: { userId: user.id },
+        });
+    }
+
+    countPlaylists(user: User) {
         return this.prisma.playlist.count({
-            where: { ownerId: input.where.id },
+            where: { ownerId: user.id },
         });
     }
 

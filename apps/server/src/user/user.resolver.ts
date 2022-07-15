@@ -1,6 +1,5 @@
 import {
     Args,
-    Int,
     Mutation,
     Parent,
     Query,
@@ -8,12 +7,14 @@ import {
     Resolver,
 } from "@nestjs/graphql";
 
+import { AccessToken } from "@generated/access-token/access-token.model";
 import { Playlist } from "@generated/playlist/playlist.model";
 import { Profile } from "@generated/profile/profile.model";
 import { CreateOneUserArgs } from "@generated/user/create-one-user.args";
 import { FindManyUserArgs } from "@generated/user/find-many-user.args";
 import { FindUniqueUserArgs } from "@generated/user/find-unique-user.args";
 import { UpdateOneUserArgs } from "@generated/user/update-one-user.args";
+import { UserCount } from "@generated/user/user-count.output";
 import { User } from "@generated/user/user.model";
 
 import { UserService } from "./user.service";
@@ -37,14 +38,19 @@ export class UserResolver {
         return this.service.playlistOfUser(user);
     }
 
+    @ResolveField(() => AccessToken)
+    accessToken(@Parent() user: User) {
+        return this.service.accessTokenOfUser(user);
+    }
+
     @ResolveField(() => Profile)
     profile(@Parent() user: User) {
         return this.service.profileOfUser(user);
     }
 
-    @Query(() => Int)
-    countPlaylists(@Args() input: FindUniqueUserArgs) {
-        return this.service.countPlaylists(input);
+    @ResolveField(() => UserCount)
+    _count(@Parent() user: User) {
+        return { playlist: this.service.countPlaylists(user) };
     }
 
     @Mutation(() => User)

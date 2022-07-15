@@ -32,6 +32,12 @@ export class MusicService {
         ).playlist;
     }
 
+    countPlaylists(music: Music) {
+        return this.prisma.playlist.count({
+            where: { music: { some: { videoId: music.videoId } } },
+        });
+    }
+
     create(input: CreateOneMusicArgs) {
         return this.prisma.music.create(input);
     }
