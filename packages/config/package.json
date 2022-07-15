@@ -2,6 +2,9 @@
   "name": "@waifu-bot/config",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "format": "prettier --write *.js"
+  },
   "devDependencies": {
     "eslint": "latest",
     "eslint-config-prettier": "latest",
@@ -10,6 +13,7 @@
   },
   "files": [
     "eslint-app.js",
-    "prettier-app.js"
+    "prettier-app.js",
+    "tsconfig-app.json"
   ]
 }

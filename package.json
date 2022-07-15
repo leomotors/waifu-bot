@@ -10,16 +10,17 @@
   ],
   "scripts": {
     "build": "FORCE_COLOR=2 turbo run build --parallel",
+    "build:sync": "FORCE_COLOR=2 turbo run build --concurrency=1",
     "dev": "FORCE_COLOR=2 turbo run dev --parallel",
     "lint": "FORCE_COLOR=2 turbo run lint --parallel",
     "format": "FORCE_COLOR=2 turbo run format --parallel",
-    "start": "FORCE_COLOR=2 turbo run start",
+    "start": "FORCE_COLOR=2 turbo run start --parallel",
     "test": "FORCE_COLOR=2 turbo run test --parallel",
     "deps": "ncu -u && FORCE_COLOR=2 turbo run deps --parallel"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
-    "npm-check-updates": "^15.2.6",
+    "npm-check-updates": "^15.3.3",
     "prettier": "latest",
     "turbo": "latest",
     "typescript": "^4.7.4"

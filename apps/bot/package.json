@@ -15,10 +15,10 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
-    "@types/node": "^18.0.3",
+    "@types/node": "^18.0.4",
     "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
     "@waifu-bot/config": "*",
     "eslint": "^8.19.0",
     "prettier": "^2.7.1",
@@ -28,13 +28,13 @@
     "@discordjs/opus": "^0.8.0",
     "@leomotors/music-bot": "^0.14.0",
     "@waifu-bot/constants": "*",
-    "@waifu-bot/database": "*",
     "@yimura/scraper": "^1.2.3",
     "chalk": "^5.0.1",
     "dotenv": "^16.0.1",
     "google-tts-api": "^2.0.2",
     "libsodium-wrappers": "^0.7.10",
-    "node-fetch": "^3.2.6",
+    "node-fetch": "^3.2.8",
+    "tslib": "^2.4.0",
     "uuid": "^8.3.2"
   }
 }

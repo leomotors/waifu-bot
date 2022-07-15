@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "incremental": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "importHelpers": true
   }
 }

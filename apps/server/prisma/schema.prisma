@@ -9,6 +9,11 @@ generator dbml {
   provider = "prisma-dbml-generator"
 }
 
+generator nestgraphql {
+  provider = "prisma-nestjs-graphql"
+  output   = "../src/@generated"
+}
+
 datasource db {
   provider          = "postgresql"
   url               = env("DATABASE_URL")
@@ -46,10 +51,12 @@ model AccessToken {
 }
 
 model Playlist {
-  id      Int     @id @default(autoincrement())
-  owner   User    @relation(fields: [ownerId], references: [id])
-  ownerId String  @map("owner_id")
-  music   Music[]
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  owner       User    @relation(fields: [ownerId], references: [id])
+  ownerId     String  @map("owner_id")
+  music       Music[]
 
   @@map("playlist")
 }

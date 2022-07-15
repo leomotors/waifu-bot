@@ -1,5 +1,7 @@
 import "dotenv/config";
 
+import { ShortNameJA } from "@waifu-bot/constants";
+
 import {
     ActivityGroupLoader,
     ActivityManager,
@@ -62,7 +64,7 @@ const activityManager = new ActivityManager(
 client.on("ready", (cli) => {
     console.log(
         chalk.cyan(
-            `はるのん Ready! Logged in as ${cli.user.tag}, took ${process
+            `${ShortNameJA} Ready! Logged in as ${cli.user.tag}, took ${process
                 .uptime()
                 .toFixed(3)} seconds`
         )
