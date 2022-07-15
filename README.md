@@ -2,13 +2,19 @@
 
 Waifu Bot is the bot that is serving _our_ server
 
-*This branch is for experimental 4.0 preview and is in progress. Visit branch v3.2 for stable version*
+*This branch is for experimental 4.0 preview and is in progress. Visit branch v3.2 for stable version that is currently running on my servers*
 
 **Current Waifu we SIMP**: 式守さん (Shikimori San)  
 **Current Version**: 4.0 (IN PROGRESS)  
 **Been SIMPing since**: 3.2
 
 <img src="https://c.tenor.com/KI8wOfAPyagAAAAd/shikimori-anime-girl.gif" height=300 />
+
+## 📚 Tech Stack
+
+The most ~~over-engineered~~ advanced Discord Bot
+
+![](./images/tech-stack.png)
 
 ## ✨ Features
 
@@ -22,25 +28,27 @@ Waifu Bot is the bot that is serving _our_ server
 
 - Using Cocoa Discord Utils and 💛JavaScript💛
 
-## 📚 How to use
+## 🐇 How to run the bot
 
 ### Prerequisites
 
 - Your Discord Bot (of course)
-
-- nodejs (16 Recommended)
-
+- nodejs (16+ Required, 16 Recommended)
 - yarn
-
-- PostgreSQL Database (v12 Recommended) and Public Server for Website
-
+- PostgreSQL Database (v12 Recommended) and Public Server (VM) for Website
 - Tenor API Key (not required, it works even with invalid key lol)
+- [golden-frame](https://github.com/Leomotors/golden-frame) (Installable via pip, required)
 
-- [golden-frame](https://github.com/Leomotors/golden-frame) (Installed via pip)
+### Steps
+
+- Fill in .env (see .env.example in each apps)
+- yarn install
+- yarn workspace @waifu-bot/server prisma migrate dev
+- yarn start (Will start all apps at once, Turborepo will automatically build for you!)
 
 ## Waifu Bot Archive
 
-The Discord Bot was built on top of CarelessDev/harunon.js
+The Discord Bot (apps/bot) was built on top of [CarelessDev/harunon.js](https://github.com/CarelessDev/harunon.js)
 
 **Version 3.0 - 3.1** 雪ノ下陽乃 (Yukinoshita Haruno) [Repository](https://github.com/CarelessDev/harunon.js) <Mar 2022 - July 2022>
 
@@ -50,10 +58,10 @@ The Discord Bot was built on top of CarelessDev/harunon.js
 
 ## Technical Version History
 
-Version 1 - Python Skittle-chan Era  
-Version 2 - Python Harunon Era  
-Version 3 - JavaScript  
-Version 4 - T U R B O R E P O
+Version 1 $\rarr$ Python Skittle-chan Era  
+Version 2 $\rarr$ Python Harunon Era  
+Version 3 $\rarr$ JavaScript  
+Version 4 $\rarr$ T U R B O R E P O
 
 ## Utility Library behind this Bot!
 

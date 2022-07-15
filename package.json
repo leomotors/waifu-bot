@@ -9,6 +9,7 @@
     "packages/*"
   ],
   "scripts": {
+    "clean": "rm -rf node_modules {apps,packages}/**/*/{.turbo,build,dist,node_modules,.svelte-kit,@generated}",
     "build": "FORCE_COLOR=2 turbo run build --parallel",
     "build:sync": "FORCE_COLOR=2 turbo run build --concurrency=1",
     "dev": "FORCE_COLOR=2 turbo run dev --parallel",
@@ -26,7 +27,6 @@
     "typescript": "^4.7.4"
   },
   "engines": {
-    "npm": ">=7.0.0",
     "node": ">=16.9.0"
   },
   "packageManager": "yarn@3.2.1"
