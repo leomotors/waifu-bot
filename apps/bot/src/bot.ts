@@ -75,7 +75,8 @@ client.on("ready", (cli) => {
 
 new ConsoleManager().useLogout(client).useReload(activityLoader);
 
-checkLogin(client, process.env.DISCORD_TOKEN);
+console.log(process.env.ADMIN_SECRET);
+// checkLogin(client, process.env.DISCORD_TOKEN);
 
 process.on("SIGINT", () => {
     console.log(chalk.yellow("Terminating Waifu Bot..."));

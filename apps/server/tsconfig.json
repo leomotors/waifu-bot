@@ -18,6 +18,7 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "importHelpers": true,
+    "noUncheckedIndexedAccess": true,
     "paths": {
       "@generated/*" :["src/@generated/*"]
     }

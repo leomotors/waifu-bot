@@ -792,6 +792,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nestjs/config@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@nestjs/config@npm:2.2.0"
+  dependencies:
+    dotenv: 16.0.1
+    dotenv-expand: 8.0.3
+    lodash: 4.17.21
+    uuid: 8.3.2
+  peerDependencies:
+    "@nestjs/common": ^7.0.0 || ^8.0.0 || ^9.0.0
+    reflect-metadata: ^0.1.13
+    rxjs: ^6.0.0 || ^7.2.0
+  checksum: 42b9d8014da51ee76621f705d3783d10fbcaa8362881ecd591b8c9542e8067d3e61258bb01556694c355471ea6af8485c05ba85d1326f54f810bff19bfefef2e
+  languageName: node
+  linkType: hard
+
 "@nestjs/core@npm:^9.0.3":
   version: 9.0.3
   resolution: "@nestjs/core@npm:9.0.3"
@@ -1356,9 +1372,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:1.0.0-next.375":
-  version: 1.0.0-next.375
-  resolution: "@sveltejs/kit@npm:1.0.0-next.375"
+"@sveltejs/kit@npm:1.0.0-next.377":
+  version: 1.0.0-next.377
+  resolution: "@sveltejs/kit@npm:1.0.0-next.377"
   dependencies:
     "@sveltejs/vite-plugin-svelte": ^1.0.1
     chokidar: ^3.5.3
@@ -1368,7 +1384,7 @@ __metadata:
     vite: ^3.0.0
   bin:
     svelte-kit: svelte-kit.js
-  checksum: a00e3c548e2ed340188be248f6cbfab4c14a36114cec143bc5dcc6f8384cf1b05d1f7004b31535c25b4a41522106f941f19ef9c9d27bcd960fdda91d00d70cb4
+  checksum: 9bc3d0fd860b58c86b4b140a323db8947bc8f6fdf09546030f2c045d3d90741c11aa7683801f402d03b9cac0a4585ecb36caca9e082e69eb6a15e6b30111cd5b
   languageName: node
   linkType: hard
 
@@ -1681,10 +1697,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.0.4":
-  version: 18.0.4
-  resolution: "@types/node@npm:18.0.4"
-  checksum: 981284fd57941f233f0e77038087c122f56e3c2b4fc4e090dfc7f0a93abfc526d5ccdd59eb3ef551d713245cf3943e37c7b957f12ba699209341a447c39fab59
+"@types/node@npm:^18.0.5":
+  version: 18.0.5
+  resolution: "@types/node@npm:18.0.5"
+  checksum: cc9c67d0074252f798d226dd95a22e0e8851cf7fc623ef4a603d9ad2c2b46650f930147062ea33719008b1de67f08f499ad693307d02f8396e6f1fead8144329
   languageName: node
   linkType: hard
 
@@ -1904,8 +1920,7 @@ __metadata:
   dependencies:
     "@discordjs/opus": ^0.8.0
     "@leomotors/music-bot": ^0.14.0
-    "@trivago/prettier-plugin-sort-imports": ^3.2.0
-    "@types/node": ^18.0.4
+    "@types/node": ^18.0.5
     "@types/uuid": ^8.3.4
     "@typescript-eslint/eslint-plugin": ^5.30.6
     "@typescript-eslint/parser": ^5.30.6
@@ -1930,7 +1945,7 @@ __metadata:
   resolution: "@waifu-bot/client@workspace:apps/client"
   dependencies:
     "@sveltejs/adapter-node": ^1.0.0-next.81
-    "@sveltejs/kit": 1.0.0-next.375
+    "@sveltejs/kit": 1.0.0-next.377
     "@types/tailwindcss": ^3.0.11
     "@typescript-eslint/eslint-plugin": ^5.30.6
     "@typescript-eslint/parser": ^5.30.6
@@ -1958,6 +1973,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@waifu-bot/config@workspace:packages/config"
   dependencies:
+    "@trivago/prettier-plugin-sort-imports": ^3.2.0
     eslint: latest
     eslint-config-prettier: latest
     eslint-plugin-prettier: latest
@@ -1983,6 +1999,7 @@ __metadata:
     "@nestjs/apollo": ^10.0.17
     "@nestjs/cli": ^9.0.0
     "@nestjs/common": ^9.0.3
+    "@nestjs/config": ^2.2.0
     "@nestjs/core": ^9.0.3
     "@nestjs/graphql": ^10.0.18
     "@nestjs/mapped-types": "*"
@@ -1990,7 +2007,7 @@ __metadata:
     "@nestjs/schematics": ^9.0.1
     "@prisma/client": ^4.0.0
     "@types/express": ^4.17.13
-    "@types/node": ^18.0.4
+    "@types/node": ^18.0.5
     "@typescript-eslint/eslint-plugin": ^5.30.6
     "@typescript-eslint/parser": ^5.30.6
     "@waifu-bot/config": "*"
@@ -2806,7 +2823,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.14.5, browserslist@npm:^4.20.2, browserslist@npm:^4.20.3":
+"browserslist@npm:^4.14.5, browserslist@npm:^4.20.3":
   version: 4.21.1
   resolution: "browserslist@npm:4.21.1"
   dependencies:
@@ -2817,6 +2834,20 @@ __metadata:
   bin:
     browserslist: cli.js
   checksum: 4904a9ded0702381adc495e003e7f77970abb7f8c8b8edd9e54f026354b5a96b1bddc26e6d9a7df9f043e468ecd2fcff2c8f40fc489909a042880117c2aca8ff
+  languageName: node
+  linkType: hard
+
+"browserslist@npm:^4.20.2":
+  version: 4.21.2
+  resolution: "browserslist@npm:4.21.2"
+  dependencies:
+    caniuse-lite: ^1.0.30001366
+    electron-to-chromium: ^1.4.188
+    node-releases: ^2.0.6
+    update-browserslist-db: ^1.0.4
+  bin:
+    browserslist: cli.js
+  checksum: 30fe59f8b065f99665ea63819d29c797660f7975857c290f61f570403abed4d7039ca15b6fd21e39a57b87e1a9262f94676114040766fc0da6ccc11faf9fc377
   languageName: node
   linkType: hard
 
@@ -2952,6 +2983,13 @@ __metadata:
   version: 1.0.30001366
   resolution: "caniuse-lite@npm:1.0.30001366"
   checksum: eeb878e0be4090a4247dd3de5392ff1a864d086e5401790c7c81697918ce6ce3dac75956a21f9404b5ac770bfdabdb18619d0f920dc2295f3211ee893355f697
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001366":
+  version: 1.0.30001367
+  resolution: "caniuse-lite@npm:1.0.30001367"
+  checksum: 9912aed182b8b3a834787424b56a0e71b5ecb5d2cb7235fb022227bc3a81202e8a34bebc5dc9cc504c515b4e052f825c36c2db4b0b880c10e195fe63673edfc6
   languageName: node
   linkType: hard
 
@@ -3699,6 +3737,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-expand@npm:8.0.3":
+  version: 8.0.3
+  resolution: "dotenv-expand@npm:8.0.3"
+  checksum: 128ce90ac825b543de3ece0154a51b056ab0dc36bb26d97a68cd0b8707327ecd3c182fb6ac63b26a0fcdfa85064419906a1065cb634f1f9dc08ad311375f1fc0
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:16.0.0":
   version: 16.0.0
   resolution: "dotenv@npm:16.0.0"
@@ -3706,7 +3751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.0.1":
+"dotenv@npm:16.0.1, dotenv@npm:^16.0.1":
   version: 16.0.1
   resolution: "dotenv@npm:16.0.1"
   checksum: f459ffce07b977b7f15d8cc4ee69cdff77d4dd8c5dc8c85d2d485ee84655352c2415f9dd09d42b5b5985ced3be186130871b34e2f3e2569ebc72fbc2e8096792
@@ -3731,6 +3776,13 @@ __metadata:
   version: 1.4.187
   resolution: "electron-to-chromium@npm:1.4.187"
   checksum: 258be88d92b3f34ffba8ea1d90ecc918f6aa74954af67d0439a649648a17738dad3042ef3f26be141177f5ffb0c5c90dfcaa18ae4dba7bc2937ff21d64a9acb6
+  languageName: node
+  linkType: hard
+
+"electron-to-chromium@npm:^1.4.188":
+  version: 1.4.192
+  resolution: "electron-to-chromium@npm:1.4.192"
+  checksum: b4c59ecdfa3c19a3d350a28129bc4162a9707378f69dbf00ea87d138e86696196e4ffcb1b23ba979368117f83333ed1bb26524749994134a06ec6ac9b9800847
   languageName: node
   linkType: hard
 
@@ -6358,7 +6410,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-releases@npm:^2.0.5":
+"node-releases@npm:^2.0.5, node-releases@npm:^2.0.6":
   version: 2.0.6
   resolution: "node-releases@npm:2.0.6"
   checksum: e86a926dc9fbb3b41b4c4a89d998afdf140e20a4e8dbe6c0a807f7b2948b42ea97d7fd3ad4868041487b6e9ee98409829c6e4d84a734a4215dff060a7fbeb4bf
@@ -6430,9 +6482,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-check-updates@npm:^15.3.3":
-  version: 15.3.3
-  resolution: "npm-check-updates@npm:15.3.3"
+"npm-check-updates@npm:^15.3.4":
+  version: 15.3.4
+  resolution: "npm-check-updates@npm:15.3.4"
   dependencies:
     chalk: ^5.0.1
     cli-table: ^0.3.11
@@ -6464,7 +6516,7 @@ __metadata:
   bin:
     ncu: build/src/bin/cli.js
     npm-check-updates: build/src/bin/cli.js
-  checksum: 3ee33fe369961d9548cdfde50085540e432a45a1166df4c1e6bacd5c25d36761efd156f6f358d1a51dd10db09d030106f87edec4d4a16637e35c09549a919cd5
+  checksum: 14c414684f5dcae508640071e54aa75a863446816f449ef34f4031033c4eb19ad873f02e6f9c1bf4047e557cbee64852913dfa2a44c652129f08b2e62133a044
   languageName: node
   linkType: hard
 
@@ -9184,7 +9236,7 @@ turbo@latest:
   resolution: "waifu-bot@workspace:."
   dependencies:
     "@nestjs/cli": ^9.0.0
-    npm-check-updates: ^15.3.3
+    npm-check-updates: ^15.3.4
     prettier: latest
     turbo: latest
     typescript: ^4.7.4

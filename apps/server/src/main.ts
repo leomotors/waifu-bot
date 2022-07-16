@@ -4,7 +4,14 @@ import { AppModule } from "./app.module";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
-    await app.listen(3001);
+
+    if (!process.env.ADMIN_SECRET) {
+        throw new Error(
+            "ADMIN_SECRET env is not defined! Add it to .env at root level"
+        );
+    }
+
+    await app.listen(5375);
 }
 
 bootstrap();

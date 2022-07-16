@@ -1,5 +1,6 @@
 import {
     Args,
+    Context,
     Mutation,
     Parent,
     Query,
@@ -17,6 +18,11 @@ import { UpdateOneUserArgs } from "@generated/user/update-one-user.args";
 import { UserCount } from "@generated/user/user-count.output";
 import { User } from "@generated/user/user.model";
 
+import { IncomingMessage } from "http";
+
+import { Auth } from "../auth/auth.decorator";
+import { AuthRole } from "../auth/auth.utils";
+
 import { UserService } from "./user.service";
 
 @Resolver(() => User)
@@ -31,6 +37,12 @@ export class UserResolver {
     @Query(() => User, { nullable: true })
     user(@Args() input: FindUniqueUserArgs) {
         return this.service.findUnique(input);
+    }
+
+    @Query(() => User)
+    @Auth(AuthRole.User)
+    me(@Context() context: { req: IncomingMessage }) {
+        return this.service.userFromContext(context.req);
     }
 
     @ResolveField(() => [Playlist])
