@@ -136,3 +136,5 @@ dist
 *.g.*
 .vercel*
 .netlify
+
+generated

@@ -1,0 +1,16 @@
+schema: ../server/src/@generated/schema.graphql
+documents: "**/*.graphql"
+generates:
+  ./src/graphql/generated/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typed-document-node
+      - typescript-document-nodes
+  ./src/graphql/generated/stores.ts:
+    plugins:
+      - "@kitql/graphql-codegen"
+    config:
+      importBaseTypesFrom: $graphql/generated/types
+config:
+  useTypeImports: true
