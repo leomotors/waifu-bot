@@ -19,22 +19,16 @@ export class PlaylistService {
         return this.prisma.playlist.findUnique(input);
     }
 
-    async musicOfPlaylist(playlist: Playlist) {
-        return (
-            await this.prisma.playlist.findUniqueOrThrow({
-                where: { id: playlist.id },
-                select: { music: true },
-            })
-        ).music;
+    musicOfPlaylist(playlist: Playlist) {
+        return this.prisma.playlist
+            .findUniqueOrThrow({ where: { id: playlist.id } })
+            .music();
     }
 
-    async ownerOfPlaylist(playlist: Playlist) {
-        return (
-            await this.prisma.playlist.findUniqueOrThrow({
-                where: { id: playlist.id },
-                select: { owner: true },
-            })
-        ).owner;
+    ownerOfPlaylist(playlist: Playlist) {
+        return this.prisma.playlist
+            .findUniqueOrThrow({ where: { id: playlist.id } })
+            .owner();
     }
 
     countMusics(playlist: Playlist) {

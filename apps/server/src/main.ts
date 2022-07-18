@@ -1,3 +1,4 @@
+import { Logger } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 
 import { AppModule } from "./app.module";
@@ -11,7 +12,11 @@ async function bootstrap() {
         );
     }
 
-    await app.listen(5375);
+    const PORT = 5375;
+    await app.listen(PORT);
+    Logger.log(
+        `Server is running on port ${PORT} http://localhost:${PORT}/graphql`
+    );
 }
 
 bootstrap();

@@ -7,8 +7,19 @@ export class AuthService {
     constructor(private readonly prisma: PrismaService) {}
 
     async isUser(token: string | undefined) {
-        if ((token?.length ?? 0) < 50) return false;
+        if ((token?.length ?? 0) != 50) return false;
 
-        return (await this.prisma.accessToken.count({ where: { token } })) == 1;
+        const found = await this.prisma.accessToken.findUnique({
+            where: { token },
+        });
+
+        if (!found) return false;
+
+        if (found.expire.getTime() < Date.now()) {
+            await this.prisma.accessToken.delete({ where: { token } });
+            return false;
+        }
+
+        return true;
     }
 }

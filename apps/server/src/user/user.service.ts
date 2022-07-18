@@ -22,24 +22,23 @@ export class UserService {
         return this.prisma.user.findUnique(input);
     }
 
-    async userFromContext(req: IncomingMessage) {
+    userFromContext(req: IncomingMessage) {
         const token = req.headers.authorization;
         if (token == process.env.ADMIN_SECRET) {
             throw new ImATeapotException("Admin does not have an account");
         }
 
-        return (
-            await this.prisma.accessToken.findUniqueOrThrow({
+        return this.prisma.accessToken
+            .findUniqueOrThrow({
                 where: { token },
-                select: { user: true },
             })
-        ).user;
+            .user();
     }
 
     playlistOfUser(user: User) {
-        return this.prisma.playlist.findMany({
-            where: { ownerId: user.id },
-        });
+        return this.prisma.user
+            .findUniqueOrThrow({ where: { id: user.id } })
+            .playlist();
     }
 
     profileOfUser(user: User) {
@@ -54,10 +53,12 @@ export class UserService {
         });
     }
 
-    countPlaylists(user: User) {
-        return this.prisma.playlist.count({
-            where: { ownerId: user.id },
-        });
+    async countPlaylists(user: User) {
+        return (
+            await this.prisma.user
+                .findUniqueOrThrow({ where: { id: user.id } })
+                .playlist({ select: { id: true } })
+        ).length;
     }
 
     create(input: CreateOneUserArgs) {

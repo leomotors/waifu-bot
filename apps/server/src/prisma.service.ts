@@ -22,17 +22,25 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
 
         if (process.env.npm_lifecycle_event == "dev") {
             let queries = 0;
+            let lastQuery = Date.now();
 
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             (this as PrismaClient<unknown, "query">).$on(
                 "query",
                 (e: Prisma.QueryEvent) => {
+                    if (Date.now() - lastQuery >= 100) {
+                        console.log(
+                            "Query count has been reseted due to inactivity\n"
+                        );
+                        queries = 0;
+                    }
+                    lastQuery = Date.now();
                     queries++;
                     console.log("Query: " + e.query);
                     console.log("Params: " + e.params);
                     console.log("Duration: " + e.duration + "ms");
-                    console.log(`Total Queries since begin: ${queries}\n`);
+                    console.log(`Total Queries: ${queries}\n`);
                 }
             );
         }
