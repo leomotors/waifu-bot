@@ -20,8 +20,7 @@ import { User } from "@generated/user/user.model";
 
 import { IncomingMessage } from "http";
 
-import { Auth } from "../auth/auth.decorator";
-import { AuthRole } from "../auth/auth.utils";
+import { Permission } from "../auth/auth.decorator";
 
 import { UserService } from "./user.service";
 
@@ -40,7 +39,7 @@ export class UserResolver {
     }
 
     @Query(() => User)
-    @Auth(AuthRole.User)
+    @Permission("User")
     me(@Context() context: { req: IncomingMessage }) {
         return this.service.userFromContext(context.req);
     }

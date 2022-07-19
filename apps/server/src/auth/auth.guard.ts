@@ -19,13 +19,13 @@ export class AuthGuard implements CanActivate {
     ) {}
 
     async canActivate(context: ExecutionContext) {
-        const role =
+        const role: AuthRole =
             this.reflector.getAllAndOverride<AuthRole>(AuthKey, [
                 context.getClass(),
                 context.getHandler(),
-            ]) ?? AuthRole.Admin;
+            ]) ?? "Admin";
 
-        if (role == AuthRole.Public) return true;
+        if (role == "Public") return true;
 
         // * expect context to be graphql, is undefined if is rest
         const req = context.getArgByIndex<{ req: IncomingMessage }>(2).req;
@@ -38,7 +38,7 @@ export class AuthGuard implements CanActivate {
 
         if (!isValidUser) throw new UnauthorizedException();
 
-        if (role == AuthRole.Admin) return token == process.env.ADMIN_SECRET;
+        if (role == "Admin") return token == process.env.ADMIN_SECRET;
 
         return true;
     }

@@ -2,11 +2,10 @@ import { Controller, Get, Redirect } from "@nestjs/common";
 
 import { AppService } from "./app.service";
 
-import { Auth } from "./auth/auth.decorator";
-import { AuthRole } from "./auth/auth.utils";
+import { Permission } from "./auth/auth.decorator";
 
 @Controller()
-@Auth(AuthRole.Public)
+@Permission("Public")
 export class AppController {
     constructor(private readonly service: AppService) {}
 

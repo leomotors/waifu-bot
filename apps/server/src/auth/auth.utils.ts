@@ -1,6 +1,2 @@
 export const AuthKey = "AUTH";
-export enum AuthRole {
-    Public,
-    User,
-    Admin,
-}
+export type AuthRole = "Public" | "User" | "Admin";
