@@ -19,7 +19,7 @@ export class ProfileService {
         return this.prisma.profile.findUnique(input);
     }
 
-    async userOfProfile(profile: Profile) {
+    userOfProfile(profile: Profile) {
         return this.prisma.user.findUniqueOrThrow({
             where: {
                 id: profile.userId,

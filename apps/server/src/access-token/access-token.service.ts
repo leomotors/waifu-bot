@@ -18,13 +18,12 @@ export class AccessTokenService {
         return this.prisma.accessToken.findMany(input);
     }
 
-    async userOfToken(token: AccessToken) {
-        return (
-            await this.prisma.accessToken.findUniqueOrThrow({
+    userOfToken(token: AccessToken) {
+        return this.prisma.accessToken
+            .findUniqueOrThrow({
                 where: { token: token.token },
-                select: { user: true },
             })
-        ).user;
+            .user();
     }
 
     generateToken(input: FindUniqueUserArgs) {

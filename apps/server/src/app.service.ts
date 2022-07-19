@@ -7,4 +7,8 @@ export class AppService {
     getVersion() {
         return AppVersion;
     }
+
+    viewerIsGay() {
+        return Math.random() >= 0.5;
+    }
 }

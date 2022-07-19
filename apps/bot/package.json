@@ -14,25 +14,25 @@
     "deps": "ncu -u"
   },
   "devDependencies": {
-    "@types/node": "^18.0.5",
+    "@types/node": "^18.0.6",
     "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.30.6",
-    "@typescript-eslint/parser": "^5.30.6",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
     "@waifu-bot/config": "*",
-    "eslint": "^8.19.0",
+    "eslint": "^8.20.0",
     "prettier": "^2.7.1",
     "typescript": "^4.7.4"
   },
   "dependencies": {
     "@discordjs/opus": "^0.8.0",
-    "@leomotors/music-bot": "^0.14.0",
+    "@leomotors/music-bot": "^0.15.1",
     "@waifu-bot/constants": "*",
     "@yimura/scraper": "^1.2.3",
     "chalk": "^5.0.1",
     "dotenv": "^16.0.1",
     "google-tts-api": "^2.0.2",
     "libsodium-wrappers": "^0.7.10",
-    "node-fetch": "^3.2.8",
+    "node-fetch": "^3.2.9",
     "tslib": "^2.4.0",
     "uuid": "^8.3.2"
   }

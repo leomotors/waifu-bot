@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "access_token" ADD COLUMN     "issued" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

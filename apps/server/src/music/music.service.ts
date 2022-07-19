@@ -19,17 +19,14 @@ export class MusicService {
         return this.prisma.music.findUnique(input);
     }
 
-    async playlistOfMusic(music: Music) {
-        return (
-            await this.prisma.music.findUniqueOrThrow({
+    playlistOfMusic(music: Music) {
+        return this.prisma.music
+            .findUniqueOrThrow({
                 where: {
                     videoId: music.videoId,
                 },
-                select: {
-                    playlist: true,
-                },
             })
-        ).playlist;
+            .playlist();
     }
 
     countPlaylists(music: Music) {
