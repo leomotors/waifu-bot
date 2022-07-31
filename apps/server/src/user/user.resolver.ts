@@ -20,7 +20,11 @@ import { IncomingMessage } from "http";
 
 import { Permission } from "../auth/auth.decorator";
 
-import { CreateOneUserArgs, UpdateOneUserArgs } from "./dto/user.dto";
+import {
+    CreateOneUserArgs,
+    UpdateOneUserArgs,
+    UpsertOneUserArgs,
+} from "./dto/user.dto";
 import { UserAdapter } from "./user.adapter";
 import { UserService } from "./user.service";
 
@@ -75,5 +79,10 @@ export class UserResolver {
     @Mutation(() => User)
     updateUser(@Args() input: UpdateOneUserArgs) {
         return this.service.update(this.adapter.updateUser(input));
+    }
+
+    @Mutation(() => User)
+    upsertUser(@Args() input: UpsertOneUserArgs) {
+        return this.service.upsertUser(this.adapter.upsertUser(input));
     }
 }

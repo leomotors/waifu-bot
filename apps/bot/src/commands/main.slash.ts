@@ -5,8 +5,8 @@ import { Version as MusicVersion } from "@leomotors/music-bot";
 import { CocoaVersion } from "cocoa-discord-utils/meta";
 import {
     CogSlashClass,
-    SlashCommand,
     Param,
+    SlashCommand,
 } from "cocoa-discord-utils/slash/class";
 import { getStatusFields } from "cocoa-discord-utils/template";
 

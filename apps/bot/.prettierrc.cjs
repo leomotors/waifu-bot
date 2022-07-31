@@ -1,7 +1,7 @@
 module.exports = {
     ...require("@waifu-bot/config/prettier-app"),
     importOrder: [
-        "^dotenv",
+        "^./dotenv",
         "^@waifu-bot",
         "^@leomotors",
         "^cocoa-discord-utils",

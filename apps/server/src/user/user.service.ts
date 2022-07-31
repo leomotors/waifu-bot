@@ -4,6 +4,7 @@ import { CreateOneUserArgs } from "@generated/user/create-one-user.args";
 import { FindManyUserArgs } from "@generated/user/find-many-user.args";
 import { FindUniqueUserArgs } from "@generated/user/find-unique-user.args";
 import { UpdateOneUserArgs } from "@generated/user/update-one-user.args";
+import { UpsertOneUserArgs } from "@generated/user/upsert-one-user.args";
 import { User } from "@generated/user/user.model";
 
 import { IncomingMessage } from "http";
@@ -67,5 +68,9 @@ export class UserService {
 
     update(input: UpdateOneUserArgs) {
         return this.prisma.user.update(input);
+    }
+
+    upsertUser(input: UpsertOneUserArgs) {
+        return this.prisma.user.upsert(input);
     }
 }

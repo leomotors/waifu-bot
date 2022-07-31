@@ -1,4 +1,4 @@
-import { Music as MusicBase, Voice as LibVoice } from "@leomotors/music-bot";
+import { Voice as LibVoice, Music as MusicBase } from "@leomotors/music-bot";
 
 import { Param, SlashCommand } from "cocoa-discord-utils/slash/class";
 

@@ -12,10 +12,5 @@
     "eslint-config-prettier": "latest",
     "eslint-plugin-prettier": "latest",
     "prettier": "latest"
-  },
-  "files": [
-    "eslint-app.js",
-    "prettier-app.js",
-    "tsconfig-app.json"
-  ]
+  }
 }

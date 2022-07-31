@@ -38,6 +38,20 @@ export class UpdateOneUserArgs extends OmitType(_UpdateOneUserArgs, [
     "data",
 ] as const) {
     @Field(() => UserUpdateInput)
-    @Type(() => UserUpdateInput)
     data!: UserUpdateInput;
+}
+
+@InputType()
+export class UserUpsertInput {
+    @Field()
+    id!: string;
+
+    @Field(() => ProfileUpdateInput)
+    profile!: ProfileUpdateInput;
+}
+
+@ArgsType()
+export class UpsertOneUserArgs {
+    @Field(() => UserUpsertInput)
+    data!: UserUpsertInput;
 }

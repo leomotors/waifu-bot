@@ -1,0 +1,11 @@
+mutation generateToken($where: UserWhereUniqueInput!) {
+    generateToken(where: $where) {
+        token
+    }
+}
+
+mutation upsertUser($data: UserUpsertInput!) {
+    upsertUser(data: $data) {
+        id
+    }
+}

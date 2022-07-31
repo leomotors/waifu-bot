@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "./dotenv";
 
 import { ShortNameJA } from "@waifu-bot/constants";
 
@@ -24,6 +24,7 @@ import { Main as MainMessage } from "./commands/main.message";
 import { Main as MainSlash } from "./commands/main.slash";
 import { Music } from "./commands/music.slash";
 import { style } from "./commands/styles";
+import { Web } from "./commands/web.slash";
 
 const client = new Client(DJCocoaOptions);
 
@@ -35,18 +36,24 @@ mcenter.on("error", async (name, err, msg) => {
         `Command "${name}" error at ${msg.guild?.name} : ${err}`,
         LogStatus.Error
     );
-    await msg.reply(`あら？, Error Occured: ${err}`);
+    await msg.reply(`あら？, Error Occured: ${err}`.slice(0, 2000));
 });
 
 const scenter = new SlashCenter(client, process.env.GUILD_IDS?.split(","));
-scenter.addCogs(new MainSlash(), new Kashi(), new Music(client), new TTS());
+scenter.addCogs(
+    new MainSlash(),
+    new Kashi(),
+    new Music(client),
+    new TTS(),
+    new Web()
+);
 scenter.useHelpCommand(style);
 scenter.on("error", async (name, err, ctx) => {
     Cocoa.log(
         `Command "${name}" error at ${ctx.guild?.name} : ${err}`,
         LogStatus.Error
     );
-    await ctx.channel?.send(`あら？, Error Occured: ${err}`);
+    await ctx.channel?.send(`あら？, Error Occured: ${err}`.slice(0, 2000));
 });
 scenter.on("interaction", (name, ctx) => {
     Cocoa.log(

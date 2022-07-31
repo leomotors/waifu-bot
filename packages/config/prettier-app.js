@@ -2,14 +2,10 @@
 
 /** @type {import("prettier").Config & { [key: string]: any }} */
 const config = {
-    bracketSpacing: true,
-    tabWidth: 4,
-    useTabs: false,
-    singleQuote: false,
-    semi: true,
-    printWidth: 80,
+    ...require("./prettier-base"),
     importOrderCaseInsensitive: true,
     importOrderSeparation: true,
+    importOrderSortSpecifiers: true,
     importOrderParserPlugins: ["typescript", "decorators-legacy"],
 };
 
