@@ -5,10 +5,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator dbml {
-  provider = "prisma-dbml-generator"
-}
-
 generator nestgraphql {
   provider = "prisma-nestjs-graphql"
   output   = "../src/@generated"

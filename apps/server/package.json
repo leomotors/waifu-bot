@@ -45,7 +45,6 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
     "prisma": "^4.1.1",
-    "prisma-dbml-generator": "^0.9.1",
     "prisma-nestjs-graphql": "^17.0.0",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.9.1",
