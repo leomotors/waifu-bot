@@ -1,4 +1,7 @@
-module.exports = {
+// @ts-check
+
+/** @type {import("prettier").Config & { [key: string]: any }} */
+const config = {
     bracketSpacing: true,
     tabWidth: 4,
     useTabs: false,
@@ -9,3 +12,5 @@ module.exports = {
     importOrderSeparation: true,
     importOrderParserPlugins: ["typescript", "decorators-legacy"],
 };
+
+module.exports = config;

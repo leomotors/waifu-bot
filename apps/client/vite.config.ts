@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       $graphql: path.resolve("./src/graphql"),
+      "@graphql": path.resolve("./src/graphql/generated"),
     },
   },
 });

@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
-    "npm-check-updates": "^15.3.4",
+    "npm-check-updates": "^16.0.3",
     "prettier": "latest",
     "turbo": "latest",
     "typescript": "^4.7.4"
@@ -29,5 +29,5 @@
   "engines": {
     "node": ">=16.9.0"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.2"
 }

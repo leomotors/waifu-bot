@@ -1,10 +1,13 @@
-module.exports = {
+// @ts-check
+
+/** @type {import("eslint").Linter.Config} */
+const config = {
   root: true,
   parser: "@typescript-eslint/parser",
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
+    "plugin:prettier/recommended",
   ],
   plugins: ["svelte3", "@typescript-eslint"],
   overrides: [
@@ -16,6 +19,10 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: ["generated/**/*"],
+  rules: {
+    "prettier/prettier": "warn",
+  },
   settings: {
     "svelte3/typescript": () => require("typescript"),
   },
@@ -29,3 +36,5 @@ module.exports = {
     node: true,
   },
 };
+
+module.exports = config;

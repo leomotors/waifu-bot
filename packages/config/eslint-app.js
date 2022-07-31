@@ -1,4 +1,7 @@
-module.exports = {
+// @ts-check
+
+/** @type {import("eslint").Linter.Config} */
+const config = {
     root: true,
     parser: "@typescript-eslint/parser",
     plugins: ["@typescript-eslint/eslint-plugin"],
@@ -21,3 +24,5 @@ module.exports = {
         "@typescript-eslint/no-namespace": "off",
     },
 };
+
+module.exports = config;

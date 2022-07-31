@@ -1,16 +1,11 @@
 schema: ../server/src/@generated/schema.graphql
-documents: "**/*.graphql"
+documents: "./src/**/*.graphql"
 generates:
-  ./src/graphql/generated/types.ts:
+  ./src/graphql/generated/index.ts:
     plugins:
       - typescript
       - typescript-operations
-      - typed-document-node
-      - typescript-document-nodes
-  ./src/graphql/generated/stores.ts:
-    plugins:
-      - "@kitql/graphql-codegen"
-    config:
-      importBaseTypesFrom: $graphql/generated/types
+      - graphql-codegen-svelte-apollo
 config:
-  useTypeImports: true
+  clientPath: ../apollo-client
+  asyncQuery: true
