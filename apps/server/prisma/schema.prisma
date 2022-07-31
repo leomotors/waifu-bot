@@ -33,6 +33,7 @@ model Profile {
   userId                String @unique @map("user_id")
   username              String
   lastInteractGuildName String @map("last_interact_guild_name")
+  avatarUrl             String @map("avatar_url")
 
   @@map("profile")
 }

@@ -11,12 +11,14 @@ CREATE TABLE "user" (
 CREATE TABLE "profile" (
     "user_id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
-    "last_interact_guild_name" TEXT NOT NULL
+    "last_interact_guild_name" TEXT NOT NULL,
+    "avatar_url" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "access_token" (
     "token" TEXT NOT NULL,
+    "issued" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "expire" TIMESTAMP(3) NOT NULL,
     "user_id" TEXT NOT NULL
 );
@@ -24,6 +26,8 @@ CREATE TABLE "access_token" (
 -- CreateTable
 CREATE TABLE "playlist" (
     "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
     "owner_id" TEXT NOT NULL,
 
     CONSTRAINT "playlist_pkey" PRIMARY KEY ("id")

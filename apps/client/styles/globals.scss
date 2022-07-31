@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.page-title {
+  @apply text-center text-6xl font-bold;
+}

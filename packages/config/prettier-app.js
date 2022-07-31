@@ -6,7 +6,7 @@ const config = {
     importOrderCaseInsensitive: true,
     importOrderSeparation: true,
     importOrderSortSpecifiers: true,
-    importOrderParserPlugins: ["typescript", "decorators-legacy"],
+    importOrderParserPlugins: ["typescript", "decorators-legacy", "jsx"],
 };
 
 module.exports = config;

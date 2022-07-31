@@ -64,6 +64,7 @@ export class UserAdapter {
                         username: input.data.profile.username,
                         lastInteractGuildName:
                             input.data.profile.lastInteractGuildName,
+                        avatarUrl: input.data.profile.avatarUrl,
                     },
                 },
             },

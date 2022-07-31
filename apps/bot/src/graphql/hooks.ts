@@ -11,6 +11,7 @@ export async function updateUser(ctx: Interaction | Message) {
             profile: {
                 username: user.username,
                 lastInteractGuildName: ctx.guild?.name ?? "<Undefined Guild>",
+                avatarUrl: user.avatarURL() ?? user.defaultAvatarURL,
             },
         },
     });

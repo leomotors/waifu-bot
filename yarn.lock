@@ -3057,12 +3057,13 @@ __metadata:
     autoprefixer: ^10.4.8
     eslint: 8.20.0
     eslint-config-next: 12.2.3
+    eslint-plugin-tailwindcss: ^3.6.0
     next: 12.2.3
     next-transpile-modules: ^9.0.0
     postcss: ^8.4.14
     prettier: ^2.7.1
-    prettier-plugin-tailwindcss: ^0.1.13
     react: 18.2.0
+    react-bootstrap-icons: ^1.8.4
     react-dom: 18.2.0
     sass: ^1.54.0
     tailwindcss: ^3.1.7
@@ -5551,6 +5552,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-tailwindcss@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "eslint-plugin-tailwindcss@npm:3.6.0"
+  dependencies:
+    fast-glob: ^3.2.5
+    postcss: ^8.4.4
+    tailwindcss: ^3.1.3
+  checksum: 151f40f0fcecda8a59a57398f65584869ba07cb8a1c959ef3fe4bc204648f4d15c65b686ccac56785e8e168c7fca2f7434745ea2f212c0348922f34b004e3bc3
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:5.1.1, eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
@@ -5821,7 +5833,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:3.2.11, fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.9":
+"fast-glob@npm:3.2.11, fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.5, fast-glob@npm:^3.2.9":
   version: 3.2.11
   resolution: "fast-glob@npm:3.2.11"
   dependencies:
@@ -9198,7 +9210,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.14, postcss@npm:^8.4.14":
+"postcss@npm:8.4.14, postcss@npm:^8.4.14, postcss@npm:^8.4.4":
   version: 8.4.14
   resolution: "postcss@npm:8.4.14"
   dependencies:
@@ -9222,15 +9234,6 @@ __metadata:
   dependencies:
     fast-diff: ^1.1.2
   checksum: 00ce8011cf6430158d27f9c92cfea0a7699405633f7f1d4a45f07e21bf78e99895911cbcdc3853db3a824201a7c745bd49bfea8abd5fb9883e765a90f74f8392
-  languageName: node
-  linkType: hard
-
-"prettier-plugin-tailwindcss@npm:^0.1.13":
-  version: 0.1.13
-  resolution: "prettier-plugin-tailwindcss@npm:0.1.13"
-  peerDependencies:
-    prettier: ">=2.2.0"
-  checksum: 1b9000686e661be81de7d36d514c5ee34a98b11639b538bce8dd3a482c073c0148feb9d54b526babaede681d1c5ecb318ad97f38e8d71dd5cc26c33dfcaf8344
   languageName: node
   linkType: hard
 
@@ -9514,6 +9517,17 @@ __metadata:
   bin:
     rc: ./cli.js
   checksum: 2e26e052f8be2abd64e6d1dabfbd7be03f80ec18ccbc49562d31f617d0015fbdbcf0f9eed30346ea6ab789e0fdfe4337f033f8016efdbee0df5354751842080e
+  languageName: node
+  linkType: hard
+
+"react-bootstrap-icons@npm:^1.8.4":
+  version: 1.8.4
+  resolution: "react-bootstrap-icons@npm:1.8.4"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ">=16.8.6"
+  checksum: e5652a01e29f793d8eadcb7ad9893c73ba81bb29be5e61861ccad08bb65bc7508967d572326ac40469c78facf3c0cfd9451b33112edbde9cb52d60314972295d
   languageName: node
   linkType: hard
 
@@ -10603,7 +10617,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.1.7":
+"tailwindcss@npm:^3.1.3, tailwindcss@npm:^3.1.7":
   version: 3.1.7
   resolution: "tailwindcss@npm:3.1.7"
   dependencies:

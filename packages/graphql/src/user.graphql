@@ -1,0 +1,12 @@
+query getMyInfo {
+    me {
+        id
+        profile {
+            username
+            lastInteractGuildName
+            avatarUrl
+        }
+        createdAt
+        updatedAt
+    }
+}

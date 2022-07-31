@@ -7,10 +7,12 @@ const config = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
+    "plugin:tailwindcss/recommended",
   ],
   rules: {
     "prettier/prettier": "warn",
     "react/no-unescaped-entities": "off",
+    "tailwindcss/no-custom-classname": "off",
   },
   ignorePatterns: ["generated/**/*"],
 };
