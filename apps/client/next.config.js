@@ -7,7 +7,9 @@ const withTM = require("next-transpile-modules")(["@waifu-bot/graphql"]);
 const nextConfig = withTM({
   reactStrictMode: true,
   swcMinify: true,
-  images: ["cdn.discordapp.com"],
+  images: {
+    domains: ["cdn.discordapp.com"],
+  },
 });
 
 module.exports = nextConfig;
