@@ -8,5 +8,8 @@ query getMyInfo {
         }
         createdAt
         updatedAt
+        _count {
+            playlist
+        }
     }
 }

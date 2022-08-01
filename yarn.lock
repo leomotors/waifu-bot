@@ -8430,9 +8430,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-check-updates@npm:^16.0.4":
-  version: 16.0.4
-  resolution: "npm-check-updates@npm:16.0.4"
+"npm-check-updates@npm:^16.0.5":
+  version: 16.0.5
+  resolution: "npm-check-updates@npm:16.0.5"
   dependencies:
     chalk: ^5.0.1
     cli-table: ^0.3.11
@@ -8464,7 +8464,7 @@ __metadata:
   bin:
     ncu: build/src/bin/cli.js
     npm-check-updates: build/src/bin/cli.js
-  checksum: 59d00d194f1b427cf24110ba9d3b029e3da9b93b3dec9204c67040259c372c4f89df00325c37b5d4d5d62de97b1343847bd625455db30b874057bd68ad71f214
+  checksum: c7fa18c1dc7432465fd47821816daa4721ee272ed300a4595e1c61b5d5c6effe91674ec376ff22b31b2ac748d24f0a07ca1ef85d05eb257beab17bdf30e8bd02
   languageName: node
   linkType: hard
 
@@ -10696,12 +10696,12 @@ __metadata:
   linkType: hard
 
 "token-types@npm:^5.0.0-alpha.2":
-  version: 5.0.0-alpha.2
-  resolution: "token-types@npm:5.0.0-alpha.2"
+  version: 5.0.0-alpha.3
+  resolution: "token-types@npm:5.0.0-alpha.3"
   dependencies:
     "@tokenizer/token": ^0.3.0
     ieee754: ^1.2.1
-  checksum: ee23eeed6f383b1072d99781d62fc7840f1296a96d47e636e36fca757debd7eb4274d31fcd2d56997606eede00b12b1e61a64610fe0ed7807d6b1c4dcf5ccc6b
+  checksum: df6936326503db9c2dd5cc678e20ca49797e4a83aedfb36490f34980b7bedb6182d54b4dd31dc0fef53375ada364f2142535a1585ee68d8e69add97830f38725
   languageName: node
   linkType: hard
 
@@ -11342,7 +11342,7 @@ __metadata:
   resolution: "waifu-bot@workspace:."
   dependencies:
     "@nestjs/cli": ^9.0.0
-    npm-check-updates: ^16.0.4
+    npm-check-updates: ^16.0.5
     prettier: latest
     turbo: latest
     typescript: ^4.7.4

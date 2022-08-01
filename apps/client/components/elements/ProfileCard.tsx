@@ -13,6 +13,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
   profile,
   createdAt,
   updatedAt,
+  _count,
 }) => {
   return (
     <div className="flex w-fit flex-col items-center rounded-xl bg-gradient-to-br from-green-100 to-green-200 p-4 text-lg font-semibold">
@@ -30,6 +31,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 
       <p>Registered At: {createdAt}</p>
       <p>Updated At: {updatedAt}</p>
+      <p>Playlist Count: {_count.playlist}</p>
     </div>
   );
 };

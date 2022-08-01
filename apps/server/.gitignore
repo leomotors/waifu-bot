@@ -36,7 +36,3 @@ lerna-debug.log*
 
 # Secret
 .env
-
-# Generated
-dbml
-@generated

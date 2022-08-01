@@ -8,9 +8,10 @@ const LoginPage: NextPage = () => {
 
   const [token, setToken] = useState("");
 
-  function login() {
+  async function login() {
     localStorage.setItem("token", token);
-    router.push("/");
+    await router.push("/");
+    router.reload();
   }
 
   useEffect(() => {

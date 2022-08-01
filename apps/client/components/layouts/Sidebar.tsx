@@ -1,9 +1,12 @@
 import styles from "$styles/Sidebar.module.scss";
 
+import { MiniProfile } from "$components/elements/MiniProfile";
+import { useGetMyInfoQuery } from "$graphql";
+
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { FC, useEffect, useState } from "react";
+import type { FC } from "react";
 import {
   BoxArrowInRight,
   BoxArrowRight,
@@ -34,18 +37,27 @@ const Route: FC<RouteProps> = ({ label, to, icon }) => {
 export const Sidebar: FC = () => {
   const router = useRouter();
 
-  function logout() {
+  const { data } = useGetMyInfoQuery();
+
+  async function logout() {
     localStorage.removeItem("token");
-    router.push("/");
+    await router.push("/");
+    router.reload();
   }
 
-  const [isTokenSet, setIsTokenSet] = useState(false);
-
-  useEffect(() => setIsTokenSet(!!localStorage.getItem("token")), []);
-
   return (
-    <nav className="flex min-h-screen w-64 flex-col items-start bg-gradient-to-br from-blue-200 to-pink-200 p-2">
+    <nav className="flex min-h-screen w-72 flex-col items-start bg-gradient-to-br from-blue-200 to-pink-200 p-2">
       <p className="text-3xl font-bold">Waifu Bot Control Center</p>
+
+      {data?.me ? (
+        data.me.profile ? (
+          <MiniProfile user={data?.me} />
+        ) : (
+          <p>Your profile does not exist, please interact with bot to update</p>
+        )
+      ) : (
+        <p>Not logged in</p>
+      )}
 
       <ul className={styles.linkList}>
         <Route label="Home" to="/" icon={<HouseDoor />} />
@@ -54,7 +66,7 @@ export const Sidebar: FC = () => {
 
         <hr className="my-2 h-2 w-full border-slate-500 px-2" />
 
-        {isTokenSet ? (
+        {data?.me ? (
           <li>
             <button onClick={logout}>
               <BoxArrowRight />

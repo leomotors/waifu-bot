@@ -8,7 +8,7 @@ const nextConfig = withTM({
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["cdn.discordapp.com"],
+    domains: ["cdn.discordapp.com", "c.tenor.com"],
   },
 });
 

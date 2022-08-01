@@ -1,0 +1,730 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Profile {
+  user: User!
+  userId: String!
+  username: String!
+  lastInteractGuildName: String!
+  avatarUrl: String!
+}
+
+type MusicCount {
+  playlist: Int!
+}
+
+type Music {
+  videoId: ID!
+  title: String!
+  shortDescription: String!
+  lengthSeconds: String!
+  viewCount: String!
+  authorName: String!
+  authorChannelUrl: String!
+  likes: Int!
+  playlist: [Playlist!]
+  _count: MusicCount!
+}
+
+type PlaylistCount {
+  music: Int!
+}
+
+type Playlist {
+  id: ID!
+  name: String!
+  description: String
+  owner: User!
+  ownerId: String!
+  music: [Music!]
+  _count: PlaylistCount!
+}
+
+type UserCount {
+  playlist: Int!
+}
+
+type User {
+  id: ID!
+  profile: Profile
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  playlist: [Playlist!]
+  accessToken: AccessToken
+  _count: UserCount!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type AccessToken {
+  token: String!
+  issued: DateTime!
+  expire: DateTime!
+  user: User!
+  userId: String!
+}
+
+type Query {
+  version: String!
+  viewerIsGay: Boolean!
+  accessTokens(where: AccessTokenWhereInput, orderBy: [AccessTokenOrderByWithRelationInput!], cursor: AccessTokenWhereUniqueInput, take: Int, skip: Int, distinct: [AccessTokenScalarFieldEnum!]): [AccessToken!]!
+  musics: [Music!]!
+  music(where: MusicWhereUniqueInput!): Music
+  playlists(where: PlaylistWhereInput, orderBy: [PlaylistOrderByWithRelationInput!], cursor: PlaylistWhereUniqueInput, take: Int, skip: Int, distinct: [PlaylistScalarFieldEnum!]): [Playlist!]!
+  playlist(where: PlaylistWhereUniqueInput!): Playlist
+  profiles(where: ProfileWhereInput, orderBy: [ProfileOrderByWithRelationInput!], cursor: ProfileWhereUniqueInput, take: Int, skip: Int, distinct: [ProfileScalarFieldEnum!]): [Profile!]!
+  profile(where: ProfileWhereUniqueInput!): Profile
+  users: [User!]!
+  user(where: UserWhereUniqueInput!): User
+  me: User!
+}
+
+input AccessTokenWhereInput {
+  AND: [AccessTokenWhereInput!]
+  OR: [AccessTokenWhereInput!]
+  NOT: [AccessTokenWhereInput!]
+  token: StringFilter
+  issued: DateTimeFilter
+  expire: DateTimeFilter
+  user: UserRelationFilter
+  userId: StringFilter
+}
+
+input StringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringFilter
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+input NestedStringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input UserRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  id: StringFilter
+  profile: ProfileRelationFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  playlist: PlaylistListRelationFilter
+  accessToken: AccessTokenRelationFilter
+}
+
+input ProfileRelationFilter {
+  is: ProfileWhereInput
+  isNot: ProfileWhereInput
+}
+
+input ProfileWhereInput {
+  AND: [ProfileWhereInput!]
+  OR: [ProfileWhereInput!]
+  NOT: [ProfileWhereInput!]
+  user: UserRelationFilter
+  userId: StringFilter
+  username: StringFilter
+  lastInteractGuildName: StringFilter
+  avatarUrl: StringFilter
+}
+
+input PlaylistListRelationFilter {
+  every: PlaylistWhereInput
+  some: PlaylistWhereInput
+  none: PlaylistWhereInput
+}
+
+input PlaylistWhereInput {
+  AND: [PlaylistWhereInput!]
+  OR: [PlaylistWhereInput!]
+  NOT: [PlaylistWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  description: StringNullableFilter
+  owner: UserRelationFilter
+  ownerId: StringFilter
+  music: MusicListRelationFilter
+}
+
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input MusicListRelationFilter {
+  every: MusicWhereInput
+  some: MusicWhereInput
+  none: MusicWhereInput
+}
+
+input MusicWhereInput {
+  AND: [MusicWhereInput!]
+  OR: [MusicWhereInput!]
+  NOT: [MusicWhereInput!]
+  videoId: StringFilter
+  title: StringFilter
+  shortDescription: StringFilter
+  lengthSeconds: StringFilter
+  viewCount: StringFilter
+  authorName: StringFilter
+  authorChannelUrl: StringFilter
+  likes: IntFilter
+  playlist: PlaylistListRelationFilter
+}
+
+input AccessTokenRelationFilter {
+  is: AccessTokenWhereInput
+  isNot: AccessTokenWhereInput
+}
+
+input AccessTokenOrderByWithRelationInput {
+  token: SortOrder
+  issued: SortOrder
+  expire: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input UserOrderByWithRelationInput {
+  id: SortOrder
+  profile: ProfileOrderByWithRelationInput
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  playlist: PlaylistOrderByRelationAggregateInput
+  accessToken: AccessTokenOrderByWithRelationInput
+}
+
+input ProfileOrderByWithRelationInput {
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+  username: SortOrder
+  lastInteractGuildName: SortOrder
+  avatarUrl: SortOrder
+}
+
+input PlaylistOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input AccessTokenWhereUniqueInput {
+  token: String
+  userId: String
+}
+
+enum AccessTokenScalarFieldEnum {
+  token
+  issued
+  expire
+  userId
+}
+
+input MusicWhereUniqueInput {
+  videoId: String
+}
+
+input PlaylistOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  description: SortOrder
+  owner: UserOrderByWithRelationInput
+  ownerId: SortOrder
+  music: MusicOrderByRelationAggregateInput
+}
+
+input MusicOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input PlaylistWhereUniqueInput {
+  id: Int
+}
+
+enum PlaylistScalarFieldEnum {
+  id
+  name
+  description
+  ownerId
+}
+
+input ProfileWhereUniqueInput {
+  userId: String
+}
+
+enum ProfileScalarFieldEnum {
+  userId
+  username
+  lastInteractGuildName
+  avatarUrl
+}
+
+input UserWhereUniqueInput {
+  id: String
+}
+
+type Mutation {
+  generateToken(where: UserWhereUniqueInput!): AccessToken!
+  createMusic(data: MusicCreateInput!): Music!
+  createPlaylist(data: PlaylistCreateInput!): Playlist!
+  createProfile(data: ProfileCreateInput!): Profile!
+  createUser(data: UserCreateInput!): User!
+  updateUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User!
+  upsertUser(data: UserUpsertInput!): User!
+}
+
+input MusicCreateInput {
+  videoId: String!
+  title: String!
+  shortDescription: String!
+  lengthSeconds: String!
+  viewCount: String!
+  authorName: String!
+  authorChannelUrl: String!
+  likes: Int!
+  playlist: PlaylistCreateNestedManyWithoutMusicInput
+}
+
+input PlaylistCreateNestedManyWithoutMusicInput {
+  create: [PlaylistCreateWithoutMusicInput!]
+  connectOrCreate: [PlaylistCreateOrConnectWithoutMusicInput!]
+  connect: [PlaylistWhereUniqueInput!]
+}
+
+input PlaylistCreateWithoutMusicInput {
+  name: String!
+  description: String
+  owner: UserCreateNestedOneWithoutPlaylistInput!
+}
+
+input UserCreateNestedOneWithoutPlaylistInput {
+  create: UserCreateWithoutPlaylistInput
+  connectOrCreate: UserCreateOrConnectWithoutPlaylistInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutPlaylistInput {
+  id: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
+  createdAt: DateTime
+  updatedAt: DateTime
+  accessToken: AccessTokenCreateNestedOneWithoutUserInput
+}
+
+input ProfileCreateNestedOneWithoutUserInput {
+  create: ProfileCreateWithoutUserInput
+  connectOrCreate: ProfileCreateOrConnectWithoutUserInput
+  connect: ProfileWhereUniqueInput
+}
+
+input ProfileCreateWithoutUserInput {
+  username: String!
+  lastInteractGuildName: String!
+  avatarUrl: String!
+}
+
+input ProfileCreateOrConnectWithoutUserInput {
+  where: ProfileWhereUniqueInput!
+  create: ProfileCreateWithoutUserInput!
+}
+
+input AccessTokenCreateNestedOneWithoutUserInput {
+  create: AccessTokenCreateWithoutUserInput
+  connectOrCreate: AccessTokenCreateOrConnectWithoutUserInput
+  connect: AccessTokenWhereUniqueInput
+}
+
+input AccessTokenCreateWithoutUserInput {
+  token: String!
+  issued: DateTime
+  expire: DateTime!
+}
+
+input AccessTokenCreateOrConnectWithoutUserInput {
+  where: AccessTokenWhereUniqueInput!
+  create: AccessTokenCreateWithoutUserInput!
+}
+
+input UserCreateOrConnectWithoutPlaylistInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutPlaylistInput!
+}
+
+input PlaylistCreateOrConnectWithoutMusicInput {
+  where: PlaylistWhereUniqueInput!
+  create: PlaylistCreateWithoutMusicInput!
+}
+
+input PlaylistCreateInput {
+  name: String!
+  description: String
+  owner: UserCreateNestedOneWithoutPlaylistInput!
+  music: MusicCreateNestedManyWithoutPlaylistInput
+}
+
+input MusicCreateNestedManyWithoutPlaylistInput {
+  create: [MusicCreateWithoutPlaylistInput!]
+  connectOrCreate: [MusicCreateOrConnectWithoutPlaylistInput!]
+  connect: [MusicWhereUniqueInput!]
+}
+
+input MusicCreateWithoutPlaylistInput {
+  videoId: String!
+  title: String!
+  shortDescription: String!
+  lengthSeconds: String!
+  viewCount: String!
+  authorName: String!
+  authorChannelUrl: String!
+  likes: Int!
+}
+
+input MusicCreateOrConnectWithoutPlaylistInput {
+  where: MusicWhereUniqueInput!
+  create: MusicCreateWithoutPlaylistInput!
+}
+
+input ProfileCreateInput {
+  user: UserCreateNestedOneWithoutProfileInput!
+  username: String!
+  lastInteractGuildName: String!
+  avatarUrl: String!
+}
+
+input UserCreateNestedOneWithoutProfileInput {
+  create: UserCreateWithoutProfileInput
+  connectOrCreate: UserCreateOrConnectWithoutProfileInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutProfileInput {
+  id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  playlist: PlaylistCreateNestedManyWithoutOwnerInput
+  accessToken: AccessTokenCreateNestedOneWithoutUserInput
+}
+
+input PlaylistCreateNestedManyWithoutOwnerInput {
+  create: [PlaylistCreateWithoutOwnerInput!]
+  connectOrCreate: [PlaylistCreateOrConnectWithoutOwnerInput!]
+  createMany: PlaylistCreateManyOwnerInputEnvelope
+  connect: [PlaylistWhereUniqueInput!]
+}
+
+input PlaylistCreateWithoutOwnerInput {
+  name: String!
+  description: String
+  music: MusicCreateNestedManyWithoutPlaylistInput
+}
+
+input PlaylistCreateOrConnectWithoutOwnerInput {
+  where: PlaylistWhereUniqueInput!
+  create: PlaylistCreateWithoutOwnerInput!
+}
+
+input PlaylistCreateManyOwnerInputEnvelope {
+  data: [PlaylistCreateManyOwnerInput!]!
+  skipDuplicates: Boolean
+}
+
+input PlaylistCreateManyOwnerInput {
+  id: Int
+  name: String!
+  description: String
+}
+
+input UserCreateOrConnectWithoutProfileInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutProfileInput!
+}
+
+input UserCreateInput {
+  id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  playlist: PlaylistCreateNestedManyWithoutOwnerInput
+  accessToken: AccessTokenCreateNestedOneWithoutUserInput
+  profile: ProfileCreateWithoutUserInput
+}
+
+input UserUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  playlist: PlaylistUpdateManyWithoutOwnerNestedInput
+  accessToken: AccessTokenUpdateOneWithoutUserNestedInput
+  profile: ProfileUpdateInput
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input PlaylistUpdateManyWithoutOwnerNestedInput {
+  create: [PlaylistCreateWithoutOwnerInput!]
+  connectOrCreate: [PlaylistCreateOrConnectWithoutOwnerInput!]
+  upsert: [PlaylistUpsertWithWhereUniqueWithoutOwnerInput!]
+  createMany: PlaylistCreateManyOwnerInputEnvelope
+  set: [PlaylistWhereUniqueInput!]
+  disconnect: [PlaylistWhereUniqueInput!]
+  delete: [PlaylistWhereUniqueInput!]
+  connect: [PlaylistWhereUniqueInput!]
+  update: [PlaylistUpdateWithWhereUniqueWithoutOwnerInput!]
+  updateMany: [PlaylistUpdateManyWithWhereWithoutOwnerInput!]
+  deleteMany: [PlaylistScalarWhereInput!]
+}
+
+input PlaylistUpsertWithWhereUniqueWithoutOwnerInput {
+  where: PlaylistWhereUniqueInput!
+  update: PlaylistUpdateWithoutOwnerInput!
+  create: PlaylistCreateWithoutOwnerInput!
+}
+
+input PlaylistUpdateWithoutOwnerInput {
+  name: StringFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  music: MusicUpdateManyWithoutPlaylistNestedInput
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+input MusicUpdateManyWithoutPlaylistNestedInput {
+  create: [MusicCreateWithoutPlaylistInput!]
+  connectOrCreate: [MusicCreateOrConnectWithoutPlaylistInput!]
+  upsert: [MusicUpsertWithWhereUniqueWithoutPlaylistInput!]
+  set: [MusicWhereUniqueInput!]
+  disconnect: [MusicWhereUniqueInput!]
+  delete: [MusicWhereUniqueInput!]
+  connect: [MusicWhereUniqueInput!]
+  update: [MusicUpdateWithWhereUniqueWithoutPlaylistInput!]
+  updateMany: [MusicUpdateManyWithWhereWithoutPlaylistInput!]
+  deleteMany: [MusicScalarWhereInput!]
+}
+
+input MusicUpsertWithWhereUniqueWithoutPlaylistInput {
+  where: MusicWhereUniqueInput!
+  update: MusicUpdateWithoutPlaylistInput!
+  create: MusicCreateWithoutPlaylistInput!
+}
+
+input MusicUpdateWithoutPlaylistInput {
+  videoId: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  lengthSeconds: StringFieldUpdateOperationsInput
+  viewCount: StringFieldUpdateOperationsInput
+  authorName: StringFieldUpdateOperationsInput
+  authorChannelUrl: StringFieldUpdateOperationsInput
+  likes: IntFieldUpdateOperationsInput
+}
+
+input IntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input MusicUpdateWithWhereUniqueWithoutPlaylistInput {
+  where: MusicWhereUniqueInput!
+  data: MusicUpdateWithoutPlaylistInput!
+}
+
+input MusicUpdateManyWithWhereWithoutPlaylistInput {
+  where: MusicScalarWhereInput!
+  data: MusicUpdateManyMutationInput!
+}
+
+input MusicScalarWhereInput {
+  AND: [MusicScalarWhereInput!]
+  OR: [MusicScalarWhereInput!]
+  NOT: [MusicScalarWhereInput!]
+  videoId: StringFilter
+  title: StringFilter
+  shortDescription: StringFilter
+  lengthSeconds: StringFilter
+  viewCount: StringFilter
+  authorName: StringFilter
+  authorChannelUrl: StringFilter
+  likes: IntFilter
+}
+
+input MusicUpdateManyMutationInput {
+  videoId: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  lengthSeconds: StringFieldUpdateOperationsInput
+  viewCount: StringFieldUpdateOperationsInput
+  authorName: StringFieldUpdateOperationsInput
+  authorChannelUrl: StringFieldUpdateOperationsInput
+  likes: IntFieldUpdateOperationsInput
+}
+
+input PlaylistUpdateWithWhereUniqueWithoutOwnerInput {
+  where: PlaylistWhereUniqueInput!
+  data: PlaylistUpdateWithoutOwnerInput!
+}
+
+input PlaylistUpdateManyWithWhereWithoutOwnerInput {
+  where: PlaylistScalarWhereInput!
+  data: PlaylistUpdateManyMutationInput!
+}
+
+input PlaylistScalarWhereInput {
+  AND: [PlaylistScalarWhereInput!]
+  OR: [PlaylistScalarWhereInput!]
+  NOT: [PlaylistScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  description: StringNullableFilter
+  ownerId: StringFilter
+}
+
+input PlaylistUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+}
+
+input AccessTokenUpdateOneWithoutUserNestedInput {
+  create: AccessTokenCreateWithoutUserInput
+  connectOrCreate: AccessTokenCreateOrConnectWithoutUserInput
+  upsert: AccessTokenUpsertWithoutUserInput
+  disconnect: Boolean
+  delete: Boolean
+  connect: AccessTokenWhereUniqueInput
+  update: AccessTokenUpdateWithoutUserInput
+}
+
+input AccessTokenUpsertWithoutUserInput {
+  update: AccessTokenUpdateWithoutUserInput!
+  create: AccessTokenCreateWithoutUserInput!
+}
+
+input AccessTokenUpdateWithoutUserInput {
+  token: StringFieldUpdateOperationsInput
+  issued: DateTimeFieldUpdateOperationsInput
+  expire: DateTimeFieldUpdateOperationsInput
+}
+
+input ProfileUpdateInput {
+  username: String!
+  lastInteractGuildName: String!
+  avatarUrl: String!
+}
+
+input UserUpsertInput {
+  id: String!
+  profile: ProfileUpdateInput!
+}
