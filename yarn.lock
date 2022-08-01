@@ -3027,6 +3027,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.31.0
     "@waifu-bot/config": "*"
     "@waifu-bot/constants": "*"
+    "@waifu-bot/graphql": "*"
     "@yimura/scraper": ^1.2.3
     chalk: ^5.0.1
     cocoa-discord-utils: ^2.1.0

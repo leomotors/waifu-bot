@@ -26,6 +26,7 @@
     "@discordjs/opus": "^0.8.0",
     "@leomotors/music-bot": "^0.15.1",
     "@waifu-bot/constants": "*",
+    "@waifu-bot/graphql": "*",
     "@yimura/scraper": "^1.2.3",
     "chalk": "^5.0.1",
     "cocoa-discord-utils": "^2.1.0",
