@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "format": "prettier --write *.js"
+    "format": "prettier --write *.js",
+    "deps": "ncu -u"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "@types/eslint": "^8.4.5",
     "eslint": "latest",
     "eslint-config-prettier": "latest",
