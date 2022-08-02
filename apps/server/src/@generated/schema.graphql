@@ -371,6 +371,7 @@ type Mutation {
   generateToken(where: UserWhereUniqueInput!): AccessToken!
   createMusic(data: MusicCreateInput!): Music!
   createPlaylist(data: PlaylistCreateInput!): Playlist!
+  createUserPlaylist(data: PlaylistCreateWithoutOwnerInput!): Playlist!
   createProfile(data: ProfileCreateInput!): Profile!
   createUser(data: UserCreateInput!): User!
   updateUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User!
@@ -488,6 +489,12 @@ input MusicCreateOrConnectWithoutPlaylistInput {
   create: MusicCreateWithoutPlaylistInput!
 }
 
+input PlaylistCreateWithoutOwnerInput {
+  name: String!
+  description: String
+  music: MusicCreateNestedManyWithoutPlaylistInput
+}
+
 input ProfileCreateInput {
   user: UserCreateNestedOneWithoutProfileInput!
   username: String!
@@ -514,12 +521,6 @@ input PlaylistCreateNestedManyWithoutOwnerInput {
   connectOrCreate: [PlaylistCreateOrConnectWithoutOwnerInput!]
   createMany: PlaylistCreateManyOwnerInputEnvelope
   connect: [PlaylistWhereUniqueInput!]
-}
-
-input PlaylistCreateWithoutOwnerInput {
-  name: String!
-  description: String
-  music: MusicCreateNestedManyWithoutPlaylistInput
 }
 
 input PlaylistCreateOrConnectWithoutOwnerInput {

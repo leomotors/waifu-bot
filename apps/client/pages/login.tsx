@@ -1,18 +1,16 @@
+import { AuthContext } from "$lib/contexts";
+
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
 
-  const [token, setToken] = useState("");
+  const { login } = useContext(AuthContext);
 
-  async function login() {
-    localStorage.setItem("token", token);
-    await router.push("/");
-    router.reload();
-  }
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     const queryToken =
@@ -41,7 +39,7 @@ const LoginPage: NextPage = () => {
       <button
         className="rounded-xl bg-gradient-to-br from-pink-200 to-pink-300 p-4 text-3xl font-bold disabled:from-gray-300 disabled:to-neutral-400"
         disabled={token.length < 10}
-        onClick={login}
+        onClick={() => login(token ?? "")}
       >
         Set Token
       </button>

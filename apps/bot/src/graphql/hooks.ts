@@ -5,7 +5,7 @@ import { gqlSdk } from "./client";
 export async function updateUser(ctx: Interaction | Message) {
     const user = (ctx as Interaction).user ?? (ctx as Message).author;
 
-    gqlSdk.upsertUser({
+    await gqlSdk.upsertUser({
         data: {
             id: user.id,
             profile: {

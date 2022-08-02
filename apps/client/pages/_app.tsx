@@ -1,7 +1,9 @@
 import "$styles/globals.scss";
 
+import { RenderWaifuPage } from "$components/layouts/RenderWaifuPage";
 import { Sidebar } from "$components/layouts/Sidebar";
 import { createApolloClient } from "$graphql";
+import { AuthProvider } from "$lib/contexts";
 
 import { ApolloProvider } from "@apollo/client";
 
@@ -22,12 +24,14 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="Control Center for Waifu Bot users. Customize your music playlist in web-friendly environment."
         />
       </Head>
-      <div className="flex">
-        <Sidebar />
-        <div className="min-h-screen w-full">
-          <Component {...pageProps} />
+      <AuthProvider>
+        <div className="flex">
+          <Sidebar />
+          <div className="min-h-screen w-full">
+            <RenderWaifuPage page={Component} props={pageProps} />
+          </div>
         </div>
-      </div>
+      </AuthProvider>
     </ApolloProvider>
   );
 }

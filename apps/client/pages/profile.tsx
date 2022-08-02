@@ -1,11 +1,10 @@
 import { ProfileCard } from "$components/elements/ProfileCard";
 import { useGetMyInfoQuery } from "$graphql";
-
-import type { NextPage } from "next";
+import type { WaifuPage } from "$lib/types";
 
 import { useMemo } from "react";
 
-const ProfilePage: NextPage = () => {
+const ProfilePage: WaifuPage = () => {
   const { data, error } = useGetMyInfoQuery();
 
   const me = useMemo(() => data?.me, [data?.me]);
@@ -27,5 +26,7 @@ const ProfilePage: NextPage = () => {
     </main>
   );
 };
+
+ProfilePage.requiredAuth = true;
 
 export default ProfilePage;

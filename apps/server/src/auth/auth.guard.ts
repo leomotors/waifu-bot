@@ -1,9 +1,4 @@
-import {
-    Injectable,
-    CanActivate,
-    ExecutionContext,
-    UnauthorizedException,
-} from "@nestjs/common";
+import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 
 import { IncomingMessage } from "http";
@@ -32,14 +27,17 @@ export class AuthGuard implements CanActivate {
 
         const token = req?.headers.authorization;
 
-        const isValidUser =
-            token == process.env.ADMIN_SECRET ||
-            (await this.service.isUser(token));
+        if (token == process.env.ADMIN_SECRET) {
+            return true;
+        } else if (role == "Admin") {
+            return false;
+        }
 
-        if (!isValidUser) throw new UnauthorizedException();
+        const user = await this.service.getUser(token);
 
-        if (role == "Admin") return token == process.env.ADMIN_SECRET;
+        // @ts-expect-error I did not declare anything
+        req.user = user;
 
-        return true;
+        return !!user;
     }
 }

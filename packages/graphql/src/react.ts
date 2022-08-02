@@ -25,7 +25,4 @@ export function createApolloClient(url: string) {
 }
 
 export * from "./generated/types";
-
-export * from "./generated/react/bot.generated";
-export * from "./generated/react/general.generated";
-export * from "./generated/react/user.generated";
+export * from "./generated/react";

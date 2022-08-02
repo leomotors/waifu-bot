@@ -1,0 +1,18 @@
+query getMyPlaylists {
+    me {
+        playlist {
+            id
+            name
+            description
+            _count {
+                music
+            }
+        }
+    }
+}
+
+mutation createUserPlaylist($data: PlaylistCreateWithoutOwnerInput!) {
+    createUserPlaylist(data: $data) {
+        id
+    }
+}

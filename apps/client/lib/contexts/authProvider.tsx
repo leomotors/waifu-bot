@@ -1,0 +1,40 @@
+import { AuthContext, type IAuthContext } from "./authContext";
+
+import { useGetMyInfoQuery } from "$graphql";
+
+import { useRouter } from "next/router";
+
+import { FC, PropsWithChildren, useState } from "react";
+
+export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
+  const router = useRouter();
+
+  const { refetch } = useGetMyInfoQuery({
+    onCompleted: (data) => {
+      setUser(data.me);
+    },
+  });
+
+  const [user, setUser] = useState<IAuthContext["user"]>(undefined);
+
+  function logout() {
+    localStorage.removeItem("token");
+    router.push("/login");
+    setUser(undefined);
+  }
+
+  async function login(token: string) {
+    localStorage.setItem("token", token);
+    router.push("/");
+
+    // * Avoid caching
+    const { data } = await refetch();
+    setUser(data.me);
+  }
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

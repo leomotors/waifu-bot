@@ -15,11 +15,19 @@ import { PlaylistCount } from "@generated/playlist/playlist-count.output";
 import { Playlist } from "@generated/playlist/playlist.model";
 import { User } from "@generated/user/user.model";
 
+import { Permission } from "../auth/auth.decorator";
+import { UserContext } from "../user/user.decorator";
+
+import { CreateOneUserPlaylistArgs } from "./dto/playlist.dto";
+import { PlaylistAdapter } from "./playlist.adapter";
 import { PlaylistService } from "./playlist.service";
 
 @Resolver(() => Playlist)
 export class PlaylistResolver {
-    constructor(private readonly service: PlaylistService) {}
+    constructor(
+        private readonly service: PlaylistService,
+        private readonly adapter: PlaylistAdapter
+    ) {}
 
     @Query(() => [Playlist])
     playlists(@Args() input?: FindManyPlaylistArgs) {
@@ -49,5 +57,16 @@ export class PlaylistResolver {
     @Mutation(() => Playlist)
     createPlaylist(@Args() input: CreateOnePlaylistArgs) {
         return this.service.create(input);
+    }
+
+    @Mutation(() => Playlist)
+    @Permission("User")
+    createUserPlaylist(
+        @Args() input: CreateOneUserPlaylistArgs,
+        @UserContext() user: User
+    ) {
+        return this.service.create(
+            this.adapter.createUserPlaylist(input, user)
+        );
     }
 }

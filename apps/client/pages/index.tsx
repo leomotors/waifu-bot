@@ -20,6 +20,8 @@ const HomePage: NextPage = () => {
         Current app version is {loading ? "loading..." : data?.version}
       </p>
       {errorStr && <p>Has error: {errorStr}</p>}
+
+      <p className="mt-6 text-3xl">GraphQL POG</p>
     </main>
   );
 };

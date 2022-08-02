@@ -1,6 +1,5 @@
 import {
     Args,
-    Context,
     Mutation,
     Parent,
     Query,
@@ -16,8 +15,6 @@ import { FindUniqueUserArgs } from "@generated/user/find-unique-user.args";
 import { UserCount } from "@generated/user/user-count.output";
 import { User } from "@generated/user/user.model";
 
-import { IncomingMessage } from "http";
-
 import { Permission } from "../auth/auth.decorator";
 
 import {
@@ -26,6 +23,7 @@ import {
     UpsertOneUserArgs,
 } from "./dto/user.dto";
 import { UserAdapter } from "./user.adapter";
+import { UserContext } from "./user.decorator";
 import { UserService } from "./user.service";
 
 @Resolver(() => User)
@@ -47,8 +45,8 @@ export class UserResolver {
 
     @Query(() => User)
     @Permission("User")
-    me(@Context() context: { req: IncomingMessage }) {
-        return this.service.userFromContext(context.req);
+    me(@UserContext() user: User) {
+        return user;
     }
 
     @ResolveField(() => [Playlist])

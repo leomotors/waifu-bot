@@ -284,6 +284,7 @@ export type Mutation = {
   createPlaylist: Playlist;
   createProfile: Profile;
   createUser: User;
+  createUserPlaylist: Playlist;
   generateToken: AccessToken;
   updateUser: User;
   upsertUser: User;
@@ -307,6 +308,11 @@ export type MutationCreateProfileArgs = {
 
 export type MutationCreateUserArgs = {
   data: UserCreateInput;
+};
+
+
+export type MutationCreateUserPlaylistArgs = {
+  data: PlaylistCreateWithoutOwnerInput;
 };
 
 
