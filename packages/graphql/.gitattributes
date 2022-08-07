@@ -1,1 +1,2 @@
 src/generated/**/* linguist-generated=true
+src/generated/react/index.ts linguist-generated=false
