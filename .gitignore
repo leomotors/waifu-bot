@@ -104,3 +104,7 @@ dist
 .tern-port
 
 *.png
+
+# yarn
+cache
+install-state.gz

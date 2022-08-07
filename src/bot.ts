@@ -10,7 +10,7 @@ import {
 } from "cocoa-discord-utils";
 import { MessageCenter } from "cocoa-discord-utils/message";
 import { SlashCenter } from "cocoa-discord-utils/slash";
-import { DJCocoaOptions } from "cocoa-discord-utils/template";
+import { CocoaIntent } from "cocoa-discord-utils/template";
 
 import { Client } from "discord.js";
 
@@ -23,7 +23,14 @@ import { Main as MainSlash } from "./commands/main.slash";
 import { Music } from "./commands/music.slash";
 import { style } from "./commands/styles";
 
-const client = new Client(DJCocoaOptions);
+const client = new Client(
+    new CocoaIntent()
+        .useGuildMessage()
+        .useGuildSlash()
+        .useGuildVoice()
+        .useDirectMessage()
+        .useReadMessage()
+);
 
 const mcenter = new MessageCenter(client, { prefixes: ["simp"] });
 mcenter.addCogs(new MainMessage());
@@ -54,7 +61,6 @@ scenter.on("interaction", (name, ctx) => {
 
 const activityLoader = new ActivityGroupLoader("data/activities.json");
 const activityManager = new ActivityManager(
-    // @ts-expect-error type incompat, Fix this in next cocoa-discord-utils
     activityLoader,
     client,
     5 * 60 * 1000

@@ -3,8 +3,8 @@ import { Version as MusicVersion } from "@leomotors/music-bot";
 import { CocoaVersion } from "cocoa-discord-utils/meta";
 import {
     CogSlashClass,
-    SlashCommand,
     Param,
+    SlashCommand,
 } from "cocoa-discord-utils/slash/class";
 import { getStatusFields } from "cocoa-discord-utils/template";
 
@@ -165,7 +165,7 @@ export class Main extends CogSlashClass {
             })
             .setDescription(`Ping = ${ctx.client.ws.ping} ms`);
 
-        await ctx.reply({ embeds: [emb], ephemeral });
+        await ctx.reply({ embeds: [emb], ephemeral: ephemeral ?? false });
     }
 
     @SlashCommand("Clear Messages to delete what you have done")
@@ -226,7 +226,7 @@ export class Main extends CogSlashClass {
                 text: "Bot made by Leomotors with ❤️❤️❤️",
             });
 
-        await ctx.reply({ embeds: [emb], ephemeral });
+        await ctx.reply({ embeds: [emb], ephemeral: ephemeral ?? false });
     }
 
     readonly fbiStyle = style.extends({ author: "bot" });
