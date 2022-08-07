@@ -2,7 +2,7 @@ import { Voice as LibVoice, Music as MusicBase } from "@leomotors/music-bot";
 
 import { Param, SlashCommand } from "cocoa-discord-utils/slash/class";
 
-import { Client } from "discord.js";
+import { ChannelType, Client, VoiceChannel } from "discord.js";
 
 import * as fs from "fs/promises";
 
@@ -48,5 +48,27 @@ export class Music extends MusicBase {
         } else {
             await ctx.followUp("Unexpected Error: Video not found");
         }
+    }
+
+    @SlashCommand("yes, rick roll")
+    async rickroll(
+        ctx: SlashCommand.Context,
+        @Param.Channel("Channel to surprise!") channel: Param.Channel.Type
+    ) {
+        if (channel.type != ChannelType.GuildVoice) {
+            await ctx.reply("Can only rick roll normal voice channel");
+            return;
+        }
+
+        await ctx.deferReply();
+
+        await LibVoice.joinVoiceChannel(channel as VoiceChannel);
+        await LibVoice.addMusicToQueue(
+            ctx.guildId!,
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            ctx.user.id
+        );
+
+        await ctx.followUp("Rick Roll Time!");
     }
 }
