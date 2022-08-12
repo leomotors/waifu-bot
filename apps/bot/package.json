@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist/*",
-    "cb": "yarn clean && yarn build",
+    "cb": "pnpm clean && pnpm build",
     "start": "node --es-module-specifier-resolution=node dist/apps/bot/src/bot.js",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint src && prettier --check \"src/**/*.ts\""

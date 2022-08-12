@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon --watch src --ext \"graphql\" --exec yarn generate",
+    "dev": "nodemon --watch src --ext \"graphql\" --exec pnpm generate",
     "generate": "graphql-codegen",
     "lint": "eslint src",
     "format": "eslint src --fix"

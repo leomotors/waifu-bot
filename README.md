@@ -33,8 +33,8 @@ The most ~~over-engineered~~ advanced Discord Bot
 ### Prerequisites
 
 - Your Discord Bot (of course)
-- nodejs (16+ Required, 16 Recommended)
-- yarn
+- nodejs 16
+- pnpm 7
 - PostgreSQL Database (v12 Recommended) and Public Server (VM) for Website
 - Tenor API Key (not required, it works even with invalid key lol)
 - [golden-frame](https://github.com/Leomotors/golden-frame) (Installable via pip, required)
@@ -42,9 +42,9 @@ The most ~~over-engineered~~ advanced Discord Bot
 ### Steps
 
 - Fill in .env (see .env.example in each apps)
-- yarn install
-- yarn workspace @waifu-bot/server prisma migrate dev
-- yarn start (Will start all apps at once, Turborepo will automatically build for you!)
+- pnpm install
+- (in apps/server) pnpm prisma migrate dev
+- pnpm start (Will start all apps at once, Turborepo will automatically build for you!)
 
 ## Waifu Bot Archive
 
