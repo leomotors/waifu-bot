@@ -7,13 +7,12 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint src && prettier --check src",
-    "format": "prettier --write src",
-    "deps": "ncu -u"
+    "format": "prettier --write src"
   },
   "devDependencies": {
-    "@waifu-bot/config": "*",
-    "eslint": "latest",
-    "prettier": "latest",
+    "@waifu-bot/config": "workspace:0.0.0",
+    "eslint": "^8.21.0",
+    "prettier": "^2.7.1",
     "typescript": "^4.7.4"
   }
 }

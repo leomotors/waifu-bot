@@ -32,10 +32,6 @@ yarn-error.log*
 # turbo
 .turbo
 
-# yarn
-cache
-install-state.gz
-
 # Build
 dist
 

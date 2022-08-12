@@ -25,7 +25,6 @@
         "build"
       ]
     },
-    "deps": {},
     "dev": {
       "cache": false
     }
