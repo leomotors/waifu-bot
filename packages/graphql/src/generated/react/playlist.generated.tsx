@@ -8,6 +8,13 @@ export type GetMyPlaylistsQueryVariables = Types.Exact<{ [key: string]: never; }
 
 export type GetMyPlaylistsQuery = { __typename?: 'Query', me: { __typename?: 'User', playlist?: Array<{ __typename?: 'Playlist', id: string, name: string, description?: string | null, _count: { __typename?: 'PlaylistCount', music: number } }> | null } };
 
+export type GetPlaylistQueryVariables = Types.Exact<{
+  where: Types.PlaylistWhereUniqueInput;
+}>;
+
+
+export type GetPlaylistQuery = { __typename?: 'Query', playlist?: { __typename?: 'Playlist', name: string, description?: string | null, music?: Array<{ __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: string, viewCount: string, authorName: string, authorChannelUrl: string, likes: number }> | null } | null };
+
 export type CreateUserPlaylistMutationVariables = Types.Exact<{
   data: Types.PlaylistCreateWithoutOwnerInput;
 }>;
@@ -57,6 +64,52 @@ export function useGetMyPlaylistsLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetMyPlaylistsQueryHookResult = ReturnType<typeof useGetMyPlaylistsQuery>;
 export type GetMyPlaylistsLazyQueryHookResult = ReturnType<typeof useGetMyPlaylistsLazyQuery>;
 export type GetMyPlaylistsQueryResult = Apollo.QueryResult<GetMyPlaylistsQuery, GetMyPlaylistsQueryVariables>;
+export const GetPlaylistDocument = gql`
+    query getPlaylist($where: PlaylistWhereUniqueInput!) {
+  playlist(where: $where) {
+    name
+    description
+    music {
+      videoId
+      title
+      shortDescription
+      lengthSeconds
+      viewCount
+      authorName
+      authorChannelUrl
+      likes
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetPlaylistQuery__
+ *
+ * To run a query within a React component, call `useGetPlaylistQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPlaylistQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPlaylistQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useGetPlaylistQuery(baseOptions: Apollo.QueryHookOptions<GetPlaylistQuery, GetPlaylistQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPlaylistQuery, GetPlaylistQueryVariables>(GetPlaylistDocument, options);
+      }
+export function useGetPlaylistLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPlaylistQuery, GetPlaylistQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPlaylistQuery, GetPlaylistQueryVariables>(GetPlaylistDocument, options);
+        }
+export type GetPlaylistQueryHookResult = ReturnType<typeof useGetPlaylistQuery>;
+export type GetPlaylistLazyQueryHookResult = ReturnType<typeof useGetPlaylistLazyQuery>;
+export type GetPlaylistQueryResult = Apollo.QueryResult<GetPlaylistQuery, GetPlaylistQueryVariables>;
 export const CreateUserPlaylistDocument = gql`
     mutation createUserPlaylist($data: PlaylistCreateWithoutOwnerInput!) {
   createUserPlaylist(data: $data) {

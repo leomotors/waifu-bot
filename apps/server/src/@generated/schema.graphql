@@ -22,6 +22,7 @@ type Music {
   viewCount: String!
   authorName: String!
   authorChannelUrl: String!
+  thumbnailUrl: String!
   likes: Int!
   playlist: [Playlist!]
   _count: MusicCount!
@@ -269,6 +270,7 @@ input MusicWhereInput {
   viewCount: StringFilter
   authorName: StringFilter
   authorChannelUrl: StringFilter
+  thumbnailUrl: StringFilter
   likes: IntFilter
   playlist: PlaylistListRelationFilter
 }
@@ -386,6 +388,7 @@ input MusicCreateInput {
   viewCount: String!
   authorName: String!
   authorChannelUrl: String!
+  thumbnailUrl: String!
   likes: Int!
   playlist: PlaylistCreateNestedManyWithoutMusicInput
 }
@@ -481,6 +484,7 @@ input MusicCreateWithoutPlaylistInput {
   viewCount: String!
   authorName: String!
   authorChannelUrl: String!
+  thumbnailUrl: String!
   likes: Int!
 }
 
@@ -627,6 +631,7 @@ input MusicUpdateWithoutPlaylistInput {
   viewCount: StringFieldUpdateOperationsInput
   authorName: StringFieldUpdateOperationsInput
   authorChannelUrl: StringFieldUpdateOperationsInput
+  thumbnailUrl: StringFieldUpdateOperationsInput
   likes: IntFieldUpdateOperationsInput
 }
 
@@ -659,6 +664,7 @@ input MusicScalarWhereInput {
   viewCount: StringFilter
   authorName: StringFilter
   authorChannelUrl: StringFilter
+  thumbnailUrl: StringFilter
   likes: IntFilter
 }
 
@@ -670,6 +676,7 @@ input MusicUpdateManyMutationInput {
   viewCount: StringFieldUpdateOperationsInput
   authorName: StringFieldUpdateOperationsInput
   authorChannelUrl: StringFieldUpdateOperationsInput
+  thumbnailUrl: StringFieldUpdateOperationsInput
   likes: IntFieldUpdateOperationsInput
 }
 

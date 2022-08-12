@@ -38,7 +38,7 @@ export const Sidebar: FC = () => {
   const { user, logout } = useContext(AuthContext);
 
   return (
-    <nav className="flex min-h-screen w-72 flex-col items-start justify-between bg-gradient-to-br from-blue-200 to-pink-200 p-2">
+    <nav className="flex min-h-screen w-80 flex-col items-start justify-between bg-gradient-to-br from-blue-200 to-pink-200 p-2">
       <div>
         <p className="text-3xl font-bold">Waifu Bot Control Center</p>
 

@@ -11,6 +11,23 @@ query getMyPlaylists {
     }
 }
 
+query getPlaylist($where: PlaylistWhereUniqueInput!) {
+    playlist(where: $where) {
+        name
+        description
+        music {
+            videoId
+            title
+            shortDescription
+            lengthSeconds
+            viewCount
+            authorName
+            authorChannelUrl
+            likes
+        }
+    }
+}
+
 mutation createUserPlaylist($data: PlaylistCreateWithoutOwnerInput!) {
     createUserPlaylist(data: $data) {
         id

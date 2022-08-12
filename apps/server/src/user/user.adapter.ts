@@ -60,12 +60,7 @@ export class UserAdapter {
             create: {
                 id: input.data.id,
                 profile: {
-                    create: {
-                        username: input.data.profile.username,
-                        lastInteractGuildName:
-                            input.data.profile.lastInteractGuildName,
-                        avatarUrl: input.data.profile.avatarUrl,
-                    },
+                    create: input.data.profile,
                 },
             },
             update: {
@@ -75,6 +70,7 @@ export class UserAdapter {
                         lastInteractGuildName: {
                             set: input.data.profile.lastInteractGuildName,
                         },
+                        avatarUrl: { set: input.data.profile.avatarUrl },
                     },
                 },
             },

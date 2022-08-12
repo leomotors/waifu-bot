@@ -26,6 +26,9 @@ export class MusicCountAggregateInput {
     authorChannelUrl?: true;
 
     @Field(() => Boolean, {nullable:true})
+    thumbnailUrl?: true;
+
+    @Field(() => Boolean, {nullable:true})
     likes?: true;
 
     @Field(() => Boolean, {nullable:true})

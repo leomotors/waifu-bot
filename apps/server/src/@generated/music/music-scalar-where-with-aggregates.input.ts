@@ -36,6 +36,9 @@ export class MusicScalarWhereWithAggregatesInput {
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     authorChannelUrl?: StringWithAggregatesFilter;
 
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    thumbnailUrl?: StringWithAggregatesFilter;
+
     @Field(() => IntWithAggregatesFilter, {nullable:true})
     likes?: IntWithAggregatesFilter;
 }

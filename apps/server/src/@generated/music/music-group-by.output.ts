@@ -31,6 +31,9 @@ export class MusicGroupBy {
     @Field(() => String, {nullable:false})
     authorChannelUrl!: string;
 
+    @Field(() => String, {nullable:false})
+    thumbnailUrl!: string;
+
     @Field(() => Int, {nullable:false})
     likes!: number;
 

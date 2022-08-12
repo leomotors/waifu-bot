@@ -42,6 +42,7 @@ CREATE TABLE "music" (
     "view_count" TEXT NOT NULL,
     "author_name" TEXT NOT NULL,
     "author_channel_url" TEXT NOT NULL,
+    "thumbnail_url" TEXT NOT NULL,
     "likes" INTEGER NOT NULL,
 
     CONSTRAINT "music_pkey" PRIMARY KEY ("video_id")

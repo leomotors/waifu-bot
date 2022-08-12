@@ -26,6 +26,9 @@ export class MusicMaxAggregate {
     @Field(() => String, {nullable:true})
     authorChannelUrl?: string;
 
+    @Field(() => String, {nullable:true})
+    thumbnailUrl?: string;
+
     @Field(() => Int, {nullable:true})
     likes?: number;
 }

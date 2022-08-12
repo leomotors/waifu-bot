@@ -865,6 +865,13 @@ export type GetMyPlaylistsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetMyPlaylistsQuery = { __typename?: 'Query', me: { __typename?: 'User', playlist?: Array<{ __typename?: 'Playlist', id: string, name: string, description?: string | null, _count: { __typename?: 'PlaylistCount', music: number } }> | null } };
 
+export type GetPlaylistQueryVariables = Exact<{
+  where: PlaylistWhereUniqueInput;
+}>;
+
+
+export type GetPlaylistQuery = { __typename?: 'Query', playlist?: { __typename?: 'Playlist', name: string, description?: string | null, music?: Array<{ __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: string, viewCount: string, authorName: string, authorChannelUrl: string, likes: number }> | null } | null };
+
 export type CreateUserPlaylistMutationVariables = Exact<{
   data: PlaylistCreateWithoutOwnerInput;
 }>;
@@ -907,6 +914,24 @@ export const GetMyPlaylistsDocument = gql`
       _count {
         music
       }
+    }
+  }
+}
+    `;
+export const GetPlaylistDocument = gql`
+    query getPlaylist($where: PlaylistWhereUniqueInput!) {
+  playlist(where: $where) {
+    name
+    description
+    music {
+      videoId
+      title
+      shortDescription
+      lengthSeconds
+      viewCount
+      authorName
+      authorChannelUrl
+      likes
     }
   }
 }
@@ -954,6 +979,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getMyPlaylists(variables?: GetMyPlaylistsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetMyPlaylistsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetMyPlaylistsQuery>(GetMyPlaylistsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getMyPlaylists', 'query');
+    },
+    getPlaylist(variables: GetPlaylistQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPlaylistQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetPlaylistQuery>(GetPlaylistDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPlaylist', 'query');
     },
     createUserPlaylist(variables: CreateUserPlaylistMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateUserPlaylistMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreateUserPlaylistMutation>(CreateUserPlaylistDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createUserPlaylist', 'mutation');

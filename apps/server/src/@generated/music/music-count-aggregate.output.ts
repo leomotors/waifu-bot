@@ -27,6 +27,9 @@ export class MusicCountAggregate {
     authorChannelUrl!: number;
 
     @Field(() => Int, {nullable:false})
+    thumbnailUrl!: number;
+
+    @Field(() => Int, {nullable:false})
     likes!: number;
 
     @Field(() => Int, {nullable:false})

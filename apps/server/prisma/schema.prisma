@@ -67,6 +67,7 @@ model Music {
   viewCount        String     @map("view_count")
   authorName       String     @map("author_name")
   authorChannelUrl String     @map("author_channel_url")
+  thumbnailUrl     String     @map("thumbnail_url")
   likes            Int
   playlist         Playlist[]
 

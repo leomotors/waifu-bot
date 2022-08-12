@@ -8,14 +8,13 @@ import { FC, PropsWithChildren, useState } from "react";
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
+  const [user, setUser] = useState<IAuthContext["user"]>(undefined);
 
-  const { refetch } = useGetMyInfoQuery({
+  const { refetch, loading } = useGetMyInfoQuery({
     onCompleted: (data) => {
       setUser(data.me);
     },
   });
-
-  const [user, setUser] = useState<IAuthContext["user"]>(undefined);
 
   function logout() {
     localStorage.removeItem("token");
@@ -33,7 +32,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,3 +1,4 @@
+import { ForbiddenException } from "@nestjs/common";
 import {
     Args,
     Mutation,
@@ -16,7 +17,7 @@ import { Playlist } from "@generated/playlist/playlist.model";
 import { User } from "@generated/user/user.model";
 
 import { Permission } from "../auth/auth.decorator";
-import { UserContext } from "../user/user.decorator";
+import { AdminUser, isAdminUser, UserContext } from "../user/user.decorator";
 
 import { CreateOneUserPlaylistArgs } from "./dto/playlist.dto";
 import { PlaylistAdapter } from "./playlist.adapter";
@@ -35,8 +36,24 @@ export class PlaylistResolver {
     }
 
     @Query(() => Playlist, { nullable: true })
-    playlist(@Args() input: FindUniquePlaylistArgs) {
-        return this.service.findUnique(input);
+    @Permission("User")
+    async playlist(
+        @Args() input: FindUniquePlaylistArgs,
+        @UserContext({ allowAdmin: true }) user: User | AdminUser
+    ) {
+        const playlist = await this.service.findUnique(input);
+
+        if (isAdminUser(user) || !playlist) {
+            return playlist;
+        } else {
+            if (playlist.ownerId == user.id) {
+                return playlist;
+            } else {
+                throw new ForbiddenException(
+                    "You do not have access to this playlist!"
+                );
+            }
+        }
     }
 
     @ResolveField(() => [Music])

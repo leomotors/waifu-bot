@@ -8,6 +8,7 @@ export enum MusicScalarFieldEnum {
     viewCount = "viewCount",
     authorName = "authorName",
     authorChannelUrl = "authorChannelUrl",
+    thumbnailUrl = "thumbnailUrl",
     likes = "likes"
 }
 

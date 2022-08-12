@@ -36,6 +36,9 @@ export class MusicScalarWhereInput {
     @Field(() => StringFilter, {nullable:true})
     authorChannelUrl?: StringFilter;
 
+    @Field(() => StringFilter, {nullable:true})
+    thumbnailUrl?: StringFilter;
+
     @Field(() => IntFilter, {nullable:true})
     likes?: IntFilter;
 }

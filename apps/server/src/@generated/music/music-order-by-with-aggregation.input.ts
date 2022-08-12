@@ -32,6 +32,9 @@ export class MusicOrderByWithAggregationInput {
     authorChannelUrl?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
+    thumbnailUrl?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
     likes?: keyof typeof SortOrder;
 
     @Field(() => MusicCountOrderByAggregateInput, {nullable:true})

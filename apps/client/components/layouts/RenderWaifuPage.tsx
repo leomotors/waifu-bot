@@ -1,7 +1,7 @@
 import { AuthContext } from "$lib/contexts";
 import type { WaifuPage } from "$lib/types";
 
-import { createElement, FC, useContext } from "react";
+import { createElement, type FC, useContext } from "react";
 
 interface RenderWaifuPageProps {
   page: WaifuPage;
@@ -9,10 +9,12 @@ interface RenderWaifuPageProps {
 }
 
 export const RenderWaifuPage: FC<RenderWaifuPageProps> = ({ page, props }) => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
-  if (page.requiredAuth && !user) {
-    return <main>Please sign in</main>;
+  if (loading) {
+    return <div>Loading...</div>;
+  } else if (page.requiredAuth && !user) {
+    return <main>Please sign in or invalid credentials</main>;
   } else {
     return createElement(page, props);
   }

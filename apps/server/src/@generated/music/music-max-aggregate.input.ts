@@ -26,5 +26,8 @@ export class MusicMaxAggregateInput {
     authorChannelUrl?: true;
 
     @Field(() => Boolean, {nullable:true})
+    thumbnailUrl?: true;
+
+    @Field(() => Boolean, {nullable:true})
     likes?: true;
 }

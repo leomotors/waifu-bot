@@ -27,6 +27,9 @@ export class MusicUncheckedUpdateWithoutPlaylistInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     authorChannelUrl?: StringFieldUpdateOperationsInput;
 
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    thumbnailUrl?: StringFieldUpdateOperationsInput;
+
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
     likes?: IntFieldUpdateOperationsInput;
 }

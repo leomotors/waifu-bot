@@ -26,5 +26,8 @@ export class MusicMinAggregateInput {
     authorChannelUrl?: true;
 
     @Field(() => Boolean, {nullable:true})
+    thumbnailUrl?: true;
+
+    @Field(() => Boolean, {nullable:true})
     likes?: true;
 }
