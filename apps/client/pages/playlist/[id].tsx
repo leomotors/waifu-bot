@@ -8,6 +8,7 @@ import {
 import { trim } from "$lib/string";
 import { formatTime } from "$lib/time";
 import type { WaifuPage } from "$lib/types";
+import { validateURL } from "$lib/ytdl-utils";
 
 import type { ApolloError } from "@apollo/client";
 
@@ -19,7 +20,6 @@ import { useMemo, useState } from "react";
 import { Trash } from "react-bootstrap-icons";
 
 import clsx from "clsx";
-import { validateURL } from "ytdl-core";
 
 const PlaylistEditPage: WaifuPage = () => {
   const router = useRouter();
