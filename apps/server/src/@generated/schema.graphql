@@ -372,6 +372,8 @@ input UserWhereUniqueInput {
 type Mutation {
   generateToken(where: UserWhereUniqueInput!): AccessToken!
   createMusic(data: MusicCreateInput!): Music!
+  addMusicToPlaylist(url: String!, playlistId: Int!): Music!
+  removeMusicFromPlaylist(playlistId: Int!, musicId: String!): Music!
   createPlaylist(data: PlaylistCreateInput!): Playlist!
   createUserPlaylist(data: PlaylistCreateWithoutOwnerInput!): Playlist!
   createProfile(data: ProfileCreateInput!): Profile!

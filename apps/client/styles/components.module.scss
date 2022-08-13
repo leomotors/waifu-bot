@@ -1,0 +1,25 @@
+.waifuTable {
+  @apply table border-collapse rounded mx-auto;
+
+  th, td {
+    @apply border border-neutral-600 p-2 text-lg text-center;
+  }
+
+  & > thead {
+    @apply bg-gray-200;
+  }
+}
+
+.waifuForm {
+  & > label {
+    @apply font-bold text-lg;
+  }
+
+  & > input {
+    @apply p-2 rounded-lg border border-neutral-700;
+  }
+}
+
+.waifuLink {
+  @apply text-blue-500 hover:text-blue-600 transition-colors;
+}

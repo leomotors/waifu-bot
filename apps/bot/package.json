@@ -8,8 +8,8 @@
     "clean": "rimraf dist/*",
     "cb": "pnpm clean && pnpm build",
     "start": "node --es-module-specifier-resolution=node dist/apps/bot/src/bot.js",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint src && prettier --check \"src/**/*.ts\""
+    "format": "eslint src --fix",
+    "lint": "eslint src"
   },
   "devDependencies": {
     "@types/node": "^18.7.2",

@@ -1,0 +1,19 @@
+mutation addMusicToPlaylist($url: String!, $playlistId: Int!) {
+    addMusicToPlaylist(url: $url, playlistId: $playlistId) {
+        videoId
+        title
+        shortDescription
+        lengthSeconds
+        viewCount
+        authorName
+        authorChannelUrl
+        thumbnailUrl
+        likes
+    }
+}
+
+mutation removeMusicFromPlaylist($playlistId: Int!, $musicId: String!) {
+    removeMusicFromPlaylist(playlistId: $playlistId, musicId: $musicId) {
+        videoId
+    }
+}

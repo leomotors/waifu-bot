@@ -81,6 +81,7 @@ importers:
       '@waifu-bot/config': workspace:0.0.0
       '@waifu-bot/graphql': workspace:0.0.0
       autoprefixer: ^10.4.8
+      clsx: ^1.2.1
       eslint: 8.21.0
       eslint-config-next: 12.2.5
       eslint-plugin-tailwindcss: ^3.6.0
@@ -94,13 +95,16 @@ importers:
       sass: ^1.54.4
       tailwindcss: ^3.1.8
       typescript: 4.7.4
+      ytdl-core: ^4.11.0
     dependencies:
       '@apollo/client': 3.6.9_aez2jvt6lsvokp3l4ousdbdxf4
       '@waifu-bot/graphql': link:../../packages/graphql
+      clsx: 1.2.1
       next: 12.2.5_ivfob5dyaiglqb5g2zdrumbbbm
       react: 18.2.0
       react-bootstrap-icons: 1.8.4_react@18.2.0
       react-dom: 18.2.0_react@18.2.0
+      ytdl-core: 4.11.0
     devDependencies:
       '@next/bundle-analyzer': 12.2.5
       '@types/node': 18.7.2
@@ -155,6 +159,7 @@ importers:
       tsconfig-paths: 4.1.0
       tslib: ^2.4.0
       typescript: ^4.7.4
+      ytdl-core: ^4.11.0
     dependencies:
       '@nestjs/apollo': 10.0.19_vioahupp4nhecsok66yfcig66a
       '@nestjs/common': 9.0.9_aniaiezvefq2fqnommj6u5l4zi
@@ -174,6 +179,7 @@ importers:
       rimraf: 3.0.2
       rxjs: 7.5.6
       tslib: 2.4.0
+      ytdl-core: 4.11.0
     devDependencies:
       '@nestjs/cli': 9.0.0
       '@nestjs/schematics': 9.0.1_nobats3jkocaued6l3papcxri4
@@ -537,14 +543,14 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.17.7
+      '@babel/generator': 7.18.12
       '@babel/helper-compilation-targets': 7.18.9_@babel+core@7.17.8
       '@babel/helper-module-transforms': 7.18.9
       '@babel/helpers': 7.18.9
-      '@babel/parser': 7.17.8
+      '@babel/parser': 7.18.11
       '@babel/template': 7.18.10
-      '@babel/traverse': 7.17.3
-      '@babel/types': 7.17.0
+      '@babel/traverse': 7.18.11
+      '@babel/types': 7.18.10
       convert-source-map: 1.8.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
@@ -581,7 +587,7 @@ packages:
     resolution: {integrity: sha512-oLcVCTeIFadUoArDTwpluncplrYBmTCCZZgXCbgNGvOBBiSDDK3eWO4b/+eOTli5tKv1lg+a5/NAXg+nTcei1w==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.10
       jsesc: 2.5.2
       source-map: 0.5.7
     dev: true
@@ -782,7 +788,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.10
     dev: true
 
   /@babel/parser/7.18.11:
@@ -1112,13 +1118,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.17.7
+      '@babel/generator': 7.18.12
       '@babel/helper-environment-visitor': 7.18.9
       '@babel/helper-function-name': 7.18.9
       '@babel/helper-hoist-variables': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.17.8
-      '@babel/types': 7.17.0
+      '@babel/parser': 7.18.11
+      '@babel/types': 7.18.10
       debug: 4.3.4
       globals: 11.12.0
     transitivePeerDependencies:
@@ -3725,6 +3731,11 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
     dev: true
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /cocoa-discord-utils/2.2.0:
     resolution: {integrity: sha512-wJdyb6ZZtlvOfZMdyH4FzTOdVM4ZIhGmwGxXy7N+6JTHWGCkePYxroo6vPC0XUYXFdwSe7AjQuSXzjKoE0vleg==}

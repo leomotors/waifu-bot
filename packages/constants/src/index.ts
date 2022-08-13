@@ -1,4 +1,4 @@
-export const AppVersion = "4.0.500";
+export const AppVersion = "4.0.600";
 export const ShortNameEN = "Shikimori";
 export const ShortNameJA = "式守";
 export const LongNameEN = "Shikimori-san";

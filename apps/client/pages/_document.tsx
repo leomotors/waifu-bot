@@ -10,7 +10,7 @@ export default function Document() {
         />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Thai&display=optional"
+          href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Thai:r,b&display=optional"
         />
       </Head>
       <body>

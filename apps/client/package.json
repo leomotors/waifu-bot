@@ -12,10 +12,12 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@waifu-bot/graphql": "workspace:0.0.0",
+    "clsx": "^1.2.1",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-bootstrap-icons": "^1.8.4",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "ytdl-core": "^4.11.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.2.5",

@@ -140,6 +140,7 @@ export type Music = {
   likes: Scalars['Int'];
   playlist?: Maybe<Array<Playlist>>;
   shortDescription: Scalars['String'];
+  thumbnailUrl: Scalars['String'];
   title: Scalars['String'];
   videoId: Scalars['ID'];
   viewCount: Scalars['String'];
@@ -157,6 +158,7 @@ export type MusicCreateInput = {
   likes: Scalars['Int'];
   playlist?: InputMaybe<PlaylistCreateNestedManyWithoutMusicInput>;
   shortDescription: Scalars['String'];
+  thumbnailUrl: Scalars['String'];
   title: Scalars['String'];
   videoId: Scalars['String'];
   viewCount: Scalars['String'];
@@ -179,6 +181,7 @@ export type MusicCreateWithoutPlaylistInput = {
   lengthSeconds: Scalars['String'];
   likes: Scalars['Int'];
   shortDescription: Scalars['String'];
+  thumbnailUrl: Scalars['String'];
   title: Scalars['String'];
   videoId: Scalars['String'];
   viewCount: Scalars['String'];
@@ -203,6 +206,7 @@ export type MusicScalarWhereInput = {
   lengthSeconds?: InputMaybe<StringFilter>;
   likes?: InputMaybe<IntFilter>;
   shortDescription?: InputMaybe<StringFilter>;
+  thumbnailUrl?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
   videoId?: InputMaybe<StringFilter>;
   viewCount?: InputMaybe<StringFilter>;
@@ -214,6 +218,7 @@ export type MusicUpdateManyMutationInput = {
   lengthSeconds?: InputMaybe<StringFieldUpdateOperationsInput>;
   likes?: InputMaybe<IntFieldUpdateOperationsInput>;
   shortDescription?: InputMaybe<StringFieldUpdateOperationsInput>;
+  thumbnailUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   videoId?: InputMaybe<StringFieldUpdateOperationsInput>;
   viewCount?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -248,6 +253,7 @@ export type MusicUpdateWithoutPlaylistInput = {
   lengthSeconds?: InputMaybe<StringFieldUpdateOperationsInput>;
   likes?: InputMaybe<IntFieldUpdateOperationsInput>;
   shortDescription?: InputMaybe<StringFieldUpdateOperationsInput>;
+  thumbnailUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   videoId?: InputMaybe<StringFieldUpdateOperationsInput>;
   viewCount?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -269,6 +275,7 @@ export type MusicWhereInput = {
   likes?: InputMaybe<IntFilter>;
   playlist?: InputMaybe<PlaylistListRelationFilter>;
   shortDescription?: InputMaybe<StringFilter>;
+  thumbnailUrl?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
   videoId?: InputMaybe<StringFilter>;
   viewCount?: InputMaybe<StringFilter>;
@@ -280,14 +287,22 @@ export type MusicWhereUniqueInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  addMusicToPlaylist: Music;
   createMusic: Music;
   createPlaylist: Playlist;
   createProfile: Profile;
   createUser: User;
   createUserPlaylist: Playlist;
   generateToken: AccessToken;
+  removeMusicFromPlaylist: Music;
   updateUser: User;
   upsertUser: User;
+};
+
+
+export type MutationAddMusicToPlaylistArgs = {
+  playlistId: Scalars['Int'];
+  url: Scalars['String'];
 };
 
 
@@ -318,6 +333,12 @@ export type MutationCreateUserPlaylistArgs = {
 
 export type MutationGenerateTokenArgs = {
   where: UserWhereUniqueInput;
+};
+
+
+export type MutationRemoveMusicFromPlaylistArgs = {
+  musicId: Scalars['String'];
+  playlistId: Scalars['Int'];
 };
 
 

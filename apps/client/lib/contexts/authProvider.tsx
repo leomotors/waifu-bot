@@ -1,10 +1,10 @@
-import { AuthContext, type IAuthContext } from "./authContext";
-
 import { useGetMyInfoQuery } from "$graphql";
 
 import { useRouter } from "next/router";
 
 import { FC, PropsWithChildren, useState } from "react";
+
+import { AuthContext, type IAuthContext } from "./authContext";
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();

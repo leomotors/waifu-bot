@@ -23,6 +23,7 @@ query getPlaylist($where: PlaylistWhereUniqueInput!) {
             viewCount
             authorName
             authorChannelUrl
+            thumbnailUrl
             likes
         }
     }
