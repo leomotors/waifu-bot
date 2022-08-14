@@ -68,3 +68,15 @@ Version 4 -> T U R B O R E P O
 ![](https://c.tenor.com/JjAZAfWSqQgAAAAC/gochiusa-cocoa.gif)
 
 **Made with 💛💛💛**
+
+## 🖼️ Gallery
+
+(at Version: 4.0.600)
+
+### Client
+
+![](./images/client-page-playlist-id-1.png)
+
+### Bot
+
+![](./images/bot-command-playlist-1.png)
