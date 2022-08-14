@@ -13,8 +13,10 @@ query getMyPlaylists {
 
 query getPlaylist($where: PlaylistWhereUniqueInput!) {
     playlist(where: $where) {
+        id
         name
         description
+        ownerId
         music {
             videoId
             title

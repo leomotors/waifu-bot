@@ -907,7 +907,7 @@ export type GetPlaylistQueryVariables = Exact<{
 }>;
 
 
-export type GetPlaylistQuery = { __typename?: 'Query', playlist?: { __typename?: 'Playlist', name: string, description?: string | null, music?: Array<{ __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: string, viewCount: string, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number }> | null } | null };
+export type GetPlaylistQuery = { __typename?: 'Query', playlist?: { __typename?: 'Playlist', id: string, name: string, description?: string | null, ownerId: string, music?: Array<{ __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: string, viewCount: string, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number }> | null } | null };
 
 export type CreateUserPlaylistMutationVariables = Exact<{
   data: PlaylistCreateWithoutOwnerInput;
@@ -980,8 +980,10 @@ export const GetMyPlaylistsDocument = gql`
 export const GetPlaylistDocument = gql`
     query getPlaylist($where: PlaylistWhereUniqueInput!) {
   playlist(where: $where) {
+    id
     name
     description
+    ownerId
     music {
       videoId
       title

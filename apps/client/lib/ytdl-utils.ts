@@ -12,6 +12,10 @@ const validPathDomains =
   /^https?:\/\/(youtu\.be\/|(www\.)?youtube\.com\/(embed|v|shorts)\/)/;
 const idRegex = /^[a-zA-Z0-9-_]{11}$/;
 
+export function validateID(id: string) {
+  return idRegex.test(id.trim());
+}
+
 export function getURLVideoID(link: string) {
   const parsed = new URL(link.trim());
   let id = parsed.searchParams.get("v");
@@ -25,7 +29,7 @@ export function getURLVideoID(link: string) {
     throw Error(`No video id found: "${link}"`);
   }
   id = id.substring(0, 11);
-  if (!exports.validateID(id)) {
+  if (!validateID(id)) {
     throw TypeError(
       `Video id (${id}) does not match expected ` +
         `format (${idRegex.toString()})`

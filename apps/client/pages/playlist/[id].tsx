@@ -11,6 +11,7 @@ import type { WaifuPage } from "$lib/types";
 import { validateURL } from "$lib/ytdl-utils";
 
 import type { ApolloError } from "@apollo/client";
+import { YoutubeURLPrefix } from "@waifu-bot/constants";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -65,7 +66,9 @@ const PlaylistEditPage: WaifuPage = () => {
         <Link href="/playlist">
           <a className="text-lg">{"< Back"}</a>
         </Link>
-        <h1 className="text-3xl font-bold">Playlist: {playlist?.name}</h1>
+        <h1 className="text-3xl font-bold">
+          Playlist: {playlist?.name} (ID: {playlist?.id})
+        </h1>
       </div>
       <p className="mt-2 px-2 text-lg text-gray-700">{playlist?.description}</p>
 
@@ -125,7 +128,7 @@ const PlaylistEditPage: WaifuPage = () => {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href={`https://www.youtube.com/watch?v=${music.videoId}`}
+                  href={YoutubeURLPrefix + music.videoId}
                   className={styles.waifuLink}
                 >
                   {music.title}

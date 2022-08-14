@@ -2,10 +2,8 @@
 
 Waifu Bot is the bot that is serving _our_ server
 
-*This branch is for experimental 4.0 preview and is in progress. Visit branch v3.2 for stable version that is currently running on my servers*
-
 **Current Waifu we SIMP**: 式守さん (Shikimori San)  
-**Current Version**: 4.0 (IN PROGRESS)  
+**Current Version**: 4.0
 **Been SIMPing since**: 3.2
 
 <img src="https://c.tenor.com/KI8wOfAPyagAAAAd/shikimori-anime-girl.gif" height=300 />

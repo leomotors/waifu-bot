@@ -5,3 +5,5 @@ export const LongNameEN = "Shikimori-san";
 export const LongNameJA = "式守さん";
 export const FooterText = "可愛いだけじゃないわ💓";
 export const EmbedColor = 0xdfa7ce;
+
+export const YoutubeURLPrefix = "https://www.youtube.com/watch?v=";
