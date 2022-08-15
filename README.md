@@ -2,11 +2,12 @@
 
 Waifu Bot is the bot that is serving _our_ server
 
-**Current Waifu we SIMP**: 式守さん (Shikimori San)  
-**Current Version**: 4.0
-**Been SIMPing since**: 3.2
+~~Current Waifu we SIMP~~ We don't need Waifu, we need MOTIVATION
 
-<img src="https://c.tenor.com/KI8wOfAPyagAAAAd/shikimori-anime-girl.gif" height=300 />
+![](./images/vergil_reaction.jpg)
+
+**Current Version**: 4.0  
+**Been SIMPing since**: 4.0.605
 
 ## 📚 Tech Stack
 
@@ -48,6 +49,8 @@ The most ~~over-engineered~~ advanced Discord Bot
 
 The Discord Bot (apps/bot) was built on top of [CarelessDev/harunon.js](https://github.com/CarelessDev/harunon.js)
 
+**Version 3.2 - 4.0.600** 式守さん (Shikimori-san) [v3.2](https://github.com/leomotors/waifu-bot/tree/v3.2) | [v4.0.600](https://github.com/leomotors/waifu-bot/tree/v4.0.600) <July 2022 - August 2022>
+
 **Version 3.0 - 3.1** 雪ノ下陽乃 (Yukinoshita Haruno) [Repository](https://github.com/CarelessDev/harunon.js) <Mar 2022 - July 2022>
 
 **Version 2.0** 雪ノ下陽乃 (Yukinoshita Haruno) But it was in Python [Repository](https://github.com/CarelessDev/Harunon) <November 2021 - Mar 2022>
@@ -59,7 +62,7 @@ The Discord Bot (apps/bot) was built on top of [CarelessDev/harunon.js](https://
 Version 1 -> Python Skittle-chan Era  
 Version 2 -> Python Harunon Era  
 Version 3 -> JavaScript  
-Version 4 -> T U R B O R E P O
+Version 4 -> Full Stack Waifu with T U R B O R E P O
 
 ## Utility Library behind this Bot!
 

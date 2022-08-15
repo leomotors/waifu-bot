@@ -12,9 +12,9 @@ export const RenderWaifuPage: FC<RenderWaifuPageProps> = ({ page, props }) => {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <p>Loading...</p>;
   } else if (page.requiredAuth && !user) {
-    return <main>Please sign in or invalid credentials</main>;
+    return <p>Please sign in or invalid credentials</p>;
   } else {
     return createElement(page, props);
   }

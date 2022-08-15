@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Inter&display=optional"
+          href="https://fonts.googleapis.com/css?family=Inter:r,b&display=optional"
         />
         <link
           rel="stylesheet"
