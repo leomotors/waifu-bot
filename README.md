@@ -4,7 +4,7 @@ Waifu Bot is the bot that is serving _our_ server
 
 ~~Current Waifu we SIMP~~ We don't need Waifu, we need MOTIVATION
 
-![](./images/vergil_reaction.jpg)
+<img src="./images/vergil_reaction.jpg" width=500 />
 
 **Current Version**: 4.0  
 **Been SIMPing since**: 4.0.605
@@ -41,21 +41,23 @@ The most ~~over-engineered~~ advanced Discord Bot
 ### Steps
 
 - Fill in .env (see .env.example in each apps)
-- pnpm install
-- (in apps/server) pnpm prisma migrate dev
-- pnpm start (Will start all apps at once, Turborepo will automatically build for you!)
+- `pnpm install`
+- (in apps/server) `pnpm prisma migrate dev --skip-seed`
+- `pnpm start` (Will start all apps at once, Turborepo will automatically build for you! If fail try again lol)
 
 ## Waifu Bot Archive
 
 The Discord Bot (apps/bot) was built on top of [CarelessDev/harunon.js](https://github.com/CarelessDev/harunon.js)
 
-**Version 3.2 - 4.0.600** 式守さん (Shikimori-san) [v3.2](https://github.com/leomotors/waifu-bot/tree/v3.2) | [v4.0.600](https://github.com/leomotors/waifu-bot/tree/v4.0.600) <July 2022 - August 2022>
+Below are list of previous waifu we chose to SIMP
 
-**Version 3.0 - 3.1** 雪ノ下陽乃 (Yukinoshita Haruno) [Repository](https://github.com/CarelessDev/harunon.js) <Mar 2022 - July 2022>
+- **Version 3.2 - 4.0.600** 式守さん (Shikimori-san) [v3.2](https://github.com/leomotors/waifu-bot/tree/v3.2) | [v4.0.600](https://github.com/leomotors/waifu-bot/tree/v4.0.600) <July 2022 - August 2022>
 
-**Version 2.0** 雪ノ下陽乃 (Yukinoshita Haruno) But it was in Python [Repository](https://github.com/CarelessDev/Harunon) <November 2021 - Mar 2022>
+- **Version 3.0 - 3.1** 雪ノ下陽乃 (Yukinoshita Haruno) [Repository](https://github.com/CarelessDev/harunon.js) <Mar 2022 - July 2022>
 
-**Version 1.0** Skittle Chan [Repository](https://github.com/CarelessDev/SIMP-Bot) <Sep 2021 - November 2021>
+- **Version 2.0** 雪ノ下陽乃 (Yukinoshita Haruno) But it was in Python [Repository](https://github.com/CarelessDev/Harunon) <November 2021 - Mar 2022>
+
+- **Version 1.0** Skittle Chan [Repository](https://github.com/CarelessDev/SIMP-Bot) <Sep 2021 - November 2021>
 
 ## Technical Version History
 
@@ -83,3 +85,7 @@ Version 4 -> Full Stack Waifu with T U R B O R E P O
 ### Bot
 
 ![](./images/bot-command-playlist-1.png)
+
+(at version 4.0.605)
+
+![](https://pbs.twimg.com/media/FaSN9feUYAAU3yj?format=jpg&name=large)

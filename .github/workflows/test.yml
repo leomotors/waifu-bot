@@ -39,3 +39,6 @@ jobs:
 
       - name: Build everything
         run: pnpm build:sync
+
+      - name: Lint
+        run: pnpm lint

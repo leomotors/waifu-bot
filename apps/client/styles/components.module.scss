@@ -1,7 +1,8 @@
 .waifuTable {
   @apply table border-collapse rounded mx-auto;
 
-  th, td {
+  th,
+  td {
     @apply border border-neutral-600 p-2 text-lg text-center;
   }
 

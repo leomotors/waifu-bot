@@ -14,7 +14,12 @@ export const RenderWaifuPage: FC<RenderWaifuPageProps> = ({ page, props }) => {
   if (loading) {
     return <p>Loading...</p>;
   } else if (page.requiredAuth && !user) {
-    return <p>Please sign in or invalid credentials</p>;
+    return (
+      <p>
+        Please sign in or invalid credentials or your token might be expired,
+        please use /login again
+      </p>
+    );
   } else {
     return createElement(page, props);
   }
