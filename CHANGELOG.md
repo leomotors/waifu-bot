@@ -2,6 +2,10 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.606] - 2022-08-22
+
+- Update Forbidden Page
+
 ## [4.0.605] - 2022-08-15
 
 - Fix inconsistent of .env.(template|example)
