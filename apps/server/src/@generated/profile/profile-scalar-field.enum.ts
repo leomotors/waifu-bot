@@ -4,7 +4,9 @@ export enum ProfileScalarFieldEnum {
     userId = "userId",
     username = "username",
     lastInteractGuildName = "lastInteractGuildName",
-    avatarUrl = "avatarUrl"
+    avatarUrl = "avatarUrl",
+    createdAt = "createdAt",
+    updatedAt = "updatedAt"
 }
 
 

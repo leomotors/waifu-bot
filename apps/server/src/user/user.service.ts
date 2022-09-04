@@ -39,12 +39,13 @@ export class UserService {
         });
     }
 
-    async countPlaylists(user: User) {
+    async _count(user: User) {
         return (
-            await this.prisma.user
-                .findUniqueOrThrow({ where: { id: user.id } })
-                .playlist({ select: { id: true } })
-        ).length;
+            await this.prisma.user.findUniqueOrThrow({
+                where: { id: user.id },
+                select: { _count: true },
+            })
+        )._count;
     }
 
     create(input: CreateOneUserArgs) {

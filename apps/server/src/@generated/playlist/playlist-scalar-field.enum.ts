@@ -4,7 +4,9 @@ export enum PlaylistScalarFieldEnum {
     id = "id",
     name = "name",
     description = "description",
-    ownerId = "ownerId"
+    ownerId = "ownerId",
+    createdAt = "createdAt",
+    updatedAt = "updatedAt"
 }
 
 

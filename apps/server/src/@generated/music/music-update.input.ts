@@ -3,6 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { PlaylistUpdateManyWithoutMusicNestedInput } from '../playlist/playlist-update-many-without-music-nested.input';
+import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 
 @InputType()
 export class MusicUpdateInput {
@@ -16,11 +17,11 @@ export class MusicUpdateInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     shortDescription?: StringFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    lengthSeconds?: StringFieldUpdateOperationsInput;
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    lengthSeconds?: IntFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    viewCount?: StringFieldUpdateOperationsInput;
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    viewCount?: IntFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     authorName?: StringFieldUpdateOperationsInput;
@@ -36,4 +37,10 @@ export class MusicUpdateInput {
 
     @Field(() => PlaylistUpdateManyWithoutMusicNestedInput, {nullable:true})
     playlist?: PlaylistUpdateManyWithoutMusicNestedInput;
+
+    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
+    createdAt?: DateTimeFieldUpdateOperationsInput;
+
+    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
+    updatedAt?: DateTimeFieldUpdateOperationsInput;
 }

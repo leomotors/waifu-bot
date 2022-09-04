@@ -15,4 +15,10 @@ export class ProfileMaxAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
     avatarUrl?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    createdAt?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    updatedAt?: true;
 }

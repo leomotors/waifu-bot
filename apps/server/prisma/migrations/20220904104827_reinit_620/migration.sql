@@ -12,7 +12,9 @@ CREATE TABLE "profile" (
     "user_id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
     "last_interact_guild_name" TEXT NOT NULL,
-    "avatar_url" TEXT NOT NULL
+    "avatar_url" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL
 );
 
 -- CreateTable
@@ -29,6 +31,8 @@ CREATE TABLE "playlist" (
     "name" TEXT NOT NULL,
     "description" TEXT,
     "owner_id" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "playlist_pkey" PRIMARY KEY ("id")
 );
@@ -38,12 +42,14 @@ CREATE TABLE "music" (
     "video_id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "short_description" TEXT NOT NULL,
-    "length_seconds" TEXT NOT NULL,
-    "view_count" TEXT NOT NULL,
+    "length_seconds" INTEGER NOT NULL,
+    "view_count" INTEGER NOT NULL,
     "author_name" TEXT NOT NULL,
     "author_channel_url" TEXT NOT NULL,
     "thumbnail_url" TEXT NOT NULL,
     "likes" INTEGER NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "music_pkey" PRIMARY KEY ("video_id")
 );

@@ -139,14 +139,16 @@ export type Music = {
   _count: MusicCount;
   authorChannelUrl: Scalars['String'];
   authorName: Scalars['String'];
-  lengthSeconds: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  lengthSeconds: Scalars['Int'];
   likes: Scalars['Int'];
   playlist?: Maybe<Array<Playlist>>;
   shortDescription: Scalars['String'];
   thumbnailUrl: Scalars['String'];
   title: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
   videoId: Scalars['ID'];
-  viewCount: Scalars['String'];
+  viewCount: Scalars['Int'];
 };
 
 export type MusicCount = {
@@ -157,14 +159,16 @@ export type MusicCount = {
 export type MusicCreateInput = {
   authorChannelUrl: Scalars['String'];
   authorName: Scalars['String'];
-  lengthSeconds: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  lengthSeconds: Scalars['Int'];
   likes: Scalars['Int'];
   playlist?: InputMaybe<PlaylistCreateNestedManyWithoutMusicInput>;
   shortDescription: Scalars['String'];
   thumbnailUrl: Scalars['String'];
   title: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
   videoId: Scalars['String'];
-  viewCount: Scalars['String'];
+  viewCount: Scalars['Int'];
 };
 
 export type MusicCreateNestedManyWithoutPlaylistInput = {
@@ -181,13 +185,15 @@ export type MusicCreateOrConnectWithoutPlaylistInput = {
 export type MusicCreateWithoutPlaylistInput = {
   authorChannelUrl: Scalars['String'];
   authorName: Scalars['String'];
-  lengthSeconds: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  lengthSeconds: Scalars['Int'];
   likes: Scalars['Int'];
   shortDescription: Scalars['String'];
   thumbnailUrl: Scalars['String'];
   title: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
   videoId: Scalars['String'];
-  viewCount: Scalars['String'];
+  viewCount: Scalars['Int'];
 };
 
 export type MusicListRelationFilter = {
@@ -206,25 +212,29 @@ export type MusicScalarWhereInput = {
   OR?: InputMaybe<Array<MusicScalarWhereInput>>;
   authorChannelUrl?: InputMaybe<StringFilter>;
   authorName?: InputMaybe<StringFilter>;
-  lengthSeconds?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  lengthSeconds?: InputMaybe<IntFilter>;
   likes?: InputMaybe<IntFilter>;
   shortDescription?: InputMaybe<StringFilter>;
   thumbnailUrl?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
   videoId?: InputMaybe<StringFilter>;
-  viewCount?: InputMaybe<StringFilter>;
+  viewCount?: InputMaybe<IntFilter>;
 };
 
 export type MusicUpdateManyMutationInput = {
   authorChannelUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   authorName?: InputMaybe<StringFieldUpdateOperationsInput>;
-  lengthSeconds?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  lengthSeconds?: InputMaybe<IntFieldUpdateOperationsInput>;
   likes?: InputMaybe<IntFieldUpdateOperationsInput>;
   shortDescription?: InputMaybe<StringFieldUpdateOperationsInput>;
   thumbnailUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   videoId?: InputMaybe<StringFieldUpdateOperationsInput>;
-  viewCount?: InputMaybe<StringFieldUpdateOperationsInput>;
+  viewCount?: InputMaybe<IntFieldUpdateOperationsInput>;
 };
 
 export type MusicUpdateManyWithWhereWithoutPlaylistInput = {
@@ -253,13 +263,15 @@ export type MusicUpdateWithWhereUniqueWithoutPlaylistInput = {
 export type MusicUpdateWithoutPlaylistInput = {
   authorChannelUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   authorName?: InputMaybe<StringFieldUpdateOperationsInput>;
-  lengthSeconds?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  lengthSeconds?: InputMaybe<IntFieldUpdateOperationsInput>;
   likes?: InputMaybe<IntFieldUpdateOperationsInput>;
   shortDescription?: InputMaybe<StringFieldUpdateOperationsInput>;
   thumbnailUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   videoId?: InputMaybe<StringFieldUpdateOperationsInput>;
-  viewCount?: InputMaybe<StringFieldUpdateOperationsInput>;
+  viewCount?: InputMaybe<IntFieldUpdateOperationsInput>;
 };
 
 export type MusicUpsertWithWhereUniqueWithoutPlaylistInput = {
@@ -274,14 +286,16 @@ export type MusicWhereInput = {
   OR?: InputMaybe<Array<MusicWhereInput>>;
   authorChannelUrl?: InputMaybe<StringFilter>;
   authorName?: InputMaybe<StringFilter>;
-  lengthSeconds?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  lengthSeconds?: InputMaybe<IntFilter>;
   likes?: InputMaybe<IntFilter>;
   playlist?: InputMaybe<PlaylistListRelationFilter>;
   shortDescription?: InputMaybe<StringFilter>;
   thumbnailUrl?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
   videoId?: InputMaybe<StringFilter>;
-  viewCount?: InputMaybe<StringFilter>;
+  viewCount?: InputMaybe<IntFilter>;
 };
 
 export type MusicWhereUniqueInput = {
@@ -412,12 +426,14 @@ export type NullableStringFieldUpdateOperationsInput = {
 export type Playlist = {
   __typename?: 'Playlist';
   _count: PlaylistCount;
+  createdAt: Scalars['DateTime'];
   description?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   music?: Maybe<Array<Music>>;
   name: Scalars['String'];
   owner: User;
   ownerId: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
 };
 
 export type PlaylistCount = {
@@ -426,16 +442,20 @@ export type PlaylistCount = {
 };
 
 export type PlaylistCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   description?: InputMaybe<Scalars['String']>;
   music?: InputMaybe<MusicCreateNestedManyWithoutPlaylistInput>;
   name: Scalars['String'];
   owner: UserCreateNestedOneWithoutPlaylistInput;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type PlaylistCreateManyOwnerInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['Int']>;
   name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type PlaylistCreateManyOwnerInputEnvelope = {
@@ -467,15 +487,19 @@ export type PlaylistCreateOrConnectWithoutOwnerInput = {
 };
 
 export type PlaylistCreateWithoutMusicInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   description?: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
   owner: UserCreateNestedOneWithoutPlaylistInput;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type PlaylistCreateWithoutOwnerInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   description?: InputMaybe<Scalars['String']>;
   music?: InputMaybe<MusicCreateNestedManyWithoutPlaylistInput>;
   name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type PlaylistListRelationFilter = {
@@ -489,34 +513,42 @@ export type PlaylistOrderByRelationAggregateInput = {
 };
 
 export type PlaylistOrderByWithRelationInput = {
+  createdAt?: InputMaybe<SortOrder>;
   description?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   music?: InputMaybe<MusicOrderByRelationAggregateInput>;
   name?: InputMaybe<SortOrder>;
   owner?: InputMaybe<UserOrderByWithRelationInput>;
   ownerId?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export enum PlaylistScalarFieldEnum {
+  CreatedAt = 'createdAt',
   Description = 'description',
   Id = 'id',
   Name = 'name',
-  OwnerId = 'ownerId'
+  OwnerId = 'ownerId',
+  UpdatedAt = 'updatedAt'
 }
 
 export type PlaylistScalarWhereInput = {
   AND?: InputMaybe<Array<PlaylistScalarWhereInput>>;
   NOT?: InputMaybe<Array<PlaylistScalarWhereInput>>;
   OR?: InputMaybe<Array<PlaylistScalarWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
   description?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<IntFilter>;
   name?: InputMaybe<StringFilter>;
   ownerId?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
 export type PlaylistUpdateManyMutationInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type PlaylistUpdateManyWithWhereWithoutOwnerInput = {
@@ -544,9 +576,11 @@ export type PlaylistUpdateWithWhereUniqueWithoutOwnerInput = {
 };
 
 export type PlaylistUpdateWithoutOwnerInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   music?: InputMaybe<MusicUpdateManyWithoutPlaylistNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type PlaylistUpsertWithWhereUniqueWithoutOwnerInput = {
@@ -559,12 +593,14 @@ export type PlaylistWhereInput = {
   AND?: InputMaybe<Array<PlaylistWhereInput>>;
   NOT?: InputMaybe<Array<PlaylistWhereInput>>;
   OR?: InputMaybe<Array<PlaylistWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
   description?: InputMaybe<StringNullableFilter>;
   id?: InputMaybe<IntFilter>;
   music?: InputMaybe<MusicListRelationFilter>;
   name?: InputMaybe<StringFilter>;
   owner?: InputMaybe<UserRelationFilter>;
   ownerId?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
 export type PlaylistWhereUniqueInput = {
@@ -574,7 +610,9 @@ export type PlaylistWhereUniqueInput = {
 export type Profile = {
   __typename?: 'Profile';
   avatarUrl: Scalars['String'];
+  createdAt: Scalars['DateTime'];
   lastInteractGuildName: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
   user: User;
   userId: Scalars['String'];
   username: Scalars['String'];
@@ -582,7 +620,9 @@ export type Profile = {
 
 export type ProfileCreateInput = {
   avatarUrl: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   lastInteractGuildName: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
   user: UserCreateNestedOneWithoutProfileInput;
   username: Scalars['String'];
 };
@@ -600,13 +640,17 @@ export type ProfileCreateOrConnectWithoutUserInput = {
 
 export type ProfileCreateWithoutUserInput = {
   avatarUrl: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   lastInteractGuildName: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
   username: Scalars['String'];
 };
 
 export type ProfileOrderByWithRelationInput = {
   avatarUrl?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
   lastInteractGuildName?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
   user?: InputMaybe<UserOrderByWithRelationInput>;
   userId?: InputMaybe<SortOrder>;
   username?: InputMaybe<SortOrder>;
@@ -619,14 +663,18 @@ export type ProfileRelationFilter = {
 
 export enum ProfileScalarFieldEnum {
   AvatarUrl = 'avatarUrl',
+  CreatedAt = 'createdAt',
   LastInteractGuildName = 'lastInteractGuildName',
+  UpdatedAt = 'updatedAt',
   UserId = 'userId',
   Username = 'username'
 }
 
 export type ProfileUpdateInput = {
   avatarUrl: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   lastInteractGuildName: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
   username: Scalars['String'];
 };
 
@@ -635,7 +683,9 @@ export type ProfileWhereInput = {
   NOT?: InputMaybe<Array<ProfileWhereInput>>;
   OR?: InputMaybe<Array<ProfileWhereInput>>;
   avatarUrl?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
   lastInteractGuildName?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
   user?: InputMaybe<UserRelationFilter>;
   userId?: InputMaybe<StringFilter>;
   username?: InputMaybe<StringFilter>;
@@ -887,7 +937,7 @@ export type AddMusicToPlaylistMutationVariables = Exact<{
 }>;
 
 
-export type AddMusicToPlaylistMutation = { __typename?: 'Mutation', addMusicToPlaylist: { __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: string, viewCount: string, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number } };
+export type AddMusicToPlaylistMutation = { __typename?: 'Mutation', addMusicToPlaylist: { __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: number, viewCount: number, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number } };
 
 export type RemoveMusicFromPlaylistMutationVariables = Exact<{
   playlistId: Scalars['Int'];
@@ -907,7 +957,7 @@ export type GetPlaylistQueryVariables = Exact<{
 }>;
 
 
-export type GetPlaylistQuery = { __typename?: 'Query', playlist?: { __typename?: 'Playlist', id: string, name: string, description?: string | null, ownerId: string, music?: Array<{ __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: string, viewCount: string, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number }> | null } | null };
+export type GetPlaylistQuery = { __typename?: 'Query', playlist?: { __typename?: 'Playlist', id: string, name: string, description?: string | null, ownerId: string, music?: Array<{ __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: number, viewCount: number, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number, createdAt: any, updatedAt: any }> | null } | null };
 
 export type CreateUserPlaylistMutationVariables = Exact<{
   data: PlaylistCreateWithoutOwnerInput;
@@ -994,6 +1044,8 @@ export const GetPlaylistDocument = gql`
       authorChannelUrl
       thumbnailUrl
       likes
+      createdAt
+      updatedAt
     }
   }
 }

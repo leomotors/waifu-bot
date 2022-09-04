@@ -15,4 +15,10 @@ export class PlaylistMinAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
     ownerId?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    createdAt?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    updatedAt?: true;
 }

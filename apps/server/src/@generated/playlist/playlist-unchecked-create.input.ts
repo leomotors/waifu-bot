@@ -20,4 +20,10 @@ export class PlaylistUncheckedCreateInput {
 
     @Field(() => MusicUncheckedCreateNestedManyWithoutPlaylistInput, {nullable:true})
     music?: MusicUncheckedCreateNestedManyWithoutPlaylistInput;
+
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 }

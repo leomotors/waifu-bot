@@ -27,6 +27,8 @@ query getPlaylist($where: PlaylistWhereUniqueInput!) {
             authorChannelUrl
             thumbnailUrl
             likes
+            createdAt
+            updatedAt
         }
     }
 }

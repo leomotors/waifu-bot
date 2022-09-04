@@ -2,7 +2,7 @@
 // * Data such as App Version, Waifu Specific Information and common consts
 // * will be in this package
 
-export const AppVersion = "4.0.606";
+export const AppVersion = "4.0.620";
 
 export const ShortNameEN = "Vergil";
 export const ShortNameJA = "Vergil";

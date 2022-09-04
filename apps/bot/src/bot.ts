@@ -1,6 +1,6 @@
 import "./dotenv";
 
-import { ShortNameJA } from "@waifu-bot/constants";
+import { AppVersion, ShortNameJA } from "@waifu-bot/constants";
 
 import {
     ActivityGroupLoader,
@@ -78,9 +78,9 @@ const activityManager = new ActivityManager(
 client.on("ready", (cli) => {
     console.log(
         chalk.cyan(
-            `${ShortNameJA} Ready! Logged in as ${cli.user.tag}, took ${process
-                .uptime()
-                .toFixed(3)} seconds`
+            `${ShortNameJA} Ready! Logged in as ${
+                cli.user.tag
+            } v${AppVersion}, took ${process.uptime().toFixed(3)} seconds`
         )
     );
     scenter.syncCommands(true);

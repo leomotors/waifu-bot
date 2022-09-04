@@ -22,6 +22,12 @@ export class PlaylistOrderByWithAggregationInput {
     @Field(() => SortOrder, {nullable:true})
     ownerId?: keyof typeof SortOrder;
 
+    @Field(() => SortOrder, {nullable:true})
+    createdAt?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    updatedAt?: keyof typeof SortOrder;
+
     @Field(() => PlaylistCountOrderByAggregateInput, {nullable:true})
     _count?: PlaylistCountOrderByAggregateInput;
 

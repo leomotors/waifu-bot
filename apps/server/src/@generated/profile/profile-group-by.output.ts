@@ -19,6 +19,12 @@ export class ProfileGroupBy {
     @Field(() => String, {nullable:false})
     avatarUrl!: string;
 
+    @Field(() => Date, {nullable:false})
+    createdAt!: Date | string;
+
+    @Field(() => Date, {nullable:false})
+    updatedAt!: Date | string;
+
     @Field(() => ProfileCountAggregate, {nullable:true})
     _count?: ProfileCountAggregate;
 

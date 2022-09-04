@@ -5,7 +5,6 @@ import {
   useGetPlaylistQuery,
   useRemoveMusicFromPlaylistMutation,
 } from "$graphql";
-import { trim } from "$lib/string";
 import { formatTime } from "$lib/time";
 import type { WaifuPage } from "$lib/types";
 import { validateURL } from "$lib/ytdl-utils";
@@ -106,11 +105,12 @@ const PlaylistEditPage: WaifuPage = () => {
         <thead>
           <th>Thumbnail</th>
           <th>Title</th>
-          <th>Short Description</th>
           <th>Duration</th>
           <th>Author</th>
           <th>Views</th>
           <th>いいね!</th>
+          <th>Created at</th>
+          <th>Updated at</th>
           <th>Actions</th>
         </thead>
         <tbody>
@@ -134,9 +134,6 @@ const PlaylistEditPage: WaifuPage = () => {
                   {music.title}
                 </a>
               </td>
-              <td title={music.shortDescription}>
-                {trim(music.shortDescription, 50)}
-              </td>
               <td>{formatTime(+music.lengthSeconds)}</td>
               <td>
                 <a href={music.authorChannelUrl} className={styles.waifuLink}>
@@ -145,6 +142,8 @@ const PlaylistEditPage: WaifuPage = () => {
               </td>
               <td>{music.viewCount}</td>
               <td>{music.likes}</td>
+              <td>{new Date(music.createdAt).toLocaleString()}</td>
+              <td>{new Date(music.updatedAt).toLocaleString()}</td>
               <td>
                 <button
                   onClick={async () => {

@@ -6,5 +6,11 @@ import { Float } from '@nestjs/graphql';
 export class MusicAvgAggregate {
 
     @Field(() => Float, {nullable:true})
+    lengthSeconds?: number;
+
+    @Field(() => Float, {nullable:true})
+    viewCount?: number;
+
+    @Field(() => Float, {nullable:true})
     likes?: number;
 }

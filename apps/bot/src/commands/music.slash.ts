@@ -42,11 +42,11 @@ export class Music extends MusicBase {
             ctx.user.id
         );
 
-        if (result != "No results found") {
+        if (typeof result != "string") {
             const emb = this.musicEmbed(ctx, ctx.user.id, result);
-            await ctx.followUp({ embeds: [emb.toJSON()] });
+            await ctx.followUp({ embeds: [emb] });
         } else {
-            await ctx.followUp("Unexpected Error: Video not found");
+            await ctx.followUp(`Unexpected Error: ${result}`);
         }
     }
 

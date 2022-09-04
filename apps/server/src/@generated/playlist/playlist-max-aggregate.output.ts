@@ -16,4 +16,10 @@ export class PlaylistMaxAggregate {
 
     @Field(() => String, {nullable:true})
     ownerId?: string;
+
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 }

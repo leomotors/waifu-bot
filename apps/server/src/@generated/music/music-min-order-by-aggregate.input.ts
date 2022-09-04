@@ -31,4 +31,10 @@ export class MusicMinOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     likes?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    createdAt?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    updatedAt?: keyof typeof SortOrder;
 }

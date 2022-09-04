@@ -68,7 +68,7 @@ export class PlaylistResolver {
 
     @ResolveField(() => PlaylistCount)
     _count(@Parent() playlist: Playlist) {
-        return { music: this.service.countMusics(playlist) };
+        return this.service._count(playlist);
     }
 
     @Mutation(() => Playlist)

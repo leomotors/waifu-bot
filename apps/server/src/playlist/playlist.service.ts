@@ -31,12 +31,13 @@ export class PlaylistService {
             .owner();
     }
 
-    async countMusics(playlist: Playlist) {
+    async _count(playlist: Playlist) {
         return (
-            await this.prisma.playlist
-                .findUniqueOrThrow({ where: { id: playlist.id } })
-                .music({ select: { videoId: true } })
-        ).length;
+            await this.prisma.playlist.findUniqueOrThrow({
+                where: { id: playlist.id },
+                select: { _count: true },
+            })
+        )._count;
     }
 
     create(input: CreateOnePlaylistArgs) {

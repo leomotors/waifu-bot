@@ -6,5 +6,11 @@ import { Int } from '@nestjs/graphql';
 export class MusicSumAggregate {
 
     @Field(() => Int, {nullable:true})
+    lengthSeconds?: number;
+
+    @Field(() => Int, {nullable:true})
+    viewCount?: number;
+
+    @Field(() => Int, {nullable:true})
     likes?: number;
 }

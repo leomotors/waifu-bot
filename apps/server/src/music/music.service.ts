@@ -10,7 +10,7 @@ import { FindUniqueMusicArgs } from "@generated/music/find-unique-music.args";
 import { Music } from "@generated/music/music.model";
 import { User } from "@generated/user/user.model";
 
-import * as ytdl from "ytdl-core";
+import { extractID, video_basic_info } from "play-dl";
 
 import { PrismaService } from "../prisma.service";
 import { AdminUser, isAdminUser } from "../user/user.decorator";
@@ -42,10 +42,13 @@ export class MusicService {
             .playlist();
     }
 
-    countPlaylists(music: Music) {
-        return this.prisma.playlist.count({
-            where: { music: { some: { videoId: music.videoId } } },
-        });
+    async _count(music: Music) {
+        return (
+            await this.prisma.music.findUniqueOrThrow({
+                where: { videoId: music.videoId },
+                select: { _count: true },
+            })
+        )._count;
     }
 
     create(input: CreateOneMusicArgs) {
@@ -70,8 +73,10 @@ export class MusicService {
     }
 
     async addMusicToPlaylist(input: AddMusicFromUrlArgs): Promise<Music> {
+        const idInput = extractID(input.url);
+
         const musicIfExist = await this.prisma.music.findUnique({
-            where: { videoId: ytdl.getVideoID(input.url) },
+            where: { videoId: idInput },
         });
 
         if (musicIfExist) {
@@ -89,12 +94,11 @@ export class MusicService {
             });
         }
 
-        const info = await ytdl.getInfo(input.url);
+        const info = await video_basic_info(input.url);
 
-        const short = info.player_response.videoDetails;
-        const details = info.videoDetails;
+        const video = info.video_details;
 
-        const thumbnails = short.thumbnail.thumbnails;
+        const thumbnails = video.thumbnails;
         const thumbnail = thumbnails[thumbnails.length - 1]!;
 
         return this.prisma.music.create({
@@ -104,15 +108,15 @@ export class MusicService {
                         id: input.playlistId,
                     },
                 },
-                videoId: details.videoId,
-                title: details.title,
-                shortDescription: short.shortDescription,
-                lengthSeconds: details.lengthSeconds,
-                viewCount: details.viewCount,
-                authorName: details.author.name,
-                authorChannelUrl: details.author.channel_url,
+                videoId: idInput,
+                title: video.title ?? "",
+                shortDescription: video.description ?? "",
+                lengthSeconds: video.durationInSec,
+                viewCount: video.views,
+                authorName: video.channel?.name ?? "",
+                authorChannelUrl: video.channel?.url ?? "",
                 thumbnailUrl: thumbnail.url,
-                likes: details.likes ?? 0,
+                likes: video.likes,
             },
         });
     }

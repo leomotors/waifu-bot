@@ -9,7 +9,7 @@ export type AddMusicToPlaylistMutationVariables = Types.Exact<{
 }>;
 
 
-export type AddMusicToPlaylistMutation = { __typename?: 'Mutation', addMusicToPlaylist: { __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: string, viewCount: string, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number } };
+export type AddMusicToPlaylistMutation = { __typename?: 'Mutation', addMusicToPlaylist: { __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: number, viewCount: number, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number } };
 
 export type RemoveMusicFromPlaylistMutationVariables = Types.Exact<{
   playlistId: Types.Scalars['Int'];

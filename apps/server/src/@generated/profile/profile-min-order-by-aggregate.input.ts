@@ -16,4 +16,10 @@ export class ProfileMinOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     avatarUrl?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    createdAt?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    updatedAt?: keyof typeof SortOrder;
 }

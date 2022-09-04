@@ -24,4 +24,10 @@ export class PlaylistOrderByWithRelationInput {
 
     @Field(() => MusicOrderByRelationAggregateInput, {nullable:true})
     music?: MusicOrderByRelationAggregateInput;
+
+    @Field(() => SortOrder, {nullable:true})
+    createdAt?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    updatedAt?: keyof typeof SortOrder;
 }

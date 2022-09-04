@@ -16,4 +16,10 @@ export class PlaylistUncheckedCreateWithoutMusicInput {
 
     @Field(() => String, {nullable:false})
     ownerId!: string;
+
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 }

@@ -19,4 +19,10 @@ export class Profile {
 
     @Field(() => String, {nullable:false})
     avatarUrl!: string;
+
+    @Field(() => Date, {nullable:false})
+    createdAt!: Date;
+
+    @Field(() => Date, {nullable:false})
+    updatedAt!: Date;
 }

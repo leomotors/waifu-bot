@@ -17,5 +17,11 @@ export class ProfileCountAggregateInput {
     avatarUrl?: true;
 
     @Field(() => Boolean, {nullable:true})
+    createdAt?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    updatedAt?: true;
+
+    @Field(() => Boolean, {nullable:true})
     _all?: true;
 }

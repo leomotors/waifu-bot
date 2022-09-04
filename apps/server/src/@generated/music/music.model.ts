@@ -17,11 +17,11 @@ export class Music {
     @Field(() => String, {nullable:false})
     shortDescription!: string;
 
-    @Field(() => String, {nullable:false})
-    lengthSeconds!: string;
+    @Field(() => Int, {nullable:false})
+    lengthSeconds!: number;
 
-    @Field(() => String, {nullable:false})
-    viewCount!: string;
+    @Field(() => Int, {nullable:false})
+    viewCount!: number;
 
     @Field(() => String, {nullable:false})
     authorName!: string;
@@ -37,6 +37,12 @@ export class Music {
 
     @Field(() => [Playlist], {nullable:true})
     playlist?: Array<Playlist>;
+
+    @Field(() => Date, {nullable:false})
+    createdAt!: Date;
+
+    @Field(() => Date, {nullable:false})
+    updatedAt!: Date;
 
     @Field(() => MusicCount, {nullable:false})
     _count?: MusicCount;

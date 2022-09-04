@@ -66,7 +66,7 @@ export class UserResolver {
 
     @ResolveField(() => UserCount)
     _count(@Parent() user: User) {
-        return { playlist: this.service.countPlaylists(user) };
+        return this.service._count(user);
     }
 
     @Mutation(() => User)

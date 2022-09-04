@@ -13,7 +13,7 @@ export type GetPlaylistQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetPlaylistQuery = { __typename?: 'Query', playlist?: { __typename?: 'Playlist', id: string, name: string, description?: string | null, ownerId: string, music?: Array<{ __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: string, viewCount: string, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number }> | null } | null };
+export type GetPlaylistQuery = { __typename?: 'Query', playlist?: { __typename?: 'Playlist', id: string, name: string, description?: string | null, ownerId: string, music?: Array<{ __typename?: 'Music', videoId: string, title: string, shortDescription: string, lengthSeconds: number, viewCount: number, authorName: string, authorChannelUrl: string, thumbnailUrl: string, likes: number, createdAt: any, updatedAt: any }> | null } | null };
 
 export type CreateUserPlaylistMutationVariables = Types.Exact<{
   data: Types.PlaylistCreateWithoutOwnerInput;
@@ -81,6 +81,8 @@ export const GetPlaylistDocument = gql`
       authorChannelUrl
       thumbnailUrl
       likes
+      createdAt
+      updatedAt
     }
   }
 }

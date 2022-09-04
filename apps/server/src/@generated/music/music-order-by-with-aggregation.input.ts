@@ -37,6 +37,12 @@ export class MusicOrderByWithAggregationInput {
     @Field(() => SortOrder, {nullable:true})
     likes?: keyof typeof SortOrder;
 
+    @Field(() => SortOrder, {nullable:true})
+    createdAt?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    updatedAt?: keyof typeof SortOrder;
+
     @Field(() => MusicCountOrderByAggregateInput, {nullable:true})
     _count?: MusicCountOrderByAggregateInput;
 

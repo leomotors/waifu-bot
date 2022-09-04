@@ -9,14 +9,14 @@
     "format": "eslint src --fix"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.11.6",
+    "@graphql-codegen/cli": "^2.12.0",
     "@graphql-codegen/near-operation-file-preset": "^2.4.1",
     "@graphql-codegen/typescript": "^2.7.3",
-    "@graphql-codegen/typescript-graphql-request": "^4.5.3",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.4",
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
     "@waifu-bot/config": "workspace:0.0.0",
-    "eslint": "^8.22.0",
+    "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.19",
@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "graphql": "^16.5.0",
-    "graphql-request": "^4.3.0",
+    "graphql": "^16.6.0",
+    "graphql-request": "^5.0.0",
     "graphql-tag": "^2.12.6"
   }
 }

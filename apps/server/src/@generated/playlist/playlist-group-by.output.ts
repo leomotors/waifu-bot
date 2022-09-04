@@ -22,6 +22,12 @@ export class PlaylistGroupBy {
     @Field(() => String, {nullable:false})
     ownerId!: string;
 
+    @Field(() => Date, {nullable:false})
+    createdAt!: Date | string;
+
+    @Field(() => Date, {nullable:false})
+    updatedAt!: Date | string;
+
     @Field(() => PlaylistCountAggregate, {nullable:true})
     _count?: PlaylistCountAggregate;
 

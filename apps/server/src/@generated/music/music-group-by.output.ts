@@ -19,11 +19,11 @@ export class MusicGroupBy {
     @Field(() => String, {nullable:false})
     shortDescription!: string;
 
-    @Field(() => String, {nullable:false})
-    lengthSeconds!: string;
+    @Field(() => Int, {nullable:false})
+    lengthSeconds!: number;
 
-    @Field(() => String, {nullable:false})
-    viewCount!: string;
+    @Field(() => Int, {nullable:false})
+    viewCount!: number;
 
     @Field(() => String, {nullable:false})
     authorName!: string;
@@ -36,6 +36,12 @@ export class MusicGroupBy {
 
     @Field(() => Int, {nullable:false})
     likes!: number;
+
+    @Field(() => Date, {nullable:false})
+    createdAt!: Date | string;
+
+    @Field(() => Date, {nullable:false})
+    updatedAt!: Date | string;
 
     @Field(() => MusicCountAggregate, {nullable:true})
     _count?: MusicCountAggregate;

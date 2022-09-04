@@ -20,6 +20,12 @@ export class ProfileOrderByWithAggregationInput {
     @Field(() => SortOrder, {nullable:true})
     avatarUrl?: keyof typeof SortOrder;
 
+    @Field(() => SortOrder, {nullable:true})
+    createdAt?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    updatedAt?: keyof typeof SortOrder;
+
     @Field(() => ProfileCountOrderByAggregateInput, {nullable:true})
     _count?: ProfileCountOrderByAggregateInput;
 

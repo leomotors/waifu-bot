@@ -4,6 +4,7 @@ import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operat
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 import { MusicUncheckedUpdateManyWithoutPlaylistNestedInput } from '../music/music-unchecked-update-many-without-playlist-nested.input';
+import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 
 @InputType()
 export class PlaylistUncheckedUpdateWithoutOwnerInput {
@@ -19,4 +20,10 @@ export class PlaylistUncheckedUpdateWithoutOwnerInput {
 
     @Field(() => MusicUncheckedUpdateManyWithoutPlaylistNestedInput, {nullable:true})
     music?: MusicUncheckedUpdateManyWithoutPlaylistNestedInput;
+
+    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
+    createdAt?: DateTimeFieldUpdateOperationsInput;
+
+    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
+    updatedAt?: DateTimeFieldUpdateOperationsInput;
 }

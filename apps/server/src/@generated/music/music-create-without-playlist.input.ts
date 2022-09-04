@@ -14,11 +14,11 @@ export class MusicCreateWithoutPlaylistInput {
     @Field(() => String, {nullable:false})
     shortDescription!: string;
 
-    @Field(() => String, {nullable:false})
-    lengthSeconds!: string;
+    @Field(() => Int, {nullable:false})
+    lengthSeconds!: number;
 
-    @Field(() => String, {nullable:false})
-    viewCount!: string;
+    @Field(() => Int, {nullable:false})
+    viewCount!: number;
 
     @Field(() => String, {nullable:false})
     authorName!: string;
@@ -31,4 +31,10 @@ export class MusicCreateWithoutPlaylistInput {
 
     @Field(() => Int, {nullable:false})
     likes!: number;
+
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 }

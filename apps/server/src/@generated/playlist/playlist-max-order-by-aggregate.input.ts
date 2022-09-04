@@ -16,4 +16,10 @@ export class PlaylistMaxOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     ownerId?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    createdAt?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    updatedAt?: keyof typeof SortOrder;
 }

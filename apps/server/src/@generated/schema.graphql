@@ -8,7 +8,14 @@ type Profile {
   username: String!
   lastInteractGuildName: String!
   avatarUrl: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type MusicCount {
   playlist: Int!
@@ -18,13 +25,15 @@ type Music {
   videoId: ID!
   title: String!
   shortDescription: String!
-  lengthSeconds: String!
-  viewCount: String!
+  lengthSeconds: Int!
+  viewCount: Int!
   authorName: String!
   authorChannelUrl: String!
   thumbnailUrl: String!
   likes: Int!
   playlist: [Playlist!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
   _count: MusicCount!
 }
 
@@ -39,6 +48,8 @@ type Playlist {
   owner: User!
   ownerId: String!
   music: [Music!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
   _count: PlaylistCount!
 }
 
@@ -55,11 +66,6 @@ type User {
   accessToken: AccessToken
   _count: UserCount!
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type AccessToken {
   token: String!
@@ -182,6 +188,8 @@ input ProfileWhereInput {
   username: StringFilter
   lastInteractGuildName: StringFilter
   avatarUrl: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
 }
 
 input PlaylistListRelationFilter {
@@ -200,6 +208,8 @@ input PlaylistWhereInput {
   owner: UserRelationFilter
   ownerId: StringFilter
   music: MusicListRelationFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
 }
 
 input IntFilter {
@@ -266,13 +276,15 @@ input MusicWhereInput {
   videoId: StringFilter
   title: StringFilter
   shortDescription: StringFilter
-  lengthSeconds: StringFilter
-  viewCount: StringFilter
+  lengthSeconds: IntFilter
+  viewCount: IntFilter
   authorName: StringFilter
   authorChannelUrl: StringFilter
   thumbnailUrl: StringFilter
   likes: IntFilter
   playlist: PlaylistListRelationFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
 }
 
 input AccessTokenRelationFilter {
@@ -308,6 +320,8 @@ input ProfileOrderByWithRelationInput {
   username: SortOrder
   lastInteractGuildName: SortOrder
   avatarUrl: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
 }
 
 input PlaylistOrderByRelationAggregateInput {
@@ -337,6 +351,8 @@ input PlaylistOrderByWithRelationInput {
   owner: UserOrderByWithRelationInput
   ownerId: SortOrder
   music: MusicOrderByRelationAggregateInput
+  createdAt: SortOrder
+  updatedAt: SortOrder
 }
 
 input MusicOrderByRelationAggregateInput {
@@ -352,6 +368,8 @@ enum PlaylistScalarFieldEnum {
   name
   description
   ownerId
+  createdAt
+  updatedAt
 }
 
 input ProfileWhereUniqueInput {
@@ -363,6 +381,8 @@ enum ProfileScalarFieldEnum {
   username
   lastInteractGuildName
   avatarUrl
+  createdAt
+  updatedAt
 }
 
 input UserWhereUniqueInput {
@@ -386,13 +406,15 @@ input MusicCreateInput {
   videoId: String!
   title: String!
   shortDescription: String!
-  lengthSeconds: String!
-  viewCount: String!
+  lengthSeconds: Int!
+  viewCount: Int!
   authorName: String!
   authorChannelUrl: String!
   thumbnailUrl: String!
   likes: Int!
   playlist: PlaylistCreateNestedManyWithoutMusicInput
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input PlaylistCreateNestedManyWithoutMusicInput {
@@ -405,6 +427,8 @@ input PlaylistCreateWithoutMusicInput {
   name: String!
   description: String
   owner: UserCreateNestedOneWithoutPlaylistInput!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input UserCreateNestedOneWithoutPlaylistInput {
@@ -431,6 +455,8 @@ input ProfileCreateWithoutUserInput {
   username: String!
   lastInteractGuildName: String!
   avatarUrl: String!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input ProfileCreateOrConnectWithoutUserInput {
@@ -470,6 +496,8 @@ input PlaylistCreateInput {
   description: String
   owner: UserCreateNestedOneWithoutPlaylistInput!
   music: MusicCreateNestedManyWithoutPlaylistInput
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input MusicCreateNestedManyWithoutPlaylistInput {
@@ -482,12 +510,14 @@ input MusicCreateWithoutPlaylistInput {
   videoId: String!
   title: String!
   shortDescription: String!
-  lengthSeconds: String!
-  viewCount: String!
+  lengthSeconds: Int!
+  viewCount: Int!
   authorName: String!
   authorChannelUrl: String!
   thumbnailUrl: String!
   likes: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input MusicCreateOrConnectWithoutPlaylistInput {
@@ -499,6 +529,8 @@ input PlaylistCreateWithoutOwnerInput {
   name: String!
   description: String
   music: MusicCreateNestedManyWithoutPlaylistInput
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input ProfileCreateInput {
@@ -506,6 +538,8 @@ input ProfileCreateInput {
   username: String!
   lastInteractGuildName: String!
   avatarUrl: String!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input UserCreateNestedOneWithoutProfileInput {
@@ -543,6 +577,8 @@ input PlaylistCreateManyOwnerInput {
   id: Int
   name: String!
   description: String
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input UserCreateOrConnectWithoutProfileInput {
@@ -600,6 +636,8 @@ input PlaylistUpdateWithoutOwnerInput {
   name: StringFieldUpdateOperationsInput
   description: NullableStringFieldUpdateOperationsInput
   music: MusicUpdateManyWithoutPlaylistNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input NullableStringFieldUpdateOperationsInput {
@@ -629,12 +667,14 @@ input MusicUpdateWithoutPlaylistInput {
   videoId: StringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   shortDescription: StringFieldUpdateOperationsInput
-  lengthSeconds: StringFieldUpdateOperationsInput
-  viewCount: StringFieldUpdateOperationsInput
+  lengthSeconds: IntFieldUpdateOperationsInput
+  viewCount: IntFieldUpdateOperationsInput
   authorName: StringFieldUpdateOperationsInput
   authorChannelUrl: StringFieldUpdateOperationsInput
   thumbnailUrl: StringFieldUpdateOperationsInput
   likes: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input IntFieldUpdateOperationsInput {
@@ -662,24 +702,28 @@ input MusicScalarWhereInput {
   videoId: StringFilter
   title: StringFilter
   shortDescription: StringFilter
-  lengthSeconds: StringFilter
-  viewCount: StringFilter
+  lengthSeconds: IntFilter
+  viewCount: IntFilter
   authorName: StringFilter
   authorChannelUrl: StringFilter
   thumbnailUrl: StringFilter
   likes: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
 }
 
 input MusicUpdateManyMutationInput {
   videoId: StringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   shortDescription: StringFieldUpdateOperationsInput
-  lengthSeconds: StringFieldUpdateOperationsInput
-  viewCount: StringFieldUpdateOperationsInput
+  lengthSeconds: IntFieldUpdateOperationsInput
+  viewCount: IntFieldUpdateOperationsInput
   authorName: StringFieldUpdateOperationsInput
   authorChannelUrl: StringFieldUpdateOperationsInput
   thumbnailUrl: StringFieldUpdateOperationsInput
   likes: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input PlaylistUpdateWithWhereUniqueWithoutOwnerInput {
@@ -700,11 +744,15 @@ input PlaylistScalarWhereInput {
   name: StringFilter
   description: StringNullableFilter
   ownerId: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
 }
 
 input PlaylistUpdateManyMutationInput {
   name: StringFieldUpdateOperationsInput
   description: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input AccessTokenUpdateOneWithoutUserNestedInput {
@@ -732,6 +780,8 @@ input ProfileUpdateInput {
   username: String!
   lastInteractGuildName: String!
   avatarUrl: String!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input UserUpsertInput {

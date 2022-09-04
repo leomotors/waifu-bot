@@ -26,6 +26,12 @@ export class Playlist {
     @Field(() => [Music], {nullable:true})
     music?: Array<Music>;
 
+    @Field(() => Date, {nullable:false})
+    createdAt!: Date;
+
+    @Field(() => Date, {nullable:false})
+    updatedAt!: Date;
+
     @Field(() => PlaylistCount, {nullable:false})
     _count?: PlaylistCount;
 }

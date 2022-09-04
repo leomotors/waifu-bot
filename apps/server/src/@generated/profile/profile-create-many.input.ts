@@ -15,4 +15,10 @@ export class ProfileCreateManyInput {
 
     @Field(() => String, {nullable:false})
     avatarUrl!: string;
+
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 }

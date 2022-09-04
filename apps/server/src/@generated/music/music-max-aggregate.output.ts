@@ -14,11 +14,11 @@ export class MusicMaxAggregate {
     @Field(() => String, {nullable:true})
     shortDescription?: string;
 
-    @Field(() => String, {nullable:true})
-    lengthSeconds?: string;
+    @Field(() => Int, {nullable:true})
+    lengthSeconds?: number;
 
-    @Field(() => String, {nullable:true})
-    viewCount?: string;
+    @Field(() => Int, {nullable:true})
+    viewCount?: number;
 
     @Field(() => String, {nullable:true})
     authorName?: string;
@@ -31,4 +31,10 @@ export class MusicMaxAggregate {
 
     @Field(() => Int, {nullable:true})
     likes?: number;
+
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 }
