@@ -2,6 +2,7 @@
   "name": "@waifu-bot/graphql",
   "version": "0.0.0",
   "private": true,
+  "main": "src/react",
   "scripts": {
     "dev": "nodemon --watch src --ext \"graphql\" --exec pnpm generate",
     "generate": "graphql-codegen",

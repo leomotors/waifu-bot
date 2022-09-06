@@ -1,5 +1,6 @@
-import type { useGetMyInfoQuery } from "$graphql";
 import { DiscordDefaultAvatarUrl } from "$lib/constants";
+
+import type { useGetMyInfoQuery } from "@waifu-bot/graphql";
 
 import Image from "next/image";
 

@@ -1,6 +1,7 @@
 import { ProfileCard } from "$components/elements/ProfileCard";
-import { useGetMyInfoQuery } from "$graphql";
 import type { WaifuPage } from "$lib/types";
+
+import { useGetMyInfoQuery } from "@waifu-bot/graphql";
 
 import { useMemo } from "react";
 

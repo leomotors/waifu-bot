@@ -2,10 +2,10 @@ import "$styles/globals.scss";
 
 import { RenderWaifuPage } from "$components/layouts/RenderWaifuPage";
 import { Sidebar } from "$components/layouts/Sidebar";
-import { createApolloClient } from "$graphql";
 import { AuthProvider } from "$lib/contexts";
 
 import { ApolloProvider } from "@apollo/client";
+import { createApolloClient } from "@waifu-bot/graphql";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";

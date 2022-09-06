@@ -1,4 +1,4 @@
-import type { GetMyInfoQuery } from "$graphql";
+import type { GetMyInfoQuery } from "@waifu-bot/graphql";
 
 import { createContext } from "react";
 

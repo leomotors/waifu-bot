@@ -1,4 +1,4 @@
-import { useGetMyInfoQuery } from "$graphql";
+import { useGetMyInfoQuery } from "@waifu-bot/graphql";
 
 import { useRouter } from "next/router";
 

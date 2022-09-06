@@ -1,4 +1,4 @@
-import { useGetVersionQuery } from "$graphql";
+import { useGetVersionQuery } from "@waifu-bot/graphql";
 
 import type { NextPage } from "next";
 import Head from "next/head";

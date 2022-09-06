@@ -17,7 +17,6 @@
     "baseUrl": ".",
     "importsNotUsedAsValues": "error",
     "paths": {
-      "$graphql": ["../../packages/graphql/src/react"],
       "$components/*": ["components/*"],
       "$styles/*": ["styles/*"],
       "$lib/*": ["lib/*"]

@@ -1,11 +1,12 @@
 import styles from "$styles/components.module.scss";
 
+import { trim } from "$lib/string";
+import type { WaifuPage } from "$lib/types";
+
 import {
   useCreateUserPlaylistMutation,
   useGetMyPlaylistsQuery,
-} from "$graphql";
-import { trim } from "$lib/string";
-import type { WaifuPage } from "$lib/types";
+} from "@waifu-bot/graphql";
 
 import Link from "next/link";
 

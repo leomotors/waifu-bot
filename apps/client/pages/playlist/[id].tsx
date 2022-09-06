@@ -1,16 +1,16 @@
 import styles from "$styles/components.module.scss";
 
-import {
-  useAddMusicToPlaylistMutation,
-  useGetPlaylistQuery,
-  useRemoveMusicFromPlaylistMutation,
-} from "$graphql";
 import { formatTime } from "$lib/time";
 import type { WaifuPage } from "$lib/types";
 import { validateURL } from "$lib/ytdl-utils";
 
 import type { ApolloError } from "@apollo/client";
 import { YoutubeURLPrefix } from "@waifu-bot/constants";
+import {
+  useAddMusicToPlaylistMutation,
+  useGetPlaylistQuery,
+  useRemoveMusicFromPlaylistMutation,
+} from "@waifu-bot/graphql";
 
 import Image from "next/image";
 import Link from "next/link";
