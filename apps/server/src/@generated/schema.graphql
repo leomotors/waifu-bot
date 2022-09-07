@@ -53,8 +53,39 @@ type Playlist {
   _count: PlaylistCount!
 }
 
+type TodoItem {
+  id: ID!
+  title: String!
+  description: String!
+  color: String!
+  todoList: TodoList
+  todoListId: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TodoListCount {
+  todoItems: Int!
+  collaborators: Int!
+}
+
+type TodoList {
+  id: ID!
+  name: String!
+  description: String!
+  todoItems: [TodoItem!]
+  owner: User!
+  ownerId: String!
+  collaborators: [User!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  _count: TodoListCount!
+}
+
 type UserCount {
   playlist: Int!
+  todoListsOwned: Int!
+  todoListsCollaborated: Int!
 }
 
 type User {
@@ -64,6 +95,8 @@ type User {
   updatedAt: DateTime!
   playlist: [Playlist!]
   accessToken: AccessToken
+  todoListsOwned: [TodoList!]
+  todoListsCollaborated: [TodoList!]
   _count: UserCount!
 }
 
@@ -88,6 +121,10 @@ type Query {
   users: [User!]!
   user(where: UserWhereUniqueInput!): User
   me: User!
+  todoItems(where: TodoItemWhereInput, orderBy: [TodoItemOrderByWithRelationInput!], cursor: TodoItemWhereUniqueInput, take: Int, skip: Int, distinct: [TodoItemScalarFieldEnum!]): [TodoItem!]!
+  todoItem(where: TodoItemWhereUniqueInput!): TodoItem!
+  todoLists(where: TodoListWhereInput, orderBy: [TodoListOrderByWithRelationInput!], cursor: TodoListWhereUniqueInput, take: Int, skip: Int, distinct: [TodoListScalarFieldEnum!]): [TodoList!]!
+  todoList(where: TodoListWhereUniqueInput!): TodoList!
 }
 
 input AccessTokenWhereInput {
@@ -172,6 +209,8 @@ input UserWhereInput {
   updatedAt: DateTimeFilter
   playlist: PlaylistListRelationFilter
   accessToken: AccessTokenRelationFilter
+  todoListsOwned: TodoListListRelationFilter
+  todoListsCollaborated: TodoListListRelationFilter
 }
 
 input ProfileRelationFilter {
@@ -292,6 +331,80 @@ input AccessTokenRelationFilter {
   isNot: AccessTokenWhereInput
 }
 
+input TodoListListRelationFilter {
+  every: TodoListWhereInput
+  some: TodoListWhereInput
+  none: TodoListWhereInput
+}
+
+input TodoListWhereInput {
+  AND: [TodoListWhereInput!]
+  OR: [TodoListWhereInput!]
+  NOT: [TodoListWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  description: StringFilter
+  todoItems: TodoItemListRelationFilter
+  owner: UserRelationFilter
+  ownerId: StringFilter
+  collaborators: UserListRelationFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input TodoItemListRelationFilter {
+  every: TodoItemWhereInput
+  some: TodoItemWhereInput
+  none: TodoItemWhereInput
+}
+
+input TodoItemWhereInput {
+  AND: [TodoItemWhereInput!]
+  OR: [TodoItemWhereInput!]
+  NOT: [TodoItemWhereInput!]
+  id: IntFilter
+  title: StringFilter
+  description: StringFilter
+  color: StringFilter
+  todoList: TodoListRelationFilter
+  todoListId: IntNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input TodoListRelationFilter {
+  is: TodoListWhereInput
+  isNot: TodoListWhereInput
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  some: UserWhereInput
+  none: UserWhereInput
+}
+
 input AccessTokenOrderByWithRelationInput {
   token: SortOrder
   issued: SortOrder
@@ -312,6 +425,8 @@ input UserOrderByWithRelationInput {
   updatedAt: SortOrder
   playlist: PlaylistOrderByRelationAggregateInput
   accessToken: AccessTokenOrderByWithRelationInput
+  todoListsOwned: TodoListOrderByRelationAggregateInput
+  todoListsCollaborated: TodoListOrderByRelationAggregateInput
 }
 
 input ProfileOrderByWithRelationInput {
@@ -325,6 +440,10 @@ input ProfileOrderByWithRelationInput {
 }
 
 input PlaylistOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input TodoListOrderByRelationAggregateInput {
   _count: SortOrder
 }
 
@@ -389,6 +508,64 @@ input UserWhereUniqueInput {
   id: String
 }
 
+input TodoItemOrderByWithRelationInput {
+  id: SortOrder
+  title: SortOrder
+  description: SortOrder
+  color: SortOrder
+  todoList: TodoListOrderByWithRelationInput
+  todoListId: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+}
+
+input TodoListOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  description: SortOrder
+  todoItems: TodoItemOrderByRelationAggregateInput
+  owner: UserOrderByWithRelationInput
+  ownerId: SortOrder
+  collaborators: UserOrderByRelationAggregateInput
+  createdAt: SortOrder
+  updatedAt: SortOrder
+}
+
+input TodoItemOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input UserOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input TodoItemWhereUniqueInput {
+  id: Int
+}
+
+enum TodoItemScalarFieldEnum {
+  id
+  title
+  description
+  color
+  todoListId
+  createdAt
+  updatedAt
+}
+
+input TodoListWhereUniqueInput {
+  id: Int
+}
+
+enum TodoListScalarFieldEnum {
+  id
+  name
+  description
+  ownerId
+  createdAt
+  updatedAt
+}
+
 type Mutation {
   generateToken(where: UserWhereUniqueInput!): AccessToken!
   createMusic(data: MusicCreateInput!): Music!
@@ -400,6 +577,8 @@ type Mutation {
   createUser(data: UserCreateInput!): User!
   updateUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User!
   upsertUser(data: UserUpsertInput!): User!
+  createTodoItem(data: TodoItemCreateInput!): TodoItem!
+  createTodoList(data: TodoListCreateInput!): TodoList!
 }
 
 input MusicCreateInput {
@@ -443,6 +622,8 @@ input UserCreateWithoutPlaylistInput {
   createdAt: DateTime
   updatedAt: DateTime
   accessToken: AccessTokenCreateNestedOneWithoutUserInput
+  todoListsOwned: TodoListCreateNestedManyWithoutOwnerInput
+  todoListsCollaborated: TodoListCreateNestedManyWithoutCollaboratorsInput
 }
 
 input ProfileCreateNestedOneWithoutUserInput {
@@ -481,20 +662,82 @@ input AccessTokenCreateOrConnectWithoutUserInput {
   create: AccessTokenCreateWithoutUserInput!
 }
 
-input UserCreateOrConnectWithoutPlaylistInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutPlaylistInput!
+input TodoListCreateNestedManyWithoutOwnerInput {
+  create: [TodoListCreateWithoutOwnerInput!]
+  connectOrCreate: [TodoListCreateOrConnectWithoutOwnerInput!]
+  createMany: TodoListCreateManyOwnerInputEnvelope
+  connect: [TodoListWhereUniqueInput!]
 }
 
-input PlaylistCreateOrConnectWithoutMusicInput {
-  where: PlaylistWhereUniqueInput!
-  create: PlaylistCreateWithoutMusicInput!
+input TodoListCreateWithoutOwnerInput {
+  name: String!
+  description: String!
+  todoItems: TodoItemCreateNestedManyWithoutTodoListInput
+  collaborators: UserCreateNestedManyWithoutTodoListsCollaboratedInput
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
-input PlaylistCreateInput {
+input TodoItemCreateNestedManyWithoutTodoListInput {
+  create: [TodoItemCreateWithoutTodoListInput!]
+  connectOrCreate: [TodoItemCreateOrConnectWithoutTodoListInput!]
+  createMany: TodoItemCreateManyTodoListInputEnvelope
+  connect: [TodoItemWhereUniqueInput!]
+}
+
+input TodoItemCreateWithoutTodoListInput {
+  title: String!
+  description: String!
+  color: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input TodoItemCreateOrConnectWithoutTodoListInput {
+  where: TodoItemWhereUniqueInput!
+  create: TodoItemCreateWithoutTodoListInput!
+}
+
+input TodoItemCreateManyTodoListInputEnvelope {
+  data: [TodoItemCreateManyTodoListInput!]!
+  skipDuplicates: Boolean
+}
+
+input TodoItemCreateManyTodoListInput {
+  id: Int
+  title: String!
+  description: String!
+  color: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UserCreateNestedManyWithoutTodoListsCollaboratedInput {
+  create: [UserCreateWithoutTodoListsCollaboratedInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutTodoListsCollaboratedInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateWithoutTodoListsCollaboratedInput {
+  id: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
+  createdAt: DateTime
+  updatedAt: DateTime
+  playlist: PlaylistCreateNestedManyWithoutOwnerInput
+  accessToken: AccessTokenCreateNestedOneWithoutUserInput
+  todoListsOwned: TodoListCreateNestedManyWithoutOwnerInput
+}
+
+input PlaylistCreateNestedManyWithoutOwnerInput {
+  create: [PlaylistCreateWithoutOwnerInput!]
+  connectOrCreate: [PlaylistCreateOrConnectWithoutOwnerInput!]
+  createMany: PlaylistCreateManyOwnerInputEnvelope
+  connect: [PlaylistWhereUniqueInput!]
+}
+
+input PlaylistCreateWithoutOwnerInput {
   name: String!
   description: String
-  owner: UserCreateNestedOneWithoutPlaylistInput!
   music: MusicCreateNestedManyWithoutPlaylistInput
   createdAt: DateTime
   updatedAt: DateTime
@@ -525,9 +768,102 @@ input MusicCreateOrConnectWithoutPlaylistInput {
   create: MusicCreateWithoutPlaylistInput!
 }
 
-input PlaylistCreateWithoutOwnerInput {
+input PlaylistCreateOrConnectWithoutOwnerInput {
+  where: PlaylistWhereUniqueInput!
+  create: PlaylistCreateWithoutOwnerInput!
+}
+
+input PlaylistCreateManyOwnerInputEnvelope {
+  data: [PlaylistCreateManyOwnerInput!]!
+  skipDuplicates: Boolean
+}
+
+input PlaylistCreateManyOwnerInput {
+  id: Int
   name: String!
   description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UserCreateOrConnectWithoutTodoListsCollaboratedInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutTodoListsCollaboratedInput!
+}
+
+input TodoListCreateOrConnectWithoutOwnerInput {
+  where: TodoListWhereUniqueInput!
+  create: TodoListCreateWithoutOwnerInput!
+}
+
+input TodoListCreateManyOwnerInputEnvelope {
+  data: [TodoListCreateManyOwnerInput!]!
+  skipDuplicates: Boolean
+}
+
+input TodoListCreateManyOwnerInput {
+  id: Int
+  name: String!
+  description: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input TodoListCreateNestedManyWithoutCollaboratorsInput {
+  create: [TodoListCreateWithoutCollaboratorsInput!]
+  connectOrCreate: [TodoListCreateOrConnectWithoutCollaboratorsInput!]
+  connect: [TodoListWhereUniqueInput!]
+}
+
+input TodoListCreateWithoutCollaboratorsInput {
+  name: String!
+  description: String!
+  todoItems: TodoItemCreateNestedManyWithoutTodoListInput
+  owner: UserCreateNestedOneWithoutTodoListsOwnedInput!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UserCreateNestedOneWithoutTodoListsOwnedInput {
+  create: UserCreateWithoutTodoListsOwnedInput
+  connectOrCreate: UserCreateOrConnectWithoutTodoListsOwnedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutTodoListsOwnedInput {
+  id: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
+  createdAt: DateTime
+  updatedAt: DateTime
+  playlist: PlaylistCreateNestedManyWithoutOwnerInput
+  accessToken: AccessTokenCreateNestedOneWithoutUserInput
+  todoListsCollaborated: TodoListCreateNestedManyWithoutCollaboratorsInput
+}
+
+input UserCreateOrConnectWithoutTodoListsOwnedInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutTodoListsOwnedInput!
+}
+
+input TodoListCreateOrConnectWithoutCollaboratorsInput {
+  where: TodoListWhereUniqueInput!
+  create: TodoListCreateWithoutCollaboratorsInput!
+}
+
+input UserCreateOrConnectWithoutPlaylistInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutPlaylistInput!
+}
+
+input PlaylistCreateOrConnectWithoutMusicInput {
+  where: PlaylistWhereUniqueInput!
+  create: PlaylistCreateWithoutMusicInput!
+}
+
+input PlaylistCreateInput {
+  name: String!
+  description: String
+  owner: UserCreateNestedOneWithoutPlaylistInput!
   music: MusicCreateNestedManyWithoutPlaylistInput
   createdAt: DateTime
   updatedAt: DateTime
@@ -554,31 +890,8 @@ input UserCreateWithoutProfileInput {
   updatedAt: DateTime
   playlist: PlaylistCreateNestedManyWithoutOwnerInput
   accessToken: AccessTokenCreateNestedOneWithoutUserInput
-}
-
-input PlaylistCreateNestedManyWithoutOwnerInput {
-  create: [PlaylistCreateWithoutOwnerInput!]
-  connectOrCreate: [PlaylistCreateOrConnectWithoutOwnerInput!]
-  createMany: PlaylistCreateManyOwnerInputEnvelope
-  connect: [PlaylistWhereUniqueInput!]
-}
-
-input PlaylistCreateOrConnectWithoutOwnerInput {
-  where: PlaylistWhereUniqueInput!
-  create: PlaylistCreateWithoutOwnerInput!
-}
-
-input PlaylistCreateManyOwnerInputEnvelope {
-  data: [PlaylistCreateManyOwnerInput!]!
-  skipDuplicates: Boolean
-}
-
-input PlaylistCreateManyOwnerInput {
-  id: Int
-  name: String!
-  description: String
-  createdAt: DateTime
-  updatedAt: DateTime
+  todoListsOwned: TodoListCreateNestedManyWithoutOwnerInput
+  todoListsCollaborated: TodoListCreateNestedManyWithoutCollaboratorsInput
 }
 
 input UserCreateOrConnectWithoutProfileInput {
@@ -592,6 +905,8 @@ input UserCreateInput {
   updatedAt: DateTime
   playlist: PlaylistCreateNestedManyWithoutOwnerInput
   accessToken: AccessTokenCreateNestedOneWithoutUserInput
+  todoListsOwned: TodoListCreateNestedManyWithoutOwnerInput
+  todoListsCollaborated: TodoListCreateNestedManyWithoutCollaboratorsInput
   profile: ProfileCreateWithoutUserInput
 }
 
@@ -601,6 +916,8 @@ input UserUpdateInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
   playlist: PlaylistUpdateManyWithoutOwnerNestedInput
   accessToken: AccessTokenUpdateOneWithoutUserNestedInput
+  todoListsOwned: TodoListUpdateManyWithoutOwnerNestedInput
+  todoListsCollaborated: TodoListUpdateManyWithoutCollaboratorsNestedInput
   profile: ProfileUpdateInput
 }
 
@@ -776,6 +1093,261 @@ input AccessTokenUpdateWithoutUserInput {
   expire: DateTimeFieldUpdateOperationsInput
 }
 
+input TodoListUpdateManyWithoutOwnerNestedInput {
+  create: [TodoListCreateWithoutOwnerInput!]
+  connectOrCreate: [TodoListCreateOrConnectWithoutOwnerInput!]
+  upsert: [TodoListUpsertWithWhereUniqueWithoutOwnerInput!]
+  createMany: TodoListCreateManyOwnerInputEnvelope
+  set: [TodoListWhereUniqueInput!]
+  disconnect: [TodoListWhereUniqueInput!]
+  delete: [TodoListWhereUniqueInput!]
+  connect: [TodoListWhereUniqueInput!]
+  update: [TodoListUpdateWithWhereUniqueWithoutOwnerInput!]
+  updateMany: [TodoListUpdateManyWithWhereWithoutOwnerInput!]
+  deleteMany: [TodoListScalarWhereInput!]
+}
+
+input TodoListUpsertWithWhereUniqueWithoutOwnerInput {
+  where: TodoListWhereUniqueInput!
+  update: TodoListUpdateWithoutOwnerInput!
+  create: TodoListCreateWithoutOwnerInput!
+}
+
+input TodoListUpdateWithoutOwnerInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  todoItems: TodoItemUpdateManyWithoutTodoListNestedInput
+  collaborators: UserUpdateManyWithoutTodoListsCollaboratedNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input TodoItemUpdateManyWithoutTodoListNestedInput {
+  create: [TodoItemCreateWithoutTodoListInput!]
+  connectOrCreate: [TodoItemCreateOrConnectWithoutTodoListInput!]
+  upsert: [TodoItemUpsertWithWhereUniqueWithoutTodoListInput!]
+  createMany: TodoItemCreateManyTodoListInputEnvelope
+  set: [TodoItemWhereUniqueInput!]
+  disconnect: [TodoItemWhereUniqueInput!]
+  delete: [TodoItemWhereUniqueInput!]
+  connect: [TodoItemWhereUniqueInput!]
+  update: [TodoItemUpdateWithWhereUniqueWithoutTodoListInput!]
+  updateMany: [TodoItemUpdateManyWithWhereWithoutTodoListInput!]
+  deleteMany: [TodoItemScalarWhereInput!]
+}
+
+input TodoItemUpsertWithWhereUniqueWithoutTodoListInput {
+  where: TodoItemWhereUniqueInput!
+  update: TodoItemUpdateWithoutTodoListInput!
+  create: TodoItemCreateWithoutTodoListInput!
+}
+
+input TodoItemUpdateWithoutTodoListInput {
+  title: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  color: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input TodoItemUpdateWithWhereUniqueWithoutTodoListInput {
+  where: TodoItemWhereUniqueInput!
+  data: TodoItemUpdateWithoutTodoListInput!
+}
+
+input TodoItemUpdateManyWithWhereWithoutTodoListInput {
+  where: TodoItemScalarWhereInput!
+  data: TodoItemUpdateManyMutationInput!
+}
+
+input TodoItemScalarWhereInput {
+  AND: [TodoItemScalarWhereInput!]
+  OR: [TodoItemScalarWhereInput!]
+  NOT: [TodoItemScalarWhereInput!]
+  id: IntFilter
+  title: StringFilter
+  description: StringFilter
+  color: StringFilter
+  todoListId: IntNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input TodoItemUpdateManyMutationInput {
+  title: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  color: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input UserUpdateManyWithoutTodoListsCollaboratedNestedInput {
+  create: [UserCreateWithoutTodoListsCollaboratedInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutTodoListsCollaboratedInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutTodoListsCollaboratedInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutTodoListsCollaboratedInput!]
+  updateMany: [UserUpdateManyWithWhereWithoutTodoListsCollaboratedInput!]
+  deleteMany: [UserScalarWhereInput!]
+}
+
+input UserUpsertWithWhereUniqueWithoutTodoListsCollaboratedInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutTodoListsCollaboratedInput!
+  create: UserCreateWithoutTodoListsCollaboratedInput!
+}
+
+input UserUpdateWithoutTodoListsCollaboratedInput {
+  id: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  playlist: PlaylistUpdateManyWithoutOwnerNestedInput
+  accessToken: AccessTokenUpdateOneWithoutUserNestedInput
+  todoListsOwned: TodoListUpdateManyWithoutOwnerNestedInput
+}
+
+input ProfileUpdateOneWithoutUserNestedInput {
+  create: ProfileCreateWithoutUserInput
+  connectOrCreate: ProfileCreateOrConnectWithoutUserInput
+  upsert: ProfileUpsertWithoutUserInput
+  disconnect: Boolean
+  delete: Boolean
+  connect: ProfileWhereUniqueInput
+  update: ProfileUpdateWithoutUserInput
+}
+
+input ProfileUpsertWithoutUserInput {
+  update: ProfileUpdateWithoutUserInput!
+  create: ProfileCreateWithoutUserInput!
+}
+
+input ProfileUpdateWithoutUserInput {
+  username: StringFieldUpdateOperationsInput
+  lastInteractGuildName: StringFieldUpdateOperationsInput
+  avatarUrl: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input UserUpdateWithWhereUniqueWithoutTodoListsCollaboratedInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutTodoListsCollaboratedInput!
+}
+
+input UserUpdateManyWithWhereWithoutTodoListsCollaboratedInput {
+  where: UserScalarWhereInput!
+  data: UserUpdateManyMutationInput!
+}
+
+input UserScalarWhereInput {
+  AND: [UserScalarWhereInput!]
+  OR: [UserScalarWhereInput!]
+  NOT: [UserScalarWhereInput!]
+  id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input UserUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input TodoListUpdateWithWhereUniqueWithoutOwnerInput {
+  where: TodoListWhereUniqueInput!
+  data: TodoListUpdateWithoutOwnerInput!
+}
+
+input TodoListUpdateManyWithWhereWithoutOwnerInput {
+  where: TodoListScalarWhereInput!
+  data: TodoListUpdateManyMutationInput!
+}
+
+input TodoListScalarWhereInput {
+  AND: [TodoListScalarWhereInput!]
+  OR: [TodoListScalarWhereInput!]
+  NOT: [TodoListScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  description: StringFilter
+  ownerId: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input TodoListUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input TodoListUpdateManyWithoutCollaboratorsNestedInput {
+  create: [TodoListCreateWithoutCollaboratorsInput!]
+  connectOrCreate: [TodoListCreateOrConnectWithoutCollaboratorsInput!]
+  upsert: [TodoListUpsertWithWhereUniqueWithoutCollaboratorsInput!]
+  set: [TodoListWhereUniqueInput!]
+  disconnect: [TodoListWhereUniqueInput!]
+  delete: [TodoListWhereUniqueInput!]
+  connect: [TodoListWhereUniqueInput!]
+  update: [TodoListUpdateWithWhereUniqueWithoutCollaboratorsInput!]
+  updateMany: [TodoListUpdateManyWithWhereWithoutCollaboratorsInput!]
+  deleteMany: [TodoListScalarWhereInput!]
+}
+
+input TodoListUpsertWithWhereUniqueWithoutCollaboratorsInput {
+  where: TodoListWhereUniqueInput!
+  update: TodoListUpdateWithoutCollaboratorsInput!
+  create: TodoListCreateWithoutCollaboratorsInput!
+}
+
+input TodoListUpdateWithoutCollaboratorsInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  todoItems: TodoItemUpdateManyWithoutTodoListNestedInput
+  owner: UserUpdateOneRequiredWithoutTodoListsOwnedNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input UserUpdateOneRequiredWithoutTodoListsOwnedNestedInput {
+  create: UserCreateWithoutTodoListsOwnedInput
+  connectOrCreate: UserCreateOrConnectWithoutTodoListsOwnedInput
+  upsert: UserUpsertWithoutTodoListsOwnedInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutTodoListsOwnedInput
+}
+
+input UserUpsertWithoutTodoListsOwnedInput {
+  update: UserUpdateWithoutTodoListsOwnedInput!
+  create: UserCreateWithoutTodoListsOwnedInput!
+}
+
+input UserUpdateWithoutTodoListsOwnedInput {
+  id: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  playlist: PlaylistUpdateManyWithoutOwnerNestedInput
+  accessToken: AccessTokenUpdateOneWithoutUserNestedInput
+  todoListsCollaborated: TodoListUpdateManyWithoutCollaboratorsNestedInput
+}
+
+input TodoListUpdateWithWhereUniqueWithoutCollaboratorsInput {
+  where: TodoListWhereUniqueInput!
+  data: TodoListUpdateWithoutCollaboratorsInput!
+}
+
+input TodoListUpdateManyWithWhereWithoutCollaboratorsInput {
+  where: TodoListScalarWhereInput!
+  data: TodoListUpdateManyMutationInput!
+}
+
 input ProfileUpdateInput {
   username: String!
   lastInteractGuildName: String!
@@ -787,4 +1359,17 @@ input ProfileUpdateInput {
 input UserUpsertInput {
   id: String!
   profile: ProfileUpdateInput!
+}
+
+input TodoItemCreateInput {
+  title: String!
+  description: String!
+  color: String!
+  todoListId: ID!
+}
+
+input TodoListCreateInput {
+  name: String!
+  description: String!
+  ownerId: String!
 }

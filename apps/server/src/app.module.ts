@@ -16,6 +16,8 @@ import { AuthModule } from "./auth/auth.module";
 import { MusicModule } from "./music/music.module";
 import { PlaylistModule } from "./playlist/playlist.module";
 import { ProfileModule } from "./profile/profile.module";
+import { TodoItemModule } from "./todo-item/todo-item.module";
+import { TodoListModule } from "./todo-list/todo-list.module";
 import { UserModule } from "./user/user.module";
 
 @Global()
@@ -38,6 +40,8 @@ import { UserModule } from "./user/user.module";
         PlaylistModule,
         ProfileModule,
         UserModule,
+        TodoItemModule,
+        TodoListModule,
     ],
     controllers: [AppController],
     providers: [AppService, AppResolver, PrismaService],

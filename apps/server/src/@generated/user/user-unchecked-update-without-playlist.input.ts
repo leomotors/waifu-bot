@@ -4,6 +4,8 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 import { ProfileUncheckedUpdateOneWithoutUserNestedInput } from '../profile/profile-unchecked-update-one-without-user-nested.input';
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { AccessTokenUncheckedUpdateOneWithoutUserNestedInput } from '../access-token/access-token-unchecked-update-one-without-user-nested.input';
+import { TodoListUncheckedUpdateManyWithoutOwnerNestedInput } from '../todo-list/todo-list-unchecked-update-many-without-owner-nested.input';
+import { TodoListUncheckedUpdateManyWithoutCollaboratorsNestedInput } from '../todo-list/todo-list-unchecked-update-many-without-collaborators-nested.input';
 
 @InputType()
 export class UserUncheckedUpdateWithoutPlaylistInput {
@@ -22,4 +24,10 @@ export class UserUncheckedUpdateWithoutPlaylistInput {
 
     @Field(() => AccessTokenUncheckedUpdateOneWithoutUserNestedInput, {nullable:true})
     accessToken?: AccessTokenUncheckedUpdateOneWithoutUserNestedInput;
+
+    @Field(() => TodoListUncheckedUpdateManyWithoutOwnerNestedInput, {nullable:true})
+    todoListsOwned?: TodoListUncheckedUpdateManyWithoutOwnerNestedInput;
+
+    @Field(() => TodoListUncheckedUpdateManyWithoutCollaboratorsNestedInput, {nullable:true})
+    todoListsCollaborated?: TodoListUncheckedUpdateManyWithoutCollaboratorsNestedInput;
 }

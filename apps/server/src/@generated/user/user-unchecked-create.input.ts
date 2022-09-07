@@ -3,6 +3,8 @@ import { InputType } from '@nestjs/graphql';
 import { ProfileUncheckedCreateNestedOneWithoutUserInput } from '../profile/profile-unchecked-create-nested-one-without-user.input';
 import { PlaylistUncheckedCreateNestedManyWithoutOwnerInput } from '../playlist/playlist-unchecked-create-nested-many-without-owner.input';
 import { AccessTokenUncheckedCreateNestedOneWithoutUserInput } from '../access-token/access-token-unchecked-create-nested-one-without-user.input';
+import { TodoListUncheckedCreateNestedManyWithoutOwnerInput } from '../todo-list/todo-list-unchecked-create-nested-many-without-owner.input';
+import { TodoListUncheckedCreateNestedManyWithoutCollaboratorsInput } from '../todo-list/todo-list-unchecked-create-nested-many-without-collaborators.input';
 
 @InputType()
 export class UserUncheckedCreateInput {
@@ -24,4 +26,10 @@ export class UserUncheckedCreateInput {
 
     @Field(() => AccessTokenUncheckedCreateNestedOneWithoutUserInput, {nullable:true})
     accessToken?: AccessTokenUncheckedCreateNestedOneWithoutUserInput;
+
+    @Field(() => TodoListUncheckedCreateNestedManyWithoutOwnerInput, {nullable:true})
+    todoListsOwned?: TodoListUncheckedCreateNestedManyWithoutOwnerInput;
+
+    @Field(() => TodoListUncheckedCreateNestedManyWithoutCollaboratorsInput, {nullable:true})
+    todoListsCollaborated?: TodoListUncheckedCreateNestedManyWithoutCollaboratorsInput;
 }

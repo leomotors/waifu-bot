@@ -5,7 +5,7 @@ import { FindManyPlaylistArgs } from "@generated/playlist/find-many-playlist.arg
 import { FindUniquePlaylistArgs } from "@generated/playlist/find-unique-playlist.args";
 import { Playlist } from "@generated/playlist/playlist.model";
 
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "src/prisma.service";
 
 @Injectable()
 export class PlaylistService {

@@ -5,7 +5,7 @@ import { FindManyProfileArgs } from "@generated/profile/find-many-profile.args";
 import { FindUniqueProfileArgs } from "@generated/profile/find-unique-profile.args";
 import { Profile } from "@generated/profile/profile.model";
 
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "src/prisma.service";
 
 @Injectable()
 export class ProfileService {

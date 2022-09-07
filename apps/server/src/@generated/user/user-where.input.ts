@@ -5,6 +5,7 @@ import { ProfileRelationFilter } from '../profile/profile-relation-filter.input'
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { PlaylistListRelationFilter } from '../playlist/playlist-list-relation-filter.input';
 import { AccessTokenRelationFilter } from '../access-token/access-token-relation-filter.input';
+import { TodoListListRelationFilter } from '../todo-list/todo-list-list-relation-filter.input';
 
 @InputType()
 export class UserWhereInput {
@@ -35,4 +36,10 @@ export class UserWhereInput {
 
     @Field(() => AccessTokenRelationFilter, {nullable:true})
     accessToken?: AccessTokenRelationFilter;
+
+    @Field(() => TodoListListRelationFilter, {nullable:true})
+    todoListsOwned?: TodoListListRelationFilter;
+
+    @Field(() => TodoListListRelationFilter, {nullable:true})
+    todoListsCollaborated?: TodoListListRelationFilter;
 }

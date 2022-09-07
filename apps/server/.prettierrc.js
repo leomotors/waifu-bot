@@ -4,6 +4,7 @@ module.exports = {
         "^@waifu-bot",
         "^@nestjs",
         "^@",
+        "^src/",
         "^[a-zA-Z]",
         "^./prisma",
         "^./app",

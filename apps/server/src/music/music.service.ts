@@ -10,10 +10,10 @@ import { FindUniqueMusicArgs } from "@generated/music/find-unique-music.args";
 import { Music } from "@generated/music/music.model";
 import { User } from "@generated/user/user.model";
 
-import { extractID, video_basic_info } from "play-dl";
+import { PrismaService } from "src/prisma.service";
+import { AdminUser, isAdminUser } from "src/user/user.decorator";
 
-import { PrismaService } from "../prisma.service";
-import { AdminUser, isAdminUser } from "../user/user.decorator";
+import { extractID, video_basic_info } from "play-dl";
 
 import {
     AddMusicFromUrlArgs,

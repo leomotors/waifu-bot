@@ -4,9 +4,9 @@ import { AccessToken } from "@generated/access-token/access-token.model";
 import { FindManyAccessTokenArgs } from "@generated/access-token/find-many-access-token.args";
 import { FindUniqueUserArgs } from "@generated/user/find-unique-user.args";
 
-import { randomUUID } from "node:crypto";
+import { PrismaService } from "src/prisma.service";
 
-import { PrismaService } from "../prisma.service";
+import { randomUUID } from "node:crypto";
 
 @Injectable()
 export class AccessTokenService {

@@ -7,4 +7,10 @@ export class UserCount {
 
     @Field(() => Int, {nullable:false})
     playlist?: number;
+
+    @Field(() => Int, {nullable:false})
+    todoListsOwned?: number;
+
+    @Field(() => Int, {nullable:false})
+    todoListsCollaborated?: number;
 }

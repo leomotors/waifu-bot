@@ -4,6 +4,7 @@ import { SortOrder } from '../prisma/sort-order.enum';
 import { ProfileOrderByWithRelationInput } from '../profile/profile-order-by-with-relation.input';
 import { PlaylistOrderByRelationAggregateInput } from '../playlist/playlist-order-by-relation-aggregate.input';
 import { AccessTokenOrderByWithRelationInput } from '../access-token/access-token-order-by-with-relation.input';
+import { TodoListOrderByRelationAggregateInput } from '../todo-list/todo-list-order-by-relation-aggregate.input';
 
 @InputType()
 export class UserOrderByWithRelationInput {
@@ -25,4 +26,10 @@ export class UserOrderByWithRelationInput {
 
     @Field(() => AccessTokenOrderByWithRelationInput, {nullable:true})
     accessToken?: AccessTokenOrderByWithRelationInput;
+
+    @Field(() => TodoListOrderByRelationAggregateInput, {nullable:true})
+    todoListsOwned?: TodoListOrderByRelationAggregateInput;
+
+    @Field(() => TodoListOrderByRelationAggregateInput, {nullable:true})
+    todoListsCollaborated?: TodoListOrderByRelationAggregateInput;
 }

@@ -4,6 +4,7 @@ import { ID } from '@nestjs/graphql';
 import { Profile } from '../profile/profile.model';
 import { Playlist } from '../playlist/playlist.model';
 import { AccessToken } from '../access-token/access-token.model';
+import { TodoList } from '../todo-list/todo-list.model';
 import { UserCount } from './user-count.output';
 
 @ObjectType()
@@ -26,6 +27,12 @@ export class User {
 
     @Field(() => AccessToken, {nullable:true})
     accessToken?: AccessToken | null;
+
+    @Field(() => [TodoList], {nullable:true})
+    todoListsOwned?: Array<TodoList>;
+
+    @Field(() => [TodoList], {nullable:true})
+    todoListsCollaborated?: Array<TodoList>;
 
     @Field(() => UserCount, {nullable:false})
     _count?: UserCount;

@@ -7,7 +7,7 @@ import { UpdateOneUserArgs } from "@generated/user/update-one-user.args";
 import { UpsertOneUserArgs } from "@generated/user/upsert-one-user.args";
 import { User } from "@generated/user/user.model";
 
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "src/prisma.service";
 
 @Injectable()
 export class UserService {
@@ -19,6 +19,18 @@ export class UserService {
 
     findUnique(input: FindUniqueUserArgs) {
         return this.prisma.user.findUnique(input);
+    }
+
+    create(input: CreateOneUserArgs) {
+        return this.prisma.user.create(input);
+    }
+
+    update(input: UpdateOneUserArgs) {
+        return this.prisma.user.update(input);
+    }
+
+    upsertUser(input: UpsertOneUserArgs) {
+        return this.prisma.user.upsert(input);
     }
 
     playlistOfUser(user: User) {
@@ -48,15 +60,23 @@ export class UserService {
         )._count;
     }
 
-    create(input: CreateOneUserArgs) {
-        return this.prisma.user.create(input);
+    todoListsOwned(user: User) {
+        return this.prisma.user
+            .findUniqueOrThrow({
+                where: {
+                    id: user.id,
+                },
+            })
+            .todoListsOwned();
     }
 
-    update(input: UpdateOneUserArgs) {
-        return this.prisma.user.update(input);
-    }
-
-    upsertUser(input: UpsertOneUserArgs) {
-        return this.prisma.user.upsert(input);
+    todoListsCollaborated(user: User) {
+        return this.prisma.user
+            .findUniqueOrThrow({
+                where: {
+                    id: user.id,
+                },
+            })
+            .todoListsCollaborated();
     }
 }

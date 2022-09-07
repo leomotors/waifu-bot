@@ -17,25 +17,28 @@ datasource db {
 }
 
 model User {
-  id          String       @id
-  profile     Profile?
-  createdAt   DateTime     @default(now()) @map("created_at")
-  updatedAt   DateTime     @updatedAt @map("updated_at")
-  playlist    Playlist[]
-  accessToken AccessToken?
+  id                    String       @id
+  profile               Profile?
+  createdAt             DateTime     @default(now()) @map("created_at")
+  updatedAt             DateTime     @updatedAt @map("updated_at")
+  playlist              Playlist[]
+  accessToken           AccessToken?
+  todoListsOwned        TodoList[]   @relation(name: "owner")
+  todoListsCollaborated TodoList[]   @relation(name: "collaborators")
 
   @@map("user")
 }
 
 // For DB Inspect
 model Profile {
-  user                  User     @relation(fields: [userId], references: [id])
-  userId                String   @unique @map("user_id")
+  user                  User   @relation(fields: [userId], references: [id])
+  userId                String @unique @map("user_id")
   username              String
-  lastInteractGuildName String   @map("last_interact_guild_name")
-  avatarUrl             String   @map("avatar_url")
-  createdAt             DateTime @default(now()) @map("created_at")
-  updatedAt             DateTime @updatedAt @map("updated_at")
+  lastInteractGuildName String @map("last_interact_guild_name")
+  avatarUrl             String @map("avatar_url")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("profile")
 }
@@ -51,14 +54,15 @@ model AccessToken {
 }
 
 model Playlist {
-  id          Int      @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   name        String
   description String?
-  owner       User     @relation(fields: [ownerId], references: [id])
-  ownerId     String   @map("owner_id")
+  owner       User    @relation(fields: [ownerId], references: [id])
+  ownerId     String  @map("owner_id")
   music       Music[]
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("playlist")
 }
@@ -74,8 +78,45 @@ model Music {
   thumbnailUrl     String     @map("thumbnail_url")
   likes            Int
   playlist         Playlist[]
-  createdAt        DateTime   @default(now()) @map("created_at")
-  updatedAt        DateTime   @updatedAt @map("updated_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("music")
+}
+
+enum TodoStatus {
+  Todo
+  InProgress
+  Review
+  Done
+}
+
+model TodoItem {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  color       String
+  todoList    TodoList? @relation(fields: [todoListId], references: [id])
+  todoListId  Int?      @map("todo_list_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("todo_item")
+}
+
+model TodoList {
+  id            Int        @id @default(autoincrement())
+  name          String
+  description   String
+  todoItems     TodoItem[]
+  owner         User       @relation(name: "owner", fields: [ownerId], references: [id])
+  ownerId       String     @map("owner_id")
+  collaborators User[]     @relation(name: "collaborators")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("todo_list")
 }
