@@ -118,13 +118,13 @@ type Query {
   playlist(where: PlaylistWhereUniqueInput!): Playlist
   profiles(where: ProfileWhereInput, orderBy: [ProfileOrderByWithRelationInput!], cursor: ProfileWhereUniqueInput, take: Int, skip: Int, distinct: [ProfileScalarFieldEnum!]): [Profile!]!
   profile(where: ProfileWhereUniqueInput!): Profile
+  todoItems(where: TodoItemWhereInput, orderBy: [TodoItemOrderByWithRelationInput!], cursor: TodoItemWhereUniqueInput, take: Int, skip: Int, distinct: [TodoItemScalarFieldEnum!]): [TodoItem!]!
+  todoItem(where: TodoItemWhereUniqueInput!): TodoItem
+  todoLists(where: TodoListWhereInput, orderBy: [TodoListOrderByWithRelationInput!], cursor: TodoListWhereUniqueInput, take: Int, skip: Int, distinct: [TodoListScalarFieldEnum!]): [TodoList!]!
+  todoList(where: TodoListWhereUniqueInput!): TodoList
   users: [User!]!
   user(where: UserWhereUniqueInput!): User
   me: User!
-  todoItems(where: TodoItemWhereInput, orderBy: [TodoItemOrderByWithRelationInput!], cursor: TodoItemWhereUniqueInput, take: Int, skip: Int, distinct: [TodoItemScalarFieldEnum!]): [TodoItem!]!
-  todoItem(where: TodoItemWhereUniqueInput!): TodoItem!
-  todoLists(where: TodoListWhereInput, orderBy: [TodoListOrderByWithRelationInput!], cursor: TodoListWhereUniqueInput, take: Int, skip: Int, distinct: [TodoListScalarFieldEnum!]): [TodoList!]!
-  todoList(where: TodoListWhereUniqueInput!): TodoList!
 }
 
 input AccessTokenWhereInput {
@@ -504,10 +504,6 @@ enum ProfileScalarFieldEnum {
   updatedAt
 }
 
-input UserWhereUniqueInput {
-  id: String
-}
-
 input TodoItemOrderByWithRelationInput {
   id: SortOrder
   title: SortOrder
@@ -566,6 +562,10 @@ enum TodoListScalarFieldEnum {
   updatedAt
 }
 
+input UserWhereUniqueInput {
+  id: String
+}
+
 type Mutation {
   generateToken(where: UserWhereUniqueInput!): AccessToken!
   createMusic(data: MusicCreateInput!): Music!
@@ -574,11 +574,12 @@ type Mutation {
   createPlaylist(data: PlaylistCreateInput!): Playlist!
   createUserPlaylist(data: PlaylistCreateWithoutOwnerInput!): Playlist!
   createProfile(data: ProfileCreateInput!): Profile!
+  createTodoItem(data: TodoItemCreateInput!): TodoItem!
+  createTodoList(data: TodoListAdminCreateInput!): TodoList!
+  createUserTodoList(data: TodoListCreateInput!): TodoList!
   createUser(data: UserCreateInput!): User!
   updateUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User!
   upsertUser(data: UserUpsertInput!): User!
-  createTodoItem(data: TodoItemCreateInput!): TodoItem!
-  createTodoList(data: TodoListCreateInput!): TodoList!
 }
 
 input MusicCreateInput {
@@ -897,6 +898,24 @@ input UserCreateWithoutProfileInput {
 input UserCreateOrConnectWithoutProfileInput {
   where: UserWhereUniqueInput!
   create: UserCreateWithoutProfileInput!
+}
+
+input TodoItemCreateInput {
+  title: String!
+  description: String!
+  color: String!
+  todoListId: ID!
+}
+
+input TodoListAdminCreateInput {
+  name: String!
+  description: String!
+  ownerId: String!
+}
+
+input TodoListCreateInput {
+  name: String!
+  description: String!
 }
 
 input UserCreateInput {
@@ -1359,17 +1378,4 @@ input ProfileUpdateInput {
 input UserUpsertInput {
   id: String!
   profile: ProfileUpdateInput!
-}
-
-input TodoItemCreateInput {
-  title: String!
-  description: String!
-  color: String!
-  todoListId: ID!
-}
-
-input TodoListCreateInput {
-  name: String!
-  description: String!
-  ownerId: String!
 }

@@ -12,6 +12,8 @@ import { FindUniqueTodoItemArgs } from "@generated/todo-item/find-unique-todo-it
 import { TodoItem } from "@generated/todo-item/todo-item.model";
 import { TodoList } from "@generated/todo-list/todo-list.model";
 
+import { Permission } from "src/auth/auth.decorator";
+
 import { CreateOneTodoItemArgs } from "./dto/todo-item.dto";
 import { TodoItemAdapter } from "./todo-item.adapter";
 import { TodoItemService } from "./todo-item.service";
@@ -28,12 +30,13 @@ export class TodoItemResolver {
         return this.service.findMany(args);
     }
 
-    @Query(() => TodoItem)
+    @Query(() => TodoItem, { nullable: true })
     todoItem(@Args() args: FindUniqueTodoItemArgs) {
         return this.service.findUnique(args);
     }
 
     @Mutation(() => TodoItem)
+    @Permission("User")
     createTodoItem(@Args() args: CreateOneTodoItemArgs) {
         return this.service.create(this.adapter.createOneTodoItem(args));
     }

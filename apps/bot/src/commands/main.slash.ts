@@ -37,6 +37,11 @@ export class Main extends CogSlashClass {
         );
     }
 
+    @SlashCommand("slash jobs")
+    async brikl(ctx: SlashCommand.Context) {
+        await ctx.reply("Brikl is hiring\nhttps://brikl.com/jobs");
+    }
+
     @SlashCommand("Send some Emoji!")
     async emoji(
         ctx: SlashCommand.Context,

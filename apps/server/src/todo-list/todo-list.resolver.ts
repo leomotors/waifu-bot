@@ -14,7 +14,13 @@ import { TodoListCount } from "@generated/todo-list/todo-list-count.output";
 import { TodoList } from "@generated/todo-list/todo-list.model";
 import { User } from "@generated/user/user.model";
 
-import { CreateOneTodoListArgs } from "./dto/todo-list.dto";
+import { Permission } from "src/auth/auth.decorator";
+import { AdminUser, UserContext } from "src/user/user.decorator";
+
+import {
+    CreateOneTodoListAdminArgs,
+    CreateOneTodoListArgs,
+} from "./dto/todo-list.dto";
 import { TodoListAdapter } from "./todo-list.adapter";
 import { TodoListService } from "./todo-list.service";
 
@@ -30,14 +36,29 @@ export class TodoListResolver {
         return this.service.findMany(args);
     }
 
-    @Query(() => TodoList)
-    todoList(@Args() args: FindUniqueTodoListArgs) {
-        return this.service.findUnique(args);
+    @Query(() => TodoList, { nullable: true })
+    @Permission("User")
+    todoList(
+        @Args() args: FindUniqueTodoListArgs,
+        @UserContext({ allowAdmin: true }) user: User | AdminUser
+    ) {
+        return this.service.todoList(args, user);
     }
 
     @Mutation(() => TodoList)
-    createTodoList(@Args() args: CreateOneTodoListArgs) {
+    createTodoList(@Args() args: CreateOneTodoListAdminArgs) {
         return this.service.create(this.adapter.createOneTodoList(args));
+    }
+
+    @Mutation(() => TodoList)
+    @Permission("User")
+    createUserTodoList(
+        @Args() args: CreateOneTodoListArgs,
+        @UserContext() user: User
+    ) {
+        return this.service.create(
+            this.adapter.createOneTodoListUser(args, user)
+        );
     }
 
     @ResolveField(() => [TodoItem])

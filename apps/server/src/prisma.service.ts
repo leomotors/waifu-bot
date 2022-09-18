@@ -24,8 +24,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
             let queries = 0;
             let lastQuery = Date.now();
 
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
+            // @ts-expect-error WHAT
             (this as PrismaClient<unknown, "query">).$on(
                 "query",
                 (e: Prisma.QueryEvent) => {

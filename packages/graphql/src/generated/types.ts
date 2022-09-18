@@ -131,6 +131,17 @@ export type IntFilter = {
   notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
+export type IntNullableFilter = {
+  equals?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<Scalars['Int']>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  not?: InputMaybe<NestedIntNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']>>;
+};
+
 export type Music = {
   __typename?: 'Music';
   _count: MusicCount;
@@ -305,6 +316,8 @@ export type Mutation = {
   createMusic: Music;
   createPlaylist: Playlist;
   createProfile: Profile;
+  createTodoItem: TodoItem;
+  createTodoList: TodoList;
   createUser: User;
   createUserPlaylist: Playlist;
   generateToken: AccessToken;
@@ -332,6 +345,16 @@ export type MutationCreatePlaylistArgs = {
 
 export type MutationCreateProfileArgs = {
   data: ProfileCreateInput;
+};
+
+
+export type MutationCreateTodoItemArgs = {
+  data: TodoItemCreateInput;
+};
+
+
+export type MutationCreateTodoListArgs = {
+  data: TodoListCreateInput;
 };
 
 
@@ -385,6 +408,17 @@ export type NestedIntFilter = {
   lt?: InputMaybe<Scalars['Int']>;
   lte?: InputMaybe<Scalars['Int']>;
   not?: InputMaybe<NestedIntFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']>>;
+};
+
+export type NestedIntNullableFilter = {
+  equals?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<Scalars['Int']>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  not?: InputMaybe<NestedIntNullableFilter>;
   notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
@@ -675,6 +709,29 @@ export type ProfileUpdateInput = {
   username: Scalars['String'];
 };
 
+export type ProfileUpdateOneWithoutUserNestedInput = {
+  connect?: InputMaybe<ProfileWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ProfileCreateOrConnectWithoutUserInput>;
+  create?: InputMaybe<ProfileCreateWithoutUserInput>;
+  delete?: InputMaybe<Scalars['Boolean']>;
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  update?: InputMaybe<ProfileUpdateWithoutUserInput>;
+  upsert?: InputMaybe<ProfileUpsertWithoutUserInput>;
+};
+
+export type ProfileUpdateWithoutUserInput = {
+  avatarUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  lastInteractGuildName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  username?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type ProfileUpsertWithoutUserInput = {
+  create: ProfileCreateWithoutUserInput;
+  update: ProfileUpdateWithoutUserInput;
+};
+
 export type ProfileWhereInput = {
   AND?: InputMaybe<Array<ProfileWhereInput>>;
   NOT?: InputMaybe<Array<ProfileWhereInput>>;
@@ -702,6 +759,10 @@ export type Query = {
   playlists: Array<Playlist>;
   profile?: Maybe<Profile>;
   profiles: Array<Profile>;
+  todoItem: TodoItem;
+  todoItems: Array<TodoItem>;
+  todoList: TodoList;
+  todoLists: Array<TodoList>;
   user?: Maybe<User>;
   users: Array<User>;
   version: Scalars['String'];
@@ -754,6 +815,36 @@ export type QueryProfilesArgs = {
 };
 
 
+export type QueryTodoItemArgs = {
+  where: TodoItemWhereUniqueInput;
+};
+
+
+export type QueryTodoItemsArgs = {
+  cursor?: InputMaybe<TodoItemWhereUniqueInput>;
+  distinct?: InputMaybe<Array<TodoItemScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<TodoItemOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TodoItemWhereInput>;
+};
+
+
+export type QueryTodoListArgs = {
+  where: TodoListWhereUniqueInput;
+};
+
+
+export type QueryTodoListsArgs = {
+  cursor?: InputMaybe<TodoListWhereUniqueInput>;
+  distinct?: InputMaybe<Array<TodoListScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<TodoListOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TodoListWhereInput>;
+};
+
+
 export type QueryUserArgs = {
   where: UserWhereUniqueInput;
 };
@@ -802,6 +893,398 @@ export type StringNullableFilter = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
+export type TodoItem = {
+  __typename?: 'TodoItem';
+  color: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  description: Scalars['String'];
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  todoList?: Maybe<TodoList>;
+  todoListId?: Maybe<Scalars['Int']>;
+  updatedAt: Scalars['DateTime'];
+};
+
+export type TodoItemCreateInput = {
+  color: Scalars['String'];
+  description: Scalars['String'];
+  title: Scalars['String'];
+  todoListId: Scalars['ID'];
+};
+
+export type TodoItemCreateManyTodoListInput = {
+  color: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['Int']>;
+  title: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type TodoItemCreateManyTodoListInputEnvelope = {
+  data: Array<TodoItemCreateManyTodoListInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type TodoItemCreateNestedManyWithoutTodoListInput = {
+  connect?: InputMaybe<Array<TodoItemWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<TodoItemCreateOrConnectWithoutTodoListInput>>;
+  create?: InputMaybe<Array<TodoItemCreateWithoutTodoListInput>>;
+  createMany?: InputMaybe<TodoItemCreateManyTodoListInputEnvelope>;
+};
+
+export type TodoItemCreateOrConnectWithoutTodoListInput = {
+  create: TodoItemCreateWithoutTodoListInput;
+  where: TodoItemWhereUniqueInput;
+};
+
+export type TodoItemCreateWithoutTodoListInput = {
+  color: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  title: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type TodoItemListRelationFilter = {
+  every?: InputMaybe<TodoItemWhereInput>;
+  none?: InputMaybe<TodoItemWhereInput>;
+  some?: InputMaybe<TodoItemWhereInput>;
+};
+
+export type TodoItemOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type TodoItemOrderByWithRelationInput = {
+  color?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  title?: InputMaybe<SortOrder>;
+  todoList?: InputMaybe<TodoListOrderByWithRelationInput>;
+  todoListId?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+};
+
+export enum TodoItemScalarFieldEnum {
+  Color = 'color',
+  CreatedAt = 'createdAt',
+  Description = 'description',
+  Id = 'id',
+  Title = 'title',
+  TodoListId = 'todoListId',
+  UpdatedAt = 'updatedAt'
+}
+
+export type TodoItemScalarWhereInput = {
+  AND?: InputMaybe<Array<TodoItemScalarWhereInput>>;
+  NOT?: InputMaybe<Array<TodoItemScalarWhereInput>>;
+  OR?: InputMaybe<Array<TodoItemScalarWhereInput>>;
+  color?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  title?: InputMaybe<StringFilter>;
+  todoListId?: InputMaybe<IntNullableFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type TodoItemUpdateManyMutationInput = {
+  color?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type TodoItemUpdateManyWithWhereWithoutTodoListInput = {
+  data: TodoItemUpdateManyMutationInput;
+  where: TodoItemScalarWhereInput;
+};
+
+export type TodoItemUpdateManyWithoutTodoListNestedInput = {
+  connect?: InputMaybe<Array<TodoItemWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<TodoItemCreateOrConnectWithoutTodoListInput>>;
+  create?: InputMaybe<Array<TodoItemCreateWithoutTodoListInput>>;
+  createMany?: InputMaybe<TodoItemCreateManyTodoListInputEnvelope>;
+  delete?: InputMaybe<Array<TodoItemWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<TodoItemScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<TodoItemWhereUniqueInput>>;
+  set?: InputMaybe<Array<TodoItemWhereUniqueInput>>;
+  update?: InputMaybe<Array<TodoItemUpdateWithWhereUniqueWithoutTodoListInput>>;
+  updateMany?: InputMaybe<Array<TodoItemUpdateManyWithWhereWithoutTodoListInput>>;
+  upsert?: InputMaybe<Array<TodoItemUpsertWithWhereUniqueWithoutTodoListInput>>;
+};
+
+export type TodoItemUpdateWithWhereUniqueWithoutTodoListInput = {
+  data: TodoItemUpdateWithoutTodoListInput;
+  where: TodoItemWhereUniqueInput;
+};
+
+export type TodoItemUpdateWithoutTodoListInput = {
+  color?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type TodoItemUpsertWithWhereUniqueWithoutTodoListInput = {
+  create: TodoItemCreateWithoutTodoListInput;
+  update: TodoItemUpdateWithoutTodoListInput;
+  where: TodoItemWhereUniqueInput;
+};
+
+export type TodoItemWhereInput = {
+  AND?: InputMaybe<Array<TodoItemWhereInput>>;
+  NOT?: InputMaybe<Array<TodoItemWhereInput>>;
+  OR?: InputMaybe<Array<TodoItemWhereInput>>;
+  color?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  title?: InputMaybe<StringFilter>;
+  todoList?: InputMaybe<TodoListRelationFilter>;
+  todoListId?: InputMaybe<IntNullableFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type TodoItemWhereUniqueInput = {
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+export type TodoList = {
+  __typename?: 'TodoList';
+  _count: TodoListCount;
+  collaborators?: Maybe<Array<User>>;
+  createdAt: Scalars['DateTime'];
+  description: Scalars['String'];
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  owner: User;
+  ownerId: Scalars['String'];
+  todoItems?: Maybe<Array<TodoItem>>;
+  updatedAt: Scalars['DateTime'];
+};
+
+export type TodoListCount = {
+  __typename?: 'TodoListCount';
+  collaborators: Scalars['Int'];
+  todoItems: Scalars['Int'];
+};
+
+export type TodoListCreateInput = {
+  description: Scalars['String'];
+  name: Scalars['String'];
+  ownerId: Scalars['String'];
+};
+
+export type TodoListCreateManyOwnerInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['Int']>;
+  name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type TodoListCreateManyOwnerInputEnvelope = {
+  data: Array<TodoListCreateManyOwnerInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type TodoListCreateNestedManyWithoutCollaboratorsInput = {
+  connect?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<TodoListCreateOrConnectWithoutCollaboratorsInput>>;
+  create?: InputMaybe<Array<TodoListCreateWithoutCollaboratorsInput>>;
+};
+
+export type TodoListCreateNestedManyWithoutOwnerInput = {
+  connect?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<TodoListCreateOrConnectWithoutOwnerInput>>;
+  create?: InputMaybe<Array<TodoListCreateWithoutOwnerInput>>;
+  createMany?: InputMaybe<TodoListCreateManyOwnerInputEnvelope>;
+};
+
+export type TodoListCreateOrConnectWithoutCollaboratorsInput = {
+  create: TodoListCreateWithoutCollaboratorsInput;
+  where: TodoListWhereUniqueInput;
+};
+
+export type TodoListCreateOrConnectWithoutOwnerInput = {
+  create: TodoListCreateWithoutOwnerInput;
+  where: TodoListWhereUniqueInput;
+};
+
+export type TodoListCreateWithoutCollaboratorsInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  name: Scalars['String'];
+  owner: UserCreateNestedOneWithoutTodoListsOwnedInput;
+  todoItems?: InputMaybe<TodoItemCreateNestedManyWithoutTodoListInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type TodoListCreateWithoutOwnerInput = {
+  collaborators?: InputMaybe<UserCreateNestedManyWithoutTodoListsCollaboratedInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  name: Scalars['String'];
+  todoItems?: InputMaybe<TodoItemCreateNestedManyWithoutTodoListInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type TodoListListRelationFilter = {
+  every?: InputMaybe<TodoListWhereInput>;
+  none?: InputMaybe<TodoListWhereInput>;
+  some?: InputMaybe<TodoListWhereInput>;
+};
+
+export type TodoListOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type TodoListOrderByWithRelationInput = {
+  collaborators?: InputMaybe<UserOrderByRelationAggregateInput>;
+  createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  owner?: InputMaybe<UserOrderByWithRelationInput>;
+  ownerId?: InputMaybe<SortOrder>;
+  todoItems?: InputMaybe<TodoItemOrderByRelationAggregateInput>;
+  updatedAt?: InputMaybe<SortOrder>;
+};
+
+export type TodoListRelationFilter = {
+  is?: InputMaybe<TodoListWhereInput>;
+  isNot?: InputMaybe<TodoListWhereInput>;
+};
+
+export enum TodoListScalarFieldEnum {
+  CreatedAt = 'createdAt',
+  Description = 'description',
+  Id = 'id',
+  Name = 'name',
+  OwnerId = 'ownerId',
+  UpdatedAt = 'updatedAt'
+}
+
+export type TodoListScalarWhereInput = {
+  AND?: InputMaybe<Array<TodoListScalarWhereInput>>;
+  NOT?: InputMaybe<Array<TodoListScalarWhereInput>>;
+  OR?: InputMaybe<Array<TodoListScalarWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  name?: InputMaybe<StringFilter>;
+  ownerId?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type TodoListUpdateManyMutationInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type TodoListUpdateManyWithWhereWithoutCollaboratorsInput = {
+  data: TodoListUpdateManyMutationInput;
+  where: TodoListScalarWhereInput;
+};
+
+export type TodoListUpdateManyWithWhereWithoutOwnerInput = {
+  data: TodoListUpdateManyMutationInput;
+  where: TodoListScalarWhereInput;
+};
+
+export type TodoListUpdateManyWithoutCollaboratorsNestedInput = {
+  connect?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<TodoListCreateOrConnectWithoutCollaboratorsInput>>;
+  create?: InputMaybe<Array<TodoListCreateWithoutCollaboratorsInput>>;
+  delete?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<TodoListScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  set?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  update?: InputMaybe<Array<TodoListUpdateWithWhereUniqueWithoutCollaboratorsInput>>;
+  updateMany?: InputMaybe<Array<TodoListUpdateManyWithWhereWithoutCollaboratorsInput>>;
+  upsert?: InputMaybe<Array<TodoListUpsertWithWhereUniqueWithoutCollaboratorsInput>>;
+};
+
+export type TodoListUpdateManyWithoutOwnerNestedInput = {
+  connect?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<TodoListCreateOrConnectWithoutOwnerInput>>;
+  create?: InputMaybe<Array<TodoListCreateWithoutOwnerInput>>;
+  createMany?: InputMaybe<TodoListCreateManyOwnerInputEnvelope>;
+  delete?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<TodoListScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  set?: InputMaybe<Array<TodoListWhereUniqueInput>>;
+  update?: InputMaybe<Array<TodoListUpdateWithWhereUniqueWithoutOwnerInput>>;
+  updateMany?: InputMaybe<Array<TodoListUpdateManyWithWhereWithoutOwnerInput>>;
+  upsert?: InputMaybe<Array<TodoListUpsertWithWhereUniqueWithoutOwnerInput>>;
+};
+
+export type TodoListUpdateWithWhereUniqueWithoutCollaboratorsInput = {
+  data: TodoListUpdateWithoutCollaboratorsInput;
+  where: TodoListWhereUniqueInput;
+};
+
+export type TodoListUpdateWithWhereUniqueWithoutOwnerInput = {
+  data: TodoListUpdateWithoutOwnerInput;
+  where: TodoListWhereUniqueInput;
+};
+
+export type TodoListUpdateWithoutCollaboratorsInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  owner?: InputMaybe<UserUpdateOneRequiredWithoutTodoListsOwnedNestedInput>;
+  todoItems?: InputMaybe<TodoItemUpdateManyWithoutTodoListNestedInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type TodoListUpdateWithoutOwnerInput = {
+  collaborators?: InputMaybe<UserUpdateManyWithoutTodoListsCollaboratedNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<StringFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  todoItems?: InputMaybe<TodoItemUpdateManyWithoutTodoListNestedInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type TodoListUpsertWithWhereUniqueWithoutCollaboratorsInput = {
+  create: TodoListCreateWithoutCollaboratorsInput;
+  update: TodoListUpdateWithoutCollaboratorsInput;
+  where: TodoListWhereUniqueInput;
+};
+
+export type TodoListUpsertWithWhereUniqueWithoutOwnerInput = {
+  create: TodoListCreateWithoutOwnerInput;
+  update: TodoListUpdateWithoutOwnerInput;
+  where: TodoListWhereUniqueInput;
+};
+
+export type TodoListWhereInput = {
+  AND?: InputMaybe<Array<TodoListWhereInput>>;
+  NOT?: InputMaybe<Array<TodoListWhereInput>>;
+  OR?: InputMaybe<Array<TodoListWhereInput>>;
+  collaborators?: InputMaybe<UserListRelationFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  name?: InputMaybe<StringFilter>;
+  owner?: InputMaybe<UserRelationFilter>;
+  ownerId?: InputMaybe<StringFilter>;
+  todoItems?: InputMaybe<TodoItemListRelationFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type TodoListWhereUniqueInput = {
+  id?: InputMaybe<Scalars['Int']>;
+};
+
 export type User = {
   __typename?: 'User';
   _count: UserCount;
@@ -810,12 +1293,16 @@ export type User = {
   id: Scalars['ID'];
   playlist?: Maybe<Array<Playlist>>;
   profile?: Maybe<Profile>;
+  todoListsCollaborated?: Maybe<Array<TodoList>>;
+  todoListsOwned?: Maybe<Array<TodoList>>;
   updatedAt: Scalars['DateTime'];
 };
 
 export type UserCount = {
   __typename?: 'UserCount';
   playlist: Scalars['Int'];
+  todoListsCollaborated: Scalars['Int'];
+  todoListsOwned: Scalars['Int'];
 };
 
 export type UserCreateInput = {
@@ -824,7 +1311,15 @@ export type UserCreateInput = {
   id: Scalars['String'];
   playlist?: InputMaybe<PlaylistCreateNestedManyWithoutOwnerInput>;
   profile?: InputMaybe<ProfileCreateWithoutUserInput>;
+  todoListsCollaborated?: InputMaybe<TodoListCreateNestedManyWithoutCollaboratorsInput>;
+  todoListsOwned?: InputMaybe<TodoListCreateNestedManyWithoutOwnerInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserCreateNestedManyWithoutTodoListsCollaboratedInput = {
+  connect?: InputMaybe<Array<UserWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<UserCreateOrConnectWithoutTodoListsCollaboratedInput>>;
+  create?: InputMaybe<Array<UserCreateWithoutTodoListsCollaboratedInput>>;
 };
 
 export type UserCreateNestedOneWithoutPlaylistInput = {
@@ -839,6 +1334,12 @@ export type UserCreateNestedOneWithoutProfileInput = {
   create?: InputMaybe<UserCreateWithoutProfileInput>;
 };
 
+export type UserCreateNestedOneWithoutTodoListsOwnedInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutTodoListsOwnedInput>;
+  create?: InputMaybe<UserCreateWithoutTodoListsOwnedInput>;
+};
+
 export type UserCreateOrConnectWithoutPlaylistInput = {
   create: UserCreateWithoutPlaylistInput;
   where: UserWhereUniqueInput;
@@ -849,11 +1350,23 @@ export type UserCreateOrConnectWithoutProfileInput = {
   where: UserWhereUniqueInput;
 };
 
+export type UserCreateOrConnectWithoutTodoListsCollaboratedInput = {
+  create: UserCreateWithoutTodoListsCollaboratedInput;
+  where: UserWhereUniqueInput;
+};
+
+export type UserCreateOrConnectWithoutTodoListsOwnedInput = {
+  create: UserCreateWithoutTodoListsOwnedInput;
+  where: UserWhereUniqueInput;
+};
+
 export type UserCreateWithoutPlaylistInput = {
   accessToken?: InputMaybe<AccessTokenCreateNestedOneWithoutUserInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   id: Scalars['String'];
   profile?: InputMaybe<ProfileCreateNestedOneWithoutUserInput>;
+  todoListsCollaborated?: InputMaybe<TodoListCreateNestedManyWithoutCollaboratorsInput>;
+  todoListsOwned?: InputMaybe<TodoListCreateNestedManyWithoutOwnerInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -862,7 +1375,39 @@ export type UserCreateWithoutProfileInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   id: Scalars['String'];
   playlist?: InputMaybe<PlaylistCreateNestedManyWithoutOwnerInput>;
+  todoListsCollaborated?: InputMaybe<TodoListCreateNestedManyWithoutCollaboratorsInput>;
+  todoListsOwned?: InputMaybe<TodoListCreateNestedManyWithoutOwnerInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserCreateWithoutTodoListsCollaboratedInput = {
+  accessToken?: InputMaybe<AccessTokenCreateNestedOneWithoutUserInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id: Scalars['String'];
+  playlist?: InputMaybe<PlaylistCreateNestedManyWithoutOwnerInput>;
+  profile?: InputMaybe<ProfileCreateNestedOneWithoutUserInput>;
+  todoListsOwned?: InputMaybe<TodoListCreateNestedManyWithoutOwnerInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserCreateWithoutTodoListsOwnedInput = {
+  accessToken?: InputMaybe<AccessTokenCreateNestedOneWithoutUserInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id: Scalars['String'];
+  playlist?: InputMaybe<PlaylistCreateNestedManyWithoutOwnerInput>;
+  profile?: InputMaybe<ProfileCreateNestedOneWithoutUserInput>;
+  todoListsCollaborated?: InputMaybe<TodoListCreateNestedManyWithoutCollaboratorsInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type UserListRelationFilter = {
+  every?: InputMaybe<UserWhereInput>;
+  none?: InputMaybe<UserWhereInput>;
+  some?: InputMaybe<UserWhereInput>;
+};
+
+export type UserOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
 };
 
 export type UserOrderByWithRelationInput = {
@@ -871,6 +1416,8 @@ export type UserOrderByWithRelationInput = {
   id?: InputMaybe<SortOrder>;
   playlist?: InputMaybe<PlaylistOrderByRelationAggregateInput>;
   profile?: InputMaybe<ProfileOrderByWithRelationInput>;
+  todoListsCollaborated?: InputMaybe<TodoListOrderByRelationAggregateInput>;
+  todoListsOwned?: InputMaybe<TodoListOrderByRelationAggregateInput>;
   updatedAt?: InputMaybe<SortOrder>;
 };
 
@@ -879,18 +1426,97 @@ export type UserRelationFilter = {
   isNot?: InputMaybe<UserWhereInput>;
 };
 
+export type UserScalarWhereInput = {
+  AND?: InputMaybe<Array<UserScalarWhereInput>>;
+  NOT?: InputMaybe<Array<UserScalarWhereInput>>;
+  OR?: InputMaybe<Array<UserScalarWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
 export type UserUpdateInput = {
   accessToken?: InputMaybe<AccessTokenUpdateOneWithoutUserNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<StringFieldUpdateOperationsInput>;
   playlist?: InputMaybe<PlaylistUpdateManyWithoutOwnerNestedInput>;
   profile?: InputMaybe<ProfileUpdateInput>;
+  todoListsCollaborated?: InputMaybe<TodoListUpdateManyWithoutCollaboratorsNestedInput>;
+  todoListsOwned?: InputMaybe<TodoListUpdateManyWithoutOwnerNestedInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpdateManyMutationInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpdateManyWithWhereWithoutTodoListsCollaboratedInput = {
+  data: UserUpdateManyMutationInput;
+  where: UserScalarWhereInput;
+};
+
+export type UserUpdateManyWithoutTodoListsCollaboratedNestedInput = {
+  connect?: InputMaybe<Array<UserWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<UserCreateOrConnectWithoutTodoListsCollaboratedInput>>;
+  create?: InputMaybe<Array<UserCreateWithoutTodoListsCollaboratedInput>>;
+  delete?: InputMaybe<Array<UserWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<UserScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<UserWhereUniqueInput>>;
+  set?: InputMaybe<Array<UserWhereUniqueInput>>;
+  update?: InputMaybe<Array<UserUpdateWithWhereUniqueWithoutTodoListsCollaboratedInput>>;
+  updateMany?: InputMaybe<Array<UserUpdateManyWithWhereWithoutTodoListsCollaboratedInput>>;
+  upsert?: InputMaybe<Array<UserUpsertWithWhereUniqueWithoutTodoListsCollaboratedInput>>;
+};
+
+export type UserUpdateOneRequiredWithoutTodoListsOwnedNestedInput = {
+  connect?: InputMaybe<UserWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutTodoListsOwnedInput>;
+  create?: InputMaybe<UserCreateWithoutTodoListsOwnedInput>;
+  update?: InputMaybe<UserUpdateWithoutTodoListsOwnedInput>;
+  upsert?: InputMaybe<UserUpsertWithoutTodoListsOwnedInput>;
+};
+
+export type UserUpdateWithWhereUniqueWithoutTodoListsCollaboratedInput = {
+  data: UserUpdateWithoutTodoListsCollaboratedInput;
+  where: UserWhereUniqueInput;
+};
+
+export type UserUpdateWithoutTodoListsCollaboratedInput = {
+  accessToken?: InputMaybe<AccessTokenUpdateOneWithoutUserNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<StringFieldUpdateOperationsInput>;
+  playlist?: InputMaybe<PlaylistUpdateManyWithoutOwnerNestedInput>;
+  profile?: InputMaybe<ProfileUpdateOneWithoutUserNestedInput>;
+  todoListsOwned?: InputMaybe<TodoListUpdateManyWithoutOwnerNestedInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type UserUpdateWithoutTodoListsOwnedInput = {
+  accessToken?: InputMaybe<AccessTokenUpdateOneWithoutUserNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  id?: InputMaybe<StringFieldUpdateOperationsInput>;
+  playlist?: InputMaybe<PlaylistUpdateManyWithoutOwnerNestedInput>;
+  profile?: InputMaybe<ProfileUpdateOneWithoutUserNestedInput>;
+  todoListsCollaborated?: InputMaybe<TodoListUpdateManyWithoutCollaboratorsNestedInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type UserUpsertInput = {
   id: Scalars['String'];
   profile: ProfileUpdateInput;
+};
+
+export type UserUpsertWithWhereUniqueWithoutTodoListsCollaboratedInput = {
+  create: UserCreateWithoutTodoListsCollaboratedInput;
+  update: UserUpdateWithoutTodoListsCollaboratedInput;
+  where: UserWhereUniqueInput;
+};
+
+export type UserUpsertWithoutTodoListsOwnedInput = {
+  create: UserCreateWithoutTodoListsOwnedInput;
+  update: UserUpdateWithoutTodoListsOwnedInput;
 };
 
 export type UserWhereInput = {
@@ -902,6 +1528,8 @@ export type UserWhereInput = {
   id?: InputMaybe<StringFilter>;
   playlist?: InputMaybe<PlaylistListRelationFilter>;
   profile?: InputMaybe<ProfileRelationFilter>;
+  todoListsCollaborated?: InputMaybe<TodoListListRelationFilter>;
+  todoListsOwned?: InputMaybe<TodoListListRelationFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 

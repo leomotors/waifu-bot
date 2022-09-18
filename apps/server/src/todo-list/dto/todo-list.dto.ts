@@ -9,11 +9,19 @@ export class TodoListCreateInput extends OmitType(PrismaTodoListCreateInput, [
     "collaborators",
     "owner",
     "todoItems",
-]) {
+]) {}
+
+@InputType()
+export class TodoListAdminCreateInput extends TodoListCreateInput {
     @Field()
     ownerId!: string;
 }
 
+@ArgsType()
+export class CreateOneTodoListAdminArgs {
+    @Field(() => TodoListAdminCreateInput)
+    data!: TodoListAdminCreateInput;
+}
 @ArgsType()
 export class CreateOneTodoListArgs {
     @Field(() => TodoListCreateInput)
