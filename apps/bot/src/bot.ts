@@ -25,6 +25,7 @@ import { Main as MainSlash } from "./commands/main.slash";
 import { Music } from "./commands/music.slash";
 import { style } from "./commands/styles";
 import { Web } from "./commands/web.slash";
+import { GuildIds } from "./environment";
 
 const client = new Client(
     new CocoaIntent()
@@ -46,7 +47,7 @@ mcenter.on("error", async (name, err, msg) => {
     await msg.reply(`あら？, Error Occured: ${err}`.slice(0, 2000));
 });
 
-const scenter = new SlashCenter(client, process.env.GUILD_IDS?.split(","));
+const scenter = new SlashCenter(client, GuildIds);
 scenter.addCogs(
     new MainSlash(),
     new Kashi(),

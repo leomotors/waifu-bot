@@ -65,7 +65,7 @@ export class MusicService {
                 `Playlist with ID ${playlistId} not found`
             );
 
-        if (!isAdminUser(user) && playlist.ownerId != user.id) {
+        if (!isAdminUser(user) && playlist.ownerId !== user.id) {
             throw new ForbiddenException(
                 `You do not have access to playlist #${playlist.id}`
             );
@@ -139,7 +139,7 @@ export class MusicService {
             );
         }
 
-        if (user.id != playlist.owner.id) {
+        if (user.id !== playlist.owner.id) {
             throw new ForbiddenException(
                 `You do not have access to playlist #${input.playlistId}`
             );

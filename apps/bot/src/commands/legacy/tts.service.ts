@@ -33,7 +33,9 @@ export namespace Voice {
     export let loop = false;
 
     export function isPaused(guildId: string) {
-        return audio_player[guildId]?.state?.status == AudioPlayerStatus.Paused;
+        return (
+            audio_player[guildId]?.state?.status === AudioPlayerStatus.Paused
+        );
     }
 
     /**
@@ -52,7 +54,7 @@ export namespace Voice {
 
         if (!guild?.available) return false;
 
-        if (connection?.state.status == VoiceConnectionStatus.Ready) {
+        if (connection?.state.status === VoiceConnectionStatus.Ready) {
             return false;
         }
 

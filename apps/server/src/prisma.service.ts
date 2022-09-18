@@ -5,7 +5,7 @@ import { Prisma, PrismaClient } from "@prisma/client";
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {
     constructor() {
-        if (process.env.npm_lifecycle_event == "dev")
+        if (process.env.npm_lifecycle_event === "dev")
             super({
                 log: [
                     {
@@ -20,7 +20,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
     async onModuleInit() {
         await this.$connect();
 
-        if (process.env.npm_lifecycle_event == "dev") {
+        if (process.env.npm_lifecycle_event === "dev") {
             let queries = 0;
             let lastQuery = Date.now();
 

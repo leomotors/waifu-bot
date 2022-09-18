@@ -15,7 +15,7 @@ const ProfilePage: WaifuPage = () => {
       <h1 className="page-title">My Profile</h1>
 
       <div className="p-4">
-        {error?.message == "Unauthorized" ? (
+        {error?.message === "Unauthorized" ? (
           <p>Unauthorized</p>
         ) : me?.profile ? (
           // @ts-expect-error too complicated, muck it

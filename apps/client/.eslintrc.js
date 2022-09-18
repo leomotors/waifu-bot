@@ -11,6 +11,7 @@ const config = {
   ],
   rules: {
     "prettier/prettier": "warn",
+    eqeqeq: "warn",
     "react/no-unescaped-entities": "off",
     "tailwindcss/no-custom-classname": "off",
   },

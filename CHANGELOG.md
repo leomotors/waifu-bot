@@ -2,6 +2,10 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.629] - 2022-09-18
+
+- Bump Deps, welcome Global Command!
+
 ## [4.0.620] - 2022-09-04
 
 - Moved to `play-dl`

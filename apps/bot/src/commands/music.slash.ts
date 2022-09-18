@@ -42,7 +42,7 @@ export class Music extends MusicBase {
             ctx.user.id
         );
 
-        if (typeof result != "string") {
+        if (typeof result !== "string") {
             const emb = this.musicEmbed(ctx, ctx.user.id, result);
             await ctx.followUp({ embeds: [emb] });
         } else {
@@ -55,7 +55,7 @@ export class Music extends MusicBase {
         ctx: SlashCommand.Context,
         @Param.Channel("Channel to surprise!") channel: Param.Channel.Type
     ) {
-        if (channel.type != ChannelType.GuildVoice) {
+        if (channel.type !== ChannelType.GuildVoice) {
             await ctx.reply("Can only rick roll normal voice channel");
             return;
         }

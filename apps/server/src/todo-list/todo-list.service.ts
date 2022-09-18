@@ -40,8 +40,8 @@ export class TodoListService {
         if (!list) return list;
 
         if (
-            list.ownerId == user.id ||
-            list.collaborators.some((collab) => collab.id == user.id)
+            list.ownerId === user.id ||
+            list.collaborators.some((collab) => collab.id === user.id)
         ) {
             return list;
         }

@@ -39,8 +39,8 @@ export async function getLyric(key: string): Promise<Lyric> {
 
     const [arg, content] = parseArg(lyric.split("\n"));
 
-    const title = `${arg.quote == "cn" ? "「" : '"'}${arg.name ?? "Unknown"}${
-        arg.quote == "cn" ? "」" : '"'
+    const title = `${arg.quote === "cn" ? "「" : '"'}${arg.name ?? "Unknown"}${
+        arg.quote === "cn" ? "」" : '"'
     } — ${arg.artist ?? "Unknown"}`;
 
     return {

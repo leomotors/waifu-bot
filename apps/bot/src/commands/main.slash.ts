@@ -57,10 +57,10 @@ export class Main extends CogSlashClass {
     ) {
         const res = Helix.makeHelix(text);
 
-        if (res == Helix.HelixError.ILLEGAL_CHAR) {
+        if (res === Helix.HelixError.ILLEGAL_CHAR) {
             await ctx.reply("Illegal String!");
             return;
-        } else if (res == Helix.HelixError.ILLEGAL_LEN) {
+        } else if (res === Helix.HelixError.ILLEGAL_LEN) {
             await ctx.reply("Please don't try to make me, I have family!");
             return;
         }

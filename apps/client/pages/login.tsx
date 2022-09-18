@@ -14,7 +14,7 @@ const LoginPage: NextPage = () => {
 
   useEffect(() => {
     const queryToken =
-      typeof router.query.token == "string"
+      typeof router.query.token === "string"
         ? router.query.token
         : router.query.token?.[0];
 

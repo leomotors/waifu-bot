@@ -46,7 +46,7 @@ export class PlaylistResolver {
         if (isAdminUser(user) || !playlist) {
             return playlist;
         } else {
-            if (playlist.ownerId == user.id) {
+            if (playlist.ownerId === user.id) {
                 return playlist;
             } else {
                 throw new ForbiddenException(

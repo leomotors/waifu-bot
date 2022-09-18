@@ -10,8 +10,8 @@ export class AuthService {
 
     async getUser(token: string | undefined): Promise<User | undefined> {
         if (
-            (token?.length ?? 0) != 50 &&
-            (process.env.npm_lifecycle_event != "dev" || !token)
+            (token?.length ?? 0) !== 50 &&
+            (process.env.npm_lifecycle_event !== "dev" || !token)
         )
             return undefined;
 

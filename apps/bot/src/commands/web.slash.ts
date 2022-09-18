@@ -47,7 +47,7 @@ export class Web extends CogSlashClass {
             return;
         }
 
-        if (playlist.ownerId != ctx.user.id) {
+        if (playlist.ownerId !== ctx.user.id) {
             await ctx.followUp("Only the playlist owner can play it");
             return;
         }

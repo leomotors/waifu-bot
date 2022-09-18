@@ -20,16 +20,16 @@ export class AuthGuard implements CanActivate {
                 context.getHandler(),
             ]) ?? "Admin";
 
-        if (role == "Public") return true;
+        if (role === "Public") return true;
 
         // * expect context to be graphql, is undefined if is rest
         const req = context.getArgByIndex<{ req: IncomingMessage }>(2).req;
 
         const token = req?.headers.authorization;
 
-        if (token == process.env.ADMIN_SECRET) {
+        if (token === process.env.ADMIN_SECRET) {
             return true;
-        } else if (role == "Admin") {
+        } else if (role === "Admin") {
             return false;
         }
 

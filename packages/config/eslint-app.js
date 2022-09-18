@@ -11,6 +11,7 @@ const config = {
     ],
     rules: {
         "prettier/prettier": "warn",
+        eqeqeq: "warn",
         "@typescript-eslint/no-unused-vars": [
             "warn",
             {
