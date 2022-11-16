@@ -11,32 +11,32 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.9",
+    "@apollo/client": "^3.7.1",
     "@waifu-bot/constants": "workspace:0.0.0",
     "@waifu-bot/graphql": "workspace:0.0.0",
     "clsx": "^1.2.1",
-    "next": "12.2.5",
+    "next": "13.0.3",
     "react": "18.2.0",
-    "react-bootstrap-icons": "^1.8.4",
+    "react-bootstrap-icons": "^1.9.1",
     "react-dom": "18.2.0",
-    "sharp": "^0.31.0"
+    "sharp": "^0.31.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^12.3.0",
-    "@types/node": "18.7.15",
-    "@types/react": "18.0.18",
-    "@types/react-dom": "18.0.6",
+    "@next/bundle-analyzer": "^13.0.3",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
     "@waifu-bot/config": "workspace:0.0.0",
-    "autoprefixer": "^10.4.11",
-    "eslint": "8.23.0",
-    "eslint-config-next": "12.2.5",
-    "eslint-plugin-tailwindcss": "^3.6.2",
-    "next-transpile-modules": "^9.0.0",
-    "postcss": "^8.4.16",
+    "autoprefixer": "^10.4.13",
+    "eslint": "8.27.0",
+    "eslint-config-next": "13.0.3",
+    "eslint-plugin-tailwindcss": "^3.7.0",
+    "next-transpile-modules": "^10.0.0",
+    "postcss": "^8.4.19",
     "prettier": "^2.7.1",
-    "sass": "^1.54.9",
-    "tailwindcss": "^3.1.8",
-    "typescript": "4.8.2",
-    "vitest": "^0.23.4"
+    "sass": "^1.56.1",
+    "tailwindcss": "^3.2.4",
+    "typescript": "4.9.3",
+    "vitest": "^0.25.2"
   }
 }

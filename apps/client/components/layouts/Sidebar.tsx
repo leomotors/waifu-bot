@@ -25,10 +25,8 @@ const Route: FC<RouteProps> = ({ label, to, icon }) => {
   return (
     <li>
       <Link href={to}>
-        <a>
-          {icon}
-          <p>{label}</p>
-        </a>
+        {icon}
+        <p>{label}</p>
       </Link>
     </li>
   );

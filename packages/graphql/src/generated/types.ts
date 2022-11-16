@@ -320,6 +320,7 @@ export type Mutation = {
   createTodoList: TodoList;
   createUser: User;
   createUserPlaylist: Playlist;
+  createUserTodoList: TodoList;
   generateToken: AccessToken;
   removeMusicFromPlaylist: Music;
   updateUser: User;
@@ -354,7 +355,7 @@ export type MutationCreateTodoItemArgs = {
 
 
 export type MutationCreateTodoListArgs = {
-  data: TodoListCreateInput;
+  data: TodoListAdminCreateInput;
 };
 
 
@@ -365,6 +366,11 @@ export type MutationCreateUserArgs = {
 
 export type MutationCreateUserPlaylistArgs = {
   data: PlaylistCreateWithoutOwnerInput;
+};
+
+
+export type MutationCreateUserTodoListArgs = {
+  data: TodoListCreateInput;
 };
 
 
@@ -759,9 +765,9 @@ export type Query = {
   playlists: Array<Playlist>;
   profile?: Maybe<Profile>;
   profiles: Array<Profile>;
-  todoItem: TodoItem;
+  todoItem?: Maybe<TodoItem>;
   todoItems: Array<TodoItem>;
-  todoList: TodoList;
+  todoList?: Maybe<TodoList>;
   todoLists: Array<TodoList>;
   user?: Maybe<User>;
   users: Array<User>;
@@ -1068,6 +1074,12 @@ export type TodoList = {
   updatedAt: Scalars['DateTime'];
 };
 
+export type TodoListAdminCreateInput = {
+  description: Scalars['String'];
+  name: Scalars['String'];
+  ownerId: Scalars['String'];
+};
+
 export type TodoListCount = {
   __typename?: 'TodoListCount';
   collaborators: Scalars['Int'];
@@ -1077,7 +1089,6 @@ export type TodoListCount = {
 export type TodoListCreateInput = {
   description: Scalars['String'];
   name: Scalars['String'];
-  ownerId: Scalars['String'];
 };
 
 export type TodoListCreateManyOwnerInput = {

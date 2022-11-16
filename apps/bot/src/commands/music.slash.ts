@@ -1,4 +1,8 @@
-import { Voice as LibVoice, Music as MusicBase } from "@leomotors/music-bot";
+import {
+    Voice as LibVoice,
+    Music as MusicBase,
+    MusicService,
+} from "@leomotors/music-bot";
 
 import { Param, SlashCommand } from "cocoa-discord-utils/slash/class";
 
@@ -43,7 +47,7 @@ export class Music extends MusicBase {
         );
 
         if (typeof result !== "string") {
-            const emb = this.musicEmbed(ctx, ctx.user.id, result);
+            const emb = MusicService.musicEmbed(ctx, ctx.user.id, result);
             await ctx.followUp({ embeds: [emb] });
         } else {
             await ctx.followUp(`Unexpected Error: ${result}`);

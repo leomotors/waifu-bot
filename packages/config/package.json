@@ -6,9 +6,9 @@
     "format": "prettier --write *.js"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
-    "@types/eslint": "^8.4.6",
-    "eslint": "^8.23.1",
+    "@trivago/prettier-plugin-sort-imports": "^3.4.0",
+    "@types/eslint": "^8.4.10",
+    "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1"
