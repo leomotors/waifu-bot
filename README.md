@@ -2,12 +2,12 @@
 
 Waifu Bot is the bot that is serving _our_ server
 
-~~Current Waifu we SIMP~~ We don't need Waifu, we need MOTIVATION
+Current Waifu we SIMP: Bocchi-chan
 
-<img src="./images/vergil_reaction.jpg" width=500 />
+<img src="./images/bocchitakusan.png" width=500 />
 
 **Current Version**: 4.0  
-**Been SIMPing since**: 4.0.605
+**Been SIMPing since**: 4.0.640
 
 ## 📚 Tech Stack
 
@@ -34,7 +34,7 @@ The most ~~over-engineered~~ advanced Discord Bot
 - Your Discord Bot (of course)
 - nodejs 16
 - pnpm 7
-- PostgreSQL Database (v12 Recommended) and Public Server (VM) for Website
+- PostgreSQL Database (v13 Recommended) and Public Server (VM) for Website
 - Tenor API Key (not required, it works even with invalid key lol)
 - [golden-frame](https://github.com/Leomotors/golden-frame) (Installable via pip, required)
 
@@ -50,6 +50,8 @@ The most ~~over-engineered~~ advanced Discord Bot
 The Discord Bot (apps/bot) was built on top of [CarelessDev/harunon.js](https://github.com/CarelessDev/harunon.js)
 
 Below are list of previous waifu we chose to SIMP
+
+- **Version 4.0.605 - 4.0.629** Vergil [v4.0.629](https://github.com/leomotors/waifu-bot/tree/v4.0.629) <August 2022 - ~~No Nut~~ November 2022>
 
 - **Version 3.2 - 4.0.600** 式守さん (Shikimori-san) [v3.2](https://github.com/leomotors/waifu-bot/tree/v3.2) | [v4.0.600](https://github.com/leomotors/waifu-bot/tree/v4.0.600) <July 2022 - August 2022>
 

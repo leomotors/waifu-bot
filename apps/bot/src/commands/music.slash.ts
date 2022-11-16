@@ -47,7 +47,7 @@ export class Music extends MusicBase {
     );
 
     if (typeof result !== "string") {
-      const emb = MusicService.musicEmbed(ctx, ctx.user.id, result);
+      const emb = MusicService.musicEmbed(ctx, ctx.user.id, result, style);
       await ctx.followUp({ embeds: [emb] });
     } else {
       await ctx.followUp(`Unexpected Error: ${result}`);
