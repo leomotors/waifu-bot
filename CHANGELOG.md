@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.640] - 2022-11-16
+
+- chore: bump deps
+- feat: bocchi
+
 ## [4.0.629] - 2022-09-18
 
 - Bump Deps, welcome Global Command!
