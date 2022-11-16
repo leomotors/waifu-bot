@@ -3,12 +3,12 @@ import "./dotenv";
 import { AppVersion, ShortNameJA } from "@waifu-bot/constants";
 
 import {
-    ActivityGroupLoader,
-    ActivityManager,
-    checkLogin,
-    Cocoa,
-    ConsoleManager,
-    LogStatus,
+  ActivityGroupLoader,
+  ActivityManager,
+  checkLogin,
+  Cocoa,
+  ConsoleManager,
+  LogStatus,
 } from "cocoa-discord-utils";
 import { MessageCenter } from "cocoa-discord-utils/message";
 import { SlashCenter } from "cocoa-discord-utils/slash";
@@ -28,64 +28,64 @@ import { Web } from "./commands/web.slash";
 import { GuildIds } from "./environment";
 
 const client = new Client(
-    new CocoaIntent()
-        .useGuildMessage()
-        .useGuildSlash()
-        .useGuildVoice()
-        .useDirectMessage()
-        .useReadMessage()
+  new CocoaIntent()
+    .useGuildMessage()
+    .useGuildSlash()
+    .useGuildVoice()
+    .useDirectMessage()
+    .useReadMessage()
 );
 
 const mcenter = new MessageCenter(client, { prefixes: ["simp"] });
 mcenter.addCogs(new MainMessage());
 mcenter.useHelpCommand(style);
 mcenter.on("error", async (name, err, msg) => {
-    Cocoa.log(
-        `Command "${name}" error at ${msg.guild?.name} : ${err}`,
-        LogStatus.Error
-    );
-    await msg.reply(`あら？, Error Occured: ${err}`.slice(0, 2000));
+  Cocoa.log(
+    `Command "${name}" error at ${msg.guild?.name} : ${err}`,
+    LogStatus.Error
+  );
+  await msg.reply(`あら？, Error Occured: ${err}`.slice(0, 2000));
 });
 
 const scenter = new SlashCenter(client, GuildIds);
 scenter.addCogs(
-    new MainSlash(),
-    new Kashi(),
-    new Music(client),
-    new TTS(),
-    new Web()
+  new MainSlash(),
+  new Kashi(),
+  new Music(client),
+  new TTS(),
+  new Web()
 );
 scenter.useHelpCommand(style);
 scenter.on("error", async (name, err, ctx) => {
-    Cocoa.log(
-        `Command "${name}" error at ${ctx.guild?.name} : ${err}`,
-        LogStatus.Error
-    );
-    await ctx.channel?.send(`あら？, Error Occured: ${err}`.slice(0, 2000));
+  Cocoa.log(
+    `Command "${name}" error at ${ctx.guild?.name} : ${err}`,
+    LogStatus.Error
+  );
+  await ctx.channel?.send(`あら？, Error Occured: ${err}`.slice(0, 2000));
 });
 scenter.on("interaction", (name, ctx) => {
-    Cocoa.log(
-        `Handled "${name}" invoked by ${ctx.user.tag} at ${ctx.guild?.name}`
-    );
+  Cocoa.log(
+    `Handled "${name}" invoked by ${ctx.user.tag} at ${ctx.guild?.name}`
+  );
 });
 
 const activityLoader = new ActivityGroupLoader("data/activities.json");
 const activityManager = new ActivityManager(
-    activityLoader,
-    client,
-    5 * 60 * 1000
+  activityLoader,
+  client,
+  5 * 60 * 1000
 );
 
 client.on("ready", (cli) => {
-    console.log(
-        chalk.cyan(
-            `${ShortNameJA} Ready! Logged in as ${
-                cli.user.tag
-            } v${AppVersion}, took ${process.uptime().toFixed(3)} seconds`
-        )
-    );
-    scenter.syncCommands(true);
-    activityManager.nextActivity();
+  console.log(
+    chalk.cyan(
+      `${ShortNameJA} Ready! Logged in as ${
+        cli.user.tag
+      } v${AppVersion}, took ${process.uptime().toFixed(3)} seconds`
+    )
+  );
+  scenter.syncCommands(true);
+  activityManager.nextActivity();
 });
 
 new ConsoleManager().useLogout(client).useReload(activityLoader);
@@ -93,6 +93,6 @@ new ConsoleManager().useLogout(client).useReload(activityLoader);
 checkLogin(client, process.env.DISCORD_TOKEN);
 
 process.on("SIGINT", () => {
-    console.log(chalk.yellow("Terminating Waifu Bot..."));
-    client.destroy();
+  console.log(chalk.yellow("Terminating Waifu Bot..."));
+  client.destroy();
 });

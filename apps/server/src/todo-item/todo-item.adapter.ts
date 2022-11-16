@@ -6,20 +6,18 @@ import { CreateOneTodoItemArgs } from "./dto/todo-item.dto";
 
 @Injectable()
 export class TodoItemAdapter {
-    createOneTodoItem(
-        args: CreateOneTodoItemArgs
-    ): PrismaCreateOneTodoItemArgs {
-        const { todoListId, ...data } = args.data;
+  createOneTodoItem(args: CreateOneTodoItemArgs): PrismaCreateOneTodoItemArgs {
+    const { todoListId, ...data } = args.data;
 
-        return {
-            data: {
-                ...data,
-                todoList: {
-                    connect: {
-                        id: +todoListId,
-                    },
-                },
-            },
-        };
-    }
+    return {
+      data: {
+        ...data,
+        todoList: {
+          connect: {
+            id: +todoListId,
+          },
+        },
+      },
+    };
+  }
 }

@@ -10,43 +10,43 @@ import { randomUUID } from "node:crypto";
 
 @Injectable()
 export class AccessTokenService {
-    private incrementalSeed = 0;
+  private incrementalSeed = 0;
 
-    constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-    findMany(input?: FindManyAccessTokenArgs) {
-        return this.prisma.accessToken.findMany(input);
-    }
+  findMany(input?: FindManyAccessTokenArgs) {
+    return this.prisma.accessToken.findMany(input);
+  }
 
-    userOfToken(token: AccessToken) {
-        return this.prisma.accessToken
-            .findUniqueOrThrow({
-                where: { token: token.token },
-            })
-            .user();
-    }
+  userOfToken(token: AccessToken) {
+    return this.prisma.accessToken
+      .findUniqueOrThrow({
+        where: { token: token.token },
+      })
+      .user();
+  }
 
-    generateToken(input: FindUniqueUserArgs) {
-        this.incrementalSeed = (this.incrementalSeed + 1) % 10;
+  generateToken(input: FindUniqueUserArgs) {
+    this.incrementalSeed = (this.incrementalSeed + 1) % 10;
 
-        const token = randomUUID() + Date.now() + this.incrementalSeed;
-        const expire = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+    const token = randomUUID() + Date.now() + this.incrementalSeed;
+    const expire = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
 
-        return this.prisma.accessToken.upsert({
-            where: {
-                userId: input.where.id,
-            },
-            create: {
-                user: {
-                    connect: input.where,
-                },
-                token,
-                expire,
-            },
-            update: {
-                token,
-                expire,
-            },
-        });
-    }
+    return this.prisma.accessToken.upsert({
+      where: {
+        userId: input.where.id,
+      },
+      create: {
+        user: {
+          connect: input.where,
+        },
+        token,
+        expire,
+      },
+      update: {
+        token,
+        expire,
+      },
+    });
+  }
 }

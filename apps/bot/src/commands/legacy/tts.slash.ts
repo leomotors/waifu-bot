@@ -1,26 +1,26 @@
 import {
-    CogSlashClass,
-    Param,
-    SlashCommand,
+  CogSlashClass,
+  Param,
+  SlashCommand,
 } from "cocoa-discord-utils/slash/class";
 
 import { Voice } from "./tts.service";
 
 export class TTS extends CogSlashClass {
-    constructor() {
-        super("TTS", "The bot can speak! (Warning: Unstable)");
-    }
+  constructor() {
+    super("TTS", "The bot can speak! (Warning: Unstable)");
+  }
 
-    @SlashCommand("Speak!")
-    async speak(
-        ctx: SlashCommand.Context,
-        @Param.String("What to speak") text: Param.String.Type,
-        @Param.String("Language", { required: false })
-        lang: Param.String.Nullable
-    ) {
-        await ctx.reply("わかります！");
+  @SlashCommand("Speak!")
+  async speak(
+    ctx: SlashCommand.Context,
+    @Param.String("What to speak") text: Param.String.Type,
+    @Param.String("Language", { required: false })
+    lang: Param.String.Nullable
+  ) {
+    await ctx.reply("わかります！");
 
-        await Voice.joinFromContext(ctx);
-        Voice.speak(ctx.guildId!, text, lang);
-    }
+    await Voice.joinFromContext(ctx);
+    Voice.speak(ctx.guildId!, text, lang);
+  }
 }

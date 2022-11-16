@@ -1,10 +1,10 @@
 import {
-    Args,
-    Mutation,
-    Parent,
-    Query,
-    ResolveField,
-    Resolver,
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
 } from "@nestjs/graphql";
 
 import { AccessToken } from "@generated/access-token/access-token.model";
@@ -16,20 +16,20 @@ import { AccessTokenService } from "./access-token.service";
 
 @Resolver(() => AccessToken)
 export class AccessTokenResolver {
-    constructor(private readonly service: AccessTokenService) {}
+  constructor(private readonly service: AccessTokenService) {}
 
-    @Query(() => [AccessToken])
-    accessTokens(@Args() input?: FindManyAccessTokenArgs) {
-        return this.service.findMany(input);
-    }
+  @Query(() => [AccessToken])
+  accessTokens(@Args() input?: FindManyAccessTokenArgs) {
+    return this.service.findMany(input);
+  }
 
-    @ResolveField(() => User)
-    user(@Parent() accessToken: AccessToken) {
-        return this.service.userOfToken(accessToken);
-    }
+  @ResolveField(() => User)
+  user(@Parent() accessToken: AccessToken) {
+    return this.service.userOfToken(accessToken);
+  }
 
-    @Mutation(() => AccessToken)
-    generateToken(@Args() input: FindUniqueUserArgs) {
-        return this.service.generateToken(input);
-    }
+  @Mutation(() => AccessToken)
+  generateToken(@Args() input: FindUniqueUserArgs) {
+    return this.service.generateToken(input);
+  }
 }

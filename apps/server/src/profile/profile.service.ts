@@ -9,25 +9,25 @@ import { PrismaService } from "src/prisma.service";
 
 @Injectable()
 export class ProfileService {
-    constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-    findMany(input?: FindManyProfileArgs) {
-        return this.prisma.profile.findMany(input);
-    }
+  findMany(input?: FindManyProfileArgs) {
+    return this.prisma.profile.findMany(input);
+  }
 
-    findUnique(input: FindUniqueProfileArgs) {
-        return this.prisma.profile.findUnique(input);
-    }
+  findUnique(input: FindUniqueProfileArgs) {
+    return this.prisma.profile.findUnique(input);
+  }
 
-    userOfProfile(profile: Profile) {
-        return this.prisma.user.findUniqueOrThrow({
-            where: {
-                id: profile.userId,
-            },
-        });
-    }
+  userOfProfile(profile: Profile) {
+    return this.prisma.user.findUniqueOrThrow({
+      where: {
+        id: profile.userId,
+      },
+    });
+  }
 
-    create(input: CreateOneProfileArgs) {
-        return this.prisma.profile.create(input);
-    }
+  create(input: CreateOneProfileArgs) {
+    return this.prisma.profile.create(input);
+  }
 }

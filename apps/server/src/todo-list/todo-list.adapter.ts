@@ -4,42 +4,42 @@ import { CreateOneTodoListArgs as PrismaCreateOneTodoListArgs } from "@generated
 import { User } from "@generated/user/user.model";
 
 import {
-    CreateOneTodoListAdminArgs,
-    CreateOneTodoListArgs,
+  CreateOneTodoListAdminArgs,
+  CreateOneTodoListArgs,
 } from "./dto/todo-list.dto";
 
 @Injectable()
 export class TodoListAdapter {
-    createOneTodoList(
-        args: CreateOneTodoListAdminArgs
-    ): PrismaCreateOneTodoListArgs {
-        const { ownerId, ...data } = args.data;
+  createOneTodoList(
+    args: CreateOneTodoListAdminArgs
+  ): PrismaCreateOneTodoListArgs {
+    const { ownerId, ...data } = args.data;
 
-        return {
-            data: {
-                ...data,
-                owner: {
-                    connect: {
-                        id: ownerId,
-                    },
-                },
-            },
-        };
-    }
+    return {
+      data: {
+        ...data,
+        owner: {
+          connect: {
+            id: ownerId,
+          },
+        },
+      },
+    };
+  }
 
-    createOneTodoListUser(
-        args: CreateOneTodoListArgs,
-        user: User
-    ): PrismaCreateOneTodoListArgs {
-        return {
-            data: {
-                ...args.data,
-                owner: {
-                    connect: {
-                        id: user.id,
-                    },
-                },
-            },
-        };
-    }
+  createOneTodoListUser(
+    args: CreateOneTodoListArgs,
+    user: User
+  ): PrismaCreateOneTodoListArgs {
+    return {
+      data: {
+        ...args.data,
+        owner: {
+          connect: {
+            id: user.id,
+          },
+        },
+      },
+    };
+  }
 }

@@ -5,6 +5,6 @@ import { PlaylistResolver } from "./playlist.resolver";
 import { PlaylistService } from "./playlist.service";
 
 @Module({
-    providers: [PlaylistResolver, PlaylistService, PlaylistAdapter],
+  providers: [PlaylistResolver, PlaylistService, PlaylistAdapter],
 })
 export class PlaylistModule {}

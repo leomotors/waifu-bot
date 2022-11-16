@@ -9,27 +9,27 @@ import { PrismaService } from "src/prisma.service";
 
 @Injectable()
 export class TodoItemService {
-    constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-    findMany(args: FindManyTodoItemArgs) {
-        return this.prisma.todoItem.findMany(args);
-    }
+  findMany(args: FindManyTodoItemArgs) {
+    return this.prisma.todoItem.findMany(args);
+  }
 
-    findUnique(args: FindUniqueTodoItemArgs) {
-        return this.prisma.todoItem.findUnique(args);
-    }
+  findUnique(args: FindUniqueTodoItemArgs) {
+    return this.prisma.todoItem.findUnique(args);
+  }
 
-    create(args: CreateOneTodoItemArgs) {
-        return this.prisma.todoItem.create(args);
-    }
+  create(args: CreateOneTodoItemArgs) {
+    return this.prisma.todoItem.create(args);
+  }
 
-    todoList(todoItem: TodoItem) {
-        return this.prisma.todoItem
-            .findUniqueOrThrow({
-                where: {
-                    id: todoItem.id,
-                },
-            })
-            .todoList();
-    }
+  todoList(todoItem: TodoItem) {
+    return this.prisma.todoItem
+      .findUniqueOrThrow({
+        where: {
+          id: todoItem.id,
+        },
+      })
+      .todoList();
+  }
 }

@@ -5,12 +5,12 @@ import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
 
 @Module({
-    providers: [
-        AuthService,
-        {
-            provide: APP_GUARD,
-            useClass: AuthGuard,
-        },
-    ],
+  providers: [
+    AuthService,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AuthModule {}

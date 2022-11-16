@@ -9,17 +9,17 @@ import { Type } from "class-transformer";
 
 @InputType()
 export class UserCreateInput extends OmitType(_UserCreateInput, [
-    "profile",
+  "profile",
 ] as const) {
-    @Field(() => ProfileCreateWithoutUserInput, { nullable: true })
-    profile?: ProfileCreateWithoutUserInput;
+  @Field(() => ProfileCreateWithoutUserInput, { nullable: true })
+  profile?: ProfileCreateWithoutUserInput;
 }
 
 @ArgsType()
 export class CreateOneUserArgs {
-    @Field(() => UserCreateInput)
-    @Type(() => UserCreateInput)
-    data!: UserCreateInput;
+  @Field(() => UserCreateInput)
+  @Type(() => UserCreateInput)
+  data!: UserCreateInput;
 }
 
 @InputType()
@@ -27,31 +27,31 @@ class ProfileUpdateInput extends ProfileCreateWithoutUserInput {}
 
 @InputType()
 export class UserUpdateInput extends OmitType(_UserUpdateInput, [
-    "profile",
+  "profile",
 ] as const) {
-    @Field(() => ProfileUpdateInput, { nullable: true })
-    profile?: ProfileUpdateInput;
+  @Field(() => ProfileUpdateInput, { nullable: true })
+  profile?: ProfileUpdateInput;
 }
 
 @ArgsType()
 export class UpdateOneUserArgs extends OmitType(_UpdateOneUserArgs, [
-    "data",
+  "data",
 ] as const) {
-    @Field(() => UserUpdateInput)
-    data!: UserUpdateInput;
+  @Field(() => UserUpdateInput)
+  data!: UserUpdateInput;
 }
 
 @InputType()
 export class UserUpsertInput {
-    @Field()
-    id!: string;
+  @Field()
+  id!: string;
 
-    @Field(() => ProfileUpdateInput)
-    profile!: ProfileUpdateInput;
+  @Field(() => ProfileUpdateInput)
+  profile!: ProfileUpdateInput;
 }
 
 @ArgsType()
 export class UpsertOneUserArgs {
-    @Field(() => UserUpsertInput)
-    data!: UserUpsertInput;
+  @Field(() => UserUpsertInput)
+  data!: UserUpsertInput;
 }

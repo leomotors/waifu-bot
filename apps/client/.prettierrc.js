@@ -1,5 +1,5 @@
 module.exports = {
-  ...require("@waifu-bot/config/prettier-web"),
+  ...require("@waifu-bot/config/prettier-app"),
   importOrder: [
     "^\\$styles",
     "^[$]",

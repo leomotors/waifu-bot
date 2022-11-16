@@ -7,19 +7,19 @@ import { CreateOneUserPlaylistArgs } from "./dto/playlist.dto";
 
 @Injectable()
 export class PlaylistAdapter {
-    createUserPlaylist(
-        input: CreateOneUserPlaylistArgs,
-        user: User
-    ): CreateOnePlaylistArgs {
-        return {
-            data: {
-                ...input.data,
-                owner: {
-                    connect: {
-                        id: user.id,
-                    },
-                },
-            },
-        };
-    }
+  createUserPlaylist(
+    input: CreateOneUserPlaylistArgs,
+    user: User
+  ): CreateOnePlaylistArgs {
+    return {
+      data: {
+        ...input.data,
+        owner: {
+          connect: {
+            id: user.id,
+          },
+        },
+      },
+    };
+  }
 }

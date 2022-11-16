@@ -4,16 +4,16 @@ import { TodoItemCreateInput as PrismaTodoItemCreateInput } from "@generated/tod
 
 @InputType()
 export class TodoItemCreateInput extends OmitType(PrismaTodoItemCreateInput, [
-    "createdAt",
-    "updatedAt",
-    "todoList",
+  "createdAt",
+  "updatedAt",
+  "todoList",
 ]) {
-    @Field(() => ID)
-    todoListId!: number;
+  @Field(() => ID)
+  todoListId!: number;
 }
 
 @ArgsType()
 export class CreateOneTodoItemArgs {
-    @Field(() => TodoItemCreateInput)
-    data!: TodoItemCreateInput;
+  @Field(() => TodoItemCreateInput)
+  data!: TodoItemCreateInput;
 }

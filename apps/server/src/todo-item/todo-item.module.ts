@@ -5,6 +5,6 @@ import { TodoItemResolver } from "./todo-item.resolver";
 import { TodoItemService } from "./todo-item.service";
 
 @Module({
-    providers: [TodoItemService, TodoItemResolver, TodoItemAdapter],
+  providers: [TodoItemService, TodoItemResolver, TodoItemAdapter],
 })
 export class TodoItemModule {}

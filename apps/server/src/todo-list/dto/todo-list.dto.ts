@@ -4,26 +4,26 @@ import { TodoListCreateInput as PrismaTodoListCreateInput } from "@generated/tod
 
 @InputType()
 export class TodoListCreateInput extends OmitType(PrismaTodoListCreateInput, [
-    "createdAt",
-    "updatedAt",
-    "collaborators",
-    "owner",
-    "todoItems",
+  "createdAt",
+  "updatedAt",
+  "collaborators",
+  "owner",
+  "todoItems",
 ]) {}
 
 @InputType()
 export class TodoListAdminCreateInput extends TodoListCreateInput {
-    @Field()
-    ownerId!: string;
+  @Field()
+  ownerId!: string;
 }
 
 @ArgsType()
 export class CreateOneTodoListAdminArgs {
-    @Field(() => TodoListAdminCreateInput)
-    data!: TodoListAdminCreateInput;
+  @Field(() => TodoListAdminCreateInput)
+  data!: TodoListAdminCreateInput;
 }
 @ArgsType()
 export class CreateOneTodoListArgs {
-    @Field(() => TodoListCreateInput)
-    data!: TodoListCreateInput;
+  @Field(() => TodoListCreateInput)
+  data!: TodoListCreateInput;
 }

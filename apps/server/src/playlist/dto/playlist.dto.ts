@@ -5,6 +5,6 @@ import { PlaylistCreateWithoutOwnerInput } from "@generated/playlist/playlist-cr
 
 @ArgsType()
 export class CreateOneUserPlaylistArgs {
-    @Field(() => PlaylistCreateWithoutOwnerInput, { nullable: false })
-    data!: PlaylistCreateWithoutOwnerInput;
+  @Field(() => PlaylistCreateWithoutOwnerInput, { nullable: false })
+  data!: PlaylistCreateWithoutOwnerInput;
 }

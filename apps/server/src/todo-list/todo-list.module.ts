@@ -5,6 +5,6 @@ import { TodoListResolver } from "./todo-list.resolver";
 import { TodoListService } from "./todo-list.service";
 
 @Module({
-    providers: [TodoListResolver, TodoListService, TodoListAdapter],
+  providers: [TodoListResolver, TodoListService, TodoListAdapter],
 })
 export class TodoListModule {}

@@ -11,90 +11,90 @@ import { AdminUser, isAdminUser } from "src/user/user.decorator";
 
 @Injectable()
 export class TodoListService {
-    constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-    findMany(args: FindManyTodoListArgs) {
-        return this.prisma.todoList.findMany(args);
+  findMany(args: FindManyTodoListArgs) {
+    return this.prisma.todoList.findMany(args);
+  }
+
+  findUnique(args: FindUniqueTodoListArgs) {
+    return this.prisma.todoList.findUnique(args);
+  }
+
+  async todoList(args: FindUniqueTodoListArgs, user: User | AdminUser) {
+    if (isAdminUser(user)) {
+      return this.findUnique(args);
     }
 
-    findUnique(args: FindUniqueTodoListArgs) {
-        return this.prisma.todoList.findUnique(args);
+    const list = await this.prisma.todoList.findUnique({
+      ...args,
+      include: {
+        collaborators: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+
+    if (!list) return list;
+
+    if (
+      list.ownerId === user.id ||
+      list.collaborators.some((collab) => collab.id === user.id)
+    ) {
+      return list;
     }
 
-    async todoList(args: FindUniqueTodoListArgs, user: User | AdminUser) {
-        if (isAdminUser(user)) {
-            return this.findUnique(args);
-        }
+    throw new ForbiddenException(
+      `You do not have access to playlist #${args.where.id}`
+    );
+  }
 
-        const list = await this.prisma.todoList.findUnique({
-            ...args,
-            include: {
-                collaborators: {
-                    select: {
-                        id: true,
-                    },
-                },
-            },
-        });
+  create(args: CreateOneTodoListArgs) {
+    return this.prisma.todoList.create(args);
+  }
 
-        if (!list) return list;
+  todoItems(todoList: TodoList) {
+    return this.prisma.todoList
+      .findUniqueOrThrow({
+        where: {
+          id: todoList.id,
+        },
+      })
+      .todoItems();
+  }
 
-        if (
-            list.ownerId === user.id ||
-            list.collaborators.some((collab) => collab.id === user.id)
-        ) {
-            return list;
-        }
+  owner(todoList: TodoList) {
+    return this.prisma.todoList
+      .findUniqueOrThrow({
+        where: {
+          id: todoList.id,
+        },
+      })
+      .owner();
+  }
 
-        throw new ForbiddenException(
-            `You do not have access to playlist #${args.where.id}`
-        );
-    }
+  collaborators(todoList: TodoList) {
+    return this.prisma.todoList
+      .findUniqueOrThrow({
+        where: {
+          id: todoList.id,
+        },
+      })
+      .collaborators();
+  }
 
-    create(args: CreateOneTodoListArgs) {
-        return this.prisma.todoList.create(args);
-    }
-
-    todoItems(todoList: TodoList) {
-        return this.prisma.todoList
-            .findUniqueOrThrow({
-                where: {
-                    id: todoList.id,
-                },
-            })
-            .todoItems();
-    }
-
-    owner(todoList: TodoList) {
-        return this.prisma.todoList
-            .findUniqueOrThrow({
-                where: {
-                    id: todoList.id,
-                },
-            })
-            .owner();
-    }
-
-    collaborators(todoList: TodoList) {
-        return this.prisma.todoList
-            .findUniqueOrThrow({
-                where: {
-                    id: todoList.id,
-                },
-            })
-            .collaborators();
-    }
-
-    async _count(todoList: TodoList) {
-        return (
-            await this.prisma.todoList.findUniqueOrThrow({
-                where: {
-                    id: todoList.id,
-                },
-                select: {
-                    _count: true,
-                },
-            })
-        )._count;
-    }
+  async _count(todoList: TodoList) {
+    return (
+      await this.prisma.todoList.findUniqueOrThrow({
+        where: {
+          id: todoList.id,
+        },
+        select: {
+          _count: true,
+        },
+      })
+    )._count;
+  }
 }

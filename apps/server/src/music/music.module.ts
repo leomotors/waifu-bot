@@ -4,6 +4,6 @@ import { MusicResolver } from "./music.resolver";
 import { MusicService } from "./music.service";
 
 @Module({
-    providers: [MusicService, MusicResolver],
+  providers: [MusicService, MusicResolver],
 })
 export class MusicModule {}

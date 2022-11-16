@@ -22,29 +22,27 @@ import { UserModule } from "./user/user.module";
 
 @Global()
 @Module({
-    imports: [
-        ConfigModule.forRoot({
-            envFilePath: "../../.env",
-        }),
-        GraphQLModule.forRoot<ApolloDriverConfig>({
-            driver: ApolloDriver,
-            playground: false,
-            plugins: [
-                ApolloServerPluginLandingPageLocalDefault({ embed: true }),
-            ],
-            autoSchemaFile: "./src/@generated/schema.graphql",
-        }),
-        AccessTokenModule,
-        AuthModule,
-        MusicModule,
-        PlaylistModule,
-        ProfileModule,
-        TodoItemModule,
-        TodoListModule,
-        UserModule,
-    ],
-    controllers: [AppController],
-    providers: [AppService, AppResolver, PrismaService],
-    exports: [PrismaService],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: "../../.env",
+    }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
+      autoSchemaFile: "./src/@generated/schema.graphql",
+    }),
+    AccessTokenModule,
+    AuthModule,
+    MusicModule,
+    PlaylistModule,
+    ProfileModule,
+    TodoItemModule,
+    TodoListModule,
+    UserModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService, AppResolver, PrismaService],
+  exports: [PrismaService],
 })
 export class AppModule {}

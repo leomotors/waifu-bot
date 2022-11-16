@@ -11,72 +11,72 @@ import { PrismaService } from "src/prisma.service";
 
 @Injectable()
 export class UserService {
-    constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-    findMany(input?: FindManyUserArgs) {
-        return this.prisma.user.findMany(input);
-    }
+  findMany(input?: FindManyUserArgs) {
+    return this.prisma.user.findMany(input);
+  }
 
-    findUnique(input: FindUniqueUserArgs) {
-        return this.prisma.user.findUnique(input);
-    }
+  findUnique(input: FindUniqueUserArgs) {
+    return this.prisma.user.findUnique(input);
+  }
 
-    create(input: CreateOneUserArgs) {
-        return this.prisma.user.create(input);
-    }
+  create(input: CreateOneUserArgs) {
+    return this.prisma.user.create(input);
+  }
 
-    update(input: UpdateOneUserArgs) {
-        return this.prisma.user.update(input);
-    }
+  update(input: UpdateOneUserArgs) {
+    return this.prisma.user.update(input);
+  }
 
-    upsertUser(input: UpsertOneUserArgs) {
-        return this.prisma.user.upsert(input);
-    }
+  upsertUser(input: UpsertOneUserArgs) {
+    return this.prisma.user.upsert(input);
+  }
 
-    playlistOfUser(user: User) {
-        return this.prisma.user
-            .findUniqueOrThrow({ where: { id: user.id } })
-            .playlist();
-    }
+  playlistOfUser(user: User) {
+    return this.prisma.user
+      .findUniqueOrThrow({ where: { id: user.id } })
+      .playlist();
+  }
 
-    profileOfUser(user: User) {
-        return this.prisma.profile.findUnique({
-            where: { userId: user.id },
-        });
-    }
+  profileOfUser(user: User) {
+    return this.prisma.profile.findUnique({
+      where: { userId: user.id },
+    });
+  }
 
-    accessTokenOfUser(user: User) {
-        return this.prisma.accessToken.findUnique({
-            where: { userId: user.id },
-        });
-    }
+  accessTokenOfUser(user: User) {
+    return this.prisma.accessToken.findUnique({
+      where: { userId: user.id },
+    });
+  }
 
-    async _count(user: User) {
-        return (
-            await this.prisma.user.findUniqueOrThrow({
-                where: { id: user.id },
-                select: { _count: true },
-            })
-        )._count;
-    }
+  async _count(user: User) {
+    return (
+      await this.prisma.user.findUniqueOrThrow({
+        where: { id: user.id },
+        select: { _count: true },
+      })
+    )._count;
+  }
 
-    todoListsOwned(user: User) {
-        return this.prisma.user
-            .findUniqueOrThrow({
-                where: {
-                    id: user.id,
-                },
-            })
-            .todoListsOwned();
-    }
+  todoListsOwned(user: User) {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: {
+          id: user.id,
+        },
+      })
+      .todoListsOwned();
+  }
 
-    todoListsCollaborated(user: User) {
-        return this.prisma.user
-            .findUniqueOrThrow({
-                where: {
-                    id: user.id,
-                },
-            })
-            .todoListsCollaborated();
-    }
+  todoListsCollaborated(user: User) {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: {
+          id: user.id,
+        },
+      })
+      .todoListsCollaborated();
+  }
 }

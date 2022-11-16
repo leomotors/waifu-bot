@@ -5,6 +5,6 @@ import { UserResolver } from "./user.resolver";
 import { UserService } from "./user.service";
 
 @Module({
-    providers: [UserService, UserResolver, UserAdapter],
+  providers: [UserService, UserResolver, UserAdapter],
 })
 export class UserModule {}

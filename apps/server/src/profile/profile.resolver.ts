@@ -1,10 +1,10 @@
 import {
-    Args,
-    Mutation,
-    Parent,
-    Query,
-    ResolveField,
-    Resolver,
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
 } from "@nestjs/graphql";
 
 import { CreateOneProfileArgs } from "@generated/profile/create-one-profile.args";
@@ -17,25 +17,25 @@ import { ProfileService } from "./profile.service";
 
 @Resolver(() => Profile)
 export class ProfileResolver {
-    constructor(private readonly service: ProfileService) {}
+  constructor(private readonly service: ProfileService) {}
 
-    @Query(() => [Profile])
-    profiles(@Args() input?: FindManyProfileArgs) {
-        return this.service.findMany(input);
-    }
+  @Query(() => [Profile])
+  profiles(@Args() input?: FindManyProfileArgs) {
+    return this.service.findMany(input);
+  }
 
-    @Query(() => Profile, { nullable: true })
-    profile(@Args() input: FindUniqueProfileArgs) {
-        return this.service.findUnique(input);
-    }
+  @Query(() => Profile, { nullable: true })
+  profile(@Args() input: FindUniqueProfileArgs) {
+    return this.service.findUnique(input);
+  }
 
-    @ResolveField(() => User)
-    user(@Parent() profile: Profile) {
-        return this.service.userOfProfile(profile);
-    }
+  @ResolveField(() => User)
+  user(@Parent() profile: Profile) {
+    return this.service.userOfProfile(profile);
+  }
 
-    @Mutation(() => Profile)
-    createProfile(@Args() input: CreateOneProfileArgs) {
-        return this.service.create(input);
-    }
+  @Mutation(() => Profile)
+  createProfile(@Args() input: CreateOneProfileArgs) {
+    return this.service.create(input);
+  }
 }

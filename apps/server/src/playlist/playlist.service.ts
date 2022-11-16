@@ -9,38 +9,38 @@ import { PrismaService } from "src/prisma.service";
 
 @Injectable()
 export class PlaylistService {
-    constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-    findMany(input?: FindManyPlaylistArgs) {
-        return this.prisma.playlist.findMany(input);
-    }
+  findMany(input?: FindManyPlaylistArgs) {
+    return this.prisma.playlist.findMany(input);
+  }
 
-    findUnique(input: FindUniquePlaylistArgs) {
-        return this.prisma.playlist.findUnique(input);
-    }
+  findUnique(input: FindUniquePlaylistArgs) {
+    return this.prisma.playlist.findUnique(input);
+  }
 
-    musicOfPlaylist(playlist: Playlist) {
-        return this.prisma.playlist
-            .findUniqueOrThrow({ where: { id: playlist.id } })
-            .music();
-    }
+  musicOfPlaylist(playlist: Playlist) {
+    return this.prisma.playlist
+      .findUniqueOrThrow({ where: { id: playlist.id } })
+      .music();
+  }
 
-    ownerOfPlaylist(playlist: Playlist) {
-        return this.prisma.playlist
-            .findUniqueOrThrow({ where: { id: playlist.id } })
-            .owner();
-    }
+  ownerOfPlaylist(playlist: Playlist) {
+    return this.prisma.playlist
+      .findUniqueOrThrow({ where: { id: playlist.id } })
+      .owner();
+  }
 
-    async _count(playlist: Playlist) {
-        return (
-            await this.prisma.playlist.findUniqueOrThrow({
-                where: { id: playlist.id },
-                select: { _count: true },
-            })
-        )._count;
-    }
+  async _count(playlist: Playlist) {
+    return (
+      await this.prisma.playlist.findUniqueOrThrow({
+        where: { id: playlist.id },
+        select: { _count: true },
+      })
+    )._count;
+  }
 
-    create(input: CreateOnePlaylistArgs) {
-        return this.prisma.playlist.create(input);
-    }
+  create(input: CreateOnePlaylistArgs) {
+    return this.prisma.playlist.create(input);
+  }
 }
