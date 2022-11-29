@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.643] - 2022-11-29
+
+- build: remove lint from start's dependency
+- feat: update kitakita.json
+
 ## [4.0.642] - 2022-11-29
 
 - chore: bump deps
