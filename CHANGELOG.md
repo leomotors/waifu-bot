@@ -2,6 +2,12 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.642] - 2022-11-29
+
+- chore: bump deps
+- refactor: removed emoji, renamed blep -> pfp
+- feat: /kitakita
+
 ## [4.0.640] - 2022-11-16
 
 - chore: bump deps

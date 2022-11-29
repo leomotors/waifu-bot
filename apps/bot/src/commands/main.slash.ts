@@ -2,6 +2,7 @@ import { AppVersion } from "@waifu-bot/constants";
 
 import { Version as MusicVersion } from "@leomotors/music-bot";
 
+import { ArrayLoader } from "cocoa-discord-utils";
 import { CocoaVersion } from "cocoa-discord-utils/meta";
 import {
   CogSlashClass,
@@ -23,18 +24,13 @@ import { style, Waifu } from "./styles";
 export class Main extends CogSlashClass {
   timePinged = 0;
 
+  readonly kitaLoader = ArrayLoader.fromFile<string>(
+    "kitakita",
+    "data/kitakita.json"
+  );
+
   constructor() {
     super("Main", "Main Slash Cog");
-  }
-
-  @SlashCommand("No one have idea what command is this")
-  async blep(
-    ctx: SlashCommand.Context,
-    @Param.User("Who do you want to B L E P") person: Param.User.Type
-  ) {
-    await ctx.reply(
-      person.avatarURL({ size: 4096 }) ?? "Can't blep, no avatar"
-    );
   }
 
   @SlashCommand("slash jobs")
@@ -42,33 +38,33 @@ export class Main extends CogSlashClass {
     await ctx.reply("Brikl is hiring\nhttps://brikl.com/jobs");
   }
 
-  @SlashCommand("Send some Emoji!")
-  async emoji(
-    ctx: SlashCommand.Context,
-    @Param.String("Emoji to Echoes ACT 3!") emoji_name: Param.String.Type
-  ) {
-    await ctx.reply(`:${emoji_name}:`);
-  }
+  readonly fbiStyle = style.extends({ author: "bot" });
 
-  @SlashCommand("Adenine Thymine Cytosine Guanine")
-  async helix(
+  @SlashCommand("Get Selected User Information")
+  async fbi(
     ctx: SlashCommand.Context,
-    @Param.String("Text to Helix-ify") text: Param.String.Type
+    @Param.User("Target User") user: Param.User.Type
   ) {
-    const res = Helix.makeHelix(text);
+    const gmember = ctx.guild?.members.cache.get(user.id);
 
-    if (res === Helix.HelixError.ILLEGAL_CHAR) {
-      await ctx.reply("Illegal String!");
-      return;
-    } else if (res === Helix.HelixError.ILLEGAL_LEN) {
-      await ctx.reply("Please don't try to make me, I have family!");
-      return;
+    const emb = this.fbiStyle
+      .use(ctx)
+      .setTitle(user.tag)
+      .setDescription(`ID: ${user.id}${user.bot ? "\n🤖Beep Boop🤖" : ""}`)
+      .setThumbnail(user.avatarURL() ?? user.defaultAvatarURL)
+      .addField({
+        name: "Created At",
+        value: formatTime(user.createdTimestamp),
+      });
+
+    if (gmember?.joinedTimestamp) {
+      emb.addField({
+        name: "Joined At",
+        value: formatTime(gmember.joinedTimestamp),
+      });
     }
 
-    await ctx.reply("Helix時間で～す！");
-    for (const helix of res) {
-      await ctx.channel?.send(helix);
-    }
+    await ctx.reply({ embeds: [emb] });
   }
 
   @SlashCommand("Insult someone for being gae")
@@ -140,6 +136,27 @@ export class Main extends CogSlashClass {
     await ctx.followUp({ files: ["output.png"] });
   }
 
+  @SlashCommand("Adenine Thymine Cytosine Guanine")
+  async helix(
+    ctx: SlashCommand.Context,
+    @Param.String("Text to Helix-ify") text: Param.String.Type
+  ) {
+    const res = Helix.makeHelix(text);
+
+    if (res === Helix.HelixError.ILLEGAL_CHAR) {
+      await ctx.reply("Illegal String!");
+      return;
+    } else if (res === Helix.HelixError.ILLEGAL_LEN) {
+      await ctx.reply("Please don't try to make me, I have family!");
+      return;
+    }
+
+    await ctx.reply("Helix時間で～す！");
+    for (const helix of res) {
+      await ctx.channel?.send(helix);
+    }
+  }
+
   @SlashCommand("Use this bot to speak anything")
   async imposter(
     ctx: SlashCommand.Context,
@@ -155,6 +172,45 @@ export class Main extends CogSlashClass {
         ephemeral: true,
       });
     }
+  }
+
+  @SlashCommand("Clear Messages to delete what you have done")
+  async kamui(
+    ctx: SlashCommand.Context,
+    @Param.Integer("Amount to *kamui*") amount: Param.Integer.Type
+  ) {
+    if (ctx.channel instanceof TextChannel) {
+      await ctx.reply("**ザ・ハンドが消す!!!**");
+      await ctx.channel.bulkDelete(amount + 1);
+
+      await ctx.channel.send(`ザ・ハンドが**${amount}メッセージ**を消した!!!`);
+      await ctx.channel.send(
+        "https://c.tenor.com/xexSk5SQBbAAAAAC/discord-mod.gif"
+      );
+    } else await ctx.reply("bruh, this doesn't work here");
+  }
+
+  @SlashCommand(
+    "kitakita post from บจจิเดอะร็อคแฟนคลับไทยแลนด์ คิตะคิต้าโพสต์ติ้ง ✨⭐️"
+  )
+  async kitakita(ctx: SlashCommand.Context) {
+    await this.kitaLoader.initialPromise;
+
+    const url = this.kitaLoader.getRandom();
+
+    if (!url) {
+      await ctx.reply("No kitakita post for unknown reason 😭");
+    } else {
+      await ctx.reply(`キタ～ン キタ～ン\n${url}`);
+    }
+  }
+
+  @SlashCommand("Get profile picture of someone")
+  async pfp(
+    ctx: SlashCommand.Context,
+    @Param.User("That person") person: Param.User.Type
+  ) {
+    await ctx.reply(person.avatarURL({ size: 4096 }) ?? "bruh, no avatar");
   }
 
   @SlashCommand("Pong Tai!")
@@ -174,22 +230,6 @@ export class Main extends CogSlashClass {
       .setDescription(`Ping = ${ctx.client.ws.ping} ms`);
 
     await ctx.reply({ embeds: [emb], ephemeral: ephemeral ?? false });
-  }
-
-  @SlashCommand("Clear Messages to delete what you have done")
-  async kamui(
-    ctx: SlashCommand.Context,
-    @Param.Integer("Amount to *kamui*") amount: Param.Integer.Type
-  ) {
-    if (ctx.channel instanceof TextChannel) {
-      await ctx.reply("**ザ・ハンドが消す!!!**");
-      await ctx.channel.bulkDelete(amount + 1);
-
-      await ctx.channel.send(`ザ・ハンドが**${amount}メッセージ**を消した!!!`);
-      await ctx.channel.send(
-        "https://c.tenor.com/xexSk5SQBbAAAAAC/discord-mod.gif"
-      );
-    } else await ctx.reply("bruh, this doesn't work here");
   }
 
   @SlashCommand("A Good Way to SIMP (Powered by Tenor)")
@@ -231,34 +271,5 @@ export class Main extends CogSlashClass {
       });
 
     await ctx.reply({ embeds: [emb], ephemeral: ephemeral ?? false });
-  }
-
-  readonly fbiStyle = style.extends({ author: "bot" });
-
-  @SlashCommand("Get Selected User Information")
-  async fbi(
-    ctx: SlashCommand.Context,
-    @Param.User("Target User") user: Param.User.Type
-  ) {
-    const gmember = ctx.guild?.members.cache.get(user.id);
-
-    const emb = this.fbiStyle
-      .use(ctx)
-      .setTitle(user.tag)
-      .setDescription(`ID: ${user.id}${user.bot ? "\n🤖Beep Boop🤖" : ""}`)
-      .setThumbnail(user.avatarURL() ?? user.defaultAvatarURL)
-      .addField({
-        name: "Created At",
-        value: formatTime(user.createdTimestamp),
-      });
-
-    if (gmember?.joinedTimestamp) {
-      emb.addField({
-        name: "Joined At",
-        value: formatTime(gmember.joinedTimestamp),
-      });
-    }
-
-    await ctx.reply({ embeds: [emb] });
   }
 }
