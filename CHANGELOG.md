@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.645] - 2022-12-12
+
+- feat: pfp command now outputs png
+- chore: bump deps (will fix some bugs)
+
 ## [4.0.643] - 2022-11-29
 
 - build: remove lint from start's dependency

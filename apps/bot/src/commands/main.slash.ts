@@ -210,7 +210,9 @@ export class Main extends CogSlashClass {
     ctx: SlashCommand.Context,
     @Param.User("That person") person: Param.User.Type
   ) {
-    await ctx.reply(person.avatarURL({ size: 4096 }) ?? "bruh, no avatar");
+    await ctx.reply(
+      person.avatarURL({ size: 4096, extension: "png" }) ?? "bruh, no avatar"
+    );
   }
 
   @SlashCommand("Pong Tai!")
