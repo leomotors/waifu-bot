@@ -7,7 +7,7 @@ generator client {
 
 generator nestgraphql {
   provider = "prisma-nestjs-graphql"
-  output   = "../src/@generated"
+  output   = "../apps/server/src/@generated"
 }
 
 datasource db {

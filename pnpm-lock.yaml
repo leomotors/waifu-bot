@@ -5,12 +5,18 @@ importers:
   .:
     specifiers:
       '@nestjs/cli': ^9.1.5
+      '@prisma/client': ^4.7.1
       prettier: ^2.8.1
+      prisma: ^4.7.1
+      prisma-nestjs-graphql: ^17.0.3
       turbo: ^1.6.3
       typescript: ^4.9.4
     devDependencies:
       '@nestjs/cli': 9.1.5
+      '@prisma/client': 4.7.1_prisma@4.7.1
       prettier: 2.8.1
+      prisma: 4.7.1
+      prisma-nestjs-graphql: 17.0.3
       turbo: 1.6.3
       typescript: 4.9.4
 
@@ -135,7 +141,6 @@ importers:
       '@nestjs/mapped-types': ^1.2.0
       '@nestjs/platform-express': ^9.2.1
       '@nestjs/schematics': ^9.0.3
-      '@prisma/client': ^4.7.1
       '@types/express': ^4.17.15
       '@types/node': ^18.11.15
       '@typescript-eslint/eslint-plugin': ^5.46.1
@@ -152,8 +157,6 @@ importers:
       graphql: ^16.6.0
       play-dl: ^1.9.6
       prettier: ^2.8.1
-      prisma: ^4.7.1
-      prisma-nestjs-graphql: ^17.0.3
       reflect-metadata: ^0.1.13
       rimraf: ^3.0.2
       rxjs: ^7.6.0
@@ -170,7 +173,6 @@ importers:
       '@nestjs/graphql': 10.1.7_lk7hvkqe5juzplckpzmbnflx3q
       '@nestjs/mapped-types': 1.2.0_u7xskdvcoecg5rkgejmv6hp5nq
       '@nestjs/platform-express': 9.2.1_hjcqpoaebdr7gdo5hgc22hthbe
-      '@prisma/client': 4.7.1_prisma@4.7.1
       '@waifu-bot/constants': link:../../packages/constants
       apollo-server-core: 3.11.1_graphql@16.6.0
       apollo-server-express: 3.11.1_5ha345eiak62qiwwva5z4dp6gu
@@ -194,8 +196,6 @@ importers:
       eslint-config-prettier: 8.5.0_eslint@8.29.0
       eslint-plugin-prettier: 4.2.1_5dgjrgoi64tgrv3zzn3walur3u
       prettier: 2.8.1
-      prisma: 4.7.1
-      prisma-nestjs-graphql: 17.0.3
       source-map-support: 0.5.21
       ts-node: 10.9.1_ewfw2lwfc3dwdvz7r6yz2ssqyi
       tsconfig-paths: 4.1.1
@@ -2863,7 +2863,7 @@ packages:
     dependencies:
       '@prisma/engines-version': 4.7.1-1.272861e07ab64f234d3ffc4094e32bd61775599c
       prisma: 4.7.1
-    dev: false
+    dev: true
 
   /@prisma/debug/4.7.1:
     resolution: {integrity: sha512-oppjBRcTakJuAn0rANxWT9caxLKypSBT4Ajh7t+uPcO06CJOoN2Gt4VpFdw2i79U+klGAjTe/1yh8SCsTmxAhA==}
@@ -2877,11 +2877,12 @@ packages:
 
   /@prisma/engines-version/4.7.1-1.272861e07ab64f234d3ffc4094e32bd61775599c:
     resolution: {integrity: sha512-Bd4LZ+WAnUHOq31e9X/ihi5zPlr4SzTRwUZZYxvWOxlerIZ7HJlVa9zXpuKTKLpI9O1l8Ec4OYCKsivWCs5a3Q==}
-    dev: false
+    dev: true
 
   /@prisma/engines/4.7.1:
     resolution: {integrity: sha512-zWabHosTdLpXXlMefHmnouhXMoTB1+SCbUU3t4FCmdrtIOZcarPKU3Alto7gm/pZ9vHlGOXHCfVZ1G7OIrSbog==}
     requiresBuild: true
+    dev: true
 
   /@prisma/generator-helper/4.7.1:
     resolution: {integrity: sha512-q9mjYOyLxkLWhqjvPB5sx5J1VRegWA2eC9mwrGgA0CSMo6SzZ7xwIe4rMJKnh4a7QMUO03+HQFdv/Nz7BOWCcg==}
@@ -7636,6 +7637,7 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 4.7.1
+    dev: true
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
