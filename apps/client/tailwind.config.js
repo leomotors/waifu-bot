@@ -2,7 +2,7 @@
 
 /** @type {import("tailwindcss").Config} */
 const config = {
-  content: ["./src/pages/**/*.{js,ts,jsx,tsx,scss}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx,scss}"],
 };
 
 module.exports = config;
