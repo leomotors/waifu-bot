@@ -37,6 +37,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "prettier": "^2.8.1",
+    "prettier-plugin-tailwindcss": "^0.2.1",
     "prisma": "^4.7.1",
     "prisma-nestjs-graphql": "^17.0.3",
     "turbo": "^1.6.3",

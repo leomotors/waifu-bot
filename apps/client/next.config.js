@@ -12,7 +12,7 @@ const imageDomains = [
   "c.tenor.com",
   "i.ytimg.com",
 ].concat(
-  process.env.NODE_ENV == "development"
+  process.env.NODE_ENV === "development"
     ? ["static.wikia.nocookie.net", "static.zerochan.net"]
     : []
 );
