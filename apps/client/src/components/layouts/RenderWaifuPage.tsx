@@ -9,7 +9,7 @@ interface RenderWaifuPageProps {
 }
 
 export const RenderWaifuPage: FC<RenderWaifuPageProps> = ({ page, props }) => {
-  const { user, loading } = useContext(AuthContext);
+  const { loading, user } = useContext(AuthContext);
 
   if (loading) {
     return <p>Loading...</p>;

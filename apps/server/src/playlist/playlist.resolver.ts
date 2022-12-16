@@ -17,7 +17,7 @@ import { Playlist } from "@generated/playlist/playlist.model";
 import { User } from "@generated/user/user.model";
 
 import { Permission } from "../auth/auth.decorator";
-import { AdminUser, isAdminUser, UserContext } from "../user/user.decorator";
+import { AdminUser, UserContext, isAdminUser } from "../user/user.decorator";
 
 import { CreateOneUserPlaylistArgs } from "./dto/playlist.dto";
 import { PlaylistAdapter } from "./playlist.adapter";

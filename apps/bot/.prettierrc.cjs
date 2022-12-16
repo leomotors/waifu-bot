@@ -1,14 +1,15 @@
-module.exports = {
-  ...require("@waifu-bot/config/prettier-app"),
+// @ts-check
+
+module.exports = require("@leomotors/config/prettier").withSortImports({
   importOrder: [
     "^./dotenv",
     "^@waifu-bot",
-    "^@leomotors",
     "^cocoa-discord-utils",
+    "^@leomotors",
     "^discord.js",
     "^@discordjs",
-    "^[a-zA-Z]",
+    "<THIRD_PARTY_MODULES>",
     "^[.][.]",
     "^[.]",
   ],
-};
+});

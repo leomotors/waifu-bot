@@ -5,12 +5,12 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link
-          rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Inter:r,b&display=optional"
+          rel="stylesheet"
         />
         <link
-          rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Thai:r,b&display=optional"
+          rel="stylesheet"
         />
       </Head>
       <body>

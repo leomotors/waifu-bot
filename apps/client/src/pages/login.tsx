@@ -25,13 +25,13 @@ const LoginPage: NextPage = () => {
     <main className="flex min-h-screen flex-col items-center justify-center gap-2">
       <h1 className="page-title">Login</h1>
 
-      <label htmlFor="token" className="text-4xl">
+      <label className="text-4xl" htmlFor="token">
         Enter your access token
       </label>
       <input
-        type="text"
-        name="token"
         className="m-4 h-12 w-2/3 rounded-lg border border-black bg-neutral-200 p-2"
+        name="token"
+        type="text"
         value={token}
         onChange={(e) => setToken(e.currentTarget.value)}
       />

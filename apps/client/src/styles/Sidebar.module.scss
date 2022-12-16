@@ -1,12 +1,12 @@
 .linkList {
-  @apply p-2 w-full;
+  @apply w-full p-2;
 
   & > li {
     @apply rounded-lg p-2 text-xl transition-all hover:bg-[rgba(10,10,10,0.1)];
 
     & > a,
     & > button {
-      @apply flex items-center gap-2 w-full;
+      @apply flex w-full items-center gap-2;
     }
   }
 }

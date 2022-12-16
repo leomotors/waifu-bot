@@ -20,7 +20,7 @@ export class Kashi extends CogSlashClass {
     song: Param.String.Type,
     @Param.Ephemeral ephemeral: Param.Ephemeral.Type
   ) {
-    const { title, content, img } = await getLyric(song);
+    const { content, img, title } = await getLyric(song);
 
     const emb = style.use(ctx).setTitle(title).setDescription(content);
     if (img) emb.setThumbnail(img);

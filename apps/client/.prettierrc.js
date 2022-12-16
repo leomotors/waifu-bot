@@ -1,13 +1,8 @@
-module.exports = {
-  ...require("@waifu-bot/config/prettier-app"),
-  importOrder: [
-    "^\\$styles",
-    "^[$]",
-    "^@",
-    "^next",
-    "^react",
-    "^[a-zA-Z]",
-    "^[.][.]",
-    "^[.]",
-  ],
-};
+// @ts-check
+
+const {
+  withTailwind,
+  orderNextWithOrg,
+} = require("@leomotors/config/prettier");
+
+module.exports = withTailwind({ importOrder: orderNextWithOrg("@waifu-bot") });

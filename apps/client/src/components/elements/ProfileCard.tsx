@@ -9,20 +9,20 @@ type ProfileCardProps = NonNullable<GetMyInfoQuery["me"]> & {
 };
 
 export const ProfileCard: FC<ProfileCardProps> = ({
+  _count,
+  createdAt,
   id,
   profile,
-  createdAt,
   updatedAt,
-  _count,
 }) => {
   return (
     <div className="flex w-fit flex-col items-center rounded-xl bg-gradient-to-br from-green-100 to-green-200 p-4 text-lg font-semibold">
       <Image
-        src={profile.avatarUrl}
         alt="Discord Avatar"
-        width="150"
-        height="150"
         className="rounded-full"
+        height="150"
+        src={profile.avatarUrl}
+        width="150"
       />
 
       <p>Name: {profile.username}</p>

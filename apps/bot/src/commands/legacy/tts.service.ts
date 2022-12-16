@@ -6,14 +6,14 @@ import { GuildMember, VoiceChannel } from "discord.js";
 import {
   AudioPlayer,
   AudioPlayerStatus,
+  DiscordGatewayAdapterCreator,
+  VoiceConnection,
+  VoiceConnectionStatus,
   createAudioPlayer,
   createAudioResource,
-  DiscordGatewayAdapterCreator,
   entersState,
   getVoiceConnection,
   joinVoiceChannel as libJoinVoiceChannel,
-  VoiceConnection,
-  VoiceConnectionStatus,
 } from "@discordjs/voice";
 
 import { getAllAudioUrls } from "google-tts-api";
@@ -26,7 +26,9 @@ export namespace Voice {
   export function destroyConnection(conn: VoiceConnection | undefined) {
     try {
       conn?.destroy();
-    } catch (e) {}
+    } catch (e) {
+      // pass
+    }
   }
 
   // eslint-disable-next-line prefer-const

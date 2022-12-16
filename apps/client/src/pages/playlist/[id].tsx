@@ -62,9 +62,7 @@ const PlaylistEditPage: WaifuPage = () => {
   return (
     <main className="py-12 px-6">
       <div className="flex flex-row items-center gap-2 px-2">
-        <Link href="/playlist">
-          <a className="text-lg">{"< Back"}</a>
-        </Link>
+        <Link href="/playlist">{"< Back"}</Link>
         <h1 className="text-3xl font-bold">
           Playlist: {playlist?.name} (ID: {playlist?.id})
         </h1>
@@ -81,15 +79,15 @@ const PlaylistEditPage: WaifuPage = () => {
       >
         <input
           className="min-w-[32rem]"
-          type="text"
           placeholder="YouTube URL"
+          type="text"
           value={musicUrl}
           onChange={(e) => setMusicUrl(e.currentTarget.value)}
         />
         <button
           className="rounded-lg border border-green-500 bg-green-400 py-2 px-4 text-lg font-bold transition-colors hover:bg-green-300 disabled:border-gray-400 disabled:bg-gray-200 disabled:text-gray-800"
-          onClick={handleAddMusic}
           disabled={!validateURL(musicUrl)}
+          onClick={handleAddMusic}
         >
           Add Music
         </button>
@@ -118,25 +116,25 @@ const PlaylistEditPage: WaifuPage = () => {
             <tr key={`playlist-music-${music.videoId}`}>
               <td>
                 <Image
-                  src={music.thumbnailUrl}
                   alt="Video Thumbnail"
-                  width="120"
                   height="75"
+                  src={music.thumbnailUrl}
+                  width="120"
                 />
               </td>
               <td>
                 <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={YoutubeURLPrefix + music.videoId}
                   className={styles.waifuLink}
+                  href={YoutubeURLPrefix + music.videoId}
+                  rel="noreferrer"
+                  target="_blank"
                 >
                   {music.title}
                 </a>
               </td>
               <td>{formatTime(+music.lengthSeconds)}</td>
               <td>
-                <a href={music.authorChannelUrl} className={styles.waifuLink}>
+                <a className={styles.waifuLink} href={music.authorChannelUrl}>
                   {music.authorName}
                 </a>
               </td>

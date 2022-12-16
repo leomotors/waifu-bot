@@ -1,6 +1,6 @@
-import { AppVersion } from "@waifu-bot/constants";
-
 import { Injectable } from "@nestjs/common";
+
+import { AppVersion } from "@waifu-bot/constants";
 
 @Injectable()
 export class AppService {

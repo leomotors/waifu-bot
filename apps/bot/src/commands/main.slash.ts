@@ -1,7 +1,5 @@
 import { AppVersion } from "@waifu-bot/constants";
 
-import { Version as MusicVersion } from "@leomotors/music-bot";
-
 import { ArrayLoader } from "cocoa-discord-utils";
 import { CocoaVersion } from "cocoa-discord-utils/meta";
 import {
@@ -11,6 +9,8 @@ import {
 } from "cocoa-discord-utils/slash/class";
 import { getStatusFields } from "cocoa-discord-utils/template";
 
+import { Version as MusicVersion } from "@leomotors/music-bot";
+
 import { TextChannel } from "discord.js";
 
 import fetch from "node-fetch";
@@ -18,8 +18,8 @@ import { createWriteStream } from "node:fs";
 
 import { exec } from "../bot.service";
 
-import { formatTime, Helix } from "./main.service";
-import { style, Waifu } from "./styles";
+import { Helix, formatTime } from "./main.service";
+import { Waifu, style } from "./styles";
 
 export class Main extends CogSlashClass {
   timePinged = 0;

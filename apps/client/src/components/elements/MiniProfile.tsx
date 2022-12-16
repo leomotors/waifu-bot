@@ -15,11 +15,11 @@ export const MiniProfile: FC<MiniProfileProps> = ({ user }) => {
     <div className="my-2 flex justify-center gap-2 rounded-lg bg-[rgba(255,255,255,0.4)] p-2">
       <div className="shrink-0 ">
         <Image
-          src={user.profile?.avatarUrl ?? DiscordDefaultAvatarUrl}
           alt="User Profile"
-          width="50"
-          height="50"
           className="rounded-full"
+          height="50"
+          src={user.profile?.avatarUrl ?? DiscordDefaultAvatarUrl}
+          width="50"
         />
       </div>
 

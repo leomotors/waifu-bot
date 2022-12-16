@@ -1,10 +1,10 @@
+import { Param, SlashCommand } from "cocoa-discord-utils/slash/class";
+
 import {
   Voice as LibVoice,
   Music as MusicBase,
   MusicService,
 } from "@leomotors/music-bot";
-
-import { Param, SlashCommand } from "cocoa-discord-utils/slash/class";
 
 import { ChannelType, Client, VoiceChannel } from "discord.js";
 

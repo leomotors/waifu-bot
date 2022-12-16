@@ -5,10 +5,10 @@ import { AppVersion, ShortNameJA } from "@waifu-bot/constants";
 import {
   ActivityGroupLoader,
   ActivityManager,
-  checkLogin,
   Cocoa,
   ConsoleManager,
   LogStatus,
+  checkLogin,
 } from "cocoa-discord-utils";
 import { MessageCenter } from "cocoa-discord-utils/message";
 import { SlashCenter } from "cocoa-discord-utils/slash";

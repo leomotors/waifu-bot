@@ -1,7 +1,7 @@
 import {
-  createParamDecorator,
   ExecutionContext,
   ImATeapotException,
+  createParamDecorator,
 } from "@nestjs/common";
 
 import { User } from "@generated/user/user.model";

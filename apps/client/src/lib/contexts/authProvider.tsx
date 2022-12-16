@@ -10,7 +10,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState<IAuthContext["user"]>(undefined);
 
-  const { refetch, loading } = useGetMyInfoQuery({
+  const { loading, refetch } = useGetMyInfoQuery({
     onCompleted: (data) => {
       setUser(data.me);
     },

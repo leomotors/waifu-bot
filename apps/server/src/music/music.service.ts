@@ -9,11 +9,10 @@ import { FindManyMusicArgs } from "@generated/music/find-many-music.args";
 import { FindUniqueMusicArgs } from "@generated/music/find-unique-music.args";
 import { Music } from "@generated/music/music.model";
 import { User } from "@generated/user/user.model";
+import { extractID, video_basic_info } from "play-dl";
 
 import { PrismaService } from "src/prisma.service";
 import { AdminUser, isAdminUser } from "src/user/user.decorator";
-
-import { extractID, video_basic_info } from "play-dl";
 
 import {
   AddMusicFromUrlArgs,
@@ -97,7 +96,11 @@ export class MusicService {
     const video = info.video_details;
 
     const thumbnails = video.thumbnails;
-    const thumbnail = thumbnails[thumbnails.length - 1]!;
+    const thumbnail = thumbnails.at(-1);
+
+    if (!thumbnail) {
+      throw new NotFoundException("Unexpected: Video has no thumbnail");
+    }
 
     return this.prisma.music.create({
       data: {

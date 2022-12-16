@@ -6,7 +6,7 @@ import Head from "next/head";
 import { useMemo } from "react";
 
 const HomePage: NextPage = () => {
-  const { data, loading, error } = useGetVersionQuery();
+  const { data, error, loading } = useGetVersionQuery();
 
   const errorStr = useMemo(() => JSON.stringify(error, null, 4), [error]);
 

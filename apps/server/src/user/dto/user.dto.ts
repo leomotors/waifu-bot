@@ -4,7 +4,6 @@ import { ProfileCreateWithoutUserInput } from "@generated/profile/profile-create
 import { UpdateOneUserArgs as _UpdateOneUserArgs } from "@generated/user/update-one-user.args";
 import { UserCreateInput as _UserCreateInput } from "@generated/user/user-create.input";
 import { UserUpdateInput as _UserUpdateInput } from "@generated/user/user-update.input";
-
 import { Type } from "class-transformer";
 
 @InputType()

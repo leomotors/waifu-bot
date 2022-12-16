@@ -8,8 +8,8 @@
     "dev": "nest start --watch --preserveWatchOutput",
     "dev:debug": "nest start --debug --watch",
     "start": "node dist/src/main",
-    "lint": "eslint src --max-warnings=0",
-    "format": "prettier --write \"src/**/*.ts\""
+    "lint": "eslint src",
+    "format": "eslint src --fix"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
@@ -31,7 +31,7 @@
     "play-dl": "^1.9.6",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.6.0",
+    "rxjs": "^7.8.0",
     "tslib": "^2.4.1"
   },
   "devDependencies": {
@@ -42,10 +42,6 @@
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
     "@waifu-bot/config": "workspace:0.0.0",
-    "eslint": "^8.29.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.1",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "4.1.1",

@@ -1,14 +1,10 @@
-module.exports = {
-  ...require("@waifu-bot/config/prettier-app"),
-  importOrder: [
-    "^@waifu-bot",
-    "^@nestjs",
-    "^@",
-    "^src/",
-    "^[a-zA-Z]",
-    "^./prisma",
-    "^./app",
-    "^[.][.]",
-    "^[.]",
-  ],
-};
+// @ts-check
+
+const {
+  withSortImports,
+  orderNestWithOrg,
+} = require("@leomotors/config/prettier");
+
+module.exports = withSortImports({
+  importOrder: orderNestWithOrg("@waifu-bot"),
+});

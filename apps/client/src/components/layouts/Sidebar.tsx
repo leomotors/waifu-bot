@@ -21,7 +21,7 @@ interface RouteProps {
   icon: JSX.Element;
 }
 
-const Route: FC<RouteProps> = ({ label, to, icon }) => {
+const Route: FC<RouteProps> = ({ icon, label, to }) => {
   return (
     <li>
       <Link href={to}>
@@ -33,7 +33,7 @@ const Route: FC<RouteProps> = ({ label, to, icon }) => {
 };
 
 export const Sidebar: FC = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { logout, user } = useContext(AuthContext);
 
   return (
     <nav className="flex min-h-screen w-80 flex-col items-start justify-between bg-gradient-to-br from-blue-200 to-pink-200 p-2">
@@ -53,9 +53,9 @@ export const Sidebar: FC = () => {
         )}
 
         <ul className={styles.linkList}>
-          <Route label="Home" to="/" icon={<HouseDoor />} />
-          <Route label="Profile" to="/profile" icon={<Person />} />
-          <Route label="My Playlist" to="/playlist" icon={<MusicNoteList />} />
+          <Route icon={<HouseDoor />} label="Home" to="/" />
+          <Route icon={<Person />} label="Profile" to="/profile" />
+          <Route icon={<MusicNoteList />} label="My Playlist" to="/playlist" />
 
           <hr className="my-2 h-2 w-full border-slate-500 px-2" />
 
@@ -67,7 +67,7 @@ export const Sidebar: FC = () => {
               </button>
             </li>
           ) : (
-            <Route label="Login" to="/login" icon={<BoxArrowInRight />} />
+            <Route icon={<BoxArrowInRight />} label="Login" to="/login" />
           )}
         </ul>
       </div>
@@ -75,10 +75,10 @@ export const Sidebar: FC = () => {
       <div className="flex flex-col items-start text-xl font-bold">
         <p>Worcestershire Code on</p>
         <a
-          href="https://github.com/Leomotors/waifu-bot"
-          target="_blank"
-          rel="noreferrer"
           className="flex flex-row items-center justify-center gap-2 text-slate-900 transition-colors hover:text-pink-700"
+          href="https://github.com/Leomotors/waifu-bot"
+          rel="noreferrer"
+          target="_blank"
         >
           <Github />
           <p>GitHub</p>

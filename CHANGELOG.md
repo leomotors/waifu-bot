@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.650] - 2022-12-16
+
+- refactor: general refactor
+- [BREAKING] refactor: node 18
+
 ## [4.0.645] - 2022-12-12
 
 - feat: pfp command now outputs png
@@ -40,5 +45,5 @@ Previous changelog before 4.0.605 may not be noted here.
 
 - Fix inconsistent of .env.(template|example)
 - Add comment to some .env.example
-- Update _document.tsx for better font
+- Update \_document.tsx for better font
 - MOTIVATION

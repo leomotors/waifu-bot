@@ -6,13 +6,11 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint src && prettier --check src",
-    "format": "prettier --write src"
+    "lint": "eslint src",
+    "format": "eslint src --fix"
   },
   "devDependencies": {
     "@waifu-bot/config": "workspace:0.0.0",
-    "eslint": "^8.29.0",
-    "prettier": "^2.8.1",
     "typescript": "^4.9.4"
   }
 }

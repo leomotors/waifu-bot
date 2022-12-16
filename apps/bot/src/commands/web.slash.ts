@@ -1,14 +1,14 @@
 import { YoutubeURLPrefix } from "@waifu-bot/constants";
 
-import { Voice as LibVoice } from "@leomotors/music-bot";
-
 import {
   CogSlashClass,
   Param,
   SlashCommand,
 } from "cocoa-discord-utils/slash/class";
 
-import { gqlSdk, PublicWebUrl } from "../graphql";
+import { Voice as LibVoice } from "@leomotors/music-bot";
+
+import { PublicWebUrl, gqlSdk } from "../graphql";
 import { updateUser } from "../graphql/hooks";
 
 export class Web extends CogSlashClass {

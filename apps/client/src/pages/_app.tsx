@@ -20,8 +20,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Waifu Bot Control Center</title>
         <meta
-          name="description"
           content="Control Center for Waifu Bot users. Customize your music playlist in web-friendly environment."
+          name="description"
         />
       </Head>
       <AuthProvider>

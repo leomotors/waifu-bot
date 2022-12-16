@@ -82,15 +82,17 @@ const PlayListPage: WaifuPage = () => {
           >
             <p className="text-2xl font-bold">Create</p>
 
-            <label>Name</label>
+            <label htmlFor="playlist-name">Name</label>
             <input
+              id="playlist-name"
               type="text"
               value={name}
               onChange={(e) => setName(e.currentTarget.value)}
             />
 
-            <label>Description</label>
+            <label htmlFor="playlist-description">Description</label>
             <input
+              id="playlist-description"
               type="text"
               value={description}
               onChange={(e) => setDescription(e.currentTarget.value)}
