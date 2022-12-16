@@ -11,14 +11,13 @@
   "scripts": {
     "postinstall": "prisma generate",
     "clean": "rm -rf node_modules {apps,packages}/**/*/{.turbo,build,dist,node_modules,.next}",
-    "build": "FORCE_COLOR=2 turbo run build --parallel",
-    "build:sync": "FORCE_COLOR=2 turbo run build --concurrency=1",
-    "dev": "FORCE_COLOR=2 turbo run dev --parallel",
-    "lint": "FORCE_COLOR=2 turbo run lint --parallel",
-    "format": "FORCE_COLOR=2 turbo run format --parallel",
-    "start": "FORCE_COLOR=2 turbo run start --parallel",
+    "build": "FORCE_COLOR=2 turbo run build",
+    "dev": "FORCE_COLOR=2 turbo run dev",
+    "lint": "FORCE_COLOR=2 turbo run lint",
+    "format": "FORCE_COLOR=2 turbo run format",
+    "start": "FORCE_COLOR=2 turbo run start",
     "start:bot": "FORCE_COLOR=2 turbo run --filter=\"@waifu-bot/bot\" start",
-    "test": "FORCE_COLOR=2 turbo run test --parallel"
+    "test": "FORCE_COLOR=2 turbo run test"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^3.7.1",

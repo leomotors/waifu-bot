@@ -10,7 +10,6 @@ import { createApolloClient } from "@waifu-bot/graphql";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
-console.log({ ENDPOINT: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT });
 const client = createApolloClient(
   process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT as string
 );
