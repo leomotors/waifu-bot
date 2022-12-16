@@ -47,6 +47,9 @@ jobs:
           echo NEXT_PUBLIC_GRAPHQL_ENDPOINT="${{ secrets.NEXT_PUBLIC_GRAPHQL_ENDPOINT }}" >> apps/client/.env
           echo API_ENDPOINT="http://localhost:5375/graphql" >> apps/bot/.env
           echo PUBLIC_WEB_URL="${{ secrets.PUBLIC_WEB_URL }}" >> apps/bot/.env
+          echo DISCORD_TOKEN="${{ secrets.DISCORD_TOKEN }}" >> apps/bot/.env
+          echo ENVIRONMENT=PRODUCTION >> apps/bot/.env
+          echo TENOR_APIKEY="${{ secrets.TENOR_APIKEY }}" >> apps/bot/.env
 
       - name: Login via Azure CLI
         uses: azure/login@v1
