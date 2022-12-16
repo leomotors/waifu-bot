@@ -1,6 +1,5 @@
 import { AppVersion } from "@waifu-bot/constants";
 
-import { ArrayLoader } from "cocoa-discord-utils";
 import { CocoaVersion } from "cocoa-discord-utils/meta";
 import {
   CogSlashClass,
@@ -24,18 +23,8 @@ import { Waifu, style } from "./styles";
 export class Main extends CogSlashClass {
   timePinged = 0;
 
-  readonly kitaLoader = ArrayLoader.fromFile<string>(
-    "kitakita",
-    "data/kitakita.json"
-  );
-
   constructor() {
     super("Main", "Main Slash Cog");
-  }
-
-  @SlashCommand("slash jobs")
-  async brikl(ctx: SlashCommand.Context) {
-    await ctx.reply("Brikl is hiring\nhttps://brikl.com/jobs");
   }
 
   readonly fbiStyle = style.extends({ author: "bot" });
@@ -65,15 +54,6 @@ export class Main extends CogSlashClass {
     }
 
     await ctx.reply({ embeds: [emb] });
-  }
-
-  @SlashCommand("Insult someone for being gae")
-  async gay(
-    ctx: SlashCommand.Context,
-    @Param.User("who are gay", { required: false }) gay: Param.User.Nullable
-  ) {
-    const who = gay ?? ctx.user;
-    await ctx.reply(`<@${who.id}> is gay!`);
   }
 
   @SlashCommand("Create Golden Frame")
@@ -188,21 +168,6 @@ export class Main extends CogSlashClass {
         "https://c.tenor.com/xexSk5SQBbAAAAAC/discord-mod.gif"
       );
     } else await ctx.reply("bruh, this doesn't work here");
-  }
-
-  @SlashCommand(
-    "kitakita post from บจจิเดอะร็อคแฟนคลับไทยแลนด์ คิตะคิต้าโพสต์ติ้ง ✨⭐️"
-  )
-  async kitakita(ctx: SlashCommand.Context) {
-    await this.kitaLoader.initialPromise;
-
-    const url = this.kitaLoader.getRandom();
-
-    if (!url) {
-      await ctx.reply("No kitakita post for unknown reason 😭");
-    } else {
-      await ctx.reply(`キタ～ン キタ～ン\n${url}`);
-    }
   }
 
   @SlashCommand("Get profile picture of someone")

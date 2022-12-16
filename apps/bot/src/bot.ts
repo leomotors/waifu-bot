@@ -23,6 +23,7 @@ import { TTS } from "./commands/legacy/tts.slash";
 import { Main as MainMessage } from "./commands/main.message";
 import { Main as MainSlash } from "./commands/main.slash";
 import { Music } from "./commands/music.slash";
+import { Shitpost } from "./commands/shitpost.slash";
 import { style } from "./commands/styles";
 import { Web } from "./commands/web.slash";
 import { GuildIds } from "./environment";
@@ -50,6 +51,7 @@ mcenter.on("error", async (name, err, msg) => {
 const scenter = new SlashCenter(client, GuildIds);
 scenter.addCogs(
   new MainSlash(),
+  new Shitpost(),
   new Kashi(),
   new Music(client),
   new TTS(),
