@@ -7,19 +7,22 @@
       "outputs": [
         "dist/**",
         ".next/**",
-        "build/**"
+        "build/**",
+        "out/**"
       ]
     },
     "lint": {},
     "format": {},
     "start": {
       "dependsOn": [
+        "build",
         "^build"
       ],
       "cache": false
     },
     "test": {
       "dependsOn": [
+        "build",
         "^build"
       ]
     },

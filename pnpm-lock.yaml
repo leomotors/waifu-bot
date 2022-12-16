@@ -72,6 +72,7 @@ importers:
       graphql-tag: ^2.12.6
       libsodium-wrappers: ^0.7.10
       node-fetch: ^3.3.0
+      rollup: ^3.7.4
       tslib: ^2.4.1
       typescript: ^4.9.4
       uuid: ^9.0.0
@@ -99,6 +100,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
       '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
       '@waifu-bot/config': link:../../packages/config
+      rollup: 3.7.4
       typescript: 4.9.4
 
   apps/client:

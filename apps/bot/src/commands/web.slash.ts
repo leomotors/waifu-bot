@@ -8,8 +8,9 @@ import {
 
 import { Voice as LibVoice } from "@leomotors/music-bot";
 
-import { PublicWebUrl, gqlSdk } from "../graphql";
 import { updateUser } from "../graphql/hooks";
+// fuck module bundler you fucking idiot
+import { PublicWebUrl, gqlSdk } from "../graphql/index";
 
 export class Web extends CogSlashClass {
   constructor() {

@@ -4,8 +4,13 @@ Previous changelog before 4.0.605 may not be noted here.
 
 ## [4.0.650] - 2022-12-16
 
-- refactor: general refactor
-- [BREAKING] refactor: node 18
+- refactor: thicc refactor eslint prettier config
+- [breaking] refactor: node 18
+- feat: New Cog "Shitpost"
+- feat: New Command cunny
+- fix: kitakita wtf unicode
+- refactor: use rollup to bundle @waifu-bot/bot
+- chore: tweak turborepo pipeline
 
 ## [4.0.645] - 2022-12-12
 

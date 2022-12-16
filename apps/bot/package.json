@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && rollup -c rollup.config.js",
     "clean": "rimraf dist/*",
     "cb": "pnpm clean && pnpm build",
-    "start": "node --es-module-specifier-resolution=node dist/apps/bot/src/bot.js",
+    "start": "node out/index.js",
     "format": "eslint src --fix",
     "lint": "eslint src"
   },
@@ -17,6 +17,7 @@
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
     "@waifu-bot/config": "workspace:^0.0.0",
+    "rollup": "^3.7.4",
     "typescript": "^4.9.4"
   },
   "dependencies": {

@@ -35,7 +35,7 @@ export class Shitpost extends CogSlashClass {
   }
 
   @SlashCommand(
-    "kitakita post from บจจิเดอะร็อคแฟนคลับไทยแลนด์ คิตะคิต้าโพสต์ติ้ง ✨⭐️"
+    "kitakita post from บจจิเดอะร็อคแฟนคลับไทยแลนด์ คิตะคิต้าโพสต์ติ้ง ✨⭐"
   )
   async kitakita(ctx: SlashCommand.Context) {
     await this.kitaLoader.initialPromise;
