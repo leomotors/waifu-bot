@@ -7,13 +7,12 @@ RUN npm i --location=global pnpm
 
 WORKDIR /cunny
 
-COPY package.json turbo.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
-
 # Copy Every Important Stuff
+COPY package.json turbo.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+COPY .gitignore .env ./
 COPY apps ./apps
 COPY packages ./packages
 COPY prisma ./prisma
-COPY .env ./.env
 
 RUN pnpm install --frozen-lockfile
 RUN pnpm build
