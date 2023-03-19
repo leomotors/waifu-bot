@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import Image from "next/image";
 
-import { useGetMyInfoQuery } from "@waifu-bot/graphql";
+import { useGetMyInfoQuery } from "@waifu-bot/codegen";
 
 import { DiscordDefaultAvatarUrl } from "$lib/constants";
 

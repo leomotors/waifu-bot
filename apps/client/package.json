@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.10",
+    "@waifu-bot/codegen": "workspace:0.0.0",
     "@waifu-bot/constants": "workspace:0.0.0",
-    "@waifu-bot/graphql": "workspace:0.0.0",
     "clsx": "^1.2.1",
     "next": "13.2.4",
     "react": "18.2.0",

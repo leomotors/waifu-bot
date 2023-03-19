@@ -6,6 +6,7 @@ Previous changelog before 4.0.605 may not be noted here.
 
 - chore: bump dependencies
 - feat(server): migrate to mercurius and fastify
+- refactor(codegen): rename package graphql to codegen
 
 ## [4.0.650] - 2022-12-16
 

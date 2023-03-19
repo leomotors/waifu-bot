@@ -8,12 +8,12 @@ import { useRouter } from "next/router";
 import { ApolloError } from "@apollo/client";
 import clsx from "clsx";
 
-import { YoutubeURLPrefix } from "@waifu-bot/constants";
 import {
   useAddMusicToPlaylistMutation,
   useGetPlaylistQuery,
   useRemoveMusicFromPlaylistMutation,
-} from "@waifu-bot/graphql";
+} from "@waifu-bot/codegen";
+import { YoutubeURLPrefix } from "@waifu-bot/constants";
 
 import { formatTime } from "$lib/time";
 import { WaifuPage } from "$lib/types";

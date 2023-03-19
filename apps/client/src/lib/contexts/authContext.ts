@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-import { GetMyInfoQuery } from "@waifu-bot/graphql";
+import { GetMyInfoQuery } from "@waifu-bot/codegen";
 
 export interface IAuthContext {
   user: GetMyInfoQuery["me"] | undefined;

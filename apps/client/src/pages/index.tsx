@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
 
-import { useGetVersionQuery } from "@waifu-bot/graphql";
+import { useGetVersionQuery } from "@waifu-bot/codegen";
 
 const HomePage: NextPage = () => {
   const { data, error, loading } = useGetVersionQuery();

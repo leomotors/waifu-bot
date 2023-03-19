@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import { ApolloProvider } from "@apollo/client";
 
-import { createApolloClient } from "@waifu-bot/graphql";
+import { createApolloClient } from "@waifu-bot/codegen";
 
 import { RenderWaifuPage } from "$components/layouts/RenderWaifuPage";
 import { Sidebar } from "$components/layouts/Sidebar";

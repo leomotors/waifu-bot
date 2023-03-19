@@ -8,7 +8,7 @@ import clsx from "clsx";
 import {
   useCreateUserPlaylistMutation,
   useGetMyPlaylistsQuery,
-} from "@waifu-bot/graphql";
+} from "@waifu-bot/codegen";
 
 import { trim } from "$lib/string";
 import { WaifuPage } from "$lib/types";
