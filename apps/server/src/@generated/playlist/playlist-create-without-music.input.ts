@@ -11,12 +11,12 @@ export class PlaylistCreateWithoutMusicInput {
     @Field(() => String, {nullable:true})
     description?: string;
 
-    @Field(() => UserCreateNestedOneWithoutPlaylistInput, {nullable:false})
-    owner!: UserCreateNestedOneWithoutPlaylistInput;
-
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
+
+    @Field(() => UserCreateNestedOneWithoutPlaylistInput, {nullable:false})
+    owner!: UserCreateNestedOneWithoutPlaylistInput;
 }

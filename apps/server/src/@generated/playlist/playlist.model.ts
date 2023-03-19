@@ -17,20 +17,20 @@ export class Playlist {
     @Field(() => String, {nullable:true})
     description!: string | null;
 
-    @Field(() => User, {nullable:false})
-    owner?: User;
-
     @Field(() => String, {nullable:false})
     ownerId!: string;
-
-    @Field(() => [Music], {nullable:true})
-    music?: Array<Music>;
 
     @Field(() => Date, {nullable:false})
     createdAt!: Date;
 
     @Field(() => Date, {nullable:false})
     updatedAt!: Date;
+
+    @Field(() => User, {nullable:false})
+    owner?: User;
+
+    @Field(() => [Music], {nullable:true})
+    music?: Array<Music>;
 
     @Field(() => PlaylistCount, {nullable:false})
     _count?: PlaylistCount;

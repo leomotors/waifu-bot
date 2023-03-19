@@ -12,15 +12,15 @@ export class TodoListCreateWithoutOwnerInput {
     @Field(() => String, {nullable:false})
     description!: string;
 
-    @Field(() => TodoItemCreateNestedManyWithoutTodoListInput, {nullable:true})
-    todoItems?: TodoItemCreateNestedManyWithoutTodoListInput;
-
-    @Field(() => UserCreateNestedManyWithoutTodoListsCollaboratedInput, {nullable:true})
-    collaborators?: UserCreateNestedManyWithoutTodoListsCollaboratedInput;
-
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
+
+    @Field(() => TodoItemCreateNestedManyWithoutTodoListInput, {nullable:true})
+    todoItems?: TodoItemCreateNestedManyWithoutTodoListInput;
+
+    @Field(() => UserCreateNestedManyWithoutTodoListsCollaboratedInput, {nullable:true})
+    collaborators?: UserCreateNestedManyWithoutTodoListsCollaboratedInput;
 }

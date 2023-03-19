@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.1.700] - 2023-03-19
+
+- chore: bump dependencies
+- feat(server): migrate to mercurius and fastify
+
 ## [4.0.650] - 2022-12-16
 
 - refactor: thicc refactor eslint prettier config

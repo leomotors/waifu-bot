@@ -16,15 +16,15 @@ export class TodoListUncheckedCreateWithoutOwnerInput {
     @Field(() => String, {nullable:false})
     description!: string;
 
-    @Field(() => TodoItemUncheckedCreateNestedManyWithoutTodoListInput, {nullable:true})
-    todoItems?: TodoItemUncheckedCreateNestedManyWithoutTodoListInput;
-
-    @Field(() => UserUncheckedCreateNestedManyWithoutTodoListsCollaboratedInput, {nullable:true})
-    collaborators?: UserUncheckedCreateNestedManyWithoutTodoListsCollaboratedInput;
-
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
+
+    @Field(() => TodoItemUncheckedCreateNestedManyWithoutTodoListInput, {nullable:true})
+    todoItems?: TodoItemUncheckedCreateNestedManyWithoutTodoListInput;
+
+    @Field(() => UserUncheckedCreateNestedManyWithoutTodoListsCollaboratedInput, {nullable:true})
+    collaborators?: UserUncheckedCreateNestedManyWithoutTodoListsCollaboratedInput;
 }

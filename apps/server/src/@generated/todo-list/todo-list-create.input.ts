@@ -13,6 +13,12 @@ export class TodoListCreateInput {
     @Field(() => String, {nullable:false})
     description!: string;
 
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
+
     @Field(() => TodoItemCreateNestedManyWithoutTodoListInput, {nullable:true})
     todoItems?: TodoItemCreateNestedManyWithoutTodoListInput;
 
@@ -21,10 +27,4 @@ export class TodoListCreateInput {
 
     @Field(() => UserCreateNestedManyWithoutTodoListsCollaboratedInput, {nullable:true})
     collaborators?: UserCreateNestedManyWithoutTodoListsCollaboratedInput;
-
-    @Field(() => Date, {nullable:true})
-    createdAt?: Date | string;
-
-    @Field(() => Date, {nullable:true})
-    updatedAt?: Date | string;
 }

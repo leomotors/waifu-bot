@@ -12,13 +12,13 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@types/node": "^18.11.15",
-    "@types/uuid": "^9.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.46.1",
-    "@typescript-eslint/parser": "^5.46.1",
+    "@types/node": "^18.15.3",
+    "@types/uuid": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
     "@waifu-bot/config": "workspace:^0.0.0",
-    "rollup": "^3.7.4",
-    "typescript": "^4.9.4"
+    "rollup": "^3.19.1",
+    "typescript": "^5.0.2"
   },
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
@@ -32,11 +32,11 @@
     "dotenv": "^16.0.3",
     "google-tts-api": "^2.0.2",
     "graphql": "^16.6.0",
-    "graphql-request": "^5.0.0",
+    "graphql-request": "^5.2.0",
     "graphql-tag": "^2.12.6",
-    "libsodium-wrappers": "^0.7.10",
-    "node-fetch": "^3.3.0",
-    "tslib": "^2.4.1",
+    "libsodium-wrappers": "^0.7.11",
+    "node-fetch": "^3.3.1",
+    "tslib": "^2.5.0",
     "uuid": "^9.0.0"
   }
 }

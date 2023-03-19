@@ -1,7 +1,7 @@
-import { AuthContext } from "$lib/contexts";
-import type { WaifuPage } from "$lib/types";
+import { FC, createElement, useContext } from "react";
 
-import { createElement, type FC, useContext } from "react";
+import { AuthContext } from "$lib/contexts";
+import { WaifuPage } from "$lib/types";
 
 interface RenderWaifuPageProps {
   page: WaifuPage;

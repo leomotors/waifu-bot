@@ -5,9 +5,6 @@ import { User } from '../user/user.model';
 @ObjectType()
 export class Profile {
 
-    @Field(() => User, {nullable:false})
-    user?: User;
-
     @Field(() => String, {nullable:false})
     userId!: string;
 
@@ -25,4 +22,7 @@ export class Profile {
 
     @Field(() => Date, {nullable:false})
     updatedAt!: Date;
+
+    @Field(() => User, {nullable:false})
+    user?: User;
 }

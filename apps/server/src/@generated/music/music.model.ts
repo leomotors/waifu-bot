@@ -35,14 +35,14 @@ export class Music {
     @Field(() => Int, {nullable:false})
     likes!: number;
 
-    @Field(() => [Playlist], {nullable:true})
-    playlist?: Array<Playlist>;
-
     @Field(() => Date, {nullable:false})
     createdAt!: Date;
 
     @Field(() => Date, {nullable:false})
     updatedAt!: Date;
+
+    @Field(() => [Playlist], {nullable:true})
+    playlist?: Array<Playlist>;
 
     @Field(() => MusicCount, {nullable:false})
     _count?: MusicCount;

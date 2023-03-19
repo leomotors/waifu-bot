@@ -1,19 +1,18 @@
-import styles from "$styles/components.module.scss";
+import { useMemo, useState } from "react";
+import { PencilSquare, PlusCircle, XCircle } from "react-bootstrap-icons";
 
-import { trim } from "$lib/string";
-import type { WaifuPage } from "$lib/types";
+import Link from "next/link";
+
+import clsx from "clsx";
 
 import {
   useCreateUserPlaylistMutation,
   useGetMyPlaylistsQuery,
 } from "@waifu-bot/graphql";
 
-import Link from "next/link";
-
-import { useMemo, useState } from "react";
-import { PencilSquare, PlusCircle, XCircle } from "react-bootstrap-icons";
-
-import clsx from "clsx";
+import { trim } from "$lib/string";
+import { WaifuPage } from "$lib/types";
+import styles from "$styles/components.module.scss";
 
 const PlayListPage: WaifuPage = () => {
   const { data: raw, refetch: refetchPlaylists } = useGetMyPlaylistsQuery();

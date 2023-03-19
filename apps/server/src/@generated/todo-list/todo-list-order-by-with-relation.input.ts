@@ -17,21 +17,21 @@ export class TodoListOrderByWithRelationInput {
     @Field(() => SortOrder, {nullable:true})
     description?: keyof typeof SortOrder;
 
-    @Field(() => TodoItemOrderByRelationAggregateInput, {nullable:true})
-    todoItems?: TodoItemOrderByRelationAggregateInput;
-
-    @Field(() => UserOrderByWithRelationInput, {nullable:true})
-    owner?: UserOrderByWithRelationInput;
-
     @Field(() => SortOrder, {nullable:true})
     ownerId?: keyof typeof SortOrder;
-
-    @Field(() => UserOrderByRelationAggregateInput, {nullable:true})
-    collaborators?: UserOrderByRelationAggregateInput;
 
     @Field(() => SortOrder, {nullable:true})
     createdAt?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
     updatedAt?: keyof typeof SortOrder;
+
+    @Field(() => TodoItemOrderByRelationAggregateInput, {nullable:true})
+    todoItems?: TodoItemOrderByRelationAggregateInput;
+
+    @Field(() => UserOrderByWithRelationInput, {nullable:true})
+    owner?: UserOrderByWithRelationInput;
+
+    @Field(() => UserOrderByRelationAggregateInput, {nullable:true})
+    collaborators?: UserOrderByRelationAggregateInput;
 }

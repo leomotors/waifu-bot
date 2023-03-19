@@ -12,14 +12,14 @@ export class UserOrderByWithRelationInput {
     @Field(() => SortOrder, {nullable:true})
     id?: keyof typeof SortOrder;
 
-    @Field(() => ProfileOrderByWithRelationInput, {nullable:true})
-    profile?: ProfileOrderByWithRelationInput;
-
     @Field(() => SortOrder, {nullable:true})
     createdAt?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
     updatedAt?: keyof typeof SortOrder;
+
+    @Field(() => ProfileOrderByWithRelationInput, {nullable:true})
+    profile?: ProfileOrderByWithRelationInput;
 
     @Field(() => PlaylistOrderByRelationAggregateInput, {nullable:true})
     playlist?: PlaylistOrderByRelationAggregateInput;

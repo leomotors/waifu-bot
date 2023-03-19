@@ -1,10 +1,13 @@
-import styles from "$styles/components.module.scss";
+import { useMemo, useState } from "react";
+import { Trash } from "react-bootstrap-icons";
 
-import { formatTime } from "$lib/time";
-import type { WaifuPage } from "$lib/types";
-import { validateURL } from "$lib/ytdl-utils";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import type { ApolloError } from "@apollo/client";
+import { ApolloError } from "@apollo/client";
+import clsx from "clsx";
+
 import { YoutubeURLPrefix } from "@waifu-bot/constants";
 import {
   useAddMusicToPlaylistMutation,
@@ -12,14 +15,10 @@ import {
   useRemoveMusicFromPlaylistMutation,
 } from "@waifu-bot/graphql";
 
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-
-import { useMemo, useState } from "react";
-import { Trash } from "react-bootstrap-icons";
-
-import clsx from "clsx";
+import { formatTime } from "$lib/time";
+import { WaifuPage } from "$lib/types";
+import { validateURL } from "$lib/ytdl-utils";
+import styles from "$styles/components.module.scss";
 
 const PlaylistEditPage: WaifuPage = () => {
   const router = useRouter();

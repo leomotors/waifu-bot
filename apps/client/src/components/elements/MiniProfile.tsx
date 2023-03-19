@@ -1,10 +1,10 @@
-import { DiscordDefaultAvatarUrl } from "$lib/constants";
-
-import type { useGetMyInfoQuery } from "@waifu-bot/graphql";
+import { FC } from "react";
 
 import Image from "next/image";
 
-import type { FC } from "react";
+import { useGetMyInfoQuery } from "@waifu-bot/graphql";
+
+import { DiscordDefaultAvatarUrl } from "$lib/constants";
 
 interface MiniProfileProps {
   user: NonNullable<ReturnType<typeof useGetMyInfoQuery>["data"]>["me"];

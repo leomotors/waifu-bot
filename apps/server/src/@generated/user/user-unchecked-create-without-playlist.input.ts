@@ -11,14 +11,14 @@ export class UserUncheckedCreateWithoutPlaylistInput {
     @Field(() => String, {nullable:false})
     id!: string;
 
-    @Field(() => ProfileUncheckedCreateNestedOneWithoutUserInput, {nullable:true})
-    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput;
-
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
+
+    @Field(() => ProfileUncheckedCreateNestedOneWithoutUserInput, {nullable:true})
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput;
 
     @Field(() => AccessTokenUncheckedCreateNestedOneWithoutUserInput, {nullable:true})
     accessToken?: AccessTokenUncheckedCreateNestedOneWithoutUserInput;

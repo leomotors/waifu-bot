@@ -1,8 +1,8 @@
-import type { GetMyInfoQuery } from "@waifu-bot/graphql";
+import { FC } from "react";
 
 import Image from "next/image";
 
-import type { FC } from "react";
+import { GetMyInfoQuery } from "@waifu-bot/graphql";
 
 type ProfileCardProps = NonNullable<GetMyInfoQuery["me"]> & {
   profile: NonNullable<GetMyInfoQuery["me"]["profile"]>;

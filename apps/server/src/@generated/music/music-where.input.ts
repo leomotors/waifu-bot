@@ -2,8 +2,8 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFilter } from '../prisma/string-filter.input';
 import { IntFilter } from '../prisma/int-filter.input';
-import { PlaylistListRelationFilter } from '../playlist/playlist-list-relation-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
+import { PlaylistListRelationFilter } from '../playlist/playlist-list-relation-filter.input';
 
 @InputType()
 export class MusicWhereInput {
@@ -44,12 +44,12 @@ export class MusicWhereInput {
     @Field(() => IntFilter, {nullable:true})
     likes?: IntFilter;
 
-    @Field(() => PlaylistListRelationFilter, {nullable:true})
-    playlist?: PlaylistListRelationFilter;
-
     @Field(() => DateTimeFilter, {nullable:true})
     createdAt?: DateTimeFilter;
 
     @Field(() => DateTimeFilter, {nullable:true})
     updatedAt?: DateTimeFilter;
+
+    @Field(() => PlaylistListRelationFilter, {nullable:true})
+    playlist?: PlaylistListRelationFilter;
 }

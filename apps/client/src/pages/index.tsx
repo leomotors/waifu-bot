@@ -1,9 +1,9 @@
-import { useGetVersionQuery } from "@waifu-bot/graphql";
+import { useMemo } from "react";
 
-import type { NextPage } from "next";
+import { NextPage } from "next";
 import Head from "next/head";
 
-import { useMemo } from "react";
+import { useGetVersionQuery } from "@waifu-bot/graphql";
 
 const HomePage: NextPage = () => {
   const { data, error, loading } = useGetVersionQuery();

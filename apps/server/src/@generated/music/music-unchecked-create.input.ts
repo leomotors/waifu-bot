@@ -33,12 +33,12 @@ export class MusicUncheckedCreateInput {
     @Field(() => Int, {nullable:false})
     likes!: number;
 
-    @Field(() => PlaylistUncheckedCreateNestedManyWithoutMusicInput, {nullable:true})
-    playlist?: PlaylistUncheckedCreateNestedManyWithoutMusicInput;
-
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
+
+    @Field(() => PlaylistUncheckedCreateNestedManyWithoutMusicInput, {nullable:true})
+    playlist?: PlaylistUncheckedCreateNestedManyWithoutMusicInput;
 }

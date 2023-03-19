@@ -14,9 +14,9 @@ export class AccessToken {
     @Field(() => Date, {nullable:false})
     expire!: Date;
 
-    @Field(() => User, {nullable:false})
-    user?: User;
-
     @Field(() => String, {nullable:false})
     userId!: string;
+
+    @Field(() => User, {nullable:false})
+    user?: User;
 }

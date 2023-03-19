@@ -17,23 +17,23 @@ export class TodoList {
     @Field(() => String, {nullable:false})
     description!: string;
 
-    @Field(() => [TodoItem], {nullable:true})
-    todoItems?: Array<TodoItem>;
-
-    @Field(() => User, {nullable:false})
-    owner?: User;
-
     @Field(() => String, {nullable:false})
     ownerId!: string;
-
-    @Field(() => [User], {nullable:true})
-    collaborators?: Array<User>;
 
     @Field(() => Date, {nullable:false})
     createdAt!: Date;
 
     @Field(() => Date, {nullable:false})
     updatedAt!: Date;
+
+    @Field(() => [TodoItem], {nullable:true})
+    todoItems?: Array<TodoItem>;
+
+    @Field(() => User, {nullable:false})
+    owner?: User;
+
+    @Field(() => [User], {nullable:true})
+    collaborators?: Array<User>;
 
     @Field(() => TodoListCount, {nullable:false})
     _count?: TodoListCount;

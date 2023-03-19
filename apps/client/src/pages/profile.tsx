@@ -1,9 +1,9 @@
-import { ProfileCard } from "$components/elements/ProfileCard";
-import type { WaifuPage } from "$lib/types";
+import { useMemo } from "react";
 
 import { useGetMyInfoQuery } from "@waifu-bot/graphql";
 
-import { useMemo } from "react";
+import { ProfileCard } from "$components/elements/ProfileCard";
+import { WaifuPage } from "$lib/types";
 
 const ProfilePage: WaifuPage = () => {
   const { data, error } = useGetMyInfoQuery();
