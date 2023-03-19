@@ -64,5 +64,5 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - run: |
-          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/waifu-bot:${{ github.ref_name }}
+          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/waifu-bot:latest
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/waifu-bot
