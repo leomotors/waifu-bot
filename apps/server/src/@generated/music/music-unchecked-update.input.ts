@@ -2,8 +2,8 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
-import { PlaylistUncheckedUpdateManyWithoutMusicNestedInput } from '../playlist/playlist-unchecked-update-many-without-music-nested.input';
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
+import { PlaylistUncheckedUpdateManyWithoutMusicNestedInput } from '../playlist/playlist-unchecked-update-many-without-music-nested.input';
 
 @InputType()
 export class MusicUncheckedUpdateInput {
@@ -35,12 +35,12 @@ export class MusicUncheckedUpdateInput {
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
     likes?: IntFieldUpdateOperationsInput;
 
-    @Field(() => PlaylistUncheckedUpdateManyWithoutMusicNestedInput, {nullable:true})
-    playlist?: PlaylistUncheckedUpdateManyWithoutMusicNestedInput;
-
     @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
     createdAt?: DateTimeFieldUpdateOperationsInput;
 
     @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
     updatedAt?: DateTimeFieldUpdateOperationsInput;
+
+    @Field(() => PlaylistUncheckedUpdateManyWithoutMusicNestedInput, {nullable:true})
+    playlist?: PlaylistUncheckedUpdateManyWithoutMusicNestedInput;
 }

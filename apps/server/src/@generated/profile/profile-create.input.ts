@@ -5,9 +5,6 @@ import { UserCreateNestedOneWithoutProfileInput } from '../user/user-create-nest
 @InputType()
 export class ProfileCreateInput {
 
-    @Field(() => UserCreateNestedOneWithoutProfileInput, {nullable:false})
-    user!: UserCreateNestedOneWithoutProfileInput;
-
     @Field(() => String, {nullable:false})
     username!: string;
 
@@ -22,4 +19,7 @@ export class ProfileCreateInput {
 
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
+
+    @Field(() => UserCreateNestedOneWithoutProfileInput, {nullable:false})
+    user!: UserCreateNestedOneWithoutProfileInput;
 }

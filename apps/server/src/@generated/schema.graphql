@@ -3,13 +3,13 @@
 # ------------------------------------------------------
 
 type Profile {
-  user: User!
   userId: String!
   username: String!
   lastInteractGuildName: String!
   avatarUrl: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  user: User!
 }
 
 """
@@ -31,9 +31,9 @@ type Music {
   authorChannelUrl: String!
   thumbnailUrl: String!
   likes: Int!
-  playlist: [Playlist!]
   createdAt: DateTime!
   updatedAt: DateTime!
+  playlist: [Playlist!]
   _count: MusicCount!
 }
 
@@ -45,11 +45,11 @@ type Playlist {
   id: ID!
   name: String!
   description: String
-  owner: User!
   ownerId: String!
-  music: [Music!]
   createdAt: DateTime!
   updatedAt: DateTime!
+  owner: User!
+  music: [Music!]
   _count: PlaylistCount!
 }
 
@@ -58,10 +58,10 @@ type TodoItem {
   title: String!
   description: String!
   color: String!
-  todoList: TodoList
   todoListId: Int
   createdAt: DateTime!
   updatedAt: DateTime!
+  todoList: TodoList
 }
 
 type TodoListCount {
@@ -73,12 +73,12 @@ type TodoList {
   id: ID!
   name: String!
   description: String!
-  todoItems: [TodoItem!]
-  owner: User!
   ownerId: String!
-  collaborators: [User!]
   createdAt: DateTime!
   updatedAt: DateTime!
+  todoItems: [TodoItem!]
+  owner: User!
+  collaborators: [User!]
   _count: TodoListCount!
 }
 
@@ -90,9 +90,9 @@ type UserCount {
 
 type User {
   id: ID!
-  profile: Profile
   createdAt: DateTime!
   updatedAt: DateTime!
+  profile: Profile
   playlist: [Playlist!]
   accessToken: AccessToken
   todoListsOwned: [TodoList!]
@@ -104,8 +104,8 @@ type AccessToken {
   token: String!
   issued: DateTime!
   expire: DateTime!
-  user: User!
   userId: String!
+  user: User!
 }
 
 type Query {
@@ -134,8 +134,8 @@ input AccessTokenWhereInput {
   token: StringFilter
   issued: DateTimeFilter
   expire: DateTimeFilter
-  user: UserRelationFilter
   userId: StringFilter
+  user: UserRelationFilter
 }
 
 input StringFilter {
@@ -204,9 +204,9 @@ input UserWhereInput {
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
   id: StringFilter
-  profile: ProfileRelationFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
+  profile: ProfileRelationFilter
   playlist: PlaylistListRelationFilter
   accessToken: AccessTokenRelationFilter
   todoListsOwned: TodoListListRelationFilter
@@ -222,13 +222,13 @@ input ProfileWhereInput {
   AND: [ProfileWhereInput!]
   OR: [ProfileWhereInput!]
   NOT: [ProfileWhereInput!]
-  user: UserRelationFilter
   userId: StringFilter
   username: StringFilter
   lastInteractGuildName: StringFilter
   avatarUrl: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
+  user: UserRelationFilter
 }
 
 input PlaylistListRelationFilter {
@@ -244,11 +244,11 @@ input PlaylistWhereInput {
   id: IntFilter
   name: StringFilter
   description: StringNullableFilter
-  owner: UserRelationFilter
   ownerId: StringFilter
-  music: MusicListRelationFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
+  owner: UserRelationFilter
+  music: MusicListRelationFilter
 }
 
 input IntFilter {
@@ -321,9 +321,9 @@ input MusicWhereInput {
   authorChannelUrl: StringFilter
   thumbnailUrl: StringFilter
   likes: IntFilter
-  playlist: PlaylistListRelationFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
+  playlist: PlaylistListRelationFilter
 }
 
 input AccessTokenRelationFilter {
@@ -344,12 +344,12 @@ input TodoListWhereInput {
   id: IntFilter
   name: StringFilter
   description: StringFilter
-  todoItems: TodoItemListRelationFilter
-  owner: UserRelationFilter
   ownerId: StringFilter
-  collaborators: UserListRelationFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
+  todoItems: TodoItemListRelationFilter
+  owner: UserRelationFilter
+  collaborators: UserListRelationFilter
 }
 
 input TodoItemListRelationFilter {
@@ -366,15 +366,10 @@ input TodoItemWhereInput {
   title: StringFilter
   description: StringFilter
   color: StringFilter
-  todoList: TodoListRelationFilter
   todoListId: IntNullableFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
-}
-
-input TodoListRelationFilter {
-  is: TodoListWhereInput
-  isNot: TodoListWhereInput
+  todoList: TodoListRelationFilter
 }
 
 input IntNullableFilter {
@@ -399,6 +394,11 @@ input NestedIntNullableFilter {
   not: NestedIntNullableFilter
 }
 
+input TodoListRelationFilter {
+  is: TodoListWhereInput
+  isNot: TodoListWhereInput
+}
+
 input UserListRelationFilter {
   every: UserWhereInput
   some: UserWhereInput
@@ -409,8 +409,8 @@ input AccessTokenOrderByWithRelationInput {
   token: SortOrder
   issued: SortOrder
   expire: SortOrder
-  user: UserOrderByWithRelationInput
   userId: SortOrder
+  user: UserOrderByWithRelationInput
 }
 
 enum SortOrder {
@@ -420,9 +420,9 @@ enum SortOrder {
 
 input UserOrderByWithRelationInput {
   id: SortOrder
-  profile: ProfileOrderByWithRelationInput
   createdAt: SortOrder
   updatedAt: SortOrder
+  profile: ProfileOrderByWithRelationInput
   playlist: PlaylistOrderByRelationAggregateInput
   accessToken: AccessTokenOrderByWithRelationInput
   todoListsOwned: TodoListOrderByRelationAggregateInput
@@ -430,13 +430,13 @@ input UserOrderByWithRelationInput {
 }
 
 input ProfileOrderByWithRelationInput {
-  user: UserOrderByWithRelationInput
   userId: SortOrder
   username: SortOrder
   lastInteractGuildName: SortOrder
   avatarUrl: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
+  user: UserOrderByWithRelationInput
 }
 
 input PlaylistOrderByRelationAggregateInput {
@@ -467,11 +467,11 @@ input PlaylistOrderByWithRelationInput {
   id: SortOrder
   name: SortOrder
   description: SortOrder
-  owner: UserOrderByWithRelationInput
   ownerId: SortOrder
-  music: MusicOrderByRelationAggregateInput
   createdAt: SortOrder
   updatedAt: SortOrder
+  owner: UserOrderByWithRelationInput
+  music: MusicOrderByRelationAggregateInput
 }
 
 input MusicOrderByRelationAggregateInput {
@@ -509,22 +509,22 @@ input TodoItemOrderByWithRelationInput {
   title: SortOrder
   description: SortOrder
   color: SortOrder
-  todoList: TodoListOrderByWithRelationInput
   todoListId: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
+  todoList: TodoListOrderByWithRelationInput
 }
 
 input TodoListOrderByWithRelationInput {
   id: SortOrder
   name: SortOrder
   description: SortOrder
-  todoItems: TodoItemOrderByRelationAggregateInput
-  owner: UserOrderByWithRelationInput
   ownerId: SortOrder
-  collaborators: UserOrderByRelationAggregateInput
   createdAt: SortOrder
   updatedAt: SortOrder
+  todoItems: TodoItemOrderByRelationAggregateInput
+  owner: UserOrderByWithRelationInput
+  collaborators: UserOrderByRelationAggregateInput
 }
 
 input TodoItemOrderByRelationAggregateInput {
@@ -592,9 +592,9 @@ input MusicCreateInput {
   authorChannelUrl: String!
   thumbnailUrl: String!
   likes: Int!
-  playlist: PlaylistCreateNestedManyWithoutMusicInput
   createdAt: DateTime
   updatedAt: DateTime
+  playlist: PlaylistCreateNestedManyWithoutMusicInput
 }
 
 input PlaylistCreateNestedManyWithoutMusicInput {
@@ -606,9 +606,9 @@ input PlaylistCreateNestedManyWithoutMusicInput {
 input PlaylistCreateWithoutMusicInput {
   name: String!
   description: String
-  owner: UserCreateNestedOneWithoutPlaylistInput!
   createdAt: DateTime
   updatedAt: DateTime
+  owner: UserCreateNestedOneWithoutPlaylistInput!
 }
 
 input UserCreateNestedOneWithoutPlaylistInput {
@@ -619,9 +619,9 @@ input UserCreateNestedOneWithoutPlaylistInput {
 
 input UserCreateWithoutPlaylistInput {
   id: String!
-  profile: ProfileCreateNestedOneWithoutUserInput
   createdAt: DateTime
   updatedAt: DateTime
+  profile: ProfileCreateNestedOneWithoutUserInput
   accessToken: AccessTokenCreateNestedOneWithoutUserInput
   todoListsOwned: TodoListCreateNestedManyWithoutOwnerInput
   todoListsCollaborated: TodoListCreateNestedManyWithoutCollaboratorsInput
@@ -673,10 +673,10 @@ input TodoListCreateNestedManyWithoutOwnerInput {
 input TodoListCreateWithoutOwnerInput {
   name: String!
   description: String!
-  todoItems: TodoItemCreateNestedManyWithoutTodoListInput
-  collaborators: UserCreateNestedManyWithoutTodoListsCollaboratedInput
   createdAt: DateTime
   updatedAt: DateTime
+  todoItems: TodoItemCreateNestedManyWithoutTodoListInput
+  collaborators: UserCreateNestedManyWithoutTodoListsCollaboratedInput
 }
 
 input TodoItemCreateNestedManyWithoutTodoListInput {
@@ -721,9 +721,9 @@ input UserCreateNestedManyWithoutTodoListsCollaboratedInput {
 
 input UserCreateWithoutTodoListsCollaboratedInput {
   id: String!
-  profile: ProfileCreateNestedOneWithoutUserInput
   createdAt: DateTime
   updatedAt: DateTime
+  profile: ProfileCreateNestedOneWithoutUserInput
   playlist: PlaylistCreateNestedManyWithoutOwnerInput
   accessToken: AccessTokenCreateNestedOneWithoutUserInput
   todoListsOwned: TodoListCreateNestedManyWithoutOwnerInput
@@ -739,9 +739,9 @@ input PlaylistCreateNestedManyWithoutOwnerInput {
 input PlaylistCreateWithoutOwnerInput {
   name: String!
   description: String
-  music: MusicCreateNestedManyWithoutPlaylistInput
   createdAt: DateTime
   updatedAt: DateTime
+  music: MusicCreateNestedManyWithoutPlaylistInput
 }
 
 input MusicCreateNestedManyWithoutPlaylistInput {
@@ -819,10 +819,10 @@ input TodoListCreateNestedManyWithoutCollaboratorsInput {
 input TodoListCreateWithoutCollaboratorsInput {
   name: String!
   description: String!
-  todoItems: TodoItemCreateNestedManyWithoutTodoListInput
-  owner: UserCreateNestedOneWithoutTodoListsOwnedInput!
   createdAt: DateTime
   updatedAt: DateTime
+  todoItems: TodoItemCreateNestedManyWithoutTodoListInput
+  owner: UserCreateNestedOneWithoutTodoListsOwnedInput!
 }
 
 input UserCreateNestedOneWithoutTodoListsOwnedInput {
@@ -833,9 +833,9 @@ input UserCreateNestedOneWithoutTodoListsOwnedInput {
 
 input UserCreateWithoutTodoListsOwnedInput {
   id: String!
-  profile: ProfileCreateNestedOneWithoutUserInput
   createdAt: DateTime
   updatedAt: DateTime
+  profile: ProfileCreateNestedOneWithoutUserInput
   playlist: PlaylistCreateNestedManyWithoutOwnerInput
   accessToken: AccessTokenCreateNestedOneWithoutUserInput
   todoListsCollaborated: TodoListCreateNestedManyWithoutCollaboratorsInput
@@ -864,19 +864,19 @@ input PlaylistCreateOrConnectWithoutMusicInput {
 input PlaylistCreateInput {
   name: String!
   description: String
-  owner: UserCreateNestedOneWithoutPlaylistInput!
-  music: MusicCreateNestedManyWithoutPlaylistInput
   createdAt: DateTime
   updatedAt: DateTime
+  owner: UserCreateNestedOneWithoutPlaylistInput!
+  music: MusicCreateNestedManyWithoutPlaylistInput
 }
 
 input ProfileCreateInput {
-  user: UserCreateNestedOneWithoutProfileInput!
   username: String!
   lastInteractGuildName: String!
   avatarUrl: String!
   createdAt: DateTime
   updatedAt: DateTime
+  user: UserCreateNestedOneWithoutProfileInput!
 }
 
 input UserCreateNestedOneWithoutProfileInput {
@@ -971,9 +971,9 @@ input PlaylistUpsertWithWhereUniqueWithoutOwnerInput {
 input PlaylistUpdateWithoutOwnerInput {
   name: StringFieldUpdateOperationsInput
   description: NullableStringFieldUpdateOperationsInput
-  music: MusicUpdateManyWithoutPlaylistNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  music: MusicUpdateManyWithoutPlaylistNestedInput
 }
 
 input NullableStringFieldUpdateOperationsInput {
@@ -1135,10 +1135,10 @@ input TodoListUpsertWithWhereUniqueWithoutOwnerInput {
 input TodoListUpdateWithoutOwnerInput {
   name: StringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
-  todoItems: TodoItemUpdateManyWithoutTodoListNestedInput
-  collaborators: UserUpdateManyWithoutTodoListsCollaboratedNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  todoItems: TodoItemUpdateManyWithoutTodoListNestedInput
+  collaborators: UserUpdateManyWithoutTodoListsCollaboratedNestedInput
 }
 
 input TodoItemUpdateManyWithoutTodoListNestedInput {
@@ -1221,9 +1221,9 @@ input UserUpsertWithWhereUniqueWithoutTodoListsCollaboratedInput {
 
 input UserUpdateWithoutTodoListsCollaboratedInput {
   id: StringFieldUpdateOperationsInput
-  profile: ProfileUpdateOneWithoutUserNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
   playlist: PlaylistUpdateManyWithoutOwnerNestedInput
   accessToken: AccessTokenUpdateOneWithoutUserNestedInput
   todoListsOwned: TodoListUpdateManyWithoutOwnerNestedInput
@@ -1328,10 +1328,10 @@ input TodoListUpsertWithWhereUniqueWithoutCollaboratorsInput {
 input TodoListUpdateWithoutCollaboratorsInput {
   name: StringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
-  todoItems: TodoItemUpdateManyWithoutTodoListNestedInput
-  owner: UserUpdateOneRequiredWithoutTodoListsOwnedNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  todoItems: TodoItemUpdateManyWithoutTodoListNestedInput
+  owner: UserUpdateOneRequiredWithoutTodoListsOwnedNestedInput
 }
 
 input UserUpdateOneRequiredWithoutTodoListsOwnedNestedInput {
@@ -1349,9 +1349,9 @@ input UserUpsertWithoutTodoListsOwnedInput {
 
 input UserUpdateWithoutTodoListsOwnedInput {
   id: StringFieldUpdateOperationsInput
-  profile: ProfileUpdateOneWithoutUserNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
   playlist: PlaylistUpdateManyWithoutOwnerNestedInput
   accessToken: AccessTokenUpdateOneWithoutUserNestedInput
   todoListsCollaborated: TodoListUpdateManyWithoutCollaboratorsNestedInput

@@ -2,9 +2,9 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { IntFilter } from '../prisma/int-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
-import { TodoListRelationFilter } from '../todo-list/todo-list-relation-filter.input';
 import { IntNullableFilter } from '../prisma/int-nullable-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
+import { TodoListRelationFilter } from '../todo-list/todo-list-relation-filter.input';
 
 @InputType()
 export class TodoItemWhereInput {
@@ -30,9 +30,6 @@ export class TodoItemWhereInput {
     @Field(() => StringFilter, {nullable:true})
     color?: StringFilter;
 
-    @Field(() => TodoListRelationFilter, {nullable:true})
-    todoList?: TodoListRelationFilter;
-
     @Field(() => IntNullableFilter, {nullable:true})
     todoListId?: IntNullableFilter;
 
@@ -41,4 +38,7 @@ export class TodoItemWhereInput {
 
     @Field(() => DateTimeFilter, {nullable:true})
     updatedAt?: DateTimeFilter;
+
+    @Field(() => TodoListRelationFilter, {nullable:true})
+    todoList?: TodoListRelationFilter;
 }

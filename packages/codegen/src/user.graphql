@@ -1,0 +1,15 @@
+query getMyInfo {
+  me {
+    id
+    profile {
+      username
+      lastInteractGuildName
+      avatarUrl
+    }
+    createdAt
+    updatedAt
+    _count {
+      playlist
+    }
+  }
+}

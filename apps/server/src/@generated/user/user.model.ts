@@ -13,14 +13,14 @@ export class User {
     @Field(() => ID, {nullable:false})
     id!: string;
 
-    @Field(() => Profile, {nullable:true})
-    profile?: Profile | null;
-
     @Field(() => Date, {nullable:false})
     createdAt!: Date;
 
     @Field(() => Date, {nullable:false})
     updatedAt!: Date;
+
+    @Field(() => Profile, {nullable:true})
+    profile?: Profile | null;
 
     @Field(() => [Playlist], {nullable:true})
     playlist?: Array<Playlist>;

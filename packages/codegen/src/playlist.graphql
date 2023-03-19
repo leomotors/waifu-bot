@@ -1,0 +1,40 @@
+query getMyPlaylists {
+  me {
+    playlist {
+      id
+      name
+      description
+      _count {
+        music
+      }
+    }
+  }
+}
+
+query getPlaylist($where: PlaylistWhereUniqueInput!) {
+  playlist(where: $where) {
+    id
+    name
+    description
+    ownerId
+    music {
+      videoId
+      title
+      shortDescription
+      lengthSeconds
+      viewCount
+      authorName
+      authorChannelUrl
+      thumbnailUrl
+      likes
+      createdAt
+      updatedAt
+    }
+  }
+}
+
+mutation createUserPlaylist($data: PlaylistCreateWithoutOwnerInput!) {
+  createUserPlaylist(data: $data) {
+    id
+  }
+}

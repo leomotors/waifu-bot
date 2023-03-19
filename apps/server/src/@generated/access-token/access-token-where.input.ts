@@ -25,9 +25,9 @@ export class AccessTokenWhereInput {
     @Field(() => DateTimeFilter, {nullable:true})
     expire?: DateTimeFilter;
 
-    @Field(() => UserRelationFilter, {nullable:true})
-    user?: UserRelationFilter;
-
     @Field(() => StringFilter, {nullable:true})
     userId?: StringFilter;
+
+    @Field(() => UserRelationFilter, {nullable:true})
+    user?: UserRelationFilter;
 }

@@ -14,12 +14,12 @@ export class TodoItemCreateInput {
     @Field(() => String, {nullable:false})
     color!: string;
 
-    @Field(() => TodoListCreateNestedOneWithoutTodoItemsInput, {nullable:true})
-    todoList?: TodoListCreateNestedOneWithoutTodoItemsInput;
-
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
+
+    @Field(() => TodoListCreateNestedOneWithoutTodoItemsInput, {nullable:true})
+    todoList?: TodoListCreateNestedOneWithoutTodoItemsInput;
 }

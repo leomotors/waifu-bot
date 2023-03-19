@@ -1,10 +1,3 @@
-import styles from "$styles/Sidebar.module.scss";
-
-import { MiniProfile } from "$components/elements/MiniProfile";
-import { AuthContext } from "$lib/contexts";
-
-import Link from "next/link";
-
 import { FC, useContext } from "react";
 import {
   BoxArrowInRight,
@@ -14,6 +7,12 @@ import {
   MusicNoteList,
   Person,
 } from "react-bootstrap-icons";
+
+import Link from "next/link";
+
+import { MiniProfile } from "$components/elements/MiniProfile";
+import { AuthContext } from "$lib/contexts";
+import styles from "$styles/Sidebar.module.scss";
 
 interface RouteProps {
   label: string;

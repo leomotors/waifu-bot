@@ -1,8 +1,8 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { UserRelationFilter } from '../user/user-relation-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
+import { UserRelationFilter } from '../user/user-relation-filter.input';
 
 @InputType()
 export class ProfileWhereInput {
@@ -15,9 +15,6 @@ export class ProfileWhereInput {
 
     @Field(() => [ProfileWhereInput], {nullable:true})
     NOT?: Array<ProfileWhereInput>;
-
-    @Field(() => UserRelationFilter, {nullable:true})
-    user?: UserRelationFilter;
 
     @Field(() => StringFilter, {nullable:true})
     userId?: StringFilter;
@@ -36,4 +33,7 @@ export class ProfileWhereInput {
 
     @Field(() => DateTimeFilter, {nullable:true})
     updatedAt?: DateTimeFilter;
+
+    @Field(() => UserRelationFilter, {nullable:true})
+    user?: UserRelationFilter;
 }

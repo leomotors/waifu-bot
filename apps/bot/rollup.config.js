@@ -1,5 +1,4 @@
 // @ts-check
-
 import { defineConfig } from "rollup";
 
 export default defineConfig({

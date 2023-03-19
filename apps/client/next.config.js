@@ -5,8 +5,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
-const withTM = require("next-transpile-modules")(["@waifu-bot/graphql"]);
-
 const imageDomains = [
   "cdn.discordapp.com",
   "c.tenor.com",
@@ -17,15 +15,14 @@ const imageDomains = [
     : []
 );
 
-/** @type {import("next").NextConfig} */
-const nextConfig = withBundleAnalyzer(
-  withTM({
-    reactStrictMode: true,
-    swcMinify: true,
-    images: {
-      domains: imageDomains,
-    },
-  })
-);
+/** @satisfies {import("next").NextConfig} */
+const nextConfig = withBundleAnalyzer({
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: imageDomains,
+  },
+  transpilePackages: ["@waifu-bot/codegen"],
+});
 
 module.exports = nextConfig;

@@ -1,1 +1,1 @@
-export * from "../../../../packages/graphql/src/generated/bot/sdk";
+export * from "../../../../packages/codegen/src/generated/bot/sdk";

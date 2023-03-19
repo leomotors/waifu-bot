@@ -18,9 +18,6 @@ export class TodoItemOrderByWithRelationInput {
     @Field(() => SortOrder, {nullable:true})
     color?: keyof typeof SortOrder;
 
-    @Field(() => TodoListOrderByWithRelationInput, {nullable:true})
-    todoList?: TodoListOrderByWithRelationInput;
-
     @Field(() => SortOrder, {nullable:true})
     todoListId?: keyof typeof SortOrder;
 
@@ -29,4 +26,7 @@ export class TodoItemOrderByWithRelationInput {
 
     @Field(() => SortOrder, {nullable:true})
     updatedAt?: keyof typeof SortOrder;
+
+    @Field(() => TodoListOrderByWithRelationInput, {nullable:true})
+    todoList?: TodoListOrderByWithRelationInput;
 }

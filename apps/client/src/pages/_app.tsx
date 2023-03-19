@@ -1,18 +1,18 @@
-import "$styles/globals.scss";
+import { AppProps } from "next/app";
+import Head from "next/head";
+
+import { ApolloProvider } from "@apollo/client";
+
+import { createApolloClient } from "@waifu-bot/codegen";
 
 import { RenderWaifuPage } from "$components/layouts/RenderWaifuPage";
 import { Sidebar } from "$components/layouts/Sidebar";
 import { AuthProvider } from "$lib/contexts";
+import "$styles/globals.scss";
 
-import { ApolloProvider } from "@apollo/client";
-import { createApolloClient } from "@waifu-bot/graphql";
+const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT;
 
-import type { AppProps } from "next/app";
-import Head from "next/head";
-
-const client = createApolloClient(
-  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT as string
-);
+const client = createApolloClient(endpoint as string);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -1,9 +1,9 @@
-import { AuthContext } from "$lib/contexts";
+import { useContext, useEffect, useState } from "react";
 
-import type { NextPage } from "next";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
 
-import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "$lib/contexts";
 
 const LoginPage: NextPage = () => {
   const router = useRouter();

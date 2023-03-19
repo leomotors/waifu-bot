@@ -2,6 +2,13 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.660] - 2023-03-19
+
+- chore: bump dependencies
+- feat(server): migrate to mercurius and fastify
+- refactor(codegen): rename package graphql to codegen
+- fix(bot): bump discordjs/voice to 0.15 to fix connection issues
+
 ## [4.0.650] - 2022-12-16
 
 - refactor: thicc refactor eslint prettier config

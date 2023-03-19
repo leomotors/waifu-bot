@@ -18,12 +18,12 @@ export class TodoListUncheckedCreateWithoutTodoItemsInput {
     @Field(() => String, {nullable:false})
     ownerId!: string;
 
-    @Field(() => UserUncheckedCreateNestedManyWithoutTodoListsCollaboratedInput, {nullable:true})
-    collaborators?: UserUncheckedCreateNestedManyWithoutTodoListsCollaboratedInput;
-
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
+
+    @Field(() => UserUncheckedCreateNestedManyWithoutTodoListsCollaboratedInput, {nullable:true})
+    collaborators?: UserUncheckedCreateNestedManyWithoutTodoListsCollaboratedInput;
 }

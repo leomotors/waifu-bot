@@ -16,18 +16,18 @@ export class PlaylistOrderByWithRelationInput {
     @Field(() => SortOrder, {nullable:true})
     description?: keyof typeof SortOrder;
 
-    @Field(() => UserOrderByWithRelationInput, {nullable:true})
-    owner?: UserOrderByWithRelationInput;
-
     @Field(() => SortOrder, {nullable:true})
     ownerId?: keyof typeof SortOrder;
-
-    @Field(() => MusicOrderByRelationAggregateInput, {nullable:true})
-    music?: MusicOrderByRelationAggregateInput;
 
     @Field(() => SortOrder, {nullable:true})
     createdAt?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
     updatedAt?: keyof typeof SortOrder;
+
+    @Field(() => UserOrderByWithRelationInput, {nullable:true})
+    owner?: UserOrderByWithRelationInput;
+
+    @Field(() => MusicOrderByRelationAggregateInput, {nullable:true})
+    music?: MusicOrderByRelationAggregateInput;
 }

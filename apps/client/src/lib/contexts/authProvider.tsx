@@ -1,8 +1,8 @@
-import { useGetMyInfoQuery } from "@waifu-bot/graphql";
+import { FC, PropsWithChildren, useState } from "react";
 
 import { useRouter } from "next/router";
 
-import { FC, PropsWithChildren, useState } from "react";
+import { useGetMyInfoQuery } from "@waifu-bot/codegen";
 
 import { AuthContext, type IAuthContext } from "./authContext";
 

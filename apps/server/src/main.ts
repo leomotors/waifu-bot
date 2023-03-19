@@ -1,10 +1,19 @@
 import { Logger } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from "@nestjs/platform-fastify";
 
 import { AppModule } from "./app.module";
 
+const PORT = 5375;
+
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter()
+  );
 
   if (!process.env.ADMIN_SECRET) {
     throw new Error(
@@ -12,10 +21,13 @@ async function bootstrap() {
     );
   }
 
-  const PORT = 5375;
+  app.enableCors();
+
   await app.listen(PORT);
   Logger.log(
-    `Server is running on port ${PORT} http://localhost:${PORT}/graphql`
+    `Application is running on port ${PORT}
+Localhost endpoint => http://localhost:${PORT}/graphql
+Apollo Studio => https://studio.apollographql.com/sandbox/explorer`
   );
 }
 

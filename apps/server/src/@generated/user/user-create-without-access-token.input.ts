@@ -11,14 +11,14 @@ export class UserCreateWithoutAccessTokenInput {
     @Field(() => String, {nullable:false})
     id!: string;
 
-    @Field(() => ProfileCreateNestedOneWithoutUserInput, {nullable:true})
-    profile?: ProfileCreateNestedOneWithoutUserInput;
-
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
+
+    @Field(() => ProfileCreateNestedOneWithoutUserInput, {nullable:true})
+    profile?: ProfileCreateNestedOneWithoutUserInput;
 
     @Field(() => PlaylistCreateNestedManyWithoutOwnerInput, {nullable:true})
     playlist?: PlaylistCreateNestedManyWithoutOwnerInput;

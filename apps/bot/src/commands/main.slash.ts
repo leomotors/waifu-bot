@@ -91,7 +91,7 @@ export class Main extends CogSlashClass {
         return;
       }
     } else {
-      url = img!.attachment.toString();
+      url = img!.url;
     }
 
     const res = await fetch(url);
