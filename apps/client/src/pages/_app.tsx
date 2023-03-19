@@ -10,9 +10,9 @@ import { Sidebar } from "$components/layouts/Sidebar";
 import { AuthProvider } from "$lib/contexts";
 import "$styles/globals.scss";
 
-const client = createApolloClient(
-  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT as string
-);
+const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT;
+
+const client = createApolloClient(endpoint as string);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
