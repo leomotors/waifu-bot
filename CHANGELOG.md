@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.661] - 2023-04-17
+
+- chore: pnpm 8
+- refactor: ???
+
 ## [4.0.660] - 2023-03-19
 
 - chore: bump dependencies

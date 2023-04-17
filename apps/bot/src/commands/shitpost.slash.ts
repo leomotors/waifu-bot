@@ -15,11 +15,6 @@ export class Shitpost extends CogSlashClass {
     super("Shitpost", "Cog for shitpost useless command");
   }
 
-  @SlashCommand("slash jobs")
-  async brikl(ctx: SlashCommand.Context) {
-    await ctx.reply("Brikl is hiring\nhttps://brikl.com/jobs");
-  }
-
   @SlashCommand("😭😭😭")
   async cunny(ctx: SlashCommand.Context) {
     await ctx.reply("||https://www.youtube.com/watch?v=HVXkeDSNdYM||");
