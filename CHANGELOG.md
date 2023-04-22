@@ -2,6 +2,10 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.0.662] - 2023-04-22
+
+- chore: update docker build step
+
 ## [4.0.661] - 2023-04-17
 
 - chore: pnpm 8

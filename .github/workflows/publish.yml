@@ -40,29 +40,21 @@ jobs:
           node-version: 18
           cache: pnpm
 
-      - name: Write env
-        run: |
-          echo ADMIN_SECRET="${{ secrets.ADMIN_SECRET }}" >> .env
-          echo DATABASE_URL="${{ secrets.DATABASE_URL }}" >> .env
-          echo NEXT_PUBLIC_GRAPHQL_ENDPOINT="${{ secrets.NEXT_PUBLIC_GRAPHQL_ENDPOINT }}" >> apps/client/.env
-          echo API_ENDPOINT="http://localhost:5375/graphql" >> apps/bot/.env
-          echo PUBLIC_WEB_URL="${{ secrets.PUBLIC_WEB_URL }}" >> apps/bot/.env
-          echo DISCORD_TOKEN="${{ secrets.DISCORD_TOKEN }}" >> apps/bot/.env
-          echo ENVIRONMENT=PRODUCTION >> apps/bot/.env
-          echo TENOR_APIKEY="${{ secrets.TENOR_APIKEY }}" >> apps/bot/.env
-
       - name: Login via Azure CLI
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Build and push image
+      - name: Login to Azure Container Registry
         uses: azure/docker-login@v1
         with:
           login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - run: |
-          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/waifu-bot:latest
+      - name: Build and Push Image
+        env:
+          NEXT_PUBLIC_GRAPHQL_ENDPOINT: ${{ secrets.NEXT_PUBLIC_GRAPHQL_ENDPOINT }}
+        run: |
+          docker build --build-arg NEXT_PUBLIC_GRAPHQL_ENDPOINT=$NEXT_PUBLIC_GRAPHQL_ENDPOINT . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/waifu-bot:latest
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/waifu-bot
