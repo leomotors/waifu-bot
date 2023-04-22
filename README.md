@@ -32,9 +32,9 @@ The most ~~over-engineered~~ advanced Discord Bot
 ### Prerequisites
 
 - Your Discord Bot (of course)
-- nodejs 16
-- pnpm 7
-- PostgreSQL Database (v13 Recommended) and Public Server (VM) for Website
+- nodejs 18
+- pnpm 8
+- PostgreSQL Database and Public Server (VM) for Website
 - Tenor API Key (not required, it works even with invalid key lol)
 - [golden-frame](https://github.com/Leomotors/golden-frame) (Installable via pip, required)
 
