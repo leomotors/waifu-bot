@@ -10,7 +10,7 @@ import { ChannelType, Client, VoiceChannel } from "discord.js";
 
 import * as fs from "fs/promises";
 
-import { style } from "./styles";
+import { style } from "./styles.js";
 
 let qualityLinks: { [key: string]: string };
 

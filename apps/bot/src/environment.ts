@@ -1,3 +1,5 @@
+// TODO Use zod and also merge with dotenv.ts
+
 export const GuildIds =
   process.env.ENVIRONMENT === "PRODUCTION"
     ? "Global"

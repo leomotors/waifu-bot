@@ -4,7 +4,7 @@ import {
   SlashCommand,
 } from "cocoa-discord-utils/slash/class";
 
-import { Voice } from "./tts.service";
+import { Voice } from "./tts.service.js";
 
 export class TTS extends CogSlashClass {
   constructor() {

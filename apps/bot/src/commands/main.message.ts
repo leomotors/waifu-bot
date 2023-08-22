@@ -5,7 +5,7 @@ import {
 
 import { Message } from "discord.js";
 
-import { style } from "./styles";
+import { style } from "./styles.js";
 
 export class Main extends CogMessageClass {
   timePinged = 0;

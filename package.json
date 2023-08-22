@@ -9,7 +9,6 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "prisma generate",
     "clean": "rm -rf node_modules {apps,packages}/**/*/{.turbo,build,dist,node_modules,.next}",
     "build": "FORCE_COLOR=2 turbo run build",
     "dev": "FORCE_COLOR=2 turbo run dev",
@@ -17,12 +16,10 @@
     "format": "FORCE_COLOR=2 turbo run format",
     "start": "FORCE_COLOR=2 turbo run start",
     "start:bot": "FORCE_COLOR=2 turbo run --filter=\"@waifu-bot/bot\" start",
-    "test": "FORCE_COLOR=2 turbo run test",
-    "codegen": "pnpm --filter=@waifu-bot/codegen codegen"
+    "test": "FORCE_COLOR=2 turbo run test"
   },
   "devDependencies": {
     "@leomotors/config": "^0.10.0",
-    "@nestjs/cli": "^9.3.0",
     "@prisma/client": "^4.11.0",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/eslint": "^8.21.2",
@@ -40,18 +37,12 @@
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.5",
     "prisma": "^4.11.0",
-    "prisma-nestjs-graphql": "^17.1.0",
     "turbo": "^1.8.3",
     "typescript": "^5.0.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "ua-parser-js": "^0.7.33"
-    }
   },
   "engines": {
     "node": "^18.12.0",
     "pnpm": "^8"
   },
-  "packageManager": "pnpm@8.1.1"
+  "packageManager": "pnpm@8.6.12"
 }

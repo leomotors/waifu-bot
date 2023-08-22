@@ -4,6 +4,6 @@
     "outDir": "./dist",
     "declaration": true,
     "incremental": false,
-    "module": "commonjs"
+    "module": "NodeNext"
   }
 }

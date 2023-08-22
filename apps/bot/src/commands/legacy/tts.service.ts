@@ -17,8 +17,8 @@ import {
 } from "@discordjs/voice";
 
 import { getAllAudioUrls } from "google-tts-api";
-import { IncomingMessage } from "http";
-import https from "https";
+import { IncomingMessage } from "node:http";
+import https from "node:https";
 
 export namespace Voice {
   export const audio_player: { [guildId: string]: AudioPlayer } = {};

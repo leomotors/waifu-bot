@@ -4,8 +4,8 @@ import {
   SlashCommand,
 } from "cocoa-discord-utils/slash/class";
 
-import { CommandChoice, getLyric } from "./kashi.service";
-import { style } from "./styles";
+import { CommandChoice, getLyric } from "./kashi.service.js";
+import { style } from "./styles.js";
 
 export class Kashi extends CogSlashClass {
   constructor() {

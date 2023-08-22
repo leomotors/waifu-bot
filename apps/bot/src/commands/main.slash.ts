@@ -12,13 +12,10 @@ import { Version as MusicVersion } from "@leomotors/music-bot";
 
 import { TextChannel } from "discord.js";
 
-import fetch from "node-fetch";
-import { createWriteStream } from "node:fs";
-
-import { exec } from "../bot.service";
-
-import { Helix, formatTime } from "./main.service";
-import { Waifu, style } from "./styles";
+// import { createWriteStream } from "node:fs";
+// import { exec } from "../bot.service";
+import { Helix, formatTime } from "./main.service.js";
+import { Waifu, style } from "./styles.js";
 
 export class Main extends CogSlashClass {
   timePinged = 0;
@@ -56,65 +53,65 @@ export class Main extends CogSlashClass {
     await ctx.reply({ embeds: [emb] });
   }
 
-  @SlashCommand("Create Golden Frame")
-  async goldenframe(
-    ctx: SlashCommand.Context,
-    @Param.Choices<Param.String.Type>(async () =>
-      (await exec("golden-frame list")).stdout
-        .split("\n")
-        .slice(1)
-        .filter((l) => l.length)
-        .map((e) => e.split(" ")[0]!.trim())
-        .map((e) => ({ name: e, value: e }))
-    )
-    @Param.String("Frame Name")
-    frame: Param.String.Type,
-    @Param.User("Who to put in the golden frame", { required: false })
-    who: Param.User.Nullable,
-    @Param.Attachment("Image to put in the frame", { required: false })
-    img: Param.Attachment.Nullable
-  ) {
-    if (!who && !img) {
-      await ctx.reply("Either user or image must be given!");
-      return;
-    }
+  // @SlashCommand("Create Golden Frame")
+  // async goldenframe(
+  //   ctx: SlashCommand.Context,
+  //   @Param.Choices<Param.String.Type>(async () =>
+  //     (await exec("golden-frame list")).stdout
+  //       .split("\n")
+  //       .slice(1)
+  //       .filter((l) => l.length)
+  //       .map((e) => e.split(" ")[0]!.trim())
+  //       .map((e) => ({ name: e, value: e }))
+  //   )
+  //   @Param.String("Frame Name")
+  //   frame: Param.String.Type,
+  //   @Param.User("Who to put in the golden frame", { required: false })
+  //   who: Param.User.Nullable,
+  //   @Param.Attachment("Image to put in the frame", { required: false })
+  //   img: Param.Attachment.Nullable
+  // ) {
+  //   if (!who && !img) {
+  //     await ctx.reply("Either user or image must be given!");
+  //     return;
+  //   }
 
-    await ctx.deferReply();
+  //   await ctx.deferReply();
 
-    let url: string | null;
-    if (who) {
-      url = who.avatarURL({ size: 4096 });
-      if (!url) {
-        await ctx.followUp(
-          "Cannot G O L D E N F R A M E: Target user has no profile picture!"
-        );
-        return;
-      }
-    } else {
-      url = img!.url;
-    }
+  //   let url: string | null;
+  //   if (who) {
+  //     url = who.avatarURL({ size: 4096 });
+  //     if (!url) {
+  //       await ctx.followUp(
+  //         "Cannot G O L D E N F R A M E: Target user has no profile picture!"
+  //       );
+  //       return;
+  //     }
+  //   } else {
+  //     url = img!.url;
+  //   }
 
-    const res = await fetch(url);
-    if (!res.body) {
-      await ctx.followUp("Where is body? (Fetch Error)");
-      return;
-    }
+  //   const res = await fetch(url);
+  //   if (!res.body) {
+  //     await ctx.followUp("Where is body? (Fetch Error)");
+  //     return;
+  //   }
 
-    const stream = res.body.pipe(createWriteStream("input.png"));
+  //   const stream = res.body.pipe(createWriteStream("input.png"));
 
-    await new Promise<void>((res, rej) => {
-      stream.on("close", () => {
-        res();
-      });
-      stream.on("error", () => {
-        rej();
-      });
-    });
+  //   await new Promise<void>((res, rej) => {
+  //     stream.on("close", () => {
+  //       res();
+  //     });
+  //     stream.on("error", () => {
+  //       rej();
+  //     });
+  //   });
 
-    await exec(`golden-frame build ${frame} input.png --output=output.png`);
+  //   await exec(`golden-frame build ${frame} input.png --output=output.png`);
 
-    await ctx.followUp({ files: ["output.png"] });
-  }
+  //   await ctx.followUp({ files: ["output.png"] });
+  // }
 
   @SlashCommand("Adenine Thymine Cytosine Guanine")
   async helix(

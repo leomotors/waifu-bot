@@ -1,4 +1,4 @@
-import "./dotenv";
+import "./dotenv.js";
 
 import { AppVersion, ShortNameJA } from "@waifu-bot/constants";
 
@@ -18,15 +18,14 @@ import { Client } from "discord.js";
 
 import chalk from "chalk";
 
-import { Kashi } from "./commands/kashi.slash";
-import { TTS } from "./commands/legacy/tts.slash";
-import { Main as MainMessage } from "./commands/main.message";
-import { Main as MainSlash } from "./commands/main.slash";
-import { Music } from "./commands/music.slash";
-import { Shitpost } from "./commands/shitpost.slash";
-import { style } from "./commands/styles";
-import { Web } from "./commands/web.slash";
-import { GuildIds } from "./environment";
+import { Kashi } from "./commands/kashi.slash.js";
+import { TTS } from "./commands/legacy/tts.slash.js";
+import { Main as MainMessage } from "./commands/main.message.js";
+import { Main as MainSlash } from "./commands/main.slash.js";
+import { Music } from "./commands/music.slash.js";
+import { Shitpost } from "./commands/shitpost.slash.js";
+import { style } from "./commands/styles.js";
+import { GuildIds } from "./environment.js";
 
 const client = new Client(
   new CocoaIntent()
@@ -54,8 +53,7 @@ scenter.addCogs(
   new Shitpost(),
   new Kashi(),
   new Music(client),
-  new TTS(),
-  new Web()
+  new TTS()
 );
 scenter.useHelpCommand(style);
 scenter.on("error", async (name, err, ctx) => {
