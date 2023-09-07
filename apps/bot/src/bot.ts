@@ -33,7 +33,7 @@ const client = new Client(
     .useGuildSlash()
     .useGuildVoice()
     .useDirectMessage()
-    .useReadMessage()
+    .useReadMessage(),
 );
 
 const mcenter = new MessageCenter(client, { prefixes: ["simp"] });
@@ -42,7 +42,7 @@ mcenter.useHelpCommand(style);
 mcenter.on("error", async (name, err, msg) => {
   Cocoa.log(
     `Command "${name}" error at ${msg.guild?.name} : ${err}`,
-    LogStatus.Error
+    LogStatus.Error,
   );
   await msg.reply(`あら？, Error Occured: ${err}`.slice(0, 2000));
 });
@@ -53,19 +53,19 @@ scenter.addCogs(
   new Shitpost(),
   new Kashi(),
   new Music(client),
-  new TTS()
+  new TTS(),
 );
 scenter.useHelpCommand(style);
 scenter.on("error", async (name, err, ctx) => {
   Cocoa.log(
     `Command "${name}" error at ${ctx.guild?.name} : ${err}`,
-    LogStatus.Error
+    LogStatus.Error,
   );
   await ctx.channel?.send(`あら？, Error Occured: ${err}`.slice(0, 2000));
 });
 scenter.on("interaction", (name, ctx) => {
   Cocoa.log(
-    `Handled "${name}" invoked by ${ctx.user.tag} at ${ctx.guild?.name}`
+    `Handled "${name}" invoked by ${ctx.user.tag} at ${ctx.guild?.name}`,
   );
 });
 
@@ -73,7 +73,7 @@ const activityLoader = new ActivityGroupLoader("data/activities.json");
 const activityManager = new ActivityManager(
   activityLoader,
   client,
-  5 * 60 * 1000
+  5 * 60 * 1000,
 );
 
 client.on("ready", (cli) => {
@@ -81,8 +81,8 @@ client.on("ready", (cli) => {
     chalk.cyan(
       `${ShortNameJA} Ready! Logged in as ${
         cli.user.tag
-      } v${AppVersion}, took ${process.uptime().toFixed(3)} seconds`
-    )
+      } v${AppVersion}, took ${process.uptime().toFixed(3)} seconds`,
+    ),
   );
   scenter.syncCommands(true);
   activityManager.nextActivity();

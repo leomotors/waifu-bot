@@ -18,7 +18,7 @@ export class Kashi extends CogSlashClass {
     @Param.Choices<Param.String.Type>(async () => await CommandChoice())
     @Param.String("Name of the song")
     song: Param.String.Type,
-    @Param.Ephemeral ephemeral: Param.Ephemeral.Type
+    @Param.Ephemeral ephemeral: Param.Ephemeral.Type,
   ) {
     const { content, img, title } = await getLyric(song);
 

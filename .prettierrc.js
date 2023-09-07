@@ -1,3 +1,3 @@
 // @ts-check
 
-module.exports = require("@leomotors/config/prettier").withTailwind();
+module.exports = require("@leomotors/config/prettier").withSortImports();

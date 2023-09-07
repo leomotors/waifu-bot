@@ -26,7 +26,7 @@ export class Music extends MusicBase {
     ctx: SlashCommand.Context,
     @Param.Choices<Param.String.Type>(async () => {
       qualityLinks = JSON.parse(
-        (await fs.readFile("data/quality.json")).toString()
+        (await fs.readFile("data/quality.json")).toString(),
       ) as { [key: string]: string };
 
       return Object.keys(qualityLinks).map((k) => ({
@@ -35,7 +35,7 @@ export class Music extends MusicBase {
       }));
     })
     @Param.String("Quality musics to play")
-    quality: Param.String.Type
+    quality: Param.String.Type,
   ) {
     await ctx.deferReply();
 
@@ -43,7 +43,7 @@ export class Music extends MusicBase {
     const result = await LibVoice.addMusicToQueue(
       ctx.guildId!,
       qualityLinks[quality]!,
-      ctx.user.id
+      ctx.user.id,
     );
 
     if (typeof result !== "string") {
@@ -57,7 +57,7 @@ export class Music extends MusicBase {
   @SlashCommand("yes, rick roll")
   async rickroll(
     ctx: SlashCommand.Context,
-    @Param.Channel("Channel to surprise!") channel: Param.Channel.Type
+    @Param.Channel("Channel to surprise!") channel: Param.Channel.Type,
   ) {
     if (channel.type !== ChannelType.GuildVoice) {
       await ctx.reply("Can only rick roll normal voice channel");
@@ -70,7 +70,7 @@ export class Music extends MusicBase {
     await LibVoice.addMusicToQueue(
       ctx.guildId!,
       "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      ctx.user.id
+      ctx.user.id,
     );
 
     await ctx.followUp("Rick Roll Time!");

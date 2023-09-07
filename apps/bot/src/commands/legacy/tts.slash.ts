@@ -16,7 +16,7 @@ export class TTS extends CogSlashClass {
     ctx: SlashCommand.Context,
     @Param.String("What to speak") text: Param.String.Type,
     @Param.String("Language", { required: false })
-    lang: Param.String.Nullable
+    lang: Param.String.Nullable,
   ) {
     await ctx.reply("わかります！");
 

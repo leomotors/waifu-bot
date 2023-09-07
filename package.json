@@ -19,30 +19,29 @@
     "test": "FORCE_COLOR=2 turbo run test"
   },
   "devDependencies": {
-    "@leomotors/config": "^0.10.0",
-    "@prisma/client": "^4.11.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
-    "@types/eslint": "^8.21.2",
-    "@types/node": "^18.15.3",
-    "@types/prettier": "^2.7.2",
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "@typescript-eslint/parser": "^5.55.0",
-    "eslint": "^8.36.0",
-    "eslint-config-next": "^13.2.4",
-    "eslint-config-prettier": "^8.7.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-sort-destructure-keys": "^1.5.0",
-    "prettier": "^2.8.4",
-    "prettier-plugin-tailwindcss": "^0.2.5",
-    "prisma": "^4.11.0",
-    "turbo": "^1.8.3",
-    "typescript": "^5.0.2"
+    "@leomotors/config": "0.11.0",
+    "@prisma/client": "5.2.0",
+    "@trivago/prettier-plugin-sort-imports": "4.2.0",
+    "@types/eslint": "8.44.2",
+    "@types/node": "18.17.14",
+    "@typescript-eslint/eslint-plugin": "6.6.0",
+    "@typescript-eslint/parser": "6.6.0",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-import": "2.28.1",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-sort-destructure-keys": "1.5.0",
+    "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "0.5.4",
+    "prisma": "5.2.0",
+    "turbo": "1.10.13",
+    "typescript": "5.2.2"
   },
   "engines": {
     "node": "^18.12.0",
     "pnpm": "^8"
   },
-  "packageManager": "pnpm@8.6.12"
+  "packageManager": "pnpm@8.7.4"
 }

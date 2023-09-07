@@ -12,6 +12,6 @@
   },
   "devDependencies": {
     "@waifu-bot/config": "workspace:0.0.0",
-    "typescript": "^5.0.2"
+    "typescript": "5.2.2"
   }
 }

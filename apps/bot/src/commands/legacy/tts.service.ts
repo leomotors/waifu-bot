@@ -65,7 +65,7 @@ export namespace Voice {
 
   export async function joinVoiceChannel(
     channel: VoiceChannel,
-    onDisconnect?: () => Awaitable<void>
+    onDisconnect?: () => Awaitable<void>,
   ) {
     const connection = libJoinVoiceChannel({
       channelId: channel.id,
@@ -105,7 +105,7 @@ export namespace Voice {
   export async function speak(
     guildId: string,
     text: string,
-    lang?: string | null
+    lang?: string | null,
   ) {
     const connection = getVoiceConnection(guildId);
     if (!connection) return false;
@@ -119,9 +119,9 @@ export namespace Voice {
             https.get(url.url, (stream) => {
               res(stream);
             });
-          })
-        )
-      )
+          }),
+        ),
+      ),
     );
 
     if (audio_player[guildId]) {

@@ -8,7 +8,7 @@ import {
 export class Shitpost extends CogSlashClass {
   readonly kitaLoader = ArrayLoader.fromFile<string>(
     "kitakita",
-    "data/kitakita.json"
+    "data/kitakita.json",
   );
 
   constructor() {
@@ -23,14 +23,14 @@ export class Shitpost extends CogSlashClass {
   @SlashCommand("Insult someone for being gae")
   async gay(
     ctx: SlashCommand.Context,
-    @Param.User("who are gay", { required: false }) gay: Param.User.Nullable
+    @Param.User("who are gay", { required: false }) gay: Param.User.Nullable,
   ) {
     const who = gay ?? ctx.user;
     await ctx.reply(`<@${who.id}> is gay!`);
   }
 
   @SlashCommand(
-    "kitakita post from บจจิเดอะร็อคแฟนคลับไทยแลนด์ คิตะคิต้าโพสต์ติ้ง ✨⭐"
+    "kitakita post from บจจิเดอะร็อคแฟนคลับไทยแลนด์ คิตะคิต้าโพสต์ติ้ง ✨⭐",
   )
   async kitakita(ctx: SlashCommand.Context) {
     await this.kitaLoader.initialPromise;

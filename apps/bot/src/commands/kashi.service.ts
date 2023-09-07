@@ -16,7 +16,7 @@ export interface Lyric {
 }
 
 export function parseArg(
-  content: string[]
+  content: string[],
 ): [{ [key: string]: string }, string] {
   const arg: { [key: string]: string } = {};
 
