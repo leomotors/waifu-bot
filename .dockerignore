@@ -8,6 +8,18 @@ __MACOSX
 # Unrelated folders/files at root
 images
 *.md
+*.yml
+LICENSE
+.gitignore
+.dockerignore
+Dockerfile
+
+# Ignored Files (Unrelated)
+**/*.md
+**/.gitignore
+**/.env.example
+**/.eslint*
+**/.prettier*
 
 # Ignored Folder (For quality of local build)
 **/dist
