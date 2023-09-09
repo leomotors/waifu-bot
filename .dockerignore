@@ -1,10 +1,18 @@
-dist
-out
-node_modules
-.turbo
-.next
-
-.env
+# Unrelated folders
+.github
 .vscode
+.git
+.DS_Store
+__MACOSX
+
+# Unrelated folders/files at root
 images
 *.md
+
+# Ignored Folder (For quality of local build)
+**/dist
+**/out
+**/node_modules
+**/.turbo
+**/.next
+**/.env
