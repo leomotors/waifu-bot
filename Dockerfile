@@ -1,25 +1,16 @@
-FROM nikolaik/python-nodejs:python3.11-nodejs18-slim
+FROM node:18-alpine
 
-ARG NEXT_PUBLIC_GRAPHQL_ENDPOINT
-ENV NEXT_PUBLIC_GRAPHQL_ENDPOINT=$NEXT_PUBLIC_GRAPHQL_ENDPOINT
+WORKDIR /app
 
-RUN apt-get update
-RUN apt-get install ffmpeg libgl1 -y
-RUN pip3 install golden-frame
-RUN npm i --location=global pnpm
+RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache python3 make g++
 
-WORKDIR /cunny
+COPY . ./
+RUN corepack enable
 
-# Copy Every Important Stuff
-COPY package.json turbo.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
-COPY .gitignore ./
-COPY apps ./apps
-COPY packages ./packages
-COPY prisma ./prisma
+RUN pnpm i --frozen-lockfile
 
-RUN pnpm install --frozen-lockfile
 RUN pnpm build
 
-EXPOSE 5374 5375
-
+ENV NODE_ENV production
 CMD ["pnpm", "start"]

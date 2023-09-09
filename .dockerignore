@@ -3,3 +3,8 @@ out
 node_modules
 .turbo
 .next
+
+.env
+.vscode
+images
+*.md

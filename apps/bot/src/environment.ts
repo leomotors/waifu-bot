@@ -1,6 +1,31 @@
-// TODO Use zod and also merge with dotenv.ts
+import { z } from "zod";
+
+const baseEnvSchema = z.object({
+  DISCORD_TOKEN: z.string().min(10),
+
+  TENOR_APIKEY: z.string().min(10).optional(),
+  GOLDEN_FRAME_ENDPOINT: z.string().regex(/https?:\/\/.+/),
+  GOLDEN_FRAME_APIKEY: z.string().min(3),
+});
+
+const productionSchema = z.object({
+  ENVIRONMENT: z.literal("PRODUCTION"),
+  DEV_GUILD_ID: z.undefined(),
+});
+
+const developmentSchema = z.object({
+  ENVIRONMENT: z.literal("DEVELOPMENT").optional(),
+  DEV_GUILD_ID: z.string().min(10),
+});
+
+const environmentSchema = z.intersection(
+  baseEnvSchema,
+  z.union([productionSchema, developmentSchema]),
+);
+
+export const environment = environmentSchema.parse(process.env);
 
 export const GuildIds =
-  process.env.ENVIRONMENT === "PRODUCTION"
+  environment.ENVIRONMENT === "PRODUCTION"
     ? "Global"
-    : process.env.DEV_GUILD_IDS?.split(",");
+    : [environment.DEV_GUILD_ID];

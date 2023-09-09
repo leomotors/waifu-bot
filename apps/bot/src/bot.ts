@@ -25,7 +25,7 @@ import { Main as MainSlash } from "./commands/main.slash.js";
 import { Music } from "./commands/music.slash.js";
 import { Shitpost } from "./commands/shitpost.slash.js";
 import { style } from "./commands/styles.js";
-import { GuildIds } from "./environment.js";
+import { GuildIds, environment } from "./environment.js";
 
 const client = new Client(
   new CocoaIntent()
@@ -90,7 +90,7 @@ client.on("ready", (cli) => {
 
 new ConsoleManager().useLogout(client).useReload(activityLoader);
 
-checkLogin(client, process.env.DISCORD_TOKEN);
+checkLogin(client, environment.DISCORD_TOKEN);
 
 process.on("SIGINT", () => {
   console.log(chalk.yellow("Terminating Waifu Bot..."));
