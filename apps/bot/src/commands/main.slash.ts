@@ -81,10 +81,10 @@ export class Main extends CogSlashClass {
 
     let url: string | null;
     if (who) {
-      url = who.avatarURL({ size: 4096 });
+      url = who.avatarURL({ size: 4096, forceStatic: true });
       if (!url) {
         await ctx.followUp(
-          "Cannot G O L D E N F R A M E: Target user has no profile picture!",
+          "Golden Frame Failed: Target user has no profile picture!",
         );
         return;
       }
@@ -93,8 +93,15 @@ export class Main extends CogSlashClass {
     }
 
     const res = await fetch(url);
-    if (!res.body) {
-      await ctx.followUp("Fetch Error: Cannot get Image");
+
+    const contentType = res.headers.get("Content-Type");
+    // Allow only static images
+    const allowedContentTypes = ["image/jpeg", "image/png", "image/webp"];
+
+    if (!allowedContentTypes.includes(contentType!)) {
+      await ctx.followUp(
+        `Fetch Error: Content-Type of ${contentType} is invalid!`,
+      );
       return;
     }
 
