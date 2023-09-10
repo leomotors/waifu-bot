@@ -86,7 +86,7 @@ export class Main extends CogSlashClass {
     let url: string | null;
     if (who) {
       const options = { size: 4096, forceStatic: true } as const;
-      url = (real_image ? who.avatarURL : who.displayAvatarURL)(options);
+      url = real_image ? who.avatarURL(options) : who.displayAvatarURL(options);
       if (!url) {
         await ctx.followUp(
           "Golden Frame Failed: Target user has no profile picture!",
