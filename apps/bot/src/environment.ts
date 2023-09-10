@@ -7,7 +7,7 @@ config({ path: "../../.env" });
 const baseEnvSchema = z.object({
   DISCORD_TOKEN: z.string().min(10),
 
-  TENOR_APIKEY: z.string().min(10).optional(),
+  TENOR_APIKEY: z.string().min(10),
   GOLDEN_FRAME_ENDPOINT: z.string().regex(/https?:\/\/.+/),
   GOLDEN_FRAME_APIKEY: z.string().min(3),
 });

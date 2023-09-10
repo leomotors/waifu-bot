@@ -18,12 +18,16 @@ jobs:
         uses: Leomotors/auto-publish-release@main
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          title: "Bocchi Bot"
+          title: "Kaede Bot"
           tag: ${{ github.ref }}
 
   image:
     name: Docker Image
     runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      packages: write
 
     steps:
       - name: Checkout
@@ -38,21 +42,21 @@ jobs:
           node-version-file: ".nvmrc"
           cache: pnpm
 
-      - name: Login via Azure CLI
-        uses: azure/login@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Login to Azure Container Registry
-        uses: azure/docker-login@v1
+      - name: Build Docker image
+        uses: docker/build-push-action@v4
         with:
-          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
-
-      - name: Build and Push Image
-        env:
-          NEXT_PUBLIC_GRAPHQL_ENDPOINT: ${{ secrets.NEXT_PUBLIC_GRAPHQL_ENDPOINT }}
-        run: |
-          docker build --build-arg NEXT_PUBLIC_GRAPHQL_ENDPOINT=$NEXT_PUBLIC_GRAPHQL_ENDPOINT . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/waifu-bot:latest
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/waifu-bot
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ghcr.io/leomotors/waifu-bot:${{ github.ref_name }},ghcr.io/leomotors/waifu-bot:kaede,ghcr.io/leomotors/waifu-bot:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

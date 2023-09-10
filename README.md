@@ -2,18 +2,29 @@
 
 Waifu Bot is the bot that is serving _our_ server
 
-Current Waifu we SIMP: Bocchi-chan
+Current Waifu we SIMP: <ruby>かえで<rt>Kaede</rt></ruby><ruby>姉<rt>Nee</rt></ruby> from <ruby>夢見る男子は現実主義者<rt>The Dreaming Boy is a Realist</rt></ruby>
 
-<img src="./images/bocchitakusan.png" width=500 />
+Nominated and image selected by @Qwenty228
 
-**Current Version**: 4.0  
-**Been SIMPing since**: 4.0.640
+![](./images/kaede.webp)
+
+**Current Version**: 4.1  
+**Been SIMPing since**: 4.1.700
 
 ## 📚 Tech Stack
 
+Coming soon
+
+<details>
+<summary>Old tech stack</summary>
+
+My 2023 reaction: เลอะเทอะ
+
 The most ~~over-engineered~~ advanced Discord Bot
 
-![](./images/tech-stack.png)
+![](./images/cringe-tech-stack.png)
+
+</details>
 
 ## ✨ Features
 
@@ -25,25 +36,29 @@ The most ~~over-engineered~~ advanced Discord Bot
 
 - [Golden Frame](https://github.com/Leomotors/golden-frame)!
 
-- Using Cocoa Discord Utils and 💛JavaScript💛
+- Using Cocoa Discord and 💛JavaScript💛
 
 ## 🐇 How to run the bot
 
 ### Prerequisites
 
 - Your Discord Bot (of course)
-- nodejs 18
+- nodejs 18 (1s<sup>1</sup>)
 - pnpm 8
-- PostgreSQL Database and Public Server (VM) for Website
-- Tenor API Key (not required, it works even with invalid key lol)
-- [golden-frame](https://github.com/Leomotors/golden-frame) (Installable via pip, required)
+- ~~PostgreSQL Database and Public Server (VM) for Website~~ not yet but might be soon
+- Tenor API Key
+- [Golden Frame Server](https://github.com/Leomotors/golden-frame) deployed somewhere
 
 ### Steps
 
 - Fill in .env (see .env.example in each apps)
 - `pnpm install`
-- (in apps/server) `pnpm prisma migrate dev --skip-seed`
-- `pnpm start` (Will start all apps at once, Turborepo will automatically build for you! If fail try again lol)
+- `pnpm build`
+- `pnpm start`
+
+### Or via Docker
+
+`docker pull ghcr.io/leomotors/waifu-bot:latest`
 
 ## Waifu Bot Archive
 
@@ -51,15 +66,17 @@ The Discord Bot (apps/bot) was built on top of [CarelessDev/harunon.js](https://
 
 Below are list of previous waifu we chose to SIMP
 
-- **Version 4.0.605 - 4.0.629** Vergil [v4.0.629](https://github.com/leomotors/waifu-bot/tree/v4.0.629) <August 2022 - ~~No Nut~~ November 2022>
+- **Version 4.0.640 - 4.0.662** Bocchi [v4.0.662-bocchi](https://github.com/Leomotors/waifu-bot/tree/v4.0.662-bocchi) &lt;November 2022 - September 2023 (11ヶ月)&gt;
 
-- **Version 3.2 - 4.0.600** 式守さん (Shikimori-san) [v3.2](https://github.com/leomotors/waifu-bot/tree/v3.2) | [v4.0.600](https://github.com/leomotors/waifu-bot/tree/v4.0.600) <July 2022 - August 2022>
+- **Version 4.0.605 - 4.0.629** Vergil [v4.0.629](https://github.com/leomotors/waifu-bot/tree/v4.0.629) &lt;August 2022 - ~~No Nut~~ November 2022 (4ヶ月)&gt;
 
-- **Version 3.0 - 3.1** 雪ノ下陽乃 (Yukinoshita Haruno) [Repository](https://github.com/CarelessDev/harunon.js) <Mar 2022 - July 2022>
+- **Version 3.2 - 4.0.600** 式守さん (Shikimori-san) [v3.2](https://github.com/leomotors/waifu-bot/tree/v3.2) | [v4.0.600](https://github.com/leomotors/waifu-bot/tree/v4.0.600) &lt;July 2022 - August 2022 (2ヶ月)&gt;
 
-- **Version 2.0** 雪ノ下陽乃 (Yukinoshita Haruno) But it was in Python [Repository](https://github.com/CarelessDev/Harunon) <November 2021 - Mar 2022>
+- **Version 3.0 - 3.1** 雪ノ下陽乃 (Yukinoshita Haruno) [Repository](https://github.com/CarelessDev/harunon.js) &lt;Mar 2022 - July 2022 (5ヶ月)&gt;
 
-- **Version 1.0** Skittle Chan [Repository](https://github.com/CarelessDev/SIMP-Bot) <Sep 2021 - November 2021>
+- **Version 2.0** 雪ノ下陽乃 (Yukinoshita Haruno) But it was in Python [Repository](https://github.com/CarelessDev/Harunon) &lt;November 2021 - Mar 2022 (5ヶ月)&gt;
+
+- **Version 1.0** Skittle Chan [Repository](https://github.com/CarelessDev/SIMP-Bot) &lt;Sep 2021 - November 2021 (3ヶ月)&gt;
 
 ## Technical Version History
 
@@ -70,23 +87,13 @@ Version 4 -> Full Stack Waifu with T U R B O R E P O
 
 ## Utility Library behind this Bot!
 
-[Cocoa Discord Utils](https://github.com/Leomotors/cocoa-discord-utils) by @Leomotors
+[Cocoa Discord](https://github.com/Leomotors/cocoa-discord) by @Leomotors
 
 ![](https://c.tenor.com/JjAZAfWSqQgAAAAC/gochiusa-cocoa.gif)
 
 **Made with 💛💛💛**
 
 ## 🖼️ Gallery
-
-(at Version: 4.0.600)
-
-### Client
-
-![](./images/client-page-playlist-id-1.png)
-
-### Bot
-
-![](./images/bot-command-playlist-1.png)
 
 (at version 4.0.605)
 

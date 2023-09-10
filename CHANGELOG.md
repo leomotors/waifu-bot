@@ -2,6 +2,19 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [4.1.700] - 2023-09-10
+
+- feat: kaede
+- refactor: Remove website and server (will write again later, maybe)
+- refactor: native esm
+- refactor: remove namespace
+- feat: use zod for environment instead
+- feat: new better docker build
+- feat: public docker image at ghcr.io
+- feat: /goldenframe now use goldenframe API
+  (No need to bundle thicc python and dangerous `exec` usage)
+- feat: /goldenframe now supports animated profile picture (forceStatic)
+
 ## [4.0.662] - 2023-04-22
 
 - chore: update docker build step
