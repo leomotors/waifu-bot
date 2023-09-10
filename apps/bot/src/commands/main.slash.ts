@@ -14,7 +14,7 @@ import { TextChannel } from "discord.js";
 
 import { environment } from "../environment.js";
 
-import { Helix, formatTime } from "./main.service.js";
+import { HelixError, formatTime, makeHelix } from "./main.service.js";
 import { Waifu, style } from "./styles.js";
 
 export class Main extends CogSlashClass {
@@ -125,12 +125,12 @@ export class Main extends CogSlashClass {
     ctx: SlashCommand.Context,
     @Param.String("Text to Helix-ify") text: Param.String.Type,
   ) {
-    const res = Helix.makeHelix(text);
+    const res = makeHelix(text);
 
-    if (res === Helix.HelixError.ILLEGAL_CHAR) {
+    if (res === HelixError.ILLEGAL_CHAR) {
       await ctx.reply("Illegal String!");
       return;
-    } else if (res === Helix.HelixError.ILLEGAL_LEN) {
+    } else if (res === HelixError.ILLEGAL_LEN) {
       await ctx.reply("Please don't try to make me, I have family!");
       return;
     }

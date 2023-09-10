@@ -1,5 +1,3 @@
-import "./dotenv.js";
-
 import { AppVersion, ShortNameJA } from "@waifu-bot/constants";
 
 import {

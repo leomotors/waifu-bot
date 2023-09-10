@@ -1,4 +1,8 @@
+import { config } from "dotenv";
 import { z } from "zod";
+
+config();
+config({ path: "../../.env" });
 
 const baseEnvSchema = z.object({
   DISCORD_TOKEN: z.string().min(10),
