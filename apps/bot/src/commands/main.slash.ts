@@ -86,10 +86,17 @@ export class Main extends CogSlashClass {
     let url: string | null;
     if (who) {
       const options = { size: 4096, forceStatic: true } as const;
-      url = real_image ? who.avatarURL(options) : who.displayAvatarURL(options);
+
+      url = who.displayAvatarURL(options);
+
+      if (!real_image) {
+        const guildMember = ctx.guild?.members.cache.get(who.id);
+        url = guildMember?.displayAvatarURL(options) ?? url;
+      }
+
       if (!url) {
         await ctx.followUp(
-          "Golden Frame Failed: Target user has no profile picture!",
+          "Golden Frame Failed, Unexpected Error: url is undefined",
         );
         return;
       }

@@ -2,13 +2,9 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
-## [4.1.702] - 2023-09-10
+## [4.1.710] - 2023-09-10
 
-- fix(goldenframe): this is why you shouldn't test on production
-
-## [4.1.701] - 2023-09-10
-
-- feat(goldenframe): option to choose between server avatar and default avatar
+- feat(goldenframe): get server avatar for goldenframe
 
 ## [4.1.700] - 2023-09-10
 
