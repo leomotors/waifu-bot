@@ -69,6 +69,10 @@ export class Main extends CogSlashClass {
     frame: Param.String.Type,
     @Param.User("Who to put in the golden frame", { required: false })
     who: Param.User.Nullable,
+    @Param.Boolean("Use real profile image rather than server", {
+      required: false,
+    })
+    real_image: Param.Boolean.Nullable,
     @Param.Attachment("Image to put in the frame", { required: false })
     img: Param.Attachment.Nullable,
   ) {
@@ -81,7 +85,8 @@ export class Main extends CogSlashClass {
 
     let url: string | null;
     if (who) {
-      url = who.avatarURL({ size: 4096, forceStatic: true });
+      const options = { size: 4096, forceStatic: true } as const;
+      url = (real_image ? who.avatarURL : who.displayAvatarURL)(options);
       if (!url) {
         await ctx.followUp(
           "Golden Frame Failed: Target user has no profile picture!",
