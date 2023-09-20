@@ -16,8 +16,6 @@ import { Client } from "discord.js";
 
 import chalk from "chalk";
 
-import { Kashi } from "./commands/kashi.slash.js";
-import { TTS } from "./commands/legacy/tts.slash.js";
 import { Main as MainMessage } from "./commands/main.message.js";
 import { Main as MainSlash } from "./commands/main.slash.js";
 import { Music } from "./commands/music.slash.js";
@@ -46,13 +44,7 @@ mcenter.on("error", async (name, err, msg) => {
 });
 
 const scenter = new SlashCenter(client, GuildIds);
-scenter.addCogs(
-  new MainSlash(),
-  new Shitpost(),
-  new Kashi(),
-  new Music(client),
-  new TTS(),
-);
+scenter.addCogs(new MainSlash(), new Shitpost(), new Music(client));
 scenter.useHelpCommand(style);
 scenter.on("error", async (name, err, ctx) => {
   Cocoa.log(

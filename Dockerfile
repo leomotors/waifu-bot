@@ -33,4 +33,5 @@ COPY --chown=node:node --from=builder /app .
 RUN pnpm --version
 
 ENV NODE_ENV production
+ENV ENVIRONMENT PRODUCTION
 CMD ["pnpm", "start"]
