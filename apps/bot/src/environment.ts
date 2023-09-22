@@ -10,6 +10,9 @@ const baseEnvSchema = z.object({
   TENOR_APIKEY: z.string().min(10),
   GOLDEN_FRAME_ENDPOINT: z.string().regex(/https?:\/\/.+/),
   GOLDEN_FRAME_APIKEY: z.string().min(3),
+
+  SPEECH_KEY: z.string().min(10),
+  SPEECH_REGION: z.string().min(2),
 });
 
 const productionSchema = z.object({

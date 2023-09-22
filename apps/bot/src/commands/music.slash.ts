@@ -1,8 +1,12 @@
-import { Param, SlashCommand } from "cocoa-discord-utils/slash/class";
-
-import { Voice as LibVoice, Music as MusicBase } from "@leomotors/music-bot";
+import { Param, SlashCommand } from "cocoa-discord/slash/class";
 
 import { ChannelType, Client, VoiceChannel } from "discord.js";
+
+import {
+  Music as MusicBase,
+  addMusicToQueue,
+  joinVoiceChannel,
+} from "@cocoa-discord/music-module";
 
 import { style } from "./styles.js";
 
@@ -25,8 +29,8 @@ export class Music extends MusicBase {
 
     await ctx.deferReply();
 
-    await LibVoice.joinVoiceChannel(channel as VoiceChannel);
-    await LibVoice.addMusicToQueue(
+    await joinVoiceChannel(channel as VoiceChannel);
+    await addMusicToQueue(
       ctx.guildId!,
       "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       ctx.user.id,

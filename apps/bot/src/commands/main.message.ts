@@ -1,13 +1,13 @@
 import {
-  CogMessageClass,
   MessageCommand,
-} from "cocoa-discord-utils/message/class";
+  MessageModuleClass,
+} from "cocoa-discord/message/class";
 
 import { Message } from "discord.js";
 
 import { style } from "./styles.js";
 
-export class Main extends CogMessageClass {
+export class Main extends MessageModuleClass {
   timePinged = 0;
 
   constructor() {
@@ -34,7 +34,7 @@ export class Main extends CogMessageClass {
     const emb = style
       .use(msg)
       .setTitle("Pong! Tai")
-      .addField({
+      .addFields({
         name: "Pinged since start",
         value: `${this.timePinged}`,
       })

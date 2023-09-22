@@ -1,23 +1,23 @@
 import { AppVersion } from "@waifu-bot/constants";
 
-import { CocoaVersion } from "cocoa-discord-utils/meta";
+import { CocoaVersion } from "cocoa-discord/meta";
 import {
-  CogSlashClass,
   Param,
   SlashCommand,
-} from "cocoa-discord-utils/slash/class";
-import { getStatusFields } from "cocoa-discord-utils/template";
-
-import { Version as MusicVersion } from "@leomotors/music-bot";
+  SlashModuleClass,
+} from "cocoa-discord/slash/class";
+import { getStatusFields } from "cocoa-discord/template";
 
 import { TextChannel } from "discord.js";
+
+import { Version as MusicVersion } from "@cocoa-discord/music-module";
 
 import { environment } from "../environment.js";
 
 import { HelixError, formatTime, makeHelix } from "./main.service.js";
 import { Waifu, style } from "./styles.js";
 
-export class Main extends CogSlashClass {
+export class Main extends SlashModuleClass {
   timePinged = 0;
 
   constructor() {
@@ -38,13 +38,13 @@ export class Main extends CogSlashClass {
       .setTitle(user.tag)
       .setDescription(`ID: ${user.id}${user.bot ? "\n🤖Beep Boop🤖" : ""}`)
       .setThumbnail(user.avatarURL() ?? user.defaultAvatarURL)
-      .addField({
+      .addFields({
         name: "Created At",
         value: formatTime(user.createdTimestamp),
       });
 
     if (gmember?.joinedTimestamp) {
-      emb.addField({
+      emb.addFields({
         name: "Joined At",
         value: formatTime(gmember.joinedTimestamp),
       });
@@ -213,7 +213,7 @@ export class Main extends CogSlashClass {
     const emb = style
       .use(ctx)
       .setTitle("Pong! Tai")
-      .addField({
+      .addFields({
         name: "Pinged since start",
         value: `${this.timePinged}`,
       })

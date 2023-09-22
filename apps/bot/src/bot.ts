@@ -7,10 +7,10 @@ import {
   ConsoleManager,
   LogStatus,
   checkLogin,
-} from "cocoa-discord-utils";
-import { MessageCenter } from "cocoa-discord-utils/message";
-import { SlashCenter } from "cocoa-discord-utils/slash";
-import { CocoaIntent } from "cocoa-discord-utils/template";
+} from "cocoa-discord";
+import { MessageCenter } from "cocoa-discord/message";
+import { SlashCenter } from "cocoa-discord/slash";
+import { CocoaIntent } from "cocoa-discord/template";
 
 import { Client } from "discord.js";
 
@@ -25,15 +25,15 @@ import { GuildIds, environment } from "./environment.js";
 
 const client = new Client(
   new CocoaIntent()
+    .useGuild()
     .useGuildMessage()
-    .useGuildSlash()
     .useGuildVoice()
     .useDirectMessage()
     .useReadMessage(),
 );
 
 const mcenter = new MessageCenter(client, { prefixes: ["simp"] });
-mcenter.addCogs(new MainMessage());
+mcenter.addModules(new MainMessage());
 mcenter.useHelpCommand(style);
 mcenter.on("error", async (name, err, msg) => {
   Cocoa.log(
@@ -44,7 +44,7 @@ mcenter.on("error", async (name, err, msg) => {
 });
 
 const scenter = new SlashCenter(client, GuildIds);
-scenter.addCogs(new MainSlash(), new Shitpost(), new Music(client));
+scenter.addModules(new MainSlash(), new Shitpost(), new Music(client));
 scenter.useHelpCommand(style);
 scenter.on("error", async (name, err, ctx) => {
   Cocoa.log(
@@ -74,7 +74,7 @@ client.on("ready", (cli) => {
       } v${AppVersion}, took ${process.uptime().toFixed(3)} seconds`,
     ),
   );
-  scenter.syncCommands(true);
+  scenter.syncCommands();
   activityManager.nextActivity();
 });
 

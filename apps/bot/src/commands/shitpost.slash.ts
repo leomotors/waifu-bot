@@ -1,10 +1,10 @@
 import {
-  CogSlashClass,
   Param,
   SlashCommand,
-} from "cocoa-discord-utils/slash/class";
+  SlashModuleClass,
+} from "cocoa-discord/slash/class";
 
-export class Shitpost extends CogSlashClass {
+export class Shitpost extends SlashModuleClass {
   constructor() {
     super("Shitpost", "Cog for shitpost useless command");
   }

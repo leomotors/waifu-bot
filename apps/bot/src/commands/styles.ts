@@ -1,7 +1,7 @@
 import { EmbedColor, FooterText, ShortNameEN } from "@waifu-bot/constants";
 
-import { createEmbedStyle } from "cocoa-discord-utils";
-import { getElapsed } from "cocoa-discord-utils/meta";
+import { createEmbedStyle } from "cocoa-discord";
+import { getElapsed } from "cocoa-discord/meta";
 
 import { Interaction, Message } from "discord.js";
 
