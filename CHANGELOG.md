@@ -5,9 +5,9 @@ Previous changelog before 4.0.605 may not be noted here.
 ## [5.x.x] - 2023-??-??
 
 - refactor(bot): remove /lyrics (kashi module), /quality, /kitakita, /speak(TTS Module)
-
+- feat: updated cocoa-discord to v3
+- feat: use @cocoa-discord/music-module with new TTS cog
 - TODO: New website with better /quality
-
 - TODO: New TTS Module with Azure Cognitive API
 
 ## [4.1.710] - 2023-09-10

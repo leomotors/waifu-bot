@@ -12,26 +12,25 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@types/node": "18.17.14",
-    "@types/uuid": "9.0.3",
-    "@typescript-eslint/eslint-plugin": "6.6.0",
-    "@typescript-eslint/parser": "6.6.0",
+    "@types/uuid": "9.0.4",
+    "@typescript-eslint/eslint-plugin": "6.7.2",
+    "@typescript-eslint/parser": "6.7.2",
     "@waifu-bot/config": "workspace:0.0.0",
     "typescript": "5.2.2"
   },
   "dependencies": {
+    "@cocoa-discord/music-module": "1.0.0",
     "@discordjs/opus": "0.9.0",
     "@discordjs/voice": "0.16.0",
-    "@leomotors/music-bot": "0.24.0",
     "@waifu-bot/constants": "workspace:0.0.0",
     "chalk": "5.3.0",
-    "cocoa-discord-utils": "2.3.0",
+    "cocoa-discord": "3.0.0",
     "discord.js": "14.13.0",
     "dotenv": "16.3.1",
     "google-tts-api": "2.0.2",
-    "libsodium-wrappers": "0.7.11",
+    "libsodium-wrappers": "0.7.13",
     "tslib": "2.6.2",
-    "uuid": "9.0.0",
+    "uuid": "9.0.1",
     "zod": "3.22.2"
   }
 }
