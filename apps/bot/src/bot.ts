@@ -12,6 +12,8 @@ import { MessageCenter } from "cocoa-discord/message";
 import { SlashCenter } from "cocoa-discord/slash";
 import { CocoaIntent } from "cocoa-discord/template";
 
+import { TTS } from "@cocoa-discord/music-module";
+
 import { Client } from "discord.js";
 
 import chalk from "chalk";
@@ -44,7 +46,12 @@ mcenter.on("error", async (name, err, msg) => {
 });
 
 const scenter = new SlashCenter(client, GuildIds);
-scenter.addModules(new MainSlash(), new Shitpost(), new Music(client));
+scenter.addModules(
+  new MainSlash(),
+  new Shitpost(),
+  new Music(client),
+  new TTS(environment.SPEECH_KEY, environment.SPEECH_REGION, style),
+);
 scenter.useHelpCommand(style);
 scenter.on("error", async (name, err, ctx) => {
   Cocoa.log(

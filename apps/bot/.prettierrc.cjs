@@ -4,7 +4,7 @@ module.exports = require("@leomotors/config/prettier").withSortImports({
   importOrder: [
     "^@waifu-bot",
     "^cocoa-discord",
-    "^@leomotors",
+    "^@cocoa-discord",
     "^discord.js",
     "^@discordjs",
     "<THIRD_PARTY_MODULES>",

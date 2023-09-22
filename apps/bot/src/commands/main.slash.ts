@@ -8,9 +8,9 @@ import {
 } from "cocoa-discord/slash/class";
 import { getStatusFields } from "cocoa-discord/template";
 
-import { TextChannel } from "discord.js";
-
 import { Version as MusicVersion } from "@cocoa-discord/music-module";
+
+import { TextChannel } from "discord.js";
 
 import { environment } from "../environment.js";
 

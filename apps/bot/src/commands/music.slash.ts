@@ -1,12 +1,12 @@
 import { Param, SlashCommand } from "cocoa-discord/slash/class";
 
-import { ChannelType, Client, VoiceChannel } from "discord.js";
-
 import {
   Music as MusicBase,
   addMusicToQueue,
   joinVoiceChannel,
 } from "@cocoa-discord/music-module";
+
+import { ChannelType, Client, VoiceChannel } from "discord.js";
 
 import { style } from "./styles.js";
 
@@ -22,6 +22,11 @@ export class Music extends MusicBase {
     ctx: SlashCommand.Context,
     @Param.Channel("Channel to surprise!") channel: Param.Channel.Type,
   ) {
+    if (!ctx.guildId) {
+      await ctx.reply("This command is only available in server!");
+      return;
+    }
+
     if (channel.type !== ChannelType.GuildVoice) {
       await ctx.reply("Can only rick roll normal voice channel");
       return;
@@ -31,7 +36,7 @@ export class Music extends MusicBase {
 
     await joinVoiceChannel(channel as VoiceChannel);
     await addMusicToQueue(
-      ctx.guildId!,
+      ctx.guildId,
       "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       ctx.user.id,
     );

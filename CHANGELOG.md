@@ -2,7 +2,7 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
-## [5.x.x] - 2023-??-??
+## [5.0.800] - 2023-09-22
 
 - refactor(bot): remove /lyrics (kashi module), /quality, /kitakita, /speak(TTS Module)
 - feat: updated cocoa-discord to v3

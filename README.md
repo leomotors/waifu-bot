@@ -8,7 +8,7 @@ Nominated and image selected by @Qwenty228
 
 ![](./images/kaede.webp)
 
-**Current Version**: 4.1  
+**Current Version**: 5.0  
 **Been SIMPing since**: 4.1.700
 
 ## 📚 Tech Stack
@@ -84,6 +84,7 @@ Version 1 -> Python Skittle-chan Era
 Version 2 -> Python Harunon Era  
 Version 3 -> JavaScript  
 Version 4 -> Full Stack Waifu with T U R B O R E P O
+Version 5 -> Only Bot (will add website in Version 6)
 
 ## Utility Library behind this Bot!
 
