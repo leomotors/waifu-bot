@@ -2,13 +2,17 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [5.1.810] - 2023-09-23
+
+- fix: wrong lib name in /status
+- chore: bump @cocoa-discord/music-module to 1.1
+- feat: change encoding library, added ffmpeg-static to fix /speak
+
 ## [5.0.800] - 2023-09-22
 
 - refactor(bot): remove /lyrics (kashi module), /quality, /kitakita, /speak(TTS Module)
 - feat: updated cocoa-discord to v3
 - feat: use @cocoa-discord/music-module with new TTS cog
-- TODO: New website with better /quality
-- TODO: New TTS Module with Azure Cognitive API
 
 ## [4.1.710] - 2023-09-10
 

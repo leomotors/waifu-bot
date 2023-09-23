@@ -8,7 +8,7 @@ Nominated and image selected by @Qwenty228
 
 ![](./images/kaede.webp)
 
-**Current Version**: 5.0  
+**Current Version**: 5.1  
 **Been SIMPing since**: 4.1.700
 
 ## 📚 Tech Stack
@@ -28,7 +28,7 @@ The most ~~over-engineered~~ advanced Discord Bot
 
 ## ✨ Features
 
-- Mainly: Music from YouTube with power of [@leomotors/music-bot](https://github.com/Leomotors/music-bot#%EF%B8%8F-highlight) << some gallery there
+- Mainly: Music from YouTube with power of [@cocoa-discord/music-module](https://github.com/Leomotors/cocoa-discord/blob/main/packages/music-module/README.md#%EF%B8%8F-highlight) << some gallery there
 
 - Personal Playlist for each user with website for them to edit
 
@@ -83,7 +83,10 @@ Below are list of previous waifu we chose to SIMP
 Version 1 -> Python Skittle-chan Era  
 Version 2 -> Python Harunon Era  
 Version 3 -> JavaScript  
-Version 4 -> Full Stack Waifu with T U R B O R E P O
+Version 4 -> Full Stack Waifu with Turborepo
+
+> _Version 4.1 -> Removed full stack website_
+
 Version 5 -> Only Bot (will add website in Version 6)
 
 ## Utility Library behind this Bot!

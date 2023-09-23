@@ -253,7 +253,7 @@ export class Main extends SlashModuleClass {
       .use(ctx)
       .setTitle(`${Waifu.name}'s Status`)
       .setDescription(
-        `Waifu Bot Version: ${AppVersion}\nCocoa Utils Version: ${CocoaVersion}\n@leomotors/music-bot Version: ${MusicVersion}`,
+        `Waifu Bot Version: ${AppVersion}\nCocoa Utils Version: ${CocoaVersion}\n@cocoa-discord/music-module Version: ${MusicVersion}`,
       )
       .addFields(await getStatusFields(ctx))
       .setFooter({
