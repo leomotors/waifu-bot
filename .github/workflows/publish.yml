@@ -57,6 +57,6 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ghcr.io/leomotors/waifu-bot:${{ github.ref_name }},ghcr.io/leomotors/waifu-bot:kaede,ghcr.io/leomotors/waifu-bot:latest
+          tags: ghcr.io/leomotors/waifu-bot:${{ github.ref_name }},ghcr.io/leomotors/waifu-bot:kanade,ghcr.io/leomotors/waifu-bot:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
