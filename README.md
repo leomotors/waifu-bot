@@ -2,14 +2,16 @@
 
 Waifu Bot is the bot that is serving _our_ server
 
-Current Waifu we SIMP: <ruby>かえで<rt>Kaede</rt></ruby><ruby>姉<rt>Nee</rt></ruby> from <ruby>夢見る男子は現実主義者<rt>The Dreaming Boy is a Realist</rt></ruby>
+Current Waifu we SIMP: <ruby>宵崎奏<rt>Yoisaki Kanade</rt></ruby>
 
 Nominated and image selected by @Qwenty228
 
-![](./images/kaede.webp)
+![](./images/kanade-me-when.webp)
 
-**Current Version**: 5.1  
-**Been SIMPing since**: 4.1.700
+![](./images/kanade-meme.webp)
+
+**Current Version**: 5.2  
+**Been SIMPing since**: 5.2.820
 
 ## 📚 Tech Stack
 
@@ -65,6 +67,8 @@ The most ~~over-engineered~~ advanced Discord Bot
 The Discord Bot (apps/bot) was built on top of [CarelessDev/harunon.js](https://github.com/CarelessDev/harunon.js)
 
 Below are list of previous waifu we chose to SIMP
+
+- **Version 4.1.700 - 5.1.810** Kaede [v5.1.810](https://github.com/Leomotors/waifu-bot/tree/5.1.810) &lt;September 2023 - October 2023 (2ヶ月)&gt;
 
 - **Version 4.0.640 - 4.0.662** Bocchi [v4.0.662-bocchi](https://github.com/Leomotors/waifu-bot/tree/v4.0.662-bocchi) &lt;November 2022 - September 2023 (11ヶ月)&gt;
 

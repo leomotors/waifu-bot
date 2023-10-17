@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [5.2.820] - 2023-10-17
+
+- chore: bump deps like usual
+- feat: simp kanade
+
 ## [5.1.810] - 2023-09-23
 
 - fix: wrong lib name in /status

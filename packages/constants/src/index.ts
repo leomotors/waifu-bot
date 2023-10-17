@@ -2,14 +2,13 @@
 // * Data such as App Version, Waifu Specific Information and common consts
 // * will be in this package
 
-export const AppVersion = "5.1.810";
+export const AppVersion = "5.2.820";
 
-export const ShortNameEN = "Kaede";
-export const ShortNameJA = "かえで";
-export const LongNameEN = "Sajo Kaede";
-export const LongNameJA = "佐城 楓";
-// By Nathan (@Qwenty228)
-export const FooterText = "hot blond onee chan at your service ⋆｡";
-export const EmbedColor = 0xbb9963;
+export const ShortNameEN = "Kanade";
+export const ShortNameJA = "奏";
+export const LongNameEN = "Yoisaki Kanade";
+export const LongNameJA = "宵崎奏";
+export const FooterText = "……曲、つくらなくちゃ";
+export const EmbedColor = 0x0a0fac;
 
 export const YoutubeURLPrefix = "https://www.youtube.com/watch?v=";

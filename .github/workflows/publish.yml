@@ -18,7 +18,7 @@ jobs:
         uses: Leomotors/auto-publish-release@main
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          title: "Kaede Bot"
+          title: "Waifu Bot"
           tag: ${{ github.ref }}
 
   image:
