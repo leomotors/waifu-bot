@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model User {
+  id        String @id
+  name      String
+  avatarUrl String @map("avatar_url")
+
+  role  UserRole @default(USER)
+  waifu Waifu[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("user")
+}
+
+model Waifu {
+  id   String @id @default(cuid())
+  note String @default("")
+
+  nameEn      String @map("name_en")
+  nameJa      String @map("name_ja")
+  shortNameEn String @map("short_name_en")
+  shortNameJa String @map("short_name_ja")
+  footerText  String @map("footer_text")
+  imageUrl    String @map("image_url")
+  bannerUrl   String @map("banner_url")
+  color       String
+
+  createdBy       User   @relation(fields: [createdByUserId], references: [id])
+  createdByUserId String @map("created_by_user_id")
+
+  simpInterval SimpInterval[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("waifu")
+}
+
+model SimpInterval {
+  id Int @unique @default(autoincrement())
+
+  waifu   Waifu  @relation(fields: [waifuId], references: [id])
+  waifuId String @map("waifu_id")
+
+  begin DateTime
+  end   DateTime
+  days  Int
+
+  @@map("simp_interval")
+}
+
+enum ActivityType {
+  Playing
+  Streaming
+  Listening
+  Watching
+  Competing
+}
+
+model Activity {
+  id Int @unique @default(autoincrement())
+
+  name String
+  url  String?
+  type ActivityType
+
+  enabled Boolean @default(true)
+
+  @@map("activity")
+}
