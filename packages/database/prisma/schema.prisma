@@ -20,13 +20,25 @@ model User {
   name      String
   avatarUrl String @map("avatar_url")
 
-  role  UserRole @default(USER)
-  waifu Waifu[]
+  role    UserRole @default(USER)
+  tickets Ticket[]
+
+  createdWaifus Waifu[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("user")
+}
+
+model Ticket {
+  ticketId String @id @default(cuid()) @map("ticket_id")
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String @map("user_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("ticket")
 }
 
 model Waifu {
@@ -45,11 +57,12 @@ model Waifu {
   createdBy       User   @relation(fields: [createdByUserId], references: [id])
   createdByUserId String @map("created_by_user_id")
 
-  simpInterval SimpInterval[]
+  simpIntervals SimpInterval[]
 
-  createdAt     DateTime        @default(now()) @map("created_at")
-  updatedAt     DateTime        @updatedAt @map("updated_at")
-  Configuration Configuration[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  configurations Configuration[]
 
   @@map("waifu")
 }

@@ -17,6 +17,7 @@ import { Main as MainSlash } from "./commands/main.slash.js";
 import { Music } from "./commands/music.slash.js";
 import { Shitpost } from "./commands/shitpost.slash.js";
 import { style } from "./commands/styles.js";
+import { WebService } from "./commands/web.slash.js";
 import { GuildIds, environment } from "./environment.js";
 
 const client = new Client(
@@ -45,6 +46,7 @@ scenter.addModules(
   new Shitpost(),
   new Music(client),
   new TTS(environment.SPEECH_KEY, environment.SPEECH_REGION, style),
+  new WebService(),
 );
 scenter.useHelpCommand(style);
 scenter.on("error", async (name, err, ctx) => {

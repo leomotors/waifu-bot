@@ -17,6 +17,15 @@ CREATE TABLE "user" (
 );
 
 -- CreateTable
+CREATE TABLE "ticket" (
+    "ticket_id" TEXT NOT NULL,
+    "user_id" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ticket_pkey" PRIMARY KEY ("ticket_id")
+);
+
+-- CreateTable
 CREATE TABLE "waifu" (
     "id" TEXT NOT NULL,
     "note" TEXT NOT NULL DEFAULT '',
@@ -67,6 +76,9 @@ CREATE UNIQUE INDEX "activity_id_key" ON "activity"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "configuration_id_key" ON "configuration"("id");
+
+-- AddForeignKey
+ALTER TABLE "ticket" ADD CONSTRAINT "ticket_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "waifu" ADD CONSTRAINT "waifu_created_by_user_id_fkey" FOREIGN KEY ("created_by_user_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -9,6 +9,8 @@ const baseEnvSchema = z.object({
 
   SPEECH_KEY: z.string().min(10),
   SPEECH_REGION: z.string().min(2),
+
+  WEB_PUBLIC_URL: z.string().regex(/https?:\/\/.+/),
 });
 
 const productionSchema = z.object({
