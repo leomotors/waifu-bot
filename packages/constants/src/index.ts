@@ -12,3 +12,8 @@ export const FooterText = "……曲、つくらなくちゃ";
 export const EmbedColor = 0x0a0fac;
 
 export const YoutubeURLPrefix = "https://www.youtube.com/watch?v=";
+
+export const localWebPort = 7100;
+export const localWebUrl = `http://localhost:${localWebPort}`;
+export const botWebhookPort = 7101;
+export const botWebhookUrl = `http://localhost:${botWebhookPort}`;

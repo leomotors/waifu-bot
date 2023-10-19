@@ -1,5 +1,6 @@
 # packages
 
+- auth -> Everything about auth, both internet and external
 - config -> Shared ESLint, Prettier and tsconfig
 - constants -> App Constants, ex: Version
-- graphql -> GraphQL Codegen
+- database -> Everything about database

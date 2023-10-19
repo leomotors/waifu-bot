@@ -11,11 +11,11 @@
   "scripts": {
     "clean": "rm -rf node_modules {apps,packages}/**/*/{.turbo,build,dist,node_modules,.next}",
     "build": "FORCE_COLOR=2 turbo run build",
-    "dev": "FORCE_COLOR=2 turbo run dev",
+    "dev": "dotenv -v FORCE_COLOR=2 turbo run dev",
     "lint": "FORCE_COLOR=2 turbo run lint",
     "format": "FORCE_COLOR=2 turbo run format",
-    "start": "FORCE_COLOR=2 turbo run start",
-    "start:bot": "FORCE_COLOR=2 turbo run --filter=\"@waifu-bot/bot\" start",
+    "start": "dotenv -v FORCE_COLOR=2 turbo run start",
+    "start:bot": "dotenv -v FORCE_COLOR=2 turbo run --filter=\"@waifu-bot/bot\" start",
     "test": "FORCE_COLOR=2 turbo run test"
   },
   "devDependencies": {
@@ -34,12 +34,15 @@
     "eslint-plugin-sort-destructure-keys": "1.5.0",
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.6",
-    "turbo": "1.10.15",
     "typescript": "5.2.2"
   },
   "engines": {
     "node": "^20",
     "pnpm": "^8"
   },
-  "packageManager": "pnpm@8.9.2"
+  "packageManager": "pnpm@8.9.2",
+  "dependencies": {
+    "dotenv-cli": "7.3.0",
+    "turbo": "1.10.15"
+  }
 }

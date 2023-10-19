@@ -53,14 +53,26 @@ CREATE TABLE "activity" (
     "enabled" BOOLEAN NOT NULL DEFAULT true
 );
 
+-- CreateTable
+CREATE TABLE "configuration" (
+    "id" INTEGER NOT NULL DEFAULT 0,
+    "current_waifu_id" TEXT NOT NULL
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "simp_interval_id_key" ON "simp_interval"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "activity_id_key" ON "activity"("id");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "configuration_id_key" ON "configuration"("id");
+
 -- AddForeignKey
 ALTER TABLE "waifu" ADD CONSTRAINT "waifu_created_by_user_id_fkey" FOREIGN KEY ("created_by_user_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "simp_interval" ADD CONSTRAINT "simp_interval_waifu_id_fkey" FOREIGN KEY ("waifu_id") REFERENCES "waifu"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "configuration" ADD CONSTRAINT "configuration_current_waifu_id_fkey" FOREIGN KEY ("current_waifu_id") REFERENCES "waifu"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

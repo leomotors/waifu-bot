@@ -1,13 +1,6 @@
 import { AppVersion, ShortNameJA } from "@waifu-bot/constants";
 
-import {
-  ActivityGroupLoader,
-  ActivityManager,
-  Cocoa,
-  ConsoleManager,
-  LogStatus,
-  checkLogin,
-} from "cocoa-discord";
+import { Cocoa, ConsoleManager, LogStatus, checkLogin } from "cocoa-discord";
 import { MessageCenter } from "cocoa-discord/message";
 import { SlashCenter } from "cocoa-discord/slash";
 import { CocoaIntent } from "cocoa-discord/template";
@@ -18,6 +11,7 @@ import { Client } from "discord.js";
 
 import chalk from "chalk";
 
+import { ActivityManager } from "./activity.js";
 import { Main as MainMessage } from "./commands/main.message.js";
 import { Main as MainSlash } from "./commands/main.slash.js";
 import { Music } from "./commands/music.slash.js";
@@ -66,12 +60,7 @@ scenter.on("interaction", (name, ctx) => {
   );
 });
 
-const activityLoader = new ActivityGroupLoader("data/activities.json");
-const activityManager = new ActivityManager(
-  activityLoader,
-  client,
-  5 * 60 * 1000,
-);
+export const activityManager = new ActivityManager(client);
 
 client.on("ready", (cli) => {
   console.log(
@@ -82,14 +71,13 @@ client.on("ready", (cli) => {
     ),
   );
   scenter.syncCommands();
-  activityManager.nextActivity();
 });
 
-new ConsoleManager().useLogout(client).useReload(activityLoader);
+new ConsoleManager().useLogout(client);
 
 checkLogin(client, environment.DISCORD_TOKEN);
 
-process.on("SIGINT", () => {
+process.on("SIGINT", async () => {
   console.log(chalk.yellow("Terminating Waifu Bot..."));
-  client.destroy();
+  await client.destroy();
 });
