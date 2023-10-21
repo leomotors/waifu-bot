@@ -6,7 +6,7 @@
 
 <svelte:head>
   <title>Waifu Bot</title>
-  <meta property="og:image" content="{PUBLIC_WEB_URL}/image/og" />
+  <meta property="og:image" content="{PUBLIC_WEB_URL}/api/image/og" />
 </svelte:head>
 
 <slot />

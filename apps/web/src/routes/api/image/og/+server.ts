@@ -4,7 +4,7 @@ import { error, type RequestHandler } from "@sveltejs/kit";
 export const GET = (async ({ setHeaders, fetch }) => {
   const waifu = await getCurrentWaifu();
 
-  const imageUrl = `/image?url=${encodeURI(waifu.imageUrl)}&w=64&q=100`;
+  const imageUrl = `/api/image?url=${encodeURI(waifu.bannerUrl)}&w=1200&q=100`;
   const res = await fetch(imageUrl);
 
   if (!res.body) {
