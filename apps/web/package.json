@@ -7,7 +7,7 @@
     "dev": "vite dev --port 7100",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "PORT=7100 HOST=0.0.0.0 ORIGIN=$WEB_PUBLIC_URL node build/index.js",
+    "start": "PORT=7100 HOST=0.0.0.0 ORIGIN=$PUBLIC_WEB_URL node build/index.js",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "test": "vitest",

@@ -34,7 +34,7 @@ export class WebService extends SlashModuleClass {
     });
 
     await ctx.followUp({
-      content: `Login at ${environment.WEB_PUBLIC_URL}/login?ticket=${ticket.ticketId}. The ticket expires in 10 minutes.`,
+      content: `Login at ${environment.PUBLIC_WEB_URL}/login?ticket=${ticket.ticketId}. The ticket expires in 10 minutes.`,
     });
   }
 }
