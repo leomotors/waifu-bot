@@ -37,6 +37,8 @@ CREATE TABLE "waifu" (
     "image_url" TEXT NOT NULL,
     "banner_url" TEXT NOT NULL,
     "color" TEXT NOT NULL,
+    "source_en" TEXT NOT NULL,
+    "source_ja" TEXT NOT NULL,
     "created_by_user_id" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,

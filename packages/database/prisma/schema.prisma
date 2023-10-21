@@ -53,6 +53,8 @@ model Waifu {
   imageUrl    String @map("image_url")
   bannerUrl   String @map("banner_url")
   color       String
+  sourceEn    String @map("source_en")
+  sourceJa    String @map("source_ja")
 
   createdBy       User   @relation(fields: [createdByUserId], references: [id])
   createdByUserId String @map("created_by_user_id")

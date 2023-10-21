@@ -1,4 +1,4 @@
-import { UserRole, prisma } from "@waifu-bot/database";
+import { prisma } from "@waifu-bot/database";
 
 import { SlashCommand, SlashModuleClass } from "cocoa-discord/slash/class";
 
@@ -26,7 +26,6 @@ export class WebService extends SlashModuleClass {
               id: user.id,
               name: user.username,
               avatarUrl: user.displayAvatarURL({ size: 4096 }),
-              role: UserRole.USER,
             },
           },
         },

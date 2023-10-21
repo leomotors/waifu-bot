@@ -24,6 +24,9 @@ const waifu = await prisma.waifu.create({
     imageUrl: "https://senddude.leomotors.me/files/waifu/kanade-pfp.png",
     bannerUrl: "https://senddude.leomotors.me/files/waifu/kanade-banner.png",
 
+    sourceEn: "HATSUNE MIKU: COLORFUL STAGE!",
+    sourceJa: "プロジェクトセカイ カラフルステージ！ feat. 初音ミク",
+
     createdBy: {
       connect: {
         id: "143649805250461696",
