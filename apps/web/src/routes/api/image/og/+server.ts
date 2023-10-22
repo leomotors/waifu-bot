@@ -5,7 +5,9 @@ import { getCurrentWaifu } from "$lib/server";
 export const GET = (async ({ setHeaders, fetch }) => {
   const waifu = await getCurrentWaifu();
 
-  const imageUrl = `/api/image?url=${encodeURI(waifu.bannerUrl)}&w=1200&q=100`;
+  const imageUrl = `/api/image?url=${encodeURIComponent(
+    waifu.bannerUrl,
+  )}&w=1200&q=100`;
   const res = await fetch(imageUrl);
 
   if (!res.body) {
