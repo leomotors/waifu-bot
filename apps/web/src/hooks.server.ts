@@ -1,4 +1,6 @@
 import { env } from "$env/dynamic/private";
+import { cookieTokenKey } from "$lib/constants";
+import type { AuthFailReason } from "$lib/login";
 import { redirect, type Handle, error } from "@sveltejs/kit";
 
 import jwt from "jsonwebtoken";
@@ -24,10 +26,13 @@ export const handle = (async ({ event, resolve }) => {
     throw error(500, "Server missing environment variables");
   }
 
-  const accessToken = event.cookies.get("access_token");
+  const accessToken = event.cookies.get(cookieTokenKey);
 
   if (!accessToken) {
-    throw redirect(302, "/login?error=notauthenticated");
+    throw redirect(
+      302,
+      `/login?error=${"notauthenticated" satisfies AuthFailReason}`,
+    );
   }
 
   try {
@@ -35,7 +40,10 @@ export const handle = (async ({ event, resolve }) => {
 
     const parsed = jwtSchema.safeParse(user);
     if (!parsed.success) {
-      throw redirect(302, "/login?error=invalidjwtcontent");
+      throw redirect(
+        302,
+        `/login?error=${"invalidjwtcontent" satisfies AuthFailReason}`,
+      );
     }
 
     event.locals.user = parsed.data;
@@ -43,6 +51,9 @@ export const handle = (async ({ event, resolve }) => {
     const response = await resolve(event);
     return response;
   } catch (error) {
-    throw redirect(302, "/login?error=notauthenticated");
+    throw redirect(
+      302,
+      `/login?error=${"notauthenticated" satisfies AuthFailReason}`,
+    );
   }
 }) satisfies Handle;

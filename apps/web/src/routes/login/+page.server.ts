@@ -7,6 +7,8 @@ import type { Actions } from "../$types";
 
 import jwt from "jsonwebtoken";
 
+import { cookieTokenKey } from "$lib/constants";
+
 export const actions = {
   default: async ({ cookies, request }) => {
     if (!env.JWT_SECRET) {
@@ -55,7 +57,7 @@ export const actions = {
       { expiresIn: "14d" },
     );
 
-    cookies.set("access_token", accessToken, {
+    cookies.set(cookieTokenKey, accessToken, {
       path: "/",
       httpOnly: true,
       sameSite: true,
