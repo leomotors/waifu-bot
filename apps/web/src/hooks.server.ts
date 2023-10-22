@@ -9,9 +9,9 @@ import jwt from "jsonwebtoken";
 
 import { jwtSchema } from "./types";
 
-function parseJwt(accessToken: string) {
+function parseJwt(accessToken: string, secret: string) {
   try {
-    const user = jwt.verify(accessToken, env.JWT_SECRET);
+    const user = jwt.verify(accessToken, secret);
     return user;
   } catch (error) {
     throw redirect(
@@ -44,7 +44,7 @@ export const handle = (async ({ event, resolve }) => {
     );
   }
 
-  const user = parseJwt(accessToken);
+  const user = parseJwt(accessToken, env.JWT_SECRET);
 
   const parsed = jwtSchema.safeParse(user);
   if (!parsed.success) {
