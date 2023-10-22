@@ -1,7 +1,8 @@
+import { type Handle, error, redirect } from "@sveltejs/kit";
+
 import { env } from "$env/dynamic/private";
 import { cookieTokenKey } from "$lib/constants";
 import type { AuthFailReason } from "$lib/login";
-import { redirect, type Handle, error } from "@sveltejs/kit";
 
 import jwt from "jsonwebtoken";
 import { z } from "zod";

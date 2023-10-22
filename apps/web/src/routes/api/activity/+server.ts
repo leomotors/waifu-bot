@@ -1,7 +1,7 @@
-import { error, json, type RequestHandler } from "@sveltejs/kit";
-
 import { authEnv } from "@waifu-bot/auth";
 import { prisma } from "@waifu-bot/database";
+
+import { type RequestHandler, error, json } from "@sveltejs/kit";
 
 export const GET = (async ({ request }) => {
   const authorization = request.headers.get("Authorization");

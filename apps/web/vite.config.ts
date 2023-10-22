@@ -1,4 +1,5 @@
 import { sveltekit } from "@sveltejs/kit/vite";
+
 import { defineConfig } from "vitest/config";
 
 const externalPackages = ["@waifu-bot/auth", "@waifu-bot/database"];

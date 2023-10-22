@@ -1,5 +1,4 @@
 // See https://kit.svelte.dev/docs/types#app
-
 import type { UserRole } from "@waifu-bot/database";
 
 // for information about these interfaces

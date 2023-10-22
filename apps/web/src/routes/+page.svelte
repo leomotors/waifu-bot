@@ -1,9 +1,8 @@
 <script lang="ts">
   import type { PageData } from "./$types";
 
-  import Phone from "./Phone.svelte";
-
   import GitHub from "svelte-bootstrap-icons/lib/Github.svelte";
+  import Phone from "./Phone.svelte";
 
   export let data: PageData;
 </script>

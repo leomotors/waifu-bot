@@ -1,4 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
+
 import { createRequestHandler } from "@urami/core";
 
 const handler = createRequestHandler({

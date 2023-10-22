@@ -1,5 +1,6 @@
+import { type RequestHandler, error } from "@sveltejs/kit";
+
 import { getCurrentWaifu } from "$lib/server";
-import { error, type RequestHandler } from "@sveltejs/kit";
 
 export const GET = (async ({ setHeaders, fetch }) => {
   const waifu = await getCurrentWaifu();

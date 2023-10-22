@@ -1,13 +1,13 @@
-import { error, redirect } from "@sveltejs/kit";
 import { prisma } from "@waifu-bot/database";
 
-import { env } from "$env/dynamic/private";
+import { error, redirect } from "@sveltejs/kit";
 
-import type { Actions } from "../$types";
+import { env } from "$env/dynamic/private";
+import { cookieTokenKey } from "$lib/constants";
 
 import jwt from "jsonwebtoken";
 
-import { cookieTokenKey } from "$lib/constants";
+import type { Actions } from "../$types";
 
 export const actions = {
   default: async ({ cookies, request }) => {
