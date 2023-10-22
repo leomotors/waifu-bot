@@ -12,7 +12,7 @@
     "format": "eslint src --fix"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx prisma/seed/index.ts"
   },
   "devDependencies": {
     "@waifu-bot/config": "workspace:0.0.0",

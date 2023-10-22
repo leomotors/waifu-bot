@@ -83,6 +83,9 @@ model SimpInterval {
   end   DateTime
   days  Int
 
+  versionBegin String? @map("version_begin")
+  versionEnd   String? @map("version_end")
+
   @@map("simp_interval")
 }
 

@@ -53,7 +53,9 @@ CREATE TABLE "simp_interval" (
     "waifu_id" TEXT NOT NULL,
     "begin" TIMESTAMP(3) NOT NULL,
     "end" TIMESTAMP(3) NOT NULL,
-    "days" INTEGER NOT NULL
+    "days" INTEGER NOT NULL,
+    "version_begin" TEXT,
+    "version_end" TEXT
 );
 
 -- CreateTable

@@ -1,10 +1,10 @@
-import { ActivityType, PrismaClient, UserRole } from "@prisma/client";
+import { UserRole } from "@prisma/client";
 
-const prisma = new PrismaClient();
+import { discordUserId, prisma } from "./constant";
 
 await prisma.user.create({
   data: {
-    id: "143649805250461696",
+    id: discordUserId,
     name: "leomotors",
     avatarUrl:
       "https://cdn.discordapp.com/avatars/143649805250461696/a_5b8933c0cb2d730dc228160de172719a.gif?size=4096",
@@ -29,12 +29,12 @@ const waifu = await prisma.waifu.create({
 
     createdBy: {
       connect: {
-        id: "143649805250461696",
+        id: discordUserId,
       },
     },
     simpedBy: {
       connect: {
-        id: "143649805250461696",
+        id: discordUserId,
       },
     },
   },
@@ -49,40 +49,4 @@ await prisma.configuration.create({
     },
     simpingSince: new Date("2023-10-17"),
   },
-});
-
-const activity = {
-  LISTENING: [
-    "Sannin de iru jikan",
-    "Yukitoki",
-    "il vento d'oro",
-    "Honey Jet Coaster",
-    "Daydream café",
-    "Can You Feel My Heart",
-    "Bury the Light",
-    "Seisyun Complex",
-    "Don't Fight The Music",
-    "INTERNET OVERDOSE",
-  ],
-  STREAMING: [
-    {
-      name: "cunny",
-      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    },
-  ],
-} as const;
-
-await prisma.activity.createMany({
-  data: activity.LISTENING.map((name) => ({
-    name,
-    type: ActivityType.Listening,
-  })),
-});
-
-await prisma.activity.createMany({
-  data: activity.STREAMING.map((obj) => ({
-    name: obj.name,
-    type: ActivityType.Streaming,
-    url: obj.url,
-  })),
 });
