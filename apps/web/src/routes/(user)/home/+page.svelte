@@ -4,6 +4,8 @@
   import GearWideConnected from "svelte-bootstrap-icons/lib/GearWideConnected.svelte";
   import BoxArrowLeft from "svelte-bootstrap-icons/lib/BoxArrowLeft.svelte";
 
+  import { isAdmin } from "$lib/authUtils";
+
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -19,7 +21,7 @@
       Welcome to the Internet
     </h1>
 
-    {#if data.user.role === "ADMIN"}
+    {#if isAdmin(data.user.role)}
       <a href="/admin">
         <button
           class="flex w-fit items-center gap-2 rounded-lg bg-gradient-to-br from-green-400 to-blue-400 px-4 py-2 text-xl font-bold text-black transition-colors hover:text-gray-800"

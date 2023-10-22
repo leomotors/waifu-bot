@@ -1,5 +1,7 @@
 // See https://kit.svelte.dev/docs/types#app
-import type { UserRole } from "@waifu-bot/database";
+import type { z } from "zod";
+
+import type { jwtSchema } from "./types";
 
 // for information about these interfaces
 declare global {
@@ -7,11 +9,7 @@ declare global {
     // interface Error {}
 
     interface Locals {
-      user?: {
-        userId: string;
-        username: string;
-        role: UserRole;
-      };
+      user?: z.infer<typeof jwtSchema>;
     }
 
     // interface PageData {}

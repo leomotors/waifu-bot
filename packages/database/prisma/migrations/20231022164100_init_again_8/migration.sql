@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "UserRole" AS ENUM ('USER', 'ADMIN');
+CREATE TYPE "UserRole" AS ENUM ('USER', 'ADMIN', 'SUPERADMIN');
 
 -- CreateEnum
 CREATE TYPE "ActivityType" AS ENUM ('Playing', 'Streaming', 'Listening', 'Watching', 'Competing');

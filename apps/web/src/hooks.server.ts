@@ -1,17 +1,25 @@
 import { type Handle, error, redirect } from "@sveltejs/kit";
 
 import { env } from "$env/dynamic/private";
+import { isAdmin } from "$lib/authUtils";
 import { cookieTokenKey } from "$lib/constants";
 import type { AuthFailReason } from "$lib/login";
 
 import jwt from "jsonwebtoken";
-import { z } from "zod";
 
-const jwtSchema = z.object({
-  userId: z.string().regex(/^[0-9]+$/),
-  username: z.string(),
-  role: z.enum(["USER", "ADMIN"]),
-});
+import { jwtSchema } from "./types";
+
+function parseJwt(accessToken: string) {
+  try {
+    const user = jwt.verify(accessToken, env.JWT_SECRET);
+    return user;
+  } catch (error) {
+    throw redirect(
+      302,
+      `/login?error=${"notauthenticated" satisfies AuthFailReason}`,
+    );
+  }
+}
 
 export const handle = (async ({ event, resolve }) => {
   const isRequiredAuthPath =
@@ -36,32 +44,25 @@ export const handle = (async ({ event, resolve }) => {
     );
   }
 
-  try {
-    const user = jwt.verify(accessToken, env.JWT_SECRET);
+  const user = parseJwt(accessToken);
 
-    const parsed = jwtSchema.safeParse(user);
-    if (!parsed.success) {
-      throw redirect(
-        302,
-        `/login?error=${"invalidjwtcontent" satisfies AuthFailReason}`,
-      );
-    }
-
-    event.locals.user = parsed.data;
-
-    // Check Admin
-    if (event.url.pathname.startsWith("/admin")) {
-      if (parsed.data.role !== "ADMIN") {
-        throw error(403, "Forbidden");
-      }
-    }
-
-    const response = await resolve(event);
-    return response;
-  } catch (error) {
+  const parsed = jwtSchema.safeParse(user);
+  if (!parsed.success) {
     throw redirect(
       302,
-      `/login?error=${"notauthenticated" satisfies AuthFailReason}`,
+      `/login?error=${"invalidjwtcontent" satisfies AuthFailReason}`,
     );
   }
+
+  event.locals.user = parsed.data;
+
+  // Check Admin
+  if (event.url.pathname.startsWith("/admin")) {
+    if (!isAdmin(parsed.data.role)) {
+      throw error(403, "Forbidden");
+    }
+  }
+
+  const response = await resolve(event);
+  return response;
 }) satisfies Handle;
