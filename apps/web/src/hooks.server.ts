@@ -49,6 +49,13 @@ export const handle = (async ({ event, resolve }) => {
 
     event.locals.user = parsed.data;
 
+    // Check Admin
+    if (event.url.pathname.startsWith("/admin")) {
+      if (parsed.data.role !== "ADMIN") {
+        throw error(403, "Forbidden");
+      }
+    }
+
     const response = await resolve(event);
     return response;
   } catch (error) {

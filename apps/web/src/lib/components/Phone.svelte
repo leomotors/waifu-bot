@@ -11,6 +11,7 @@
 
   export let bannerUrl: string | undefined = undefined;
   export let profileUrl: string;
+  export let color: string | undefined = undefined;
 
   export let namePrimary: string;
   export let nameSecondary: string | undefined = undefined;
@@ -25,7 +26,14 @@
   export let fields: Field[];
 </script>
 
-<aside class={twMerge("max-w-lg rotate-3 rounded-3xl bg-black p-4", className)}>
+<aside
+  class={twMerge(
+    "max-w-lg rotate-3 rounded-3xl bg-black p-4 shadow-2xl",
+    color && "shadow-inherit",
+    className,
+  )}
+  style={color && `--tw-shadow-color: ${color}`}
+>
   <!-- Phone Content -->
   <div class="aspect-[1/2.2] w-full rounded-2xl bg-gray-600">
     <!-- Camera Cutout -->

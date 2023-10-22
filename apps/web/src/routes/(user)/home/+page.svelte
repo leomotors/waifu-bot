@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="flex w-full flex-col-reverse items-center px-8 py-16 lg:flex-row lg:items-start lg:justify-evenly lg:px-0"
+  class="flex w-full flex-col-reverse items-center px-8 py-16 lg:flex-row lg:items-start lg:justify-evenly lg:px-4"
 >
   <main class="flex flex-col gap-8 pt-16">
     <h1
@@ -31,7 +31,7 @@
     {/if}
 
     <button
-      class="flex w-fit items-center gap-2 rounded bg-red-500 px-4 py-2 font-bold text-white transition-colors hover:bg-red-600"
+      class="flex w-fit items-center gap-2 rounded-lg bg-red-500 px-4 py-2 font-bold text-white transition-colors hover:bg-red-600"
     >
       <BoxArrowLeft class="h-6 w-6" />
       <p>Logout (It does not work yet)</p>

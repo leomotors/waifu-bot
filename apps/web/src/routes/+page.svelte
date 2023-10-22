@@ -27,7 +27,12 @@
 
       <p class="text-3xl">Multipurpose Waifu Discord Bot</p>
 
-      <a href="https://github.com/Leomotors/waifu-bot">
+      <a
+        href="https://github.com/Leomotors/waifu-bot"
+        class="w-fit"
+        target="_blank"
+        rel="noreferrer"
+      >
         <button
           class="flex items-center gap-4 rounded-lg bg-gray-800 px-4 py-3 font-bold text-white transition-colors hover:bg-gray-700"
         >
@@ -50,6 +55,7 @@
     <Phone
       bannerUrl={data.bannerUrl}
       profileUrl={data.imageUrl}
+      color={data.color}
       namePrimary={data.nameJa}
       nameSecondary={data.nameEn}
       statusText={data.footerText}
