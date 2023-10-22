@@ -10,6 +10,7 @@ CREATE TABLE "user" (
     "name" TEXT NOT NULL,
     "avatar_url" TEXT NOT NULL,
     "role" "UserRole" NOT NULL DEFAULT 'USER',
+    "simping_waifu_id" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
@@ -79,6 +80,9 @@ CREATE UNIQUE INDEX "activity_id_key" ON "activity"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "configuration_id_key" ON "configuration"("id");
+
+-- AddForeignKey
+ALTER TABLE "user" ADD CONSTRAINT "user_simping_waifu_id_fkey" FOREIGN KEY ("simping_waifu_id") REFERENCES "waifu"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "ticket" ADD CONSTRAINT "ticket_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

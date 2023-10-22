@@ -32,6 +32,11 @@ const waifu = await prisma.waifu.create({
         id: "143649805250461696",
       },
     },
+    simpedBy: {
+      connect: {
+        id: "143649805250461696",
+      },
+    },
   },
 });
 

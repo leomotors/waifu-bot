@@ -2,7 +2,8 @@
   import type { PageData } from "./$types";
 
   import GitHub from "svelte-bootstrap-icons/lib/Github.svelte";
-  import Phone from "./Phone.svelte";
+
+  import Phone from "$lib/components/Phone.svelte";
 
   export let data: PageData;
 </script>
@@ -38,7 +39,7 @@
       <div class="rounded-lg bg-gray-100 p-4">
         <p class="mb-2 text-lg font-bold">Run Waifu Bot</p>
         <code
-          class="flex gap-2 rounded bg-gray-300 p-2 font-mono text-sm transition-colors hover:bg-gray-400"
+          class="flex gap-2 rounded bg-gray-300 p-2 font-mono text-sm transition-colors hover:bg-gray-400/70"
         >
           <p class="select-none">$</p>
           <p>docker pull ghcr.io/leomotors/waifu-bot:latest</p>
@@ -46,6 +47,27 @@
       </div>
     </main>
 
-    <Phone {data} />
+    <Phone
+      bannerUrl={data.bannerUrl}
+      profileUrl={data.imageUrl}
+      namePrimary={data.nameJa}
+      nameSecondary={data.nameEn}
+      statusText={data.footerText}
+      fields={[
+        {
+          title: "SOURCE",
+          primaryField: data.sourceJa,
+          secondaryField: data.sourceEn,
+        },
+        {
+          title: "SIMPING SINCE",
+          primaryField: data.simpingSince.toLocaleDateString(),
+        },
+        {
+          title: "NOTE",
+          primaryField: data.note || "-",
+        },
+      ]}
+    />
   </div>
 </div>

@@ -1,3 +1,5 @@
+import { prisma } from "@waifu-bot/database";
+
 import { redirect } from "@sveltejs/kit";
 
 import type { AuthFailReason } from "$lib/login";
@@ -6,12 +8,22 @@ import type { LayoutServerLoad } from "./$types";
 
 export const load = (async ({ locals }) => {
   if (!locals.user) {
-    console.log("(user)/home/+layout.server.ts#load : HOW");
+    console.log("(user)/+layout.server.ts#load : HOW");
 
     throw redirect(302, `/login?error=${"how" satisfies AuthFailReason}`);
   }
 
+  const user = await prisma.user.findUniqueOrThrow({
+    where: {
+      id: locals.user.userId,
+    },
+    include: {
+      simpingWaifu: true,
+      _count: true,
+    },
+  });
+
   return {
-    user: locals.user,
+    user,
   };
 }) satisfies LayoutServerLoad;

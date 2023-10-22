@@ -23,7 +23,9 @@ model User {
   role    UserRole @default(USER)
   tickets Ticket[]
 
-  createdWaifus Waifu[]
+  createdWaifus  Waifu[] @relation(name: "WaifuCreate")
+  simpingWaifu   Waifu?  @relation(fields: [simpingWaifuId], references: [id])
+  simpingWaifuId String? @map("simping_waifu_id")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -56,8 +58,9 @@ model Waifu {
   sourceEn    String @map("source_en")
   sourceJa    String @map("source_ja")
 
-  createdBy       User   @relation(fields: [createdByUserId], references: [id])
+  createdBy       User   @relation(fields: [createdByUserId], references: [id], name: "WaifuCreate")
   createdByUserId String @map("created_by_user_id")
+  simpedBy        User[]
 
   simpIntervals SimpInterval[]
 

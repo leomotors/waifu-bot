@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { getCurrentWaifu } from "$lib/server";
   import Image from "$lib/components/Image.svelte";
 
   import Reception4 from "svelte-bootstrap-icons/lib/Reception4.svelte";
@@ -7,9 +6,23 @@
 
   import { twMerge } from "tailwind-merge";
 
-  export let data: Awaited<ReturnType<typeof getCurrentWaifu>>;
   let className: string = "";
   export { className as class };
+
+  export let bannerUrl: string | undefined = undefined;
+  export let profileUrl: string;
+
+  export let namePrimary: string;
+  export let nameSecondary: string | undefined = undefined;
+  export let statusText: string | undefined = undefined;
+
+  type Field = {
+    title: string;
+    primaryField: string;
+    secondaryField?: string;
+  };
+
+  export let fields: Field[];
 </script>
 
 <aside class={twMerge("max-w-lg rotate-3 rounded-3xl bg-black p-4", className)}>
@@ -30,11 +43,15 @@
     </div>
 
     <!-- Images -->
-    <Image src={data.bannerUrl} width={1000} />
+    {#if bannerUrl}
+      <Image src={bannerUrl} width={1000} />
+    {:else}
+      <img src="/pink-400.webp" width="1000" alt="Fallback Banner" />
+    {/if}
 
     <div class="h-0">
       <div class="ml-6 w-fit -translate-y-1/2 rounded-full bg-gray-600 p-2">
-        <Image src={data.imageUrl} width={128} class="rounded-full" />
+        <Image src={profileUrl} width={128} class="rounded-full" />
       </div>
     </div>
 
@@ -44,33 +61,27 @@
     >
       <!-- Name -->
       <div>
-        <p class="text-xl font-medium">{data.nameJa}</p>
-        {#if data.nameJa !== data.nameEn}
-          <p class="text-sm">{data.nameEn}</p>
+        <p class="text-xl font-medium">{namePrimary}</p>
+        {#if nameSecondary && namePrimary !== nameSecondary}
+          <p class="text-sm">{nameSecondary}</p>
         {/if}
       </div>
 
-      <p class="text-sm">{data.footerText}</p>
+      {#if statusText}
+        <p class="text-sm">{statusText}</p>
+      {/if}
 
       <hr class="h-0.5 border-0 bg-gray-800" />
 
-      <section>
-        <h2>SOURCE</h2>
-        <p>{data.sourceJa}</p>
-        {#if data.sourceJa !== data.sourceEn}
-          <p class="text-gray-300">{data.sourceEn}</p>
-        {/if}
-      </section>
-
-      <section>
-        <h2>SIMPING SINCE</h2>
-        <p>{data.simpingSince.toLocaleDateString()}</p>
-      </section>
-
-      <section>
-        <h2>NOTE</h2>
-        <p>{data.note || "-"}</p>
-      </section>
+      {#each fields as field}
+        <section>
+          <h2>{field.title}</h2>
+          <p>{field.primaryField}</p>
+          {#if field.secondaryField && field.primaryField !== field.secondaryField}
+            <p class="text-gray-300">{field.secondaryField}</p>
+          {/if}
+        </section>
+      {/each}
     </div>
   </div>
 </aside>
