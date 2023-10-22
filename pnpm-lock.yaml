@@ -158,6 +158,12 @@ importers:
       '@urami/core':
         specifier: 1.0.2
         version: 1.0.2
+      '@urami/svelte':
+        specifier: 1.0.1
+        version: 1.0.1(svelte@4.2.1)
+      '@urami/types':
+        specifier: 1.0.0
+        version: 1.0.0
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.31)
@@ -191,9 +197,15 @@ importers:
       svelte:
         specifier: 4.2.1
         version: 4.2.1
+      svelte-bootstrap-icons:
+        specifier: 3.1.0
+        version: 3.1.0
       svelte-check:
         specifier: 3.5.2
         version: 3.5.2(postcss@8.4.31)(sass@1.69.4)(svelte@4.2.1)
+      tailwind-merge:
+        specifier: 1.14.0
+        version: 1.14.0
       tailwindcss:
         specifier: 3.3.3
         version: 3.3.3
@@ -1388,6 +1400,23 @@ packages:
       sharp: 0.32.6
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@urami/svelte@1.0.1(svelte@4.2.1):
+    resolution: {integrity: sha512-pit9XZgnC1i1sxVNbty7yVge5c6Kj97yI/E/adsAyee3goMX10Gu/IVQZCNQwRL7aebddBrrB4zIgZuSz+jGvw==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      '@urami/utils': 1.0.0
+      svelte: 4.2.1
+    dev: true
+
+  /@urami/types@1.0.0:
+    resolution: {integrity: sha512-7Fn7fUy4cqp01pO+XG1RKfJ/M4LQt8ikL+CbzwufwQFUVhTDUqZGCv3tBMYRu83erz9Bl7FDGiYlUVV/g/uk2g==}
+    dev: true
+
+  /@urami/utils@1.0.0:
+    resolution: {integrity: sha512-HyRm70FW73qUdZ2O75mpyp3c+jOPPlQl6bVfroeDutK+SGo7QGX1pkF6MTnS1w5zzFbLJnJQ3V66YXszqVWKyQ==}
     dev: true
 
   /@vitest/expect@0.34.6:
@@ -5266,6 +5295,10 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
+  /svelte-bootstrap-icons@3.1.0:
+    resolution: {integrity: sha512-mg/feZZ7+S/ycUcfe2kHGzI4xzVokCfrBJ/YPOnIstYJsvCOZNVAHyMPW5vSvBu8ad2tWM1fPksEC1mu6gg/iQ==}
+    dev: true
+
   /svelte-check@3.5.2(postcss@8.4.31)(sass@1.69.4)(svelte@4.2.1):
     resolution: {integrity: sha512-5a/YWbiH4c+AqAUP+0VneiV5bP8YOk9JL3jwvN+k2PEPLgpu85bjQc5eE67+eIZBBwUEJzmO3I92OqKcqbp3fw==}
     hasBin: true
@@ -5393,6 +5426,10 @@ packages:
     dependencies:
       '@pkgr/utils': 2.4.2
       tslib: 2.6.2
+    dev: true
+
+  /tailwind-merge@1.14.0:
+    resolution: {integrity: sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==}
     dev: true
 
   /tailwindcss@3.3.3:

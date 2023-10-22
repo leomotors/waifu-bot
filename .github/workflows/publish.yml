@@ -51,12 +51,17 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - uses: winterjung/split@v2
+        id: version
+        with:
+          msg: ${{ github.ref_name }}
+
       - name: Build Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           file: Dockerfile
           push: true
-          tags: ghcr.io/leomotors/waifu-bot:${{ github.ref_name }},ghcr.io/leomotors/waifu-bot:kanade,ghcr.io/leomotors/waifu-bot:latest
+          tags: ghcr.io/leomotors/waifu-bot:${{ github.ref_name }},ghcr.io/leomotors/waifu-bot:v${{ steps.version.outputs._0 }},ghcr.io/leomotors/waifu-bot:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max

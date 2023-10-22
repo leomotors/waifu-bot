@@ -67,7 +67,8 @@ CREATE TABLE "activity" (
 -- CreateTable
 CREATE TABLE "configuration" (
     "id" INTEGER NOT NULL DEFAULT 0,
-    "current_waifu_id" TEXT NOT NULL
+    "current_waifu_id" TEXT NOT NULL,
+    "simping_since" TIMESTAMP(3) NOT NULL
 );
 
 -- CreateIndex

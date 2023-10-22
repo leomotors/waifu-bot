@@ -105,8 +105,9 @@ model Activity {
 model Configuration {
   id Int @unique @default(0)
 
-  currentWaifu   Waifu  @relation(fields: [currentWaifuId], references: [id])
-  currentWaifuId String @map("current_waifu_id")
+  currentWaifu   Waifu    @relation(fields: [currentWaifuId], references: [id])
+  currentWaifuId String   @map("current_waifu_id")
+  simpingSince   DateTime @map("simping_since")
 
   @@map("configuration")
 }

@@ -11,5 +11,8 @@ export async function getCurrentWaifu() {
     },
   });
 
-  return waifu;
+  return {
+    ...waifu,
+    simpingSince: config.simpingSince,
+  };
 }

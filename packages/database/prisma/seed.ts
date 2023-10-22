@@ -42,6 +42,7 @@ await prisma.configuration.create({
         id: waifu.id,
       },
     },
+    simpingSince: new Date("2023-10-17"),
   },
 });
 
