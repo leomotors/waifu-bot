@@ -167,6 +167,9 @@ importers:
       '@urami/types':
         specifier: 1.0.0
         version: 1.0.0
+      '@urami/utils':
+        specifier: 1.0.0
+        version: 1.0.0
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.31)

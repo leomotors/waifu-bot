@@ -4,21 +4,30 @@
   import GitHub from "svelte-bootstrap-icons/lib/Github.svelte";
 
   import Phone from "$lib/components/Phone.svelte";
+  import PastWaifu from "./PastWaifu.svelte";
 
   export let data: PageData;
+  $: ({ currentWaifu, allWaifu } = data);
 </script>
 
-<div class="flex flex-col items-center p-4">
+<div class="flex flex-col items-center">
+  <!-- Title for Mobile -->
   <h1
-    class="mt-8 select-none bg-gradient-to-br from-pink-400 to-purple-400 bg-clip-text text-6xl font-extrabold text-transparent sm:text-8xl lg:hidden"
+    class="mt-12 select-none bg-gradient-to-br from-pink-400 to-purple-400 bg-clip-text px-4 text-6xl font-extrabold text-transparent sm:text-8xl lg:hidden"
   >
     Waifu Bot
   </h1>
 
   <div
-    class="flex w-full flex-col-reverse items-center px-8 py-16 lg:flex-row lg:items-start lg:justify-evenly lg:px-0"
+    class="flex w-full flex-col-reverse items-center px-12 py-20 lg:flex-row lg:items-start lg:justify-evenly lg:px-0"
   >
     <main class="flex flex-col gap-8 pt-16">
+      <div
+        class="w-fit rounded-full bg-purple-200 px-3 py-1 text-xs font-bold text-purple-500"
+      >
+        <p>Kawaii, useful and runs on latest node 20!</p>
+      </div>
+
       <h1
         class="hidden select-none bg-gradient-to-br from-pink-400 to-purple-400 bg-clip-text text-8xl font-extrabold text-transparent lg:block"
       >
@@ -27,19 +36,36 @@
 
       <p class="text-3xl">Multipurpose Waifu Discord Bot</p>
 
-      <a
-        href="https://github.com/Leomotors/waifu-bot"
-        class="w-fit"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <button
-          class="flex items-center gap-4 rounded-lg bg-gray-800 px-4 py-3 font-bold text-white transition-colors hover:bg-gray-700"
+      <div class="waifu-brand-buttons">
+        <a
+          href="https://github.com/Leomotors/waifu-bot"
+          target="_blank"
+          rel="noreferrer"
         >
-          <GitHub class="h-6 w-6" />
-          <p class="text-lg font-bold">View in GitHub</p>
-        </button>
-      </a>
+          <button class="bg-gray-800 text-white hover:bg-gray-700">
+            <GitHub class="h-6 w-6" />
+            <p class="text-lg font-bold">View in GitHub</p>
+          </button>
+        </a>
+
+        <a
+          href="#past-waifu"
+          on:click|preventDefault={(e) => {
+            // Smooth Scroll when JS is available
+            const el = document.getElementById("past-waifu");
+            el?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          <button class="bg-rose-300 text-white hover:bg-rose-400">
+            <img
+              class="h-6"
+              src="/emu-64.png"
+              alt="just a normal peaceful logo"
+            />
+            <p class="text-lg font-bold">Past Waifu</p>
+          </button>
+        </a>
+      </div>
 
       <div class="rounded-lg bg-gray-100 p-4">
         <p class="mb-2 text-lg font-bold">Run Waifu Bot</p>
@@ -50,30 +76,60 @@
           <p>docker pull ghcr.io/leomotors/waifu-bot:latest</p>
         </code>
       </div>
+
+      <p>
+        Made with <span class="text-red-500">❤️</span> by
+        <a
+          class="text-blue-500 transition-colors hover:text-blue-600"
+          href="https://github.com/Leomotors"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Leomotors
+        </a>
+      </p>
     </main>
 
     <Phone
-      bannerUrl={data.bannerUrl}
-      profileUrl={data.imageUrl}
-      color={data.color}
-      namePrimary={data.nameJa}
-      nameSecondary={data.nameEn}
-      statusText={data.footerText}
+      bannerUrl={currentWaifu.bannerUrl}
+      profileUrl={currentWaifu.imageUrl}
+      color={currentWaifu.color}
+      namePrimary={currentWaifu.nameJa}
+      nameSecondary={currentWaifu.nameEn}
+      statusText={currentWaifu.footerText}
       fields={[
         {
           title: "SOURCE",
-          primaryField: data.sourceJa,
-          secondaryField: data.sourceEn,
+          primaryField: currentWaifu.sourceJa,
+          secondaryField: currentWaifu.sourceEn,
         },
         {
           title: "SIMPING SINCE",
-          primaryField: data.simpingSince.toLocaleDateString(),
+          primaryField: currentWaifu.simpingSince.toLocaleDateString(),
         },
         {
           title: "NOTE",
-          primaryField: data.note || "-",
+          primaryField: currentWaifu.note || "-",
         },
       ]}
     />
   </div>
+
+  <div id="past-waifu" class="w-full bg-purple-100 p-8">
+    <PastWaifu {allWaifu} />
+  </div>
 </div>
+
+<style lang="scss">
+  .waifu-brand-buttons {
+    @apply flex gap-2;
+
+    & > a {
+      @apply flex-1;
+
+      & > button {
+        @apply flex w-full items-center justify-center gap-4 rounded-lg px-4 py-3 font-bold transition-colors;
+      }
+    }
+  }
+</style>

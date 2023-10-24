@@ -24,6 +24,7 @@
     "@urami/core": "1.0.2",
     "@urami/svelte": "1.0.1",
     "@urami/types": "1.0.0",
+    "@urami/utils": "1.0.0",
     "autoprefixer": "10.4.16",
     "eslint": "8.52.0",
     "eslint-config-prettier": "9.0.0",

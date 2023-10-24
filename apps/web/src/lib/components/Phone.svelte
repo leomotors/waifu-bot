@@ -38,7 +38,7 @@
   <div class="aspect-[1/2.2] w-full rounded-2xl bg-gray-600">
     <!-- Camera Cutout -->
     <div
-      class="flex h-8 items-center justify-between rounded-t-xl bg-gray-400 px-4 text-white"
+      class="flex h-8 items-end justify-between rounded-t-xl bg-gray-400 px-4 text-white"
     >
       <div class="flex-1">01:00</div>
       <div class="h-6 w-6 self-end rounded-full bg-black"></div>
@@ -82,7 +82,7 @@
       <hr class="h-0.5 border-0 bg-gray-800" />
 
       {#each fields as field}
-        <section>
+        <section class="whitespace-pre-line">
           <h2>{field.title}</h2>
           <p>{field.primaryField}</p>
           {#if field.secondaryField && field.primaryField !== field.secondaryField}
