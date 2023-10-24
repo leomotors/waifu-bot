@@ -15,7 +15,7 @@
   }
 </script>
 
-<div class="flex items-start justify-evenly pt-16">
+<div class="flex items-start justify-evenly py-16">
   <Phone
     class="-rotate-3"
     bannerUrl={currentWaifu.bannerUrl}
@@ -50,7 +50,9 @@
     ]}
   />
 
-  <div class="flex max-w-[40vw] flex-col items-center gap-4">
+  <div
+    class="flex max-w-[40vw] flex-col items-center gap-4 self-stretch rounded-3xl border-8 border-purple-300 bg-white px-4 py-8"
+  >
     <h2
       class="bg-gradient-to-br from-red-500 to-purple-500 bg-clip-text text-center text-5xl font-extrabold text-transparent"
     >

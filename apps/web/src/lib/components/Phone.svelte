@@ -28,7 +28,7 @@
 
 <aside
   class={twMerge(
-    "max-w-lg rotate-3 rounded-3xl bg-black p-4 shadow-2xl",
+    "max-w-lg rotate-3 rounded-3xl bg-black p-4 shadow-2xl transition-shadow duration-1000",
     color && "shadow-inherit",
     className,
   )}

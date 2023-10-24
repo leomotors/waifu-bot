@@ -34,7 +34,7 @@
         Waifu Bot
       </h1>
 
-      <p class="text-3xl">Multipurpose Waifu Discord Bot</p>
+      <p class="text-3xl font-medium">Multipurpose Waifu Discord Bot</p>
 
       <div class="waifu-brand-buttons">
         <a
@@ -50,7 +50,7 @@
 
         <a
           href="#past-waifu"
-          on:click|preventDefault={(e) => {
+          on:click|preventDefault={() => {
             // Smooth Scroll when JS is available
             const el = document.getElementById("past-waifu");
             el?.scrollIntoView({ behavior: "smooth" });
@@ -68,7 +68,7 @@
       </div>
 
       <div class="rounded-lg bg-gray-100 p-4">
-        <p class="mb-2 text-lg font-bold">Run Waifu Bot</p>
+        <p class="mb-2 text-lg font-bold">Available in Docker</p>
         <code
           class="flex gap-2 rounded bg-gray-300 p-2 font-mono text-sm transition-colors hover:bg-gray-400/70"
         >
@@ -115,7 +115,10 @@
     />
   </div>
 
-  <div id="past-waifu" class="w-full bg-purple-100 p-8">
+  <div
+    id="past-waifu"
+    class="w-full bg-gradient-to-r from-black to-purple-900 p-8"
+  >
     <PastWaifu {allWaifu} />
   </div>
 </div>
