@@ -18,8 +18,13 @@
 
   $: currentWaifu = allWaifu[selectedWaifu];
 
+  export let primaryLanguage: string;
+
   function getMonth(date: Date) {
-    return date.toLocaleString("default", { month: "long", year: "numeric" });
+    return date.toLocaleString(primaryLanguage, {
+      month: "long",
+      year: "numeric",
+    });
   }
 </script>
 
@@ -43,7 +48,9 @@
         primaryField: currentWaifu.simpIntervals
           .map(
             ({ begin, end, days, versionBegin, versionEnd }) =>
-              `${begin.toLocaleDateString()} - ${end.toLocaleDateString()} (${days} days)${
+              `${begin.toLocaleDateString(
+                primaryLanguage,
+              )} - ${end.toLocaleDateString(primaryLanguage)} (${days} days)${
                 versionBegin && versionEnd
                   ? ` v${versionBegin} - v${versionEnd}`
                   : ""

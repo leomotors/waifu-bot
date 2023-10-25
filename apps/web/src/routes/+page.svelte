@@ -105,7 +105,9 @@
         },
         {
           title: "SIMPING SINCE",
-          primaryField: currentWaifu.simpingSince.toLocaleDateString(),
+          primaryField: currentWaifu.simpingSince.toLocaleDateString(
+            data.primaryLanguage,
+          ),
         },
         {
           title: "NOTE",
@@ -119,7 +121,7 @@
     id="past-waifu"
     class="w-full bg-gradient-to-r from-black to-purple-900 p-8"
   >
-    <PastWaifu {allWaifu} />
+    <PastWaifu {allWaifu} primaryLanguage={data.primaryLanguage} />
   </div>
 </div>
 
