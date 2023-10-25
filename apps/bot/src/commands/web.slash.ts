@@ -15,18 +15,25 @@ export class WebService extends SlashModuleClass {
 
     const user = ctx.user;
 
+    const userPayload = {
+      id: user.id,
+      name: user.username,
+      avatarUrl: user.displayAvatarURL({ size: 4096 }),
+    };
+
+    const prismaUser = await prisma.user.upsert({
+      where: {
+        id: user.id,
+      },
+      create: userPayload,
+      update: userPayload,
+    });
+
     const ticket = await prisma.ticket.create({
       data: {
         user: {
-          connectOrCreate: {
-            where: {
-              id: user.id,
-            },
-            create: {
-              id: user.id,
-              name: user.username,
-              avatarUrl: user.displayAvatarURL({ size: 4096 }),
-            },
+          connect: {
+            id: prismaUser.id,
           },
         },
       },

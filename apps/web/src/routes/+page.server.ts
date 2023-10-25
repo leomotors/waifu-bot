@@ -14,6 +14,7 @@ export const load = (async () => {
             begin: "desc",
           },
         },
+        createdBy: true,
       },
     }),
   ]);

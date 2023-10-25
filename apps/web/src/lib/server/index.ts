@@ -9,6 +9,9 @@ export async function getCurrentWaifu() {
     where: {
       id: config.currentWaifuId,
     },
+    include: {
+      createdBy: true,
+    },
   });
 
   return {

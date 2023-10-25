@@ -59,6 +59,10 @@
           .join("\n"),
       },
       {
+        title: "CREATED BY",
+        primaryField: currentWaifu.createdBy.name,
+      },
+      {
         title: "NOTE",
         primaryField: currentWaifu.note || "-",
       },
