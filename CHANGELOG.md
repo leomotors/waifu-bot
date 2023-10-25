@@ -2,6 +2,10 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [5.2.821] - 2023-10-25
+
+- fix: play-dl wrong version
+
 ## [5.2.820] - 2023-10-17
 
 - chore: bump deps like usual
