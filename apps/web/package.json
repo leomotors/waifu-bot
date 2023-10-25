@@ -10,7 +10,7 @@
     "start": "PORT=7100 HOST=0.0.0.0 ORIGIN=$PUBLIC_WEB_URL node build/index.js",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "test": "vitest",
+    "test": "vitest --run",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write ."
   },

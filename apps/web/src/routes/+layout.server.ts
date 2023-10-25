@@ -1,3 +1,5 @@
+import { parseAcceptLanguage } from "$lib/server/acceptLanguage";
+
 import type { LayoutServerLoad } from "./$types";
 
 export const load = (async ({ request }) => {
@@ -5,6 +7,6 @@ export const load = (async ({ request }) => {
 
   return {
     acceptLanguage,
-    primaryLanguage: acceptLanguage?.split(",")[0] || "default",
+    primaryLanguage: parseAcceptLanguage(acceptLanguage),
   };
 }) satisfies LayoutServerLoad;
