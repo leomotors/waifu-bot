@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   import type { Loader } from "@urami/types";
 
-  const myDefaultLoader = ((src, width, quality) => {
+  const loader = ((src, width, quality) => {
     const params = new URLSearchParams({
       url: src,
       w: width.toString(),
@@ -13,34 +13,15 @@
 </script>
 
 <script lang="ts">
-  import { buildSource } from "@urami/utils";
+  import Image from "@urami/svelte";
 
   export let src: string;
   export let width: number;
   export let height: number | undefined = undefined;
   export let alt: string | undefined = undefined;
-
-  let klass: string | undefined = undefined;
-  export { klass as class };
-
-  export let quality: number = 75;
-
-  export let loader: Loader = myDefaultLoader;
-
-  $: buildProps = buildSource(loader, src, width, quality);
+  let className: string | undefined = undefined;
+  export { className as class };
+  export let quality: number | undefined = 100;
 </script>
 
-<!-- svelte-ignore a11y-missing-attribute -->
-<img
-  src={buildProps.src}
-  srcset={buildProps.srcSet}
-  decoding="async"
-  loading="lazy"
-  {...$$restProps}
-  {...{
-    alt,
-    height,
-    width,
-    class: klass,
-  }}
-/>
+<Image {src} {width} {height} {alt} class={className} {quality} {loader} />

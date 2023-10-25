@@ -17,11 +17,11 @@
   },
   "devDependencies": {
     "@waifu-bot/config": "workspace:0.0.0",
-    "prisma": "5.4.2",
+    "prisma": "5.5.0",
     "tsx": "3.14.0",
     "typescript": "5.2.2"
   },
   "dependencies": {
-    "@prisma/client": "5.4.2"
+    "@prisma/client": "5.5.0"
   }
 }
