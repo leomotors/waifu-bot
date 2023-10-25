@@ -9,7 +9,8 @@
     "build": "tsc",
     "dev": "tsc --watch --preserveWatchOutput",
     "lint": "eslint src",
-    "format": "eslint src --fix"
+    "format": "eslint src --fix",
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "tsx prisma/seed/index.ts"

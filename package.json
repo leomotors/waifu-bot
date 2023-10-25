@@ -37,8 +37,8 @@
     "typescript": "5.2.2"
   },
   "engines": {
-    "node": "^20",
-    "pnpm": "^8"
+    "node": "^20.8",
+    "pnpm": "^8.9"
   },
   "packageManager": "pnpm@8.9.2",
   "dependencies": {

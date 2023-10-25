@@ -1,12 +1,12 @@
 <script lang="ts">
   import "../app.scss";
 
-  import { PUBLIC_WEB_URL } from "$env/static/public";
+  import { env } from "$env/dynamic/public";
 </script>
 
 <svelte:head>
   <title>Waifu Bot</title>
-  <meta property="og:image" content="{PUBLIC_WEB_URL}/api/image/og" />
+  <meta property="og:image" content="{env.PUBLIC_WEB_URL}/api/image/og" />
 </svelte:head>
 
 <slot />

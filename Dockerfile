@@ -14,6 +14,9 @@ RUN corepack enable
 
 RUN pnpm i --frozen-lockfile
 
+ENV INTERNAL_SECRET tempmockvalue
+ENV JWT_SECRET tempmockvalue
+
 RUN pnpm build
 
 # ? -------------------------
