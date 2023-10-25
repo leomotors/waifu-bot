@@ -26,7 +26,7 @@ model User {
 
   createdWaifus  Waifu[] @relation(name: "WaifuCreate")
   simpingWaifu   Waifu?  @relation(fields: [simpingWaifuId], references: [id])
-  simpingWaifuId String? @map("simping_waifu_id")
+  simpingWaifuId Int?    @map("simping_waifu_id")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -45,7 +45,7 @@ model Ticket {
 }
 
 model Waifu {
-  id   String @id @default(cuid())
+  id   Int    @id @default(autoincrement())
   note String @default("")
 
   nameEn      String @map("name_en")
@@ -74,10 +74,10 @@ model Waifu {
 }
 
 model SimpInterval {
-  id Int @unique @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  waifu   Waifu  @relation(fields: [waifuId], references: [id])
-  waifuId String @map("waifu_id")
+  waifu   Waifu @relation(fields: [waifuId], references: [id])
+  waifuId Int   @map("waifu_id")
 
   begin DateTime
   end   DateTime
@@ -113,7 +113,7 @@ model Configuration {
   id Int @unique @default(0)
 
   currentWaifu   Waifu    @relation(fields: [currentWaifuId], references: [id])
-  currentWaifuId String   @map("current_waifu_id")
+  currentWaifuId Int      @map("current_waifu_id")
   simpingSince   DateTime @map("simping_since")
 
   @@map("configuration")

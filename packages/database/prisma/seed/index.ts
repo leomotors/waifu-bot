@@ -1,3 +1,6 @@
-import "./1-init";
-import "./2-activity";
-import "./3-waifu";
+await import("./user");
+await import("./activity");
+await import("./past-waifu");
+await import("./current-waifu");
+
+export {};

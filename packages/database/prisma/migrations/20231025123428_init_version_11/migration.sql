@@ -10,7 +10,7 @@ CREATE TABLE "user" (
     "name" TEXT NOT NULL,
     "avatar_url" TEXT NOT NULL,
     "role" "UserRole" NOT NULL DEFAULT 'USER',
-    "simping_waifu_id" TEXT,
+    "simping_waifu_id" INTEGER,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
@@ -28,7 +28,7 @@ CREATE TABLE "ticket" (
 
 -- CreateTable
 CREATE TABLE "waifu" (
-    "id" TEXT NOT NULL,
+    "id" SERIAL NOT NULL,
     "note" TEXT NOT NULL DEFAULT '',
     "name_en" TEXT NOT NULL,
     "name_ja" TEXT NOT NULL,
@@ -50,12 +50,14 @@ CREATE TABLE "waifu" (
 -- CreateTable
 CREATE TABLE "simp_interval" (
     "id" SERIAL NOT NULL,
-    "waifu_id" TEXT NOT NULL,
+    "waifu_id" INTEGER NOT NULL,
     "begin" TIMESTAMP(3) NOT NULL,
     "end" TIMESTAMP(3) NOT NULL,
     "days" INTEGER NOT NULL,
     "version_begin" TEXT,
-    "version_end" TEXT
+    "version_end" TEXT,
+
+    CONSTRAINT "simp_interval_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -70,12 +72,9 @@ CREATE TABLE "activity" (
 -- CreateTable
 CREATE TABLE "configuration" (
     "id" INTEGER NOT NULL DEFAULT 0,
-    "current_waifu_id" TEXT NOT NULL,
+    "current_waifu_id" INTEGER NOT NULL,
     "simping_since" TIMESTAMP(3) NOT NULL
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "simp_interval_id_key" ON "simp_interval"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "activity_id_key" ON "activity"("id");
