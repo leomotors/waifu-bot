@@ -5,8 +5,16 @@
 
   import type { PageData } from "./$types";
 
+  import { page } from "$app/stores";
+  import { goto } from "$app/navigation";
+
   export let allWaifu: PageData["allWaifu"];
   let selectedWaifu = 0;
+  $: {
+    const waifu = Number($page.url.searchParams.get("waifu"));
+    selectedWaifu =
+      isNaN(waifu) || waifu < 0 || waifu >= allWaifu.length ? 0 : waifu;
+  }
 
   $: currentWaifu = allWaifu[selectedWaifu];
 
@@ -65,29 +73,36 @@
     </p>
 
     {#each allWaifu as waifu, index}
-      <button
-        class={twMerge(
-          "w-4/5 rounded-xl border-4 border-pink-300 bg-pink-100 px-4 py-2 transition-colors",
-          index !== selectedWaifu && "hover:bg-pink-200",
-          index === selectedWaifu && "cursor-not-allowed border-green-300",
-        )}
-        on:click={() => (selectedWaifu = index)}
+      <a
+        class="w-4/5"
+        href="?waifu={index}#past-waifu"
+        on:click|preventDefault={() => {
+          goto(`?waifu=${index}`, { replaceState: true, noScroll: true });
+        }}
       >
-        <p class="text-xl font-bold">
-          {waifu.nameJa}
-          {#if waifu.nameEn && waifu.nameEn !== waifu.nameJa}
-            ({waifu.nameEn})
-          {/if}
-        </p>
-        {#each waifu.simpIntervals as simp}
-          <p>
-            {getMonth(simp.begin)} - {getMonth(simp.end)}
-            {#if simp.versionBegin && simp.versionEnd}
-              (v{simp.versionBegin} - v{simp.versionEnd})
+        <button
+          class={twMerge(
+            "w-full rounded-xl border-4 border-pink-300 bg-pink-100 px-4 py-2 transition-colors",
+            index !== selectedWaifu && "hover:bg-pink-200",
+            index === selectedWaifu && "cursor-not-allowed border-green-300",
+          )}
+        >
+          <p class="text-xl font-bold">
+            {waifu.nameJa}
+            {#if waifu.nameEn && waifu.nameEn !== waifu.nameJa}
+              ({waifu.nameEn})
             {/if}
           </p>
-        {/each}
-      </button>
+          {#each waifu.simpIntervals as simp}
+            <p>
+              {getMonth(simp.begin)} - {getMonth(simp.end)}
+              {#if simp.versionBegin && simp.versionEnd}
+                (v{simp.versionBegin} - v{simp.versionEnd})
+              {/if}
+            </p>
+          {/each}
+        </button>
+      </a>
     {/each}
   </div>
 </div>

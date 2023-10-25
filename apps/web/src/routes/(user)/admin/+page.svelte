@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Image from "$lib/components/Image.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -22,9 +23,23 @@
   </header>
 
   <div
-    class="container mx-auto flex flex-col gap-8 rounded-2xl bg-gradient-to-br from-pink-100 to-rose-100 p-4 shadow-xl"
+    class="container relative mx-auto flex min-h-[384px] flex-col justify-between gap-8 rounded-2xl bg-pink-100 p-8 shadow-xl"
   >
-    <h2 class="text-3xl font-extrabold">{data.currentWaifu.nameEn}</h2>
+    <div class="waifu-hero">
+      <Image
+        class="h-[384px] w-[384px] overflow-hidden rounded-r-2xl"
+        src={data.currentWaifu.imageUrl}
+        width={384}
+        height={384}
+      />
+    </div>
+
+    <section>
+      <h2 class="text-3xl font-extrabold">{data.currentWaifu.nameJa}</h2>
+      <p class="text-xl font-medium">
+        Our current waifu is {data.currentWaifu.nameEn}
+      </p>
+    </section>
 
     <a href="/admin/waifu">
       <button
@@ -58,3 +73,19 @@
     </div>
   </main>
 </div>
+
+<style lang="scss">
+  .waifu-hero {
+    @apply absolute right-0 top-0 opacity-50;
+
+    &::after {
+      @apply absolute right-0 top-0 block h-[384px] w-[384px];
+      background-image: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0) 0,
+        #fce7f3 100%
+      );
+      content: "";
+    }
+  }
+</style>
