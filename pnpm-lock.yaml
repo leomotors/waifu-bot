@@ -170,6 +170,9 @@ importers:
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.31)
+      discord-api-types:
+        specifier: 0.37.61
+        version: 0.37.61
       eslint:
         specifier: 8.52.0
         version: 8.52.0
@@ -2264,7 +2267,6 @@ packages:
 
   /discord-api-types@0.37.61:
     resolution: {integrity: sha512-o/dXNFfhBpYHpQFdT6FWzeO7pKc838QeeZ9d91CfVAtpr5XLK4B/zYxQbYgPdoMiTDvJfzcsLW5naXgmHGDNXw==}
-    dev: false
 
   /discord.js@14.13.0:
     resolution: {integrity: sha512-Kufdvg7fpyTEwANGy9x7i4od4yu5c6gVddGi5CKm4Y5a6sF0VBODObI3o0Bh7TGCj0LfNT8Qp8z04wnLFzgnbA==}

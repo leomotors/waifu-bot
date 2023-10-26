@@ -7,7 +7,7 @@ import { cookieTokenKey } from "$lib/constants";
 
 import jwt from "jsonwebtoken";
 
-import type { Actions } from "../$types";
+import type { Actions } from "./$types";
 
 export const actions = {
   default: async ({ cookies, request }) => {

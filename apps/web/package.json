@@ -25,6 +25,7 @@
     "@urami/svelte": "1.0.2",
     "@urami/types": "1.0.0",
     "autoprefixer": "10.4.16",
+    "discord-api-types": "0.37.61",
     "eslint": "8.52.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-svelte": "2.34.0",

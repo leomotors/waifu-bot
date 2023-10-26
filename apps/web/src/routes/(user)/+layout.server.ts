@@ -19,7 +19,11 @@ export const load = (async ({ locals }) => {
     },
     include: {
       simpingWaifu: true,
-      _count: true,
+      _count: {
+        select: {
+          createdWaifus: true,
+        },
+      },
     },
   });
 
