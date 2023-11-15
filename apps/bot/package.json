@@ -30,7 +30,6 @@
     "discord.js": "14.14.1",
     "fastify": "4.24.3",
     "ffmpeg-static": "5.2.0",
-    "google-tts-api": "2.0.2",
     "sodium-native": "4.0.4",
     "tslib": "2.6.2",
     "uuid": "9.0.1",
