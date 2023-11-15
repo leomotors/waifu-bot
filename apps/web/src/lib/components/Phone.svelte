@@ -91,6 +91,8 @@
         </section>
       {/each}
     </div>
+
+    <slot name="after-content" />
   </div>
 </aside>
 

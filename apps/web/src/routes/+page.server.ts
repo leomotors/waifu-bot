@@ -1,33 +1,16 @@
-import { prisma } from "@waifu-bot/database";
-
-import { getCurrentWaifu } from "$lib/server";
+import { getAllWaifu } from "$lib/server/getAllWaifu";
+import { getCurrentWaifu } from "$lib/server/getCurrentWaifu";
 
 import type { PageServerLoad } from "./$types";
 
 export const load = (async () => {
   const [currentWaifu, allWaifu] = await Promise.all([
     getCurrentWaifu(),
-    prisma.waifu.findMany({
-      include: {
-        simpIntervals: {
-          orderBy: {
-            begin: "desc",
-          },
-        },
-        createdBy: true,
-      },
-    }),
+    getAllWaifu(),
   ]);
 
   return {
     currentWaifu,
-    allWaifu: allWaifu
-      .filter((waifu) => waifu.simpIntervals.length)
-      .sort((a, b) => {
-        return (
-          b.simpIntervals[0].begin.getTime() -
-          a.simpIntervals[0].begin.getTime()
-        );
-      }),
+    allWaifu,
   };
 }) satisfies PageServerLoad;

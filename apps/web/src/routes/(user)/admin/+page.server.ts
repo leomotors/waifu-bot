@@ -1,6 +1,6 @@
 import { prisma } from "@waifu-bot/database";
 
-import { getCurrentWaifu } from "$lib/server";
+import { getCurrentWaifu } from "$lib/server/getCurrentWaifu";
 
 import type { PageServerLoad } from "./$types";
 
