@@ -24,4 +24,8 @@
   export let quality: number | undefined = 100;
 </script>
 
-<Image {src} {width} {height} {alt} class={className} {quality} {loader} />
+{#if src.startsWith("https")}
+  <Image {src} {width} {height} {alt} class={className} {quality} {loader} />
+{:else}
+  <img {src} {width} {height} {alt} class={className} />
+{/if}

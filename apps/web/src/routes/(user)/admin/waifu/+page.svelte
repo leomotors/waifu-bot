@@ -5,6 +5,7 @@
   import { goto } from "$app/navigation";
   import Phone from "$lib/components/Phone.svelte";
 
+  import PersonFillAdd from "svelte-bootstrap-icons/lib/PersonFillAdd.svelte";
   import PencilSquare from "svelte-bootstrap-icons/lib/PencilSquare.svelte";
   import HeartFill from "svelte-bootstrap-icons/lib/HeartFill.svelte";
   import ArrowRepeat from "svelte-bootstrap-icons/lib/ArrowRepeat.svelte";
@@ -17,11 +18,11 @@
     primaryLanguage,
   } = data);
 
-  let selectedWaifu = currentWaifuId;
+  $: selectedWaifu = currentWaifuId;
   $: {
     const waifu = Number($page.url.searchParams.get("waifu"));
     selectedWaifu =
-      isNaN(waifu) || waifu < 0 || waifu >= allWaifu.length
+      allWaifu.find((wf) => wf.id === waifu) === undefined
         ? currentWaifuId
         : waifu;
   }
@@ -37,6 +38,17 @@
 </script>
 
 <main class="flex flex-col items-center gap-4">
+  <h1 class="text-4xl font-extrabold">Waifu Manage</h1>
+
+  <a href="/admin/waifu/edit?id=create" class="mb-8 mt-4">
+    <button
+      class="flex items-center justify-center gap-2 rounded-lg bg-sky-200 p-2"
+    >
+      <PersonFillAdd class="h-6 w-6" />
+      <p>Create Waifu</p>
+    </button>
+  </a>
+
   <section class="flex justify-evenly gap-4">
     <div class="flex flex-col gap-4 p-4">
       {#each allWaifu as waifu}
@@ -129,10 +141,12 @@
           slot="after-content"
           class="admin-button mx-4 mb-4 grid grid-cols-2 gap-4"
         >
-          <button class="bg-amber-100">
-            <PencilSquare class="h-6 w-6" />
-            <p>Edit this Waifu</p>
-          </button>
+          <a href="/admin/waifu/edit?id={selectedWaifu}">
+            <button class="w-full bg-amber-100">
+              <PencilSquare class="h-6 w-6" />
+              <p>Edit this Waifu</p>
+            </button>
+          </a>
 
           {#if currentWaifuId !== currentWaifu.id}
             <button
