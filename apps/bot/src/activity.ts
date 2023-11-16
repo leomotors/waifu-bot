@@ -83,7 +83,6 @@ export class ActivityManager {
     const activity =
       this.activities[Math.floor(Math.random() * this.activities.length)]!;
 
-    // @ts-expect-error it should not error as we have typeguard checked but it is
     this.client.user.setActivity({
       name: activity.name,
       type: activity.type,
