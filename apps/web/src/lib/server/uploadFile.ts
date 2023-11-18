@@ -29,7 +29,10 @@ export async function uploadFile(file: File, fileKey: string) {
   });
 
   if (!response.ok) {
-    throw error(500, `Unable to upload file ${filePath} (${response.status})`);
+    const err = await response.text();
+    const errorMessage = `Failed to upload file ${filePath} (${response.status}): ${err}`;
+    console.error(errorMessage);
+    throw error(500, errorMessage);
   }
 
   const { path } = await response.json();

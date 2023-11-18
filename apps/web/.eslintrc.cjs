@@ -25,6 +25,10 @@ module.exports = {
       parserOptions: {
         parser: "@typescript-eslint/parser",
       },
+      rules: {
+        // Svelte skill issue parsing SCSS + Tailwind
+        "svelte/valid-compile": "off",
+      },
     },
   ],
 };

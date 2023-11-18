@@ -106,6 +106,11 @@
         statusText={currentWaifu.footerText}
         fields={[
           {
+            title: "SHORT NAME",
+            primaryField: currentWaifu.shortNameJa,
+            secondaryField: currentWaifu.shortNameEn,
+          },
+          {
             title: "SOURCE",
             primaryField: currentWaifu.sourceJa,
             secondaryField: currentWaifu.sourceEn,

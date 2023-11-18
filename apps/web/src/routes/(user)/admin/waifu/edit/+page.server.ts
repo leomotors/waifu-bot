@@ -1,6 +1,6 @@
 import { prisma } from "@waifu-bot/database";
 
-import { type ServerLoad, error } from "@sveltejs/kit";
+import { type ServerLoad, error, redirect } from "@sveltejs/kit";
 
 import { uploadFile } from "$lib/server/uploadFile";
 
@@ -45,6 +45,9 @@ export const load = (async ({ url }) => {
 const baseSchema = z.object({
   nameJa: z.string().min(1),
   nameEn: z.string().default(""),
+  shortNameJa: z.string().min(1),
+  shortNameEn: z.string().default(""),
+  color: z.string().regex(/^#[0-9a-f]{6}$/i),
   sourceJa: z.string().min(1),
   sourceEn: z.string().default(""),
   footerText: z.string().default(""),
@@ -66,7 +69,7 @@ const editSchema = z.object({
 const schema = z.intersection(baseSchema, z.union([createSchema, editSchema]));
 
 export const actions = {
-  default: async ({ request }) => {
+  default: async ({ request, locals }) => {
     const formData = await request.formData();
 
     const formEntries = Object.fromEntries(formData.entries());
@@ -77,29 +80,64 @@ export const actions = {
       throw error(422, `zod error: ${result.error}`);
     }
 
+    const filePrefix = result.data.shortNameEn || result.data.shortNameJa;
+
     const [imageUrl, bannerUrl] = await Promise.all([
-      result.data.imageFile && uploadFile(result.data.imageFile, "image"),
-      result.data.bannerFile && uploadFile(result.data.bannerFile, "banner"),
+      result.data.imageFile?.size ?? 0 > 0
+        ? uploadFile(result.data.imageFile!, filePrefix + "-image")
+        : undefined,
+      result.data.bannerFile?.size ?? 0 > 0
+        ? uploadFile(result.data.bannerFile!, filePrefix + "-banner")
+        : undefined,
     ]);
 
-    await prisma.waifu.upsert({
-      where: {
-        id: Number(result.data.id) ?? NaN,
-      },
-      create: {
-        ...result.data,
-        imageUrl: imageUrl!,
-        bannerUrl: bannerUrl!,
-      },
-      update: {
-        ...result.data,
-        imageUrl,
-        bannerUrl,
-      },
-    });
+    if (result.data.id && !isNaN(+result.data.id)) {
+      await prisma.waifu.update({
+        where: {
+          id: +result.data.id,
+        },
+        data: {
+          nameJa: result.data.nameJa,
+          nameEn: result.data.nameEn,
+          shortNameJa: result.data.shortNameJa,
+          shortNameEn: result.data.shortNameEn,
+          color: result.data.color,
+          sourceJa: result.data.sourceJa,
+          sourceEn: result.data.sourceEn,
+          footerText: result.data.footerText,
+          note: result.data.note,
+          imageUrl,
+          bannerUrl,
+          createdBy: {
+            connect: {
+              id: locals.user!.userId,
+            },
+          },
+        },
+      });
+    } else {
+      await prisma.waifu.create({
+        data: {
+          nameJa: result.data.nameJa,
+          nameEn: result.data.nameEn,
+          shortNameJa: result.data.shortNameJa,
+          shortNameEn: result.data.shortNameEn,
+          color: result.data.color,
+          sourceJa: result.data.sourceJa,
+          sourceEn: result.data.sourceEn,
+          footerText: result.data.footerText,
+          note: result.data.note,
+          imageUrl: imageUrl!,
+          bannerUrl: bannerUrl!,
+          createdBy: {
+            connect: {
+              id: locals.user!.userId,
+            },
+          },
+        },
+      });
+    }
 
-    return {
-      ok: "hello",
-    };
+    throw redirect(303, "/admin/waifu");
   },
 } satisfies Actions;

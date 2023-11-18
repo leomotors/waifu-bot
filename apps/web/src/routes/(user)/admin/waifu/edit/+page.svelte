@@ -8,9 +8,11 @@
 
   $: bannerUrl = waifu?.bannerUrl || "";
   $: imageUrl = waifu?.imageUrl || "";
-  $: color = waifu?.color || "";
+  $: color = waifu?.color || "#000000";
   $: nameJa = waifu?.nameJa || "";
   $: nameEn = waifu?.nameEn || "";
+  $: shortNameJa = waifu?.shortNameJa || "";
+  $: shortNameEn = waifu?.shortNameEn || "";
   $: footerText = waifu?.footerText || "";
   $: sourceJa = waifu?.sourceJa || "";
   $: sourceEn = waifu?.sourceEn || "";
@@ -81,6 +83,45 @@
           value={nameEn}
           on:change={(e) => (nameEn = e.currentTarget.value)}
         />
+      </div>
+
+      <div>
+        <label for="shortNameJa">Short Name (日本語)</label>
+        <input
+          type="text"
+          id="shortNameJa"
+          name="shortNameJa"
+          value={shortNameJa}
+          on:change={(e) => (shortNameJa = e.currentTarget.value)}
+          required
+        />
+      </div>
+      <div>
+        <label for="shortNameEn">Short Name (English)</label>
+        <input
+          type="text"
+          id="shortNameEn"
+          name="shortNameEn"
+          value={shortNameEn}
+          on:change={(e) => (shortNameEn = e.currentTarget.value)}
+        />
+      </div>
+
+      <div>
+        <label for="color">Color</label>
+
+        <div class="flex items-center gap-2">
+          <input
+            type="color"
+            id="color"
+            name="color"
+            value={color}
+            on:change={(e) => (color = e.currentTarget.value)}
+            required
+            class="h-12 flex-1"
+          />
+          <span>{color}</span>
+        </div>
       </div>
 
       <div>
@@ -175,6 +216,11 @@
         nameSecondary={nameEn}
         statusText={footerText}
         fields={[
+          {
+            title: "SHORT NAME",
+            primaryField: shortNameJa,
+            secondaryField: shortNameEn,
+          },
           {
             title: "SOURCE",
             primaryField: sourceJa || "",
