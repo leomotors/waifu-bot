@@ -157,6 +157,8 @@
             <button
               class="bg-pink-100 disabled:bg-slate-100"
               disabled={data.user.role !== "SUPERADMIN"}
+              on:click={() =>
+                goto(`/admin/waifu/confirm?action=simp&id=${currentWaifu.id}`)}
             >
               <HeartFill class="h-6 w-6" />
               <p>SIMP this Waifu</p>
@@ -165,6 +167,10 @@
             <button
               class="bg-pink-100 disabled:bg-slate-100"
               disabled={data.user.role !== "SUPERADMIN"}
+              on:click={() =>
+                goto(
+                  `/admin/waifu/confirm?action=resync&id=${currentWaifu.id}`,
+                )}
             >
               <ArrowRepeat class="h-6 w-6" />
               <p>Resync to Discord</p>
