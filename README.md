@@ -8,7 +8,7 @@ See waifu we currently simp and the history at https://waifu.leomotors.me
 
 Tech stack used, starting in version 6
 
-Coming soon
+Picture coming soon
 
 ## ✨ Features
 
@@ -32,6 +32,7 @@ Coming soon
 - PostgreSQL Database and Public Server (VM) for Website
 - Tenor API Key
 - [Golden Frame Server](https://github.com/Leomotors/golden-frame) deployed somewhere
+- [File Upload Server](https://github.com/Leomotors/file-upload-server) deployed somewhere
 - Azure Cognitive Services for TTS
 
 ### Steps

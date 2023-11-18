@@ -1,5 +1,5 @@
 // * CONSTANTS
-// * Data such as App Version, Waifu Specific Information and common consts
+// * Data such as App Version and other "constants"
 // * will be in this package
 
 export const AppVersion = "6.0.888";

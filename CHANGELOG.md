@@ -2,6 +2,13 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [6.0.888] - 2023-11-18
+
+- feat: new sveltekit website for admin management (and soon for user to use)
+- feat: dynamic presence activity (no more static json)
+- feat: dynamic waifu, can now change one without needing to release new version
+- more: idk see changelog
+
 ## [5.2.821] - 2023-10-25
 
 - fix: play-dl wrong version
