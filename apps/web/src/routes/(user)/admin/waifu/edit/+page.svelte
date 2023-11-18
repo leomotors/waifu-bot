@@ -6,15 +6,15 @@
   export let data: PageData;
   $: ({ id, create, waifu } = data);
 
-  $: bannerUrl = waifu?.bannerUrl;
-  $: imageUrl = waifu?.imageUrl;
-  $: color = waifu?.color;
-  $: nameJa = waifu?.nameJa;
-  $: nameEn = waifu?.nameEn;
-  $: footerText = waifu?.footerText;
-  $: sourceJa = waifu?.sourceJa;
-  $: sourceEn = waifu?.sourceEn;
-  $: note = waifu?.note;
+  $: bannerUrl = waifu?.bannerUrl || "";
+  $: imageUrl = waifu?.imageUrl || "";
+  $: color = waifu?.color || "";
+  $: nameJa = waifu?.nameJa || "";
+  $: nameEn = waifu?.nameEn || "";
+  $: footerText = waifu?.footerText || "";
+  $: sourceJa = waifu?.sourceJa || "";
+  $: sourceEn = waifu?.sourceEn || "";
+  $: note = waifu?.note || "";
 
   let imageFile: FileList;
   let bannerFile: FileList;
@@ -46,11 +46,18 @@
 
 <main>
   <div class="flex justify-evenly">
-    <form id="waifu-form">
+    <form id="waifu-form" method="POST" enctype="multipart/form-data">
       {#if !create}
         <div>
           <label for="id">ID</label>
-          <input type="text" id="id" name="id" readonly value={id} disabled />
+          <input
+            type="text"
+            id="id"
+            name="id"
+            readonly
+            value={id}
+            class="bg-gray-200"
+          />
         </div>
       {/if}
 
@@ -60,13 +67,20 @@
           type="text"
           id="nameJa"
           name="nameJa"
-          bind:value={nameJa}
+          value={nameJa}
+          on:change={(e) => (nameJa = e.currentTarget.value)}
           required
         />
       </div>
       <div>
         <label for="nameEn">Name (English)</label>
-        <input type="text" id="nameEn" name="nameEn" bind:value={nameEn} />
+        <input
+          type="text"
+          id="nameEn"
+          name="nameEn"
+          value={nameEn}
+          on:change={(e) => (nameEn = e.currentTarget.value)}
+        />
       </div>
 
       <div>
@@ -75,7 +89,8 @@
           type="text"
           id="sourceJa"
           name="sourceJa"
-          bind:value={sourceJa}
+          value={sourceJa}
+          on:change={(e) => (sourceJa = e.currentTarget.value)}
           required
         />
       </div>
@@ -85,7 +100,8 @@
           type="text"
           id="sourceEn"
           name="sourceEn"
-          bind:value={sourceEn}
+          value={sourceEn}
+          on:change={(e) => (sourceEn = e.currentTarget.value)}
         />
       </div>
 
@@ -95,35 +111,42 @@
           type="text"
           id="footerText"
           name="footerText"
-          bind:value={footerText}
+          value={footerText}
+          on:change={(e) => (footerText = e.currentTarget.value)}
         />
       </div>
       <div>
         <label for="note">Note</label>
-        <input type="text" id="note" name="note" bind:value={note} />
+        <input
+          type="text"
+          id="note"
+          name="note"
+          value={note}
+          on:change={(e) => (note = e.currentTarget.value)}
+        />
       </div>
 
       <div>
-        <label for="imageUrl">Profile Image</label>
+        <label for="imageFile">Profile Image</label>
         <input
           type="file"
-          id="imageUrl"
-          name="imageUrl"
+          id="imageFile"
+          name="imageFile"
           accept="image/jpeg,image/png,image/webp"
           bind:files={imageFile}
-          required
+          required={create}
         />
         <p>Image must be 1:1 (I don't check, you do it yourself)</p>
       </div>
       <div>
-        <label for="bannerUrl">Banner Image</label>
+        <label for="bannerFile">Banner Image</label>
         <input
           type="file"
-          id="bannerUrl"
-          name="bannerUrl"
+          id="bannerFile"
+          name="bannerFile"
           accept="image/jpeg,image/png,image/webp"
           bind:files={bannerFile}
-          required
+          required={create}
         />
         <p>Image must be ∈ [16:9, 25.5:9] (Again, check it yourself)</p>
       </div>
@@ -133,7 +156,11 @@
           type="submit"
           class="focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
         >
-          Save
+          {#if create}
+            Create Waifu
+          {:else}
+            Save Data
+          {/if}
         </button>
       </div>
     </form>
@@ -179,7 +206,7 @@
     }
 
     & > input {
-      @apply w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none disabled:bg-gray-200;
+      @apply w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none;
     }
 
     & > p {
