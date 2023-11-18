@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  SUPERADMIN
+}
+
+model User {
+  id        String @id
+  name      String
+  avatarUrl String @map("avatar_url")
+
+  role    UserRole @default(USER)
+  tickets Ticket[]
+
+  createdWaifus  Waifu[] @relation(name: "WaifuCreate")
+  simpingWaifu   Waifu?  @relation(fields: [simpingWaifuId], references: [id])
+  simpingWaifuId Int?    @map("simping_waifu_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("user")
+}
+
+model Ticket {
+  ticketId String @id @default(cuid()) @map("ticket_id")
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String @map("user_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("ticket")
+}
+
+model Waifu {
+  id   Int    @id @default(autoincrement())
+  note String @default("")
+
+  nameEn      String @map("name_en")
+  nameJa      String @map("name_ja")
+  shortNameEn String @map("short_name_en")
+  shortNameJa String @map("short_name_ja")
+  footerText  String @map("footer_text")
+  imageUrl    String @map("image_url")
+  bannerUrl   String @map("banner_url")
+  color       String
+  sourceEn    String @map("source_en")
+  sourceJa    String @map("source_ja")
+
+  createdBy       User   @relation(fields: [createdByUserId], references: [id], name: "WaifuCreate")
+  createdByUserId String @map("created_by_user_id")
+  simpedBy        User[]
+
+  simpIntervals SimpInterval[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  configurations Configuration[]
+
+  @@map("waifu")
+}
+
+model SimpInterval {
+  id Int @id @default(autoincrement())
+
+  waifu   Waifu @relation(fields: [waifuId], references: [id])
+  waifuId Int   @map("waifu_id")
+
+  begin DateTime
+  end   DateTime
+  days  Int
+
+  versionBegin String? @map("version_begin")
+  versionEnd   String? @map("version_end")
+
+  @@map("simp_interval")
+}
+
+enum ActivityType {
+  Playing
+  Streaming
+  Listening
+  Watching
+  Competing
+}
+
+model Activity {
+  id Int @unique @default(autoincrement())
+
+  name String
+  url  String?
+  type ActivityType
+
+  enabled Boolean @default(true)
+
+  @@map("activity")
+}
+
+model Configuration {
+  id Int @unique @default(0)
+
+  currentWaifu   Waifu    @relation(fields: [currentWaifuId], references: [id])
+  currentWaifuId Int      @map("current_waifu_id")
+  simpingSince   DateTime @map("simping_since")
+
+  @@map("configuration")
+}

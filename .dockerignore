@@ -2,8 +2,8 @@
 .github
 .vscode
 .git
-.DS_Store
-__MACOSX
+**/.DS_Store
+**/__MACOSX
 
 # Unrelated folders/files at root
 images

@@ -1,38 +1,18 @@
 # Waifu Bot
 
-Waifu Bot is the bot that is serving _our_ server
+Waifu Bot is a multipurpose discord bot that is serving _our_ server
 
-Current Waifu we SIMP: <ruby>宵崎奏<rt>Yoisaki Kanade</rt></ruby>
-
-Nominated and image selected by @Qwenty228
-
-![](./images/kanade-me-when.webp)
-
-![](./images/kanade-meme.webp)
-
-**Current Version**: 5.2  
-**Been SIMPing since**: 5.2.820
+See waifu we currently simp and the history at https://waifu.leomotors.me
 
 ## 📚 Tech Stack
 
+Tech stack used, starting in version 6
+
 Coming soon
-
-<details>
-<summary>Old tech stack</summary>
-
-My 2023 reaction: เลอะเทอะ
-
-The most ~~over-engineered~~ advanced Discord Bot
-
-![](./images/cringe-tech-stack.png)
-
-</details>
 
 ## ✨ Features
 
 - Mainly: Music from YouTube with power of [@cocoa-discord/music-module](https://github.com/Leomotors/cocoa-discord/blob/main/packages/music-module/README.md#%EF%B8%8F-highlight) << some gallery there
-
-- Personal Playlist for each user with website for them to edit
 
 - Miscellanous ~~useless~~ features
 
@@ -40,16 +20,19 @@ The most ~~over-engineered~~ advanced Discord Bot
 
 - Using Cocoa Discord and 💛JavaScript💛
 
+- ศูนย์รวมจิตใจของคนในเซิร์ฟเวอร์
+
 ## 🐇 How to run the bot
 
 ### Prerequisites
 
 - Your Discord Bot (of course)
-- nodejs 18 (1s<sup>1</sup>)
+- nodejs 20 ([Ar] 3d<sup>6</sup> 4s<sup>2</sup>)
 - pnpm 8
-- ~~PostgreSQL Database and Public Server (VM) for Website~~ not yet but might be soon
+- PostgreSQL Database and Public Server (VM) for Website
 - Tenor API Key
 - [Golden Frame Server](https://github.com/Leomotors/golden-frame) deployed somewhere
+- Azure Cognitive Services for TTS
 
 ### Steps
 
@@ -62,36 +45,51 @@ The most ~~over-engineered~~ advanced Discord Bot
 
 `docker pull ghcr.io/leomotors/waifu-bot:latest`
 
-## Waifu Bot Archive
+## Technical details on history
 
 The Discord Bot (apps/bot) was built on top of [CarelessDev/harunon.js](https://github.com/CarelessDev/harunon.js)
 
-Below are list of previous waifu we chose to SIMP
+Shikimori-san and later are in this repository.
 
-- **Version 4.1.700 - 5.1.810** Kaede [v5.1.810](https://github.com/Leomotors/waifu-bot/tree/5.1.810) &lt;September 2023 - October 2023 (2ヶ月)&gt;
+Yukinoshita Haruno were in [CarelessDev/harunon.js](https://github.com/CarelessDev/harunon.js)
+for new JavaScript version and [CarelessDev/Harunon](https://github.com/CarelessDev/Harunon)
+for old Python version.
 
-- **Version 4.0.640 - 4.0.662** Bocchi [v4.0.662-bocchi](https://github.com/Leomotors/waifu-bot/tree/v4.0.662-bocchi) &lt;November 2022 - September 2023 (11ヶ月)&gt;
+The first ever Waifu Bot, or said first useful discord bot in our server is at [CarelessDev/SIMP-Bot](https://github.com/CarelessDev/SIMP-Bot)
 
-- **Version 4.0.605 - 4.0.629** Vergil [v4.0.629](https://github.com/leomotors/waifu-bot/tree/v4.0.629) &lt;August 2022 - ~~No Nut~~ November 2022 (4ヶ月)&gt;
+### Version History
 
-- **Version 3.2 - 4.0.600** 式守さん (Shikimori-san) [v3.2](https://github.com/leomotors/waifu-bot/tree/v3.2) | [v4.0.600](https://github.com/leomotors/waifu-bot/tree/v4.0.600) &lt;July 2022 - August 2022 (2ヶ月)&gt;
+**Version 1** -> Python Skittle-chan Era  
+**Version 2** -> Python Harunon Era  
+**Version 3** -> JavaScript  
+**Version 4** -> Full Stack Waifu with Turborepo
 
-- **Version 3.0 - 3.1** 雪ノ下陽乃 (Yukinoshita Haruno) [Repository](https://github.com/CarelessDev/harunon.js) &lt;Mar 2022 - July 2022 (5ヶ月)&gt;
+_Version 4.1_ -> Removed full stack website (because it is broken and lazy to fix)
 
-- **Version 2.0** 雪ノ下陽乃 (Yukinoshita Haruno) But it was in Python [Repository](https://github.com/CarelessDev/Harunon) &lt;November 2021 - Mar 2022 (5ヶ月)&gt;
+**Version 5** -> Few breaking changes
 
-- **Version 1.0** Skittle Chan [Repository](https://github.com/CarelessDev/SIMP-Bot) &lt;Sep 2021 - November 2021 (3ヶ月)&gt;
+- Cocoa Discord ~~Utils~~ v3
+- Major changes to some feature, see changelog
 
-## Technical Version History
+**Version 6** -> Brought back website with better stack
 
-Version 1 -> Python Skittle-chan Era  
-Version 2 -> Python Harunon Era  
-Version 3 -> JavaScript  
-Version 4 -> Full Stack Waifu with Turborepo
+- No more graphql with separate NestJS backend to reduce overhead. It is too overkill and suck.
+- also Next.js
+  > Why I don't use Next.js: https://www.youtube.com/watch?v=jM0njSK-bPg&t=338s
+- still use Prisma, cannot move away to other 😭
 
-> _Version 4.1 -> Removed full stack website_
+### Previous Tech Stack
 
-Version 5 -> Only Bot (will add website in Version 6)
+<details>
+<summary>Version 4 Tech Stack</summary>
+
+My 2023 reaction: เลอะเทอะ
+
+The most ~~over-engineered~~ advanced Discord Bot
+
+![](./images/cringe-tech-stack.png)
+
+</details>
 
 ## Utility Library behind this Bot!
 
@@ -104,5 +102,7 @@ Version 5 -> Only Bot (will add website in Version 6)
 ## 🖼️ Gallery
 
 (at version 4.0.605)
+
+yes, I'm lazy to update these photo
 
 ![](https://pbs.twimg.com/media/FaSN9feUYAAU3yj?format=jpg&name=large)

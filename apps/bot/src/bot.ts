@@ -1,13 +1,6 @@
-import { AppVersion, ShortNameJA } from "@waifu-bot/constants";
+import { AppVersion } from "@waifu-bot/constants";
 
-import {
-  ActivityGroupLoader,
-  ActivityManager,
-  Cocoa,
-  ConsoleManager,
-  LogStatus,
-  checkLogin,
-} from "cocoa-discord";
+import { Cocoa, ConsoleManager, LogStatus, checkLogin } from "cocoa-discord";
 import { MessageCenter } from "cocoa-discord/message";
 import { SlashCenter } from "cocoa-discord/slash";
 import { CocoaIntent } from "cocoa-discord/template";
@@ -22,10 +15,14 @@ import { Main as MainMessage } from "./commands/main.message.js";
 import { Main as MainSlash } from "./commands/main.slash.js";
 import { Music } from "./commands/music.slash.js";
 import { Shitpost } from "./commands/shitpost.slash.js";
-import { style } from "./commands/styles.js";
+import { WebService } from "./commands/web.slash.js";
+import { ActivityManager } from "./data/activity.js";
+import { ensureData, getStyle, getWaifuData } from "./data/waifu.js";
 import { GuildIds, environment } from "./environment.js";
 
-const client = new Client(
+await ensureData();
+
+export const client = new Client(
   new CocoaIntent()
     .useGuild()
     .useGuildMessage()
@@ -36,7 +33,7 @@ const client = new Client(
 
 const mcenter = new MessageCenter(client, { prefixes: ["simp"] });
 mcenter.addModules(new MainMessage());
-mcenter.useHelpCommand(style);
+mcenter.useHelpCommand(getStyle());
 mcenter.on("error", async (name, err, msg) => {
   Cocoa.log(
     `Command "${name}" error at ${msg.guild?.name} : ${err}`,
@@ -46,13 +43,15 @@ mcenter.on("error", async (name, err, msg) => {
 });
 
 const scenter = new SlashCenter(client, GuildIds);
+export const musicClient = new Music(client);
 scenter.addModules(
   new MainSlash(),
   new Shitpost(),
-  new Music(client),
-  new TTS(environment.SPEECH_KEY, environment.SPEECH_REGION, style),
+  musicClient,
+  new TTS(environment.SPEECH_KEY, environment.SPEECH_REGION, getStyle()),
+  new WebService(),
 );
-scenter.useHelpCommand(style);
+scenter.useHelpCommand(getStyle());
 scenter.on("error", async (name, err, ctx) => {
   Cocoa.log(
     `Command "${name}" error at ${ctx.guild?.name} : ${err}`,
@@ -66,30 +65,24 @@ scenter.on("interaction", (name, ctx) => {
   );
 });
 
-const activityLoader = new ActivityGroupLoader("data/activities.json");
-const activityManager = new ActivityManager(
-  activityLoader,
-  client,
-  5 * 60 * 1000,
-);
+export const activityManager = new ActivityManager(client);
 
-client.on("ready", (cli) => {
+client.on("ready", async (cli) => {
   console.log(
     chalk.cyan(
-      `${ShortNameJA} Ready! Logged in as ${
+      `${getWaifuData().shortNameJa} Ready! Logged in as ${
         cli.user.tag
       } v${AppVersion}, took ${process.uptime().toFixed(3)} seconds`,
     ),
   );
   scenter.syncCommands();
-  activityManager.nextActivity();
 });
 
-new ConsoleManager().useLogout(client).useReload(activityLoader);
+new ConsoleManager().useLogout(client);
 
 checkLogin(client, environment.DISCORD_TOKEN);
 
-process.on("SIGINT", () => {
+process.on("SIGINT", async () => {
   console.log(chalk.yellow("Terminating Waifu Bot..."));
-  client.destroy();
+  await client.destroy();
 });

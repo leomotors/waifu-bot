@@ -5,7 +5,7 @@ import {
 
 import { Message } from "discord.js";
 
-import { style } from "./styles.js";
+import { getStyle } from "../data/waifu.js";
 
 export class Main extends MessageModuleClass {
   timePinged = 0;
@@ -31,7 +31,7 @@ export class Main extends MessageModuleClass {
   async ping(msg: Message) {
     this.timePinged++;
 
-    const emb = style
+    const emb = getStyle()
       .use(msg)
       .setTitle("Pong! Tai")
       .addFields({

@@ -1,0 +1,21 @@
+{
+  "name": "@waifu-bot/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "lint": "eslint src",
+    "format": "eslint src --fix"
+  },
+  "devDependencies": {
+    "@waifu-bot/config": "workspace:0.0.0",
+    "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "zod": "3.22.4"
+  }
+}

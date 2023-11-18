@@ -8,7 +8,6 @@
     "skipLibCheck": true,
     "moduleResolution": "NodeNext",
     "experimentalDecorators": true,
-    "incremental": true,
     "noUncheckedIndexedAccess": true,
     "importHelpers": true
   }

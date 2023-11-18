@@ -2,7 +2,7 @@
 # ? Builder: Build dependencies like @discordjs/opus and everything
 # ? -------------------------
 
-FROM node:18-alpine as builder
+FROM node:20-alpine as builder
 
 WORKDIR /app
 
@@ -14,13 +14,16 @@ RUN corepack enable
 
 RUN pnpm i --frozen-lockfile
 
+ENV INTERNAL_SECRET tempmockvalue
+ENV JWT_SECRET tempmockvalue
+
 RUN pnpm build
 
 # ? -------------------------
 # ? Runner: Copy stuff from builder to save spaces from added apk packages
 # ? -------------------------
 
-FROM node:18-alpine as runner
+FROM node:20-alpine as runner
 
 WORKDIR /app
 

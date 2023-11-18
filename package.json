@@ -11,37 +11,38 @@
   "scripts": {
     "clean": "rm -rf node_modules {apps,packages}/**/*/{.turbo,build,dist,node_modules,.next}",
     "build": "FORCE_COLOR=2 turbo run build",
-    "dev": "FORCE_COLOR=2 turbo run dev",
+    "dev": "dotenv -v FORCE_COLOR=2 turbo run dev",
     "lint": "FORCE_COLOR=2 turbo run lint",
     "format": "FORCE_COLOR=2 turbo run format",
-    "start": "FORCE_COLOR=2 turbo run start",
-    "start:bot": "FORCE_COLOR=2 turbo run --filter=\"@waifu-bot/bot\" start",
+    "start": "dotenv -v FORCE_COLOR=2 turbo run start",
+    "start:bot": "dotenv -v FORCE_COLOR=2 turbo run --filter=\"@waifu-bot/bot\" start",
     "test": "FORCE_COLOR=2 turbo run test"
   },
   "devDependencies": {
     "@leomotors/config": "0.11.0",
-    "@prisma/client": "5.4.2",
-    "@trivago/prettier-plugin-sort-imports": "4.2.0",
-    "@types/eslint": "8.44.4",
-    "@types/node": "18.18.5",
-    "@typescript-eslint/eslint-plugin": "6.8.0",
-    "@typescript-eslint/parser": "6.8.0",
-    "eslint": "8.51.0",
-    "eslint-config-next": "13.5.5",
+    "@trivago/prettier-plugin-sort-imports": "4.3.0",
+    "@types/eslint": "8.44.7",
+    "@types/node": "20.9.1",
+    "@typescript-eslint/eslint-plugin": "6.11.0",
+    "@typescript-eslint/parser": "6.11.0",
+    "eslint": "8.54.0",
+    "eslint-config-next": "14.0.3",
     "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-import": "2.28.1",
-    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-import": "2.29.0",
+    "eslint-plugin-jsx-a11y": "6.8.0",
     "eslint-plugin-prettier": "5.0.1",
     "eslint-plugin-sort-destructure-keys": "1.5.0",
-    "prettier": "3.0.3",
-    "prettier-plugin-tailwindcss": "0.5.6",
-    "prisma": "5.4.2",
-    "turbo": "1.10.15",
+    "prettier": "3.1.0",
+    "prettier-plugin-tailwindcss": "0.5.7",
     "typescript": "5.2.2"
   },
   "engines": {
-    "node": "^18.12.0",
-    "pnpm": "^8"
+    "node": "^20.8",
+    "pnpm": "^8.9"
   },
-  "packageManager": "pnpm@8.9.2"
+  "packageManager": "pnpm@8.10.5",
+  "dependencies": {
+    "dotenv-cli": "7.3.0",
+    "turbo": "1.10.16"
+  }
 }
