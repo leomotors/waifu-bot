@@ -2,6 +2,8 @@ import { prisma } from "@waifu-bot/database";
 
 import { type ServerLoad, error } from "@sveltejs/kit";
 
+import { uploadFile } from "$lib/server/uploadFile";
+
 import { z } from "zod";
 
 import type { Actions } from "./$types";
@@ -75,7 +77,26 @@ export const actions = {
       throw error(422, `zod error: ${result.error}`);
     }
 
-    console.log({ data: result.data });
+    const [imageUrl, bannerUrl] = await Promise.all([
+      result.data.imageFile && uploadFile(result.data.imageFile, "image"),
+      result.data.bannerFile && uploadFile(result.data.bannerFile, "banner"),
+    ]);
+
+    await prisma.waifu.upsert({
+      where: {
+        id: Number(result.data.id) ?? NaN,
+      },
+      create: {
+        ...result.data,
+        imageUrl: imageUrl!,
+        bannerUrl: bannerUrl!,
+      },
+      update: {
+        ...result.data,
+        imageUrl,
+        bannerUrl,
+      },
+    });
 
     return {
       ok: "hello",

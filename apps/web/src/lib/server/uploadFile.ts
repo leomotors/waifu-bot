@@ -1,5 +1,6 @@
 import { error } from "@sveltejs/kit";
 
+import { dev } from "$app/environment";
 import { env } from "$env/dynamic/private";
 
 export async function uploadFile(file: File, fileKey: string) {
@@ -11,7 +12,9 @@ export async function uploadFile(file: File, fileKey: string) {
     throw error(500, "File upload server not configured");
   }
 
-  const filePath = `waifu/${fileKey}-${file.lastModified}`;
+  const filePath = `${dev ? "dev-waifu" : "waifu"}/${fileKey}-${
+    file.lastModified
+  }`;
 
   const formData = new FormData();
   formData.append("file", file);
