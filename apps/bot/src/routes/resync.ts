@@ -1,11 +1,11 @@
 import { authEnv } from "@waifu-bot/auth";
 
-import { Cocoa, LogStatus } from "cocoa-discord";
+import { Cocoa, EmbedStyle, LogStatus } from "cocoa-discord";
 
 import { FastifyReply, FastifyRequest } from "fastify";
 
-import { client } from "../bot.js";
-import { fetchData } from "../data/waifu.js";
+import { client, musicClient } from "../bot.js";
+import { fetchData, getShortNameEn, getStyle } from "../data/waifu.js";
 
 export async function resync(request: FastifyRequest, reply: FastifyReply) {
   const authorization = request.headers.authorization;
@@ -15,9 +15,8 @@ export async function resync(request: FastifyRequest, reply: FastifyReply) {
     return "Unauthorized";
   }
 
-  const waifu = await fetchData();
-  // @ts-expect-error Abusing private member
-  Music.style = getStyle();
+  const waifu = await fetchData(true);
+  (musicClient as unknown as { style: EmbedStyle }).style = getStyle();
 
   if (!client.isReady()) {
     reply.status(400);
@@ -30,12 +29,14 @@ export async function resync(request: FastifyRequest, reply: FastifyReply) {
 
   await client.user.setAvatar(Buffer.from(arrayBuffer));
 
-  if (client.user.username !== waifu.nameEn) {
+  const newName = getShortNameEn();
+
+  if (client.user.username !== newName) {
     Cocoa.log(
-      `Changing username to ${waifu.nameEn} (from ${client.user.username})`,
+      `Changing username to ${newName} (from ${client.user.username})`,
       LogStatus.Warning,
     );
-    await client.user.setUsername(waifu.nameEn);
+    await client.user.setUsername(newName);
   }
 
   return "Success";

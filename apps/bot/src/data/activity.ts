@@ -20,7 +20,7 @@ export class ActivityManager {
   currentActivity: ActivityOptions | null = null;
   interval: NodeJS.Timeout | null = null;
 
-  async load() {
+  async load(webhook = false) {
     const res = await fetch(localWebUrl + "/api/activity", {
       headers: {
         Authorization: authEnv.INTERNAL_SECRET,
@@ -41,7 +41,8 @@ export class ActivityManager {
     this.activities = obj;
 
     Cocoa.log(
-      `[ActivityManager] Successfully loaded ${this.activities.length} activities`,
+      `[ActivityManager] Successfully loaded ${this.activities.length} activities` +
+        (webhook ? " (Requested by Webhook)" : ""),
       LogStatus.Success,
     );
 

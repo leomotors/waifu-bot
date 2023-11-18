@@ -1,3 +1,5 @@
+import { authEnv } from "@waifu-bot/auth";
+import { botWebhookUrl } from "@waifu-bot/constants";
 import { ActivityType, prisma } from "@waifu-bot/database";
 
 import type { Actions, PageServerLoad } from "./$types";
@@ -103,5 +105,23 @@ export const actions = {
     return {
       message: `Successfully deleted activity #${id} (${deleted.name})`,
     };
+  },
+  sync: async () => {
+    const res = await fetch(botWebhookUrl + "/webhook/activity", {
+      method: "POST",
+      headers: {
+        Authorization: authEnv.INTERNAL_SECRET,
+      },
+    });
+
+    if (res.ok) {
+      return {
+        message: "Webhook request success",
+      };
+    } else {
+      return {
+        error: `Webhook failed: ${res.status} ${res.statusText}`,
+      };
+    }
   },
 } satisfies Actions;

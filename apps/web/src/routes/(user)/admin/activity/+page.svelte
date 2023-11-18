@@ -4,6 +4,8 @@
   import type { ActionData, PageData } from "./$types";
   import ActivityForm from "./ActivityForm.svelte";
 
+  import ArrowRepeat from "svelte-bootstrap-icons/lib/ArrowRepeat.svelte";
+
   export let data: PageData;
   export let form: ActionData;
 
@@ -24,6 +26,16 @@
   {#if form?.error}
     <p class="mt-8 text-xl text-red-500">{form.error}</p>
   {/if}
+
+  <form action="?/sync" method="POST" class="my-6">
+    <button
+      type="submit"
+      class="flex items-center gap-2 rounded-xl bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-400 [&:hover>svg]:rotate-180"
+    >
+      <ArrowRepeat class="h-6 w-6 transition-transform duration-300" />
+      <p class="font-bold">Sync to Bot</p>
+    </button>
+  </form>
 
   <table class="mt-8 min-w-full divide-y divide-gray-200">
     <thead class="bg-gray-50">

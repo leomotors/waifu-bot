@@ -12,6 +12,6 @@ export async function activity(request: FastifyRequest, reply: FastifyReply) {
     return "Unauthorized";
   }
 
-  await activityManager.load();
+  await activityManager.load(true);
   return "Success";
 }

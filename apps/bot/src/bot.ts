@@ -43,10 +43,11 @@ mcenter.on("error", async (name, err, msg) => {
 });
 
 const scenter = new SlashCenter(client, GuildIds);
+export const musicClient = new Music(client);
 scenter.addModules(
   new MainSlash(),
   new Shitpost(),
-  new Music(client),
+  musicClient,
   new TTS(environment.SPEECH_KEY, environment.SPEECH_REGION, getStyle()),
   new WebService(),
 );

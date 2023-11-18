@@ -6,11 +6,12 @@ import Fastify from "fastify";
 import { activity } from "./routes/activity.js";
 import { resync } from "./routes/resync.js";
 
-const fastify = Fastify();
+const fastify = Fastify({
+  logger: true,
+});
 
-// Declare a route
+// Declare routes
 fastify.post("/webhook/activity", activity);
-
 fastify.post("/webhook/resync", resync);
 
 // Run the server!

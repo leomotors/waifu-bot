@@ -133,6 +133,9 @@ importers:
       '@waifu-bot/auth':
         specifier: workspace:0.0.0
         version: link:../../packages/auth
+      '@waifu-bot/constants':
+        specifier: workspace:0.0.0
+        version: link:../../packages/constants
       '@waifu-bot/database':
         specifier: workspace:0.0.0
         version: link:../../packages/database

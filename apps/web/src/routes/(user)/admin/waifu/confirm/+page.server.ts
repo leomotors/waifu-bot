@@ -1,3 +1,5 @@
+import { authEnv } from "@waifu-bot/auth";
+import { botWebhookUrl } from "@waifu-bot/constants";
 import { prisma } from "@waifu-bot/database";
 
 import { error, redirect } from "@sveltejs/kit";
@@ -72,7 +74,20 @@ export const actions = {
       await promoteWaifu(result.data.id);
     }
 
-    // TODO Fire webhook
+    // Fire webhook
+    const res = await fetch(botWebhookUrl + "/webhook/resync", {
+      method: "POST",
+      headers: {
+        Authorization: authEnv.INTERNAL_SECRET,
+      },
+    });
+
+    if (!res.ok) {
+      throw error(
+        500,
+        `Failed to fire webhook: ${res.status} ${res.statusText}`,
+      );
+    }
 
     throw redirect(303, "/admin/waifu");
   },

@@ -11,7 +11,7 @@ let waifuData:
   | Awaited<ReturnType<(typeof prisma)["waifu"]["findUniqueOrThrow"]>>
   | undefined;
 
-export async function fetchData() {
+export async function fetchData(webhook = false) {
   const response = await fetch(localWebUrl + "/api/waifu", {
     headers: {
       Authorization: authEnv.INTERNAL_SECRET,
@@ -34,7 +34,8 @@ export async function fetchData() {
 
   waifuData = await response.json();
   Cocoa.log(
-    `Successfully fetching Waifu Data for ${waifuData!.nameJa}`,
+    `Successfully fetching Waifu Data for ${waifuData!.nameJa}` +
+      (webhook ? " (Requested by Webhook)" : ""),
     LogStatus.Success,
   );
   return waifuData!;
@@ -73,4 +74,9 @@ export function getStyle() {
 export function getShortNameEn() {
   const data = getWaifuData();
   return data.shortNameEn || data.shortNameJa;
+}
+
+export function getLongNameEn() {
+  const data = getWaifuData();
+  return data.nameEn || data.nameJa;
 }

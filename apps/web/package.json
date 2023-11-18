@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@waifu-bot/auth": "workspace:0.0.0",
+    "@waifu-bot/constants": "workspace:0.0.0",
     "@waifu-bot/database": "workspace:0.0.0"
   }
 }
