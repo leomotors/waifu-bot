@@ -10,7 +10,7 @@ export class ActivityManager {
     if (client.isReady()) {
       this.load();
     } else {
-      (client as Client<false>).once("ready", () => {
+      client.once("ready", () => {
         this.load();
       });
     }

@@ -1,25 +1,17 @@
-import { authEnv } from "@waifu-bot/auth";
 import { botWebhookPort } from "@waifu-bot/constants";
 
 import chalk from "chalk";
 import Fastify from "fastify";
 
-import { activityManager } from "./bot.js";
+import { activity } from "./routes/activity.js";
+import { resync } from "./routes/resync.js";
 
 const fastify = Fastify();
 
 // Declare a route
-fastify.post("/webhook/activity", async (request, reply) => {
-  const authorization = request.headers.authorization;
+fastify.post("/webhook/activity", activity);
 
-  if (authorization !== authEnv.INTERNAL_SECRET) {
-    reply.status(401);
-    return "Unauthorized";
-  }
-
-  await activityManager.load();
-  return "Success";
-});
+fastify.post("/webhook/resync", resync);
 
 // Run the server!
 try {

@@ -1,5 +1,6 @@
 import { AppVersion } from "@waifu-bot/constants";
 
+import { EmbedStyle } from "cocoa-discord";
 import { CocoaVersion } from "cocoa-discord/meta";
 import {
   Param,
@@ -12,10 +13,10 @@ import { Version as MusicVersion } from "@cocoa-discord/music-module";
 
 import { TextChannel } from "discord.js";
 
+import { getStyle, getWaifuData } from "../data/waifu.js";
 import { environment } from "../environment.js";
 
 import { HelixError, formatTime, makeHelix } from "./main.service.js";
-import { Waifu, style } from "./styles.js";
 
 export class Main extends SlashModuleClass {
   timePinged = 0;
@@ -24,7 +25,7 @@ export class Main extends SlashModuleClass {
     super("Main", "Main Slash Cog");
   }
 
-  readonly fbiStyle = style.extends({ author: "bot" });
+  readonly fbiStyle = (style: EmbedStyle) => style.extends({ author: "bot" });
 
   @SlashCommand("Get Selected User Information")
   async fbi(
@@ -33,7 +34,7 @@ export class Main extends SlashModuleClass {
   ) {
     const gmember = ctx.guild?.members.cache.get(user.id);
 
-    const emb = this.fbiStyle
+    const emb = this.fbiStyle(getStyle())
       .use(ctx)
       .setTitle(user.tag)
       .setDescription(`ID: ${user.id}${user.bot ? "\n🤖Beep Boop🤖" : ""}`)
@@ -210,7 +211,7 @@ export class Main extends SlashModuleClass {
   ) {
     this.timePinged++;
 
-    const emb = style
+    const emb = getStyle()
       .use(ctx)
       .setTitle("Pong! Tai")
       .addFields({
@@ -249,9 +250,9 @@ export class Main extends SlashModuleClass {
     ctx: SlashCommand.Context,
     @Param.Ephemeral ephemeral: Param.Ephemeral.Type,
   ) {
-    const emb = style
+    const emb = getStyle()
       .use(ctx)
-      .setTitle(`${Waifu.name}'s Status`)
+      .setTitle(`${getWaifuData().shortNameEn}'s Status`)
       .setDescription(
         `Waifu Bot Version: ${AppVersion}\nCocoa Utils Version: ${CocoaVersion}\n@cocoa-discord/music-module Version: ${MusicVersion}`,
       )

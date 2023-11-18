@@ -1,3 +1,4 @@
+import { createEmbedStyle } from "cocoa-discord";
 import { Param, SlashCommand } from "cocoa-discord/slash/class";
 
 import {
@@ -8,13 +9,11 @@ import {
 
 import { ChannelType, Client, VoiceChannel } from "discord.js";
 
-import { style } from "./styles.js";
-
 // * Note: Extending Class Cog is not what you should do unless you know
 // * underlying mechanics
 export class Music extends MusicBase {
   constructor(client: Client) {
-    super(client, style, "Related to playing music");
+    super(client, createEmbedStyle({}), "Related to playing music");
   }
 
   @SlashCommand("yes, rick roll")
