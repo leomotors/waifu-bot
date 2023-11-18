@@ -37,4 +37,5 @@ RUN pnpm --version
 
 ENV NODE_ENV production
 ENV ENVIRONMENT PRODUCTION
+EXPOSE 7100
 CMD ["pnpm", "start"]

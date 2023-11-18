@@ -55,6 +55,7 @@ jobs:
         id: version
         with:
           msg: ${{ github.ref_name }}
+          separator: "."
 
       - name: Build Docker image
         uses: docker/build-push-action@v4
