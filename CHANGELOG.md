@@ -2,6 +2,10 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [6.0.888.1] - 2023-11-28
+
+- fix: sharp bug
+
 ## [6.0.888] - 2023-11-18
 
 - feat: new sveltekit website for admin management (and soon for user to use)

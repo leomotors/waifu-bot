@@ -24,6 +24,7 @@
     "@urami/core": "1.2.2",
     "@urami/svelte": "1.1.1",
     "@urami/types": "1.0.1",
+    "@waifu-bot/constants": "workspace:0.0.0",
     "autoprefixer": "10.4.16",
     "discord-api-types": "0.37.63",
     "eslint": "8.54.0",
@@ -34,7 +35,6 @@
     "prettier-plugin-svelte": "3.1.0",
     "prettier-plugin-tailwindcss": "0.5.7",
     "sass": "1.69.5",
-    "sharp": "0.32.6",
     "svelte": "4.2.5",
     "svelte-bootstrap-icons": "3.1.0",
     "svelte-check": "3.6.0",
@@ -42,13 +42,13 @@
     "tailwindcss": "3.3.5",
     "tslib": "2.6.2",
     "typescript": "5.2.2",
-    "vite": "4.5.0",
+    "vite": "5.0.0",
     "vitest": "0.34.6",
     "zod": "3.22.4"
   },
   "dependencies": {
     "@waifu-bot/auth": "workspace:0.0.0",
-    "@waifu-bot/constants": "workspace:0.0.0",
-    "@waifu-bot/database": "workspace:0.0.0"
+    "@waifu-bot/database": "workspace:0.0.0",
+    "sharp": "0.32.6"
   }
 }

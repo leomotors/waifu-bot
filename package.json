@@ -9,13 +9,14 @@
     "packages/*"
   ],
   "scripts": {
-    "clean": "rm -rf node_modules {apps,packages}/**/*/{.turbo,build,dist,node_modules,.next}",
+    "clean": "rm -rf node_modules {apps,packages}/*/{.turbo,build,dist,node_modules,.svelte-kit}",
     "build": "FORCE_COLOR=2 turbo run build",
     "dev": "dotenv -v FORCE_COLOR=2 turbo run dev",
     "lint": "FORCE_COLOR=2 turbo run lint",
     "format": "FORCE_COLOR=2 turbo run format",
     "start": "dotenv -v FORCE_COLOR=2 turbo run start",
-    "start:bot": "dotenv -v FORCE_COLOR=2 turbo run --filter=\"@waifu-bot/bot\" start",
+    "start:bot": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/bot\" start",
+    "start:web": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/web\" start",
     "test": "FORCE_COLOR=2 turbo run test"
   },
   "devDependencies": {
