@@ -22,7 +22,7 @@ import { GuildIds, environment } from "./environment.js";
 
 await ensureData();
 
-const client = new Client(
+export const client = new Client(
   new CocoaIntent()
     .useGuild()
     .useGuildMessage()

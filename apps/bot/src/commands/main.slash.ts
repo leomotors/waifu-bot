@@ -13,7 +13,7 @@ import { Version as MusicVersion } from "@cocoa-discord/music-module";
 
 import { TextChannel } from "discord.js";
 
-import { getStyle, getWaifuData } from "../data/waifu.js";
+import { getShortNameEn, getStyle } from "../data/waifu.js";
 import { environment } from "../environment.js";
 
 import { HelixError, formatTime, makeHelix } from "./main.service.js";
@@ -252,7 +252,7 @@ export class Main extends SlashModuleClass {
   ) {
     const emb = getStyle()
       .use(ctx)
-      .setTitle(`${getWaifuData().shortNameEn}'s Status`)
+      .setTitle(`${getShortNameEn()}'s Status`)
       .setDescription(
         `Waifu Bot Version: ${AppVersion}\nCocoa Utils Version: ${CocoaVersion}\n@cocoa-discord/music-module Version: ${MusicVersion}`,
       )

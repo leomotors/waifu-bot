@@ -69,3 +69,8 @@ export function getStyle() {
     },
   });
 }
+
+export function getShortNameEn() {
+  const data = getWaifuData();
+  return data.shortNameEn || data.shortNameJa;
+}
