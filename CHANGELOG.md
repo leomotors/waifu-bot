@@ -2,7 +2,7 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
-## [6.0.888.1] - 2023-11-28
+## [6.0.888.1] - 2023-11-19
 
 - fix: sharp bug
 

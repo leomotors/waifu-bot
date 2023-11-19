@@ -5,6 +5,8 @@
 
   import Phone from "$lib/components/Phone.svelte";
   import PastWaifu from "./PastWaifu.svelte";
+  import { AppVersion } from "@waifu-bot/constants";
+  import { dev } from "$app/environment";
 
   export let data: PageData;
   $: ({ currentWaifu, allWaifu } = data);
@@ -87,6 +89,11 @@
         >
           Leomotors
         </a>
+
+        <br class="lg:hidden" />
+        <span class="hidden lg:inline">・</span>
+
+        <span>Version {AppVersion} {dev ? "(local dev)" : ""}</span>
       </p>
     </main>
 
