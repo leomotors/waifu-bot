@@ -10,8 +10,15 @@ services:
       POSTGRES_USER: username
       POSTGRES_PASSWORD: password
       POSTGRES_DB: waifubot
+    networks:
+      - postgres
     ports:
       - 5432:5432
 
 volumes:
   database-storage:
+
+networks:
+  postgres:
+    name: postgres
+    driver: bridge

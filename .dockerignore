@@ -28,3 +28,4 @@ Dockerfile
 **/.turbo
 **/.next
 **/.env
+test_docker

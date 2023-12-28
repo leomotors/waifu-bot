@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [6.0.889] - 2023-12-28
+
+- chore: bump deps
+- feat: docker image for arm64
+
 ## [6.0.888.1] - 2023-11-19
 
 - fix: sharp bug

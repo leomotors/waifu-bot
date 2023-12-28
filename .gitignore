@@ -39,4 +39,6 @@ vite.config.ts.timestamp-*
 # Build
 dist
 
+# Secrets
 .env
+test_docker
