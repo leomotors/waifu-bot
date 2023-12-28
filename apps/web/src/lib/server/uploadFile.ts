@@ -9,7 +9,7 @@ export async function uploadFile(file: File, fileKey: string) {
 
   // TODO Validate this at server startup
   if (!fileUploadServer || !fileUploadKey) {
-    throw error(500, "File upload server not configured");
+    error(500, "File upload server not configured");
   }
 
   const filePath = `${dev ? "dev-waifu" : "waifu"}/${fileKey}-${
@@ -32,13 +32,13 @@ export async function uploadFile(file: File, fileKey: string) {
     const err = await response.text();
     const errorMessage = `Failed to upload file ${filePath} (${response.status}): ${err}`;
     console.error(errorMessage);
-    throw error(500, errorMessage);
+    error(500, errorMessage);
   }
 
   const { path } = await response.json();
 
   if (!path || typeof path !== "string") {
-    throw error(500, `Unable to upload file ${filePath} (invalid response)`);
+    error(500, `Unable to upload file ${filePath} (invalid response)`);
   }
 
   return fileUploadServer + path;

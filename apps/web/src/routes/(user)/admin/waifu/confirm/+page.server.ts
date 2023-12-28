@@ -20,14 +20,14 @@ export const load = (async ({ parent, url }) => {
   const { user } = await parent();
 
   if (user.role !== "SUPERADMIN") {
-    throw error(403, "Forbidden");
+    error(403, "Forbidden");
   }
 
   const searchParams = new URLSearchParams(url.search);
   const result = schema.safeParse(Object.fromEntries(searchParams));
 
   if (!result.success) {
-    throw error(400, `Bad Request: ${result.error.message}`);
+    error(400, `Bad Request: ${result.error.message}`);
   }
 
   const { action, id } = result.data;
@@ -35,7 +35,7 @@ export const load = (async ({ parent, url }) => {
   const config = await getConfig();
 
   if (action === "resync" && config.currentWaifuId !== +id) {
-    throw error(400, "You seem to try to resync wrong waifu");
+    error(400, "You seem to try to resync wrong waifu");
   }
 
   const waifu = await prisma.waifu.findUnique({
@@ -48,7 +48,7 @@ export const load = (async ({ parent, url }) => {
   });
 
   if (!waifu) {
-    throw error(404, "Not Found");
+    error(404, "Not Found");
   }
 
   return {
@@ -67,7 +67,7 @@ export const actions = {
     const result = schema.safeParse({ id, action });
 
     if (!result.success) {
-      throw error(422, `zod error: ${result.error.message}`);
+      error(422, `zod error: ${result.error.message}`);
     }
 
     if (result.data.action === "simp") {
@@ -83,12 +83,9 @@ export const actions = {
     });
 
     if (!res.ok) {
-      throw error(
-        500,
-        `Failed to fire webhook: ${res.status} ${res.statusText}`,
-      );
+      error(500, `Failed to fire webhook: ${res.status} ${res.statusText}`);
     }
 
-    throw redirect(303, "/admin/waifu");
+    redirect(303, "/admin/waifu");
   },
 } satisfies Actions;

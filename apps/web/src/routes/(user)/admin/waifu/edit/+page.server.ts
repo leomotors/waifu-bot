@@ -18,7 +18,7 @@ async function loadWaifuData(id: number) {
   });
 
   if (!waifu) {
-    throw error(404, "Not Found: Waifu not found");
+    error(404, "Not Found: Waifu not found");
   }
 
   return waifu;
@@ -30,7 +30,7 @@ export const load = (async ({ url }) => {
   const id = searchParams.get("id");
 
   if (!id || (isNaN(+id) && id !== "create")) {
-    throw error(400, "Bad Request: Invalid id");
+    error(400, "Bad Request: Invalid id");
   }
 
   const waifu = await loadWaifuData(+id);
@@ -77,7 +77,7 @@ export const actions = {
     const result = schema.safeParse(formEntries);
 
     if (!result.success) {
-      throw error(422, `zod error: ${result.error}`);
+      error(422, `zod error: ${result.error}`);
     }
 
     const filePrefix = result.data.shortNameEn || result.data.shortNameJa;
@@ -138,6 +138,6 @@ export const actions = {
       });
     }
 
-    throw redirect(303, "/admin/waifu");
+    redirect(303, "/admin/waifu");
   },
 } satisfies Actions;

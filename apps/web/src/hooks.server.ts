@@ -14,7 +14,7 @@ function parseJwt(accessToken: string, secret: string) {
     const user = jwt.verify(accessToken, secret);
     return user;
   } catch (error) {
-    throw redirect(
+    redirect(
       302,
       `/login?error=${"notauthenticated" satisfies AuthFailReason}`,
     );
@@ -32,13 +32,13 @@ export const handle = (async ({ event, resolve }) => {
   }
 
   if (!env.JWT_SECRET) {
-    throw error(500, "Server missing environment variables");
+    error(500, "Server missing environment variables");
   }
 
   const accessToken = event.cookies.get(cookieTokenKey);
 
   if (!accessToken) {
-    throw redirect(
+    redirect(
       302,
       `/login?error=${"notauthenticated" satisfies AuthFailReason}`,
     );
@@ -48,7 +48,7 @@ export const handle = (async ({ event, resolve }) => {
 
   const parsed = jwtSchema.safeParse(user);
   if (!parsed.success) {
-    throw redirect(
+    redirect(
       302,
       `/login?error=${"invalidjwtcontent" satisfies AuthFailReason}`,
     );
@@ -59,7 +59,7 @@ export const handle = (async ({ event, resolve }) => {
   // Check Admin
   if (event.url.pathname.startsWith("/admin")) {
     if (!isAdmin(parsed.data.role)) {
-      throw error(403, "Forbidden");
+      error(403, "Forbidden");
     }
   }
 

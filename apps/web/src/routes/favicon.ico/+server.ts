@@ -11,7 +11,7 @@ export const GET = (async ({ setHeaders, fetch }) => {
   const res = await fetch(imageUrl);
 
   if (!res.body) {
-    throw error(500, "Failed to fetch image");
+    error(500, "Failed to fetch image");
   }
 
   setHeaders({

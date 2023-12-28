@@ -9,7 +9,7 @@ export const GET = (async ({ request }) => {
   const authorization = request.headers.get("Authorization");
 
   if (authorization !== authEnv.INTERNAL_SECRET) {
-    throw error(401, "Unauthorized");
+    error(401, "Unauthorized");
   }
 
   const config = await getConfig();

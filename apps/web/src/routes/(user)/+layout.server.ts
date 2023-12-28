@@ -10,7 +10,7 @@ export const load = (async ({ locals }) => {
   if (!locals.user) {
     console.log("(user)/+layout.server.ts#load : HOW");
 
-    throw redirect(302, `/login?error=${"how" satisfies AuthFailReason}`);
+    redirect(302, `/login?error=${"how" satisfies AuthFailReason}`);
   }
 
   const user = await prisma.user.findUniqueOrThrow({

@@ -12,14 +12,14 @@ import type { Actions } from "./$types";
 export const actions = {
   default: async ({ cookies, request }) => {
     if (!env.JWT_SECRET) {
-      throw error(500, "Server missing environment variables");
+      error(500, "Server missing environment variables");
     }
 
     const formData = await request.formData();
     const ticketId = formData.get("ticket");
 
     if (!ticketId || typeof ticketId !== "string") {
-      throw error(400, "Missing ticket");
+      error(400, "Missing ticket");
     }
 
     const ticket = await prisma.ticket.findUnique({
@@ -32,7 +32,7 @@ export const actions = {
     });
 
     if (!ticket) {
-      throw error(400, "Invalid ticket");
+      error(400, "Invalid ticket");
     }
 
     await prisma.ticket.deleteMany({
@@ -44,7 +44,7 @@ export const actions = {
     // Now > createdAt + 10 Min (Expired)
     // Now - 10 Min > createdAt
     if (new Date(Date.now() - 1000 * 60 * 10) > ticket.createdAt) {
-      throw error(400, "Ticket expired");
+      error(400, "Ticket expired");
     }
 
     const accessToken = jwt.sign(
@@ -64,6 +64,6 @@ export const actions = {
       maxAge: 60 * 60 * 24 * 14,
     });
 
-    throw redirect(302, "/home");
+    redirect(302, "/home");
   },
 } satisfies Actions;
