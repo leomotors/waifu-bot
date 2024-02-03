@@ -16,12 +16,12 @@
     "seed": "tsx prisma/seed/index.ts"
   },
   "devDependencies": {
-    "@waifu-bot/config": "workspace:0.0.0",
-    "prisma": "5.8.0",
+    "@waifu-bot/config": "workspace:*",
+    "prisma": "5.9.1",
     "tsx": "4.7.0",
     "typescript": "5.3.3"
   },
   "dependencies": {
-    "@prisma/client": "5.8.0"
+    "@prisma/client": "5.9.1"
   }
 }

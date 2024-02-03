@@ -12,7 +12,7 @@
     "format": "eslint src --fix"
   },
   "devDependencies": {
-    "@waifu-bot/config": "workspace:0.0.0",
+    "@waifu-bot/config": "workspace:*",
     "typescript": "5.3.3"
   },
   "dependencies": {
