@@ -23,9 +23,11 @@ Dockerfile
 
 # Ignored Folder (For quality of local build)
 **/dist
+**/build
 **/out
 **/node_modules
 **/.turbo
+**/.svelte-kit
 **/.next
 **/.env
 test_docker

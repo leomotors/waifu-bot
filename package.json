@@ -15,7 +15,7 @@
   "packageManager": "pnpm@8.15.1",
   "scripts": {
     "clean": "rm -rf node_modules {apps,packages}/*/{.turbo,build,dist,node_modules,.svelte-kit}",
-    "build": "FORCE_COLOR=2 turbo run build",
+    "build": "dotenv -v FORCE_COLOR=2 turbo run build",
     "dev": "dotenv -v FORCE_COLOR=2 turbo run dev",
     "lint": "FORCE_COLOR=2 turbo run lint",
     "format": "FORCE_COLOR=2 turbo run format",

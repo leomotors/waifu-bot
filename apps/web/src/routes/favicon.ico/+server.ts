@@ -8,7 +8,11 @@ export const GET = (async ({ setHeaders, fetch }) => {
   const imageUrl = `/api/image?url=${encodeURIComponent(
     waifu.imageUrl,
   )}&w=64&q=100`;
-  const res = await fetch(imageUrl);
+  const res = await fetch(imageUrl, {
+    headers: {
+      Referer: "https://waifu.leomotors.me",
+    },
+  });
 
   if (!res.body) {
     error(500, "Failed to fetch image");
