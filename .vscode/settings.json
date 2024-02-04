@@ -2,5 +2,7 @@
   "scss.lint.unknownAtRules": "ignore",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
-  }
+  },
+  // Fix ESLint & Prettier Conflict
+  "editor.formatOnSave": false
 }

@@ -16,7 +16,8 @@
   <h1 class="text-3xl font-bold">Activity Management</h1>
 
   <p class="text-slate-800">
-    You can edit one row at once. Saving one will discard all others
+    You can edit one row at once. Saving one will discard all others, URL only
+    works for STREAMING activity.
   </p>
 
   {#if form?.message}

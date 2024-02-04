@@ -58,11 +58,9 @@ export class Main extends SlashModuleClass {
   async goldenframe(
     ctx: SlashCommand.Context,
     @Param.Choices<Param.String.Type>(async () => {
-      const res = (await fetch(environment.GOLDEN_FRAME_ENDPOINT, {
-        headers: {
-          Authorization: environment.GOLDEN_FRAME_APIKEY,
-        },
-      }).then((r) => r.json())) as Array<{ name: string; description: string }>;
+      const res = (await fetch(environment.GOLDEN_FRAME_ENDPOINT).then((r) =>
+        r.json(),
+      )) as Array<{ name: string; description: string }>;
 
       return res.map((e) => ({ name: e.name, value: e.name }));
     })
@@ -124,9 +122,6 @@ export class Main extends SlashModuleClass {
 
     const buildRes = await fetch(environment.GOLDEN_FRAME_ENDPOINT, {
       method: "POST",
-      headers: {
-        Authorization: environment.GOLDEN_FRAME_APIKEY,
-      },
       body: formData,
     });
 

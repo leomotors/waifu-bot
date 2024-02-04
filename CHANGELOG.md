@@ -2,6 +2,12 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [6.0.900] - 2023-02-04
+
+- chore: bump deps
+- refactor: no longer require api key for golden frame (See new Golden Frame Web)
+- fix: bad activity set payload (causing empty activities)
+
 ## [6.0.889] - 2023-12-28
 
 - chore: bump deps

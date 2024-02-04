@@ -87,7 +87,7 @@ export class ActivityManager {
     this.client.user.setActivity({
       name: activity.name,
       type: activity.type,
-      url: activity.url ?? undefined,
+      url: activity.url || undefined,
     });
   }
 }
