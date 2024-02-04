@@ -1,4 +1,4 @@
-import { error, type NumericRange, type RequestHandler } from "@sveltejs/kit";
+import { type NumericRange, type RequestHandler, error } from "@sveltejs/kit";
 
 import { createRequestHandler } from "@urami/core";
 
