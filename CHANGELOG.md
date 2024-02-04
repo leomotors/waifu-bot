@@ -2,6 +2,10 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [6.1.901] - 2023-02-04
+
+- fix: correct sveltekit handler for urami
+
 ## [6.1.900] - 2023-02-04
 
 - chore: bump deps
