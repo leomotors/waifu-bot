@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [6.1.902] - 2023-02-29
+
+- chore: bump deps
+- fix: change voice encoder to make it works in docker
+
 ## [6.1.901] - 2023-02-04
 
 - fix: correct sveltekit handler for urami

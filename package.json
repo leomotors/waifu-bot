@@ -12,7 +12,7 @@
     "node": "^20.8",
     "pnpm": "^8.9"
   },
-  "packageManager": "pnpm@8.15.1",
+  "packageManager": "pnpm@8.15.4",
   "scripts": {
     "clean": "rm -rf node_modules {apps,packages}/*/{.turbo,build,dist,node_modules,.svelte-kit}",
     "build": "dotenv -v FORCE_COLOR=2 turbo run build",
@@ -27,11 +27,11 @@
   "devDependencies": {
     "@leomotors/config": "0.11.0",
     "@trivago/prettier-plugin-sort-imports": "4.3.0",
-    "@types/eslint": "8.56.2",
-    "@types/node": "20.11.16",
-    "@typescript-eslint/eslint-plugin": "6.20.0",
-    "@typescript-eslint/parser": "6.20.0",
-    "eslint": "8.56.0",
+    "@types/eslint": "8.56.5",
+    "@types/node": "20.11.24",
+    "@typescript-eslint/eslint-plugin": "7.1.0",
+    "@typescript-eslint/parser": "7.1.0",
+    "eslint": "8.57.0",
     "eslint-config-next": "14.1.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "2.29.1",
@@ -44,6 +44,6 @@
   },
   "dependencies": {
     "dotenv-cli": "7.3.0",
-    "turbo": "1.12.2"
+    "turbo": "1.12.4"
   }
 }
