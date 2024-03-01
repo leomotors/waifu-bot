@@ -2,16 +2,20 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
-## [6.1.902] - 2023-02-29
+## [6.2.911] - 2024-03-02
+
+- feat: `@cocoa-discord/music-module` v2
+
+## [6.1.902] - 2024-02-29
 
 - chore: bump deps
 - fix: change voice encoder to make it works in docker
 
-## [6.1.901] - 2023-02-04
+## [6.1.901] - 2024-02-04
 
 - fix: correct sveltekit handler for urami
 
-## [6.1.900] - 2023-02-04
+## [6.1.900] - 2024-02-04
 
 - chore: bump deps
 - refactor: no longer require api key for golden frame (See new Golden Frame Web)

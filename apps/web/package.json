@@ -26,7 +26,7 @@
     "@urami/svelte": "1.1.1",
     "@urami/types": "1.0.1",
     "@waifu-bot/constants": "workspace:*",
-    "autoprefixer": "10.4.17",
+    "autoprefixer": "10.4.18",
     "discord-api-types": "0.37.71",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
