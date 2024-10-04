@@ -2,6 +2,11 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [6.3.930] - 2024-10-05
+
+- chore: bump deps
+- fix: bump to `@cocoa-discord/music-module` v3 which fixes youtube
+
 ## [6.2.911] - 2024-03-02
 
 - feat: `@cocoa-discord/music-module` v2

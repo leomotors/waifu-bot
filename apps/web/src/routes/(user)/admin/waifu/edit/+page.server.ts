@@ -83,10 +83,10 @@ export const actions = {
     const filePrefix = result.data.shortNameEn || result.data.shortNameJa;
 
     const [imageUrl, bannerUrl] = await Promise.all([
-      result.data.imageFile?.size ?? 0 > 0
+      (result.data.imageFile?.size ?? 0 > 0)
         ? uploadFile(result.data.imageFile!, filePrefix + "-image")
         : undefined,
-      result.data.bannerFile?.size ?? 0 > 0
+      (result.data.bannerFile?.size ?? 0 > 0)
         ? uploadFile(result.data.bannerFile!, filePrefix + "-banner")
         : undefined,
     ]);

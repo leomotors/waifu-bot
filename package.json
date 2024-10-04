@@ -15,11 +15,11 @@
   "packageManager": "pnpm@9.12.0",
   "scripts": {
     "clean": "rm -rf node_modules {apps,packages}/*/{.turbo,build,dist,node_modules,.svelte-kit}",
-    "build": "dotenv -v FORCE_COLOR=2 turbo run build",
-    "dev": "dotenv -v FORCE_COLOR=2 turbo run dev",
+    "build": "dotenv -v FORCE_COLOR=2 -- turbo run build --env-mode=loose",
+    "dev": "dotenv -v FORCE_COLOR=2 -- turbo run dev --env-mode=loose",
     "lint": "FORCE_COLOR=2 turbo run lint",
     "format": "FORCE_COLOR=2 turbo run format",
-    "start": "dotenv -v FORCE_COLOR=2 turbo run start",
+    "start": "dotenv -v FORCE_COLOR=2 -- turbo run start",
     "start:bot": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/bot\" start",
     "start:web": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/web\" start",
     "test": "FORCE_COLOR=2 turbo run test"
@@ -29,21 +29,21 @@
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/eslint": "^8.56.12",
     "@types/node": "^20.16.10",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-sort-destructure-keys": "^1.6.0",
+    "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.5.14",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "typescript": "^5.6.2"
   },
   "dependencies": {
     "dotenv-cli": "^7.4.2",
-    "turbo": "^1.13.4"
+    "turbo": "^2.1.3"
   },
   "pnpm": {
     "overrides": {

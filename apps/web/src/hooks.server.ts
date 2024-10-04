@@ -13,6 +13,7 @@ function parseJwt(accessToken: string, secret: string) {
   try {
     const user = jwt.verify(accessToken, secret);
     return user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     redirect(
       302,

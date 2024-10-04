@@ -17,4 +17,5 @@ export default defineConfig({
   ssr: {
     external: externalPackages,
   },
+  clearScreen: false,
 });

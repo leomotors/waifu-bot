@@ -2,7 +2,7 @@
 # ? Builder: Build dependencies like @discordjs/opus and everything
 # ? -------------------------
 
-FROM node:20-alpine as builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -14,8 +14,8 @@ RUN corepack enable
 
 RUN pnpm i --frozen-lockfile
 
-ENV INTERNAL_SECRET tempmockvalue
-ENV JWT_SECRET tempmockvalue
+ENV INTERNAL_SECRET=tempmockvalue
+ENV JWT_SECRET=tempmockvalue
 
 RUN pnpm build
 
@@ -23,7 +23,7 @@ RUN pnpm build
 # ? Runner: Copy stuff from builder to save spaces from added apk packages
 # ? -------------------------
 
-FROM node:20-alpine as runner
+FROM node:20-alpine AS runner
 
 WORKDIR /app
 
@@ -35,7 +35,7 @@ COPY --chown=node:node --from=builder /app .
 # Install pnpm by invoking corepack
 RUN pnpm --version
 
-ENV NODE_ENV production
-ENV ENVIRONMENT PRODUCTION
+ENV NODE_ENV=production
+ENV ENVIRONMENT=PRODUCTION
 EXPOSE 7100
 CMD ["pnpm", "start"]
