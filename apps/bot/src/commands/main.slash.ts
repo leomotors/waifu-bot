@@ -140,6 +140,11 @@ export class Main extends SlashModuleClass {
     ctx: SlashCommand.Context,
     @Param.String("Text to Helix-ify") text: Param.String.Type,
   ) {
+    if (!ctx.channel?.isSendable()) {
+      await ctx.reply('"bruh, this doesn\'t work here" — GitHub Copilot');
+      return;
+    }
+
     const res = makeHelix(text);
 
     if (res === HelixError.ILLEGAL_CHAR) {
@@ -152,7 +157,7 @@ export class Main extends SlashModuleClass {
 
     await ctx.reply("Helix時間で～す！");
     for (const helix of res) {
-      await ctx.channel?.send(helix);
+      await ctx.channel.send(helix);
     }
   }
 
@@ -162,12 +167,13 @@ export class Main extends SlashModuleClass {
     @Param.String("Message for this bot to Speak")
     message: Param.String.Type,
   ) {
-    if (ctx.channel) {
+    if (ctx.channel?.isSendable()) {
       await ctx.reply({ content: "サプライズ成功!", ephemeral: true });
       await ctx.channel.send(`${message}`);
     } else {
       await ctx.reply({
-        content: "サプライズ成功な～い!",
+        content:
+          "サプライズ成功な～い! メッセージが送るできないから! (´；ω；｀)",
         ephemeral: true,
       });
     }

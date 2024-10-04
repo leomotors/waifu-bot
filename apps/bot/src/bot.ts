@@ -57,7 +57,15 @@ scenter.on("error", async (name, err, ctx) => {
     `Command "${name}" error at ${ctx.guild?.name} : ${err}`,
     LogStatus.Error,
   );
-  await ctx.channel?.send(`あら？, Error Occured: ${err}`.slice(0, 2000));
+
+  if (ctx.channel?.isSendable()) {
+    await ctx.channel?.send(`あら？, Error Occured: ${err}`.slice(0, 2000));
+  } else {
+    Cocoa.log(
+      `Unsendable Channel: ${ctx.channelId} at ${ctx.guild?.name}`,
+      LogStatus.Error,
+    );
+  }
 });
 scenter.on("interaction", (name, ctx) => {
   Cocoa.log(

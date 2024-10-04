@@ -21,7 +21,7 @@ export class Main extends MessageModuleClass {
     const who =
       strp.split(" ").filter((s) => s.length > 0)[0] ?? `<@${msg.author.id}>`;
 
-    await msg.channel.send(`${who} is gay!`);
+    if (msg.channel.isSendable()) await msg.channel.send(`${who} is gay!`);
   }
 
   @MessageCommand({

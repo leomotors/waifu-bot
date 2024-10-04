@@ -13,9 +13,9 @@
   },
   "devDependencies": {
     "@waifu-bot/config": "workspace:*",
-    "typescript": "5.3.3"
+    "typescript": "^5.6.2"
   },
   "dependencies": {
-    "zod": "3.22.4"
+    "zod": "^3.23.8"
   }
 }
