@@ -75,5 +75,5 @@ jobs:
     steps:
       - name: Send Webhook
         run: |
-          curl -X POST ${{ secrets.WEBHOOK_ENDPOINT }}/webhook/renovate \
+          curl -f -X POST ${{ secrets.WEBHOOK_ENDPOINT }}/webhook/renovate \
             -H "Authorization: ${{ secrets.WEBHOOK_PASSWORD }}"
