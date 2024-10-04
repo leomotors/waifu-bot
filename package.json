@@ -19,7 +19,7 @@
     "dev": "dotenv -v FORCE_COLOR=2 -- turbo run dev --env-mode=loose",
     "lint": "FORCE_COLOR=2 turbo run lint",
     "format": "FORCE_COLOR=2 turbo run format",
-    "start": "dotenv -v FORCE_COLOR=2 -- turbo run start",
+    "start": "dotenv -v FORCE_COLOR=2 -- turbo run start --env-mode=loose",
     "start:bot": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/bot\" start",
     "start:web": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/web\" start",
     "test": "FORCE_COLOR=2 turbo run test"
