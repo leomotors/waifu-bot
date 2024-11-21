@@ -13,6 +13,6 @@
   },
   "devDependencies": {
     "@waifu-bot/config": "workspace:*",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   }
 }

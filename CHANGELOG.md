@@ -2,6 +2,10 @@
 
 Previous changelog before 4.0.605 may not be noted here.
 
+## [6.3.932] - 2024-11-21
+
+- chore: bump deps
+
 ## [6.3.931] - 2024-10-05
 
 - fix: turborepo env issues
