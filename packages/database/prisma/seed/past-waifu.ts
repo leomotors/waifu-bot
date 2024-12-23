@@ -31,7 +31,7 @@ await prisma.waifu.create({
 
     imageUrl: "https://senddude.leomotors.me/files/waifu/skittle-chan.webp",
     bannerUrl:
-      "https://github.com/Leomotors/salim-bot/raw/576d41610172b37844ddb5a214e622cdf8511ae4/images/long-live-hm-queen.jpg",
+      "https://github.com/leomotors/salim-bot/raw/576d41610172b37844ddb5a214e622cdf8511ae4/images/long-live-hm-queen.jpg",
 
     sourceEn: "Beluga",
     sourceJa: "Beluga",
@@ -85,7 +85,7 @@ await prisma.waifu.create({
     sourceEn: "Shikimori's Not Just a Cutie",
     sourceJa: "可愛いだけじゃない式守さん",
 
-    note: "First Waifu Bot of this repository (Leomotors/waifu-bot)",
+    note: "First Waifu Bot of this repository (leomotors/waifu-bot)",
 
     createdByUserId: discordUserId,
     simpIntervals: {
@@ -127,7 +127,7 @@ await prisma.waifu.create({
 
     imageUrl: "https://senddude.leomotors.me/files/waifu/bocchi-pfp.jpg",
     bannerUrl:
-      "https://github.com/Leomotors/waifu-bot/raw/7a135edfd88a67556c8d41d5b46bb035e8edc218/images/bocchitakusan.png",
+      "https://github.com/leomotors/waifu-bot/raw/7a135edfd88a67556c8d41d5b46bb035e8edc218/images/bocchitakusan.png",
 
     sourceEn: "BOCCHI THE ROCK!",
     sourceJa: "ぼっち・ざ・ろっく！",

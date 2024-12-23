@@ -1,13 +1,17 @@
 <script lang="ts">
+  import ArrowRepeat from "svelte-bootstrap-icons/lib/ArrowRepeat.svelte";
+
   import { ActivityType } from "discord-api-types/v10";
 
   import type { ActionData, PageData } from "./$types";
   import ActivityForm from "./ActivityForm.svelte";
 
-  import ArrowRepeat from "svelte-bootstrap-icons/lib/ArrowRepeat.svelte";
+  interface Props {
+    data: PageData;
+    form: ActionData;
+  }
 
-  export let data: PageData;
-  export let form: ActionData;
+  let { data, form }: Props = $props();
 
   const addFormId = "activity-add";
 </script>

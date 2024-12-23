@@ -1,14 +1,16 @@
 <script lang="ts">
-  import { twMerge } from "tailwind-merge";
-  import type { PageData } from "./$types";
-  import { page } from "$app/stores";
+  import ArrowRepeat from "svelte-bootstrap-icons/lib/ArrowRepeat.svelte";
+  import HeartFill from "svelte-bootstrap-icons/lib/HeartFill.svelte";
+  import PencilSquare from "svelte-bootstrap-icons/lib/PencilSquare.svelte";
+  import PersonFillAdd from "svelte-bootstrap-icons/lib/PersonFillAdd.svelte";
+
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
   import Phone from "$lib/components/Phone.svelte";
 
-  import PersonFillAdd from "svelte-bootstrap-icons/lib/PersonFillAdd.svelte";
-  import PencilSquare from "svelte-bootstrap-icons/lib/PencilSquare.svelte";
-  import HeartFill from "svelte-bootstrap-icons/lib/HeartFill.svelte";
-  import ArrowRepeat from "svelte-bootstrap-icons/lib/ArrowRepeat.svelte";
+  import { twMerge } from "tailwind-merge";
+
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 

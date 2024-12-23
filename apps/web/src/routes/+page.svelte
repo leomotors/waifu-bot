@@ -1,15 +1,21 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
+  import { AppVersion } from "@waifu-bot/constants";
 
   import GitHub from "svelte-bootstrap-icons/lib/Github.svelte";
+  import { preventDefault } from "svelte/legacy";
 
-  import Phone from "$lib/components/Phone.svelte";
-  import PastWaifu from "./PastWaifu.svelte";
-  import { AppVersion } from "@waifu-bot/constants";
   import { dev } from "$app/environment";
+  import Phone from "$lib/components/Phone.svelte";
 
-  export let data: PageData;
-  $: ({ currentWaifu, allWaifu } = data);
+  import type { PageData } from "./$types";
+  import PastWaifu from "./PastWaifu.svelte";
+
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
+  let { currentWaifu, allWaifu } = $derived(data);
 </script>
 
 <div class="flex flex-col items-center">
@@ -40,7 +46,7 @@
 
       <div class="waifu-brand-buttons">
         <a
-          href="https://github.com/Leomotors/waifu-bot"
+          href="https://github.com/leomotors/waifu-bot"
           target="_blank"
           rel="noreferrer"
         >
@@ -52,11 +58,11 @@
 
         <a
           href="#past-waifu"
-          on:click|preventDefault={() => {
+          onclick={preventDefault(() => {
             // Smooth Scroll when JS is available
             const el = document.getElementById("past-waifu");
             el?.scrollIntoView({ behavior: "smooth" });
-          }}
+          })}
         >
           <button class="bg-rose-300 text-white hover:bg-rose-400">
             <img

@@ -1,3 +1,13 @@
+<script lang="ts">
+  import type { Snippet } from "svelte";
+
+  interface Props {
+    children: Snippet;
+  }
+
+  let { children }: Props = $props();
+</script>
+
 <div class="flex min-h-screen flex-col gap-8">
   <!-- Header -->
   <header class="py-4 shadow-lg shadow-slate-100">
@@ -20,5 +30,5 @@
     </div>
   </header>
 
-  <slot />
+  {@render children()}
 </div>

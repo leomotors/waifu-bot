@@ -12,7 +12,7 @@
     "node": "^22.11",
     "pnpm": "^9"
   },
-  "packageManager": "pnpm@9.14.2",
+  "packageManager": "pnpm@9.15.1",
   "scripts": {
     "clean": "rm -rf node_modules {apps,packages}/*/{.turbo,build,dist,node_modules,.svelte-kit}",
     "build": "dotenv -v FORCE_COLOR=2 -- turbo run build --env-mode=loose",
@@ -20,34 +20,35 @@
     "lint": "FORCE_COLOR=2 turbo run lint",
     "format": "FORCE_COLOR=2 turbo run format",
     "start": "dotenv -v FORCE_COLOR=2 -- turbo run start --env-mode=loose",
-    "start:bot": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/bot\" start",
-    "start:web": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/web\" start",
+    "start:bot": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/bot\" start --env-mode=loose",
+    "start:web": "dotenv -v FORCE_COLOR=2 -- turbo run --filter=\"@waifu-bot/web\" start --env-mode=loose",
     "test": "FORCE_COLOR=2 turbo run test"
   },
   "devDependencies": {
     "@leomotors/config": "^0.11.0",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/eslint": "^8.56.12",
-    "@types/node": "^22.9.1",
-    "@typescript-eslint/eslint-plugin": "^8.15.0",
-    "@typescript-eslint/parser": "^8.15.0",
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "dotenv-cli": "^7.4.3",
-    "turbo": "^2.3.1"
+    "dotenv-cli": "^8.0.0",
+    "turbo": "^2.3.3"
   },
   "pnpm": {
     "overrides": {
-      "discord-api-types": "^0.37.101"
+      "discord-api-types": "^0.37.114",
+      "@distube/ytdl-core": "4.15.6"
     }
   }
 }

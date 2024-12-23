@@ -12,11 +12,11 @@ Picture coming soon
 
 ## ✨ Features
 
-- Mainly: Music from YouTube with power of [@cocoa-discord/music-module](https://github.com/Leomotors/cocoa-discord/blob/main/packages/music-module/README.md#%EF%B8%8F-highlight) << some gallery there
+- Mainly: Music from YouTube with power of [@cocoa-discord/music-module](https://github.com/leomotors/cocoa-discord/blob/main/packages/music-module/README.md#%EF%B8%8F-highlight) << some gallery there
 
 - Miscellanous ~~useless~~ features
 
-- [Golden Frame](https://github.com/Leomotors/golden-frame)!
+- [Golden Frame](https://github.com/leomotors/golden-frame)!
 
 - Using Cocoa Discord and 💛JavaScript💛
 
@@ -31,8 +31,8 @@ Picture coming soon
 - pnpm 8
 - PostgreSQL Database and Public Server (VM) for Website
 - Tenor API Key
-- [Golden Frame Server](https://github.com/Leomotors/golden-frame) deployed somewhere
-- [File Upload Server](https://github.com/Leomotors/file-upload-server) deployed somewhere
+- [Golden Frame Server](https://github.com/leomotors/golden-frame) deployed somewhere
+- [File Upload Server](https://github.com/leomotors/file-upload-server) deployed somewhere
 - Azure Cognitive Services for TTS
 
 ### Steps
@@ -94,7 +94,7 @@ The most ~~over-engineered~~ advanced Discord Bot
 
 ## Utility Library behind this Bot!
 
-[Cocoa Discord](https://github.com/Leomotors/cocoa-discord) by @Leomotors
+[Cocoa Discord](https://github.com/leomotors/cocoa-discord) by @Leomotors
 
 ![](https://c.tenor.com/JjAZAfWSqQgAAAAC/gochiusa-cocoa.gif)
 

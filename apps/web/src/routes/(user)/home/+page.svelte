@@ -1,14 +1,17 @@
 <script lang="ts">
-  import Phone from "$lib/components/Phone.svelte";
-
-  import GearWideConnected from "svelte-bootstrap-icons/lib/GearWideConnected.svelte";
   import BoxArrowLeft from "svelte-bootstrap-icons/lib/BoxArrowLeft.svelte";
+  import GearWideConnected from "svelte-bootstrap-icons/lib/GearWideConnected.svelte";
 
   import { isAdmin } from "$lib/authUtils";
+  import Phone from "$lib/components/Phone.svelte";
 
   import type { PageData } from "./$types";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <div

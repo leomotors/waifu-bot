@@ -1,8 +1,9 @@
+<!-- @migration-task Error while migrating Svelte code: This migration would change the name of a slot making the component unusable -->
 <script lang="ts">
-  import Image from "$lib/components/Image.svelte";
-
-  import Reception4 from "svelte-bootstrap-icons/lib/Reception4.svelte";
   import BatteryFull from "svelte-bootstrap-icons/lib/BatteryFull.svelte";
+  import Reception4 from "svelte-bootstrap-icons/lib/Reception4.svelte";
+
+  import Image from "$lib/components/Image.svelte";
 
   import { twMerge } from "tailwind-merge";
 

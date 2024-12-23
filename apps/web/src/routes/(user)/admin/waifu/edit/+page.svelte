@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
-
   import Phone from "$lib/components/Phone.svelte";
+
+  import type { PageData } from "./$types";
 
   export let data: PageData;
   $: ({ id, create, waifu } = data);

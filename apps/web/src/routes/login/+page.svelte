@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
-  import { authFailReason, type AuthFailReason } from "$lib/login";
+  import { type AuthFailReason, authFailReason } from "$lib/login";
 
   $: {
     const ticket = $page.url.searchParams.get("ticket");

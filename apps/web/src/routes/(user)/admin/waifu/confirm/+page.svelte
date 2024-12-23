@@ -1,8 +1,12 @@
 <script lang="ts">
   import type { PageData } from "./$types";
 
-  export let data: PageData;
-  $: ({ action, id, waifuName } = data);
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
+  let { action, id, waifuName } = $derived(data);
 
   const actions = {
     simp: {
@@ -19,7 +23,7 @@
     { title: string; message: (name: string) => string }
   >;
 
-  $: ({ title, message } = actions[action]);
+  let { title, message } = $derived(actions[action]);
 </script>
 
 <main class="flex flex-col items-center gap-4">

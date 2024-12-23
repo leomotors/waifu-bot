@@ -1,12 +1,11 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
   import Phone from "$lib/components/Phone.svelte";
 
   import { twMerge } from "tailwind-merge";
 
   import type { PageData } from "./$types";
-
-  import { page } from "$app/stores";
-  import { goto } from "$app/navigation";
 
   export let allWaifu: PageData["allWaifu"];
   let selectedWaifu = 0;

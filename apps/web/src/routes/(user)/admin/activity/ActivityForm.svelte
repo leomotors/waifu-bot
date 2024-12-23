@@ -1,24 +1,29 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
-
   import { ActivityType } from "discord-api-types/v10";
 
-  export let initialValue: PageData["activities"][number];
-  export let index: number;
-  $: formId = `activity-${index}`;
+  import type { PageData } from "./$types";
 
-  let id = initialValue.id;
-  let name = initialValue.name;
-  let type = initialValue.type;
-  let url = initialValue.url;
-  let enabled = initialValue.enabled;
+  interface Props {
+    initialValue: PageData["activities"][number];
+    index: number;
+  }
 
-  $: mutated =
+  let { initialValue, index }: Props = $props();
+  let formId = $derived(`activity-${index}`);
+
+  let id = $state(initialValue.id);
+  let name = $state(initialValue.name);
+  let type = $state(initialValue.type);
+  let url = $state(initialValue.url);
+  let enabled = $state(initialValue.enabled);
+
+  let mutated = $derived(
     id !== initialValue.id ||
-    name !== initialValue.name ||
-    type !== initialValue.type ||
-    url !== initialValue.url ||
-    enabled !== initialValue.enabled;
+      name !== initialValue.name ||
+      type !== initialValue.type ||
+      url !== initialValue.url ||
+      enabled !== initialValue.enabled,
+  );
 </script>
 
 <tr
@@ -79,7 +84,7 @@
       class="rounded-md bg-indigo-600 px-4 py-2 text-xs font-semibold text-white hover:bg-indigo-700"
       form={formId}
       formaction="?/update"
-      on:click={(e) => {
+      onclick={(e) => {
         if (!mutated) {
           e.preventDefault();
         }

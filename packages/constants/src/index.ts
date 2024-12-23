@@ -2,7 +2,7 @@
 // * Data such as App Version and other "constants"
 // * will be in this package
 
-export const AppVersion = "6.3.932";
+export const AppVersion = "6.3.950";
 
 export const YoutubeURLPrefix = "https://www.youtube.com/watch?v=";
 

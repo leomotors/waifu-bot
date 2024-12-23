@@ -1,7 +1,15 @@
 <script lang="ts">
-  import "../app.scss";
+  import type { Snippet } from "svelte";
 
   import { env } from "$env/dynamic/public";
+
+  import "../app.scss";
+
+  interface Props {
+    children: Snippet;
+  }
+
+  let { children }: Props = $props();
 </script>
 
 <svelte:head>
@@ -13,4 +21,4 @@
   <meta property="og:image" content="{env.PUBLIC_WEB_URL}/api/image/og" />
 </svelte:head>
 
-<slot />
+{@render children()}
